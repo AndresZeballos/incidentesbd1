@@ -1,0 +1,8 @@
+﻿<Conexion>
+  <Parametros>
+    <DataSource valor ="127.0.0.1"/>
+    <InitialCatalog valor ="bugsys"/>
+    <UserID valor ="bugsys"/>
+    <Password valor="bugsys" />
+  </Parametros>
+</Conexion>
