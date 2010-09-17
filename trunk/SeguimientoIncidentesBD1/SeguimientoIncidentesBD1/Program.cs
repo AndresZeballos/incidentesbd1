@@ -17,5 +17,7 @@ namespace SeguimientoIncidentesBD1
             Rol rol = new Rol();
             rol.CrearRol("admin", "Administrador del Sistema");
         }
+
+        // andres
     }
 }
