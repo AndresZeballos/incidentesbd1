@@ -15,7 +15,7 @@ namespace SeguimientoIncidentesBD1
         static void Main()
         {
             Rol rol = new Rol();
-            rol.CrearRol("admin", "Administrador del Sistema");
+            rol.CrearRol("admin2", "Administrador del Sistema 2");
         }
 
         // andres

@@ -9,25 +9,27 @@ namespace SeguimientoIncidentesBD1.persist
 {
     class SQLInsert
     {
-        private String cons;
-
         public SQLInsert() { }
         
-        public bool Execute(String cons)
+        public bool Execute(SqlCommand cmd)
         {
-            Conexion cnx = new Conexion();
+            try
+            {
+                Conexion cnx = new Conexion();
 
-            this.cons = cons;
-            
-            SqlCommand cmd = new SqlCommand("", cnx.Connection);
-            cmd.CommandText = cons;
-            
-            SqlDataReader dr;
-            cnx.Connection.Open();
-            dr = cmd.ExecuteReader();
-            cnx.Connection.Close();
+                cmd.Connection = cnx.Connection;
 
-            return true;
+                SqlDataReader dr;
+                cnx.Connection.Open();
+                dr = cmd.ExecuteReader();
+                cnx.Connection.Close();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Error al ejecutar el INSERT");
+                return false;
+            }
         }
     }
 }
