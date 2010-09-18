@@ -16,7 +16,6 @@ namespace SeguimientoIncidentesBD1.persist
             try
             {
                 Conexion cnx = new Conexion();
-
                 cmd.Connection = cnx.Connection;
 
                 SqlDataReader dr;
@@ -27,7 +26,7 @@ namespace SeguimientoIncidentesBD1.persist
             }
             catch(Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show("Error al ejecutar el INSERT");
+                System.Windows.Forms.MessageBox.Show("Error al ejecutar el INSERT:" + ex.Message);
                 return false;
             }
         }
