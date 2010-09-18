@@ -20,14 +20,12 @@ namespace SeguimientoIncidentesBD1.persist
         {
             this.rolCod = rolCod;
             this.rolDes = rolDes;
-            SqlCommandBuilder sqlcmd = new SqlCommandBuilder();
-            /*Ejemplo de sql command
-             * SQLCommand sql = new SQLCommand();
-             * sql.CommandText = "INSERT INTO roles (rolCod, rolDes) VALUES (@rolCod, @rolDes)
-             * sql.Parameters["@rolCod"] = rolCod;
-             * sql.Parameters["@rolDes"] = rolDes;
-             * los parametros van marcados con @
-             */
+            SqlCommand sql = new SqlCommand();
+            /*Ejemplo de sql command*/
+            sql.CommandText = "INSERT INTO roles (rolCod, rolDes) VALUES (@rolCod, @rolDes)";
+            sql.Parameters["@rolCod"] = rolCod;
+            sql.Parameters["@rolDes"] = rolDes;
+            /*los parametros van marcados con @*/
 
             /* Con el SQLCommandBuilder se persisten los cambios hechos en un DataSet en la
              * correspondiente tabla en nuestra base de datos, sin tener que armar el insert, update
@@ -35,8 +33,6 @@ namespace SeguimientoIncidentesBD1.persist
              * 
              * Para su uso hay que usar el objeto GridView
              */
-            
-            String cons = "INSERT INTO roles (rolCod, rolDes) VALUES ('" + rolCod + "', '" + rolDes + "')";
 
             SQLInsert sql = new SQLInsert();
             sql.Execute(cons);
