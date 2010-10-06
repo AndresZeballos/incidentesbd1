@@ -18,6 +18,6 @@ namespace SeguimientoIncidentesBD1
             rol.CrearRol("admin2", "Administrador del Sistema 2");
         }
 
-        // andres
+        // andres zeballos
     }
 }
