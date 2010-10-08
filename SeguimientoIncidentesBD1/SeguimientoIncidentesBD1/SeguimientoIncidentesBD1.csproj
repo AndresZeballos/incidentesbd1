@@ -50,6 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="persist\GrupoUsuario_Persist.cs" />
+    <Compile Include="logic\Incidente_Logic.cs" />
+    <Compile Include="logic\Proyecto_Logic.cs" />
+    <Compile Include="logic\Usuario_Logic.cs" />
+    <Compile Include="logic\GrupoUsuario_Logic.cs" />
+    <Compile Include="persist\Incidente_Persist.cs" />
+    <Compile Include="logic\Rol_Logic.cs" />
+    <Compile Include="logic\Seguridad_Logic.cs" />
     <Compile Include="persist\Conexion.cs" />
     <Compile Include="persist\ConsultasSelect.cs" />
     <Compile Include="Form1.cs">
@@ -58,11 +66,14 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="persist\Proyecto_Persist.cs" />
+    <Compile Include="persist\Seguridad_Persist.cs" />
     <Compile Include="persist\SQLDelete.cs" />
     <Compile Include="persist\SQLInsert.cs" />
-    <Compile Include="persist\Rol.cs" />
+    <Compile Include="persist\Rol_Persist.cs" />
     <Compile Include="persist\SQLSelect.cs" />
     <Compile Include="persist\SQLUpdate.cs" />
+    <Compile Include="persist\Usuario_Persist.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -85,7 +96,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="logic\" />
     <Folder Include="show\" />
   </ItemGroup>
   <ItemGroup>

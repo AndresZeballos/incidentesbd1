@@ -14,8 +14,8 @@ namespace SeguimientoIncidentesBD1
         [STAThread]
         static void Main()
         {
-            Rol rol = new Rol();
-            rol.CrearRol("admin2", "Administrador del Sistema 2");
+            //Rol_Persist rol = new Rol_Persist();
+            //rol.RolCreate("admin2", "Administrador del Sistema 2", );
         }
 
         // andres zeballos
