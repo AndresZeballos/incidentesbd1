@@ -53,7 +53,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@rolDes", this.rolDesc);
                 //la base de datos debería controlar que el id exista en la tabla de seguridades
                 sql.Parameters.AddWithValue("@rolSegId", rolSeg);
-                SQLInsert sqlIns = new SQLInsert();
+                SQLExecute sqlIns = new SQLExecute();
                 sqlIns.Execute(sql);
             }
             /*los parametros van marcados con @*/
