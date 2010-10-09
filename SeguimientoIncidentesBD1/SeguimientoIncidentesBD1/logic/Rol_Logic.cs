@@ -111,7 +111,7 @@ namespace SeguimientoIncidentesBD1.logic
                     }
                     if (!rolExiste)
                     {
-                        rolPersist.RolSegIdAdd(rolSeg);
+                        rolPersist.RolSegCodAdd(rolSeg);
                     }
                 }
             }

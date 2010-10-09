@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace SeguimientoIncidentesBD1.persist
 {
-    class ConsultasSelect
+    public class ConsultasSelect
     {
         private Conexion cnx;
         
@@ -33,6 +33,8 @@ namespace SeguimientoIncidentesBD1.persist
                 System.Windows.Forms.MessageBox.Show(dr[0].ToString());
             }
             cnx.Connection.Close();
+
+            //Otro ejemplo, para cargar el dataset
             cmd.CommandText = "Select * from personas";
             da.SelectCommand = cmd;
             // El data adapter llena el DataSet con la consulta que tiene.

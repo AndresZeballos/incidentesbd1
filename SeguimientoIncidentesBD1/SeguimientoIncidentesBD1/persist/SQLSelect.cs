@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace SeguimientoIncidentesBD1.persist
 {
-    class SQLSelect
+    public class SQLSelect
     {
         public SQLSelect()
         { }
