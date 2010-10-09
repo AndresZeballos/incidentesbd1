@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
+using System.Data.SqlClient;
 using SeguimientoIncidentesBD1.persist;
 
 namespace SeguimientoIncidentesBD1.logic
@@ -11,7 +13,7 @@ namespace SeguimientoIncidentesBD1.logic
         private string rolCod;
         private string rolDesc;
         //un rol tiene una lista de seguridades, cada seguridad se corresponde con un nombre programa de la interfaz
-        private int[] rolSegId;
+        private RolSeguridad_Logic rolSeg;
 
         public string RolCod
         {
@@ -25,21 +27,16 @@ namespace SeguimientoIncidentesBD1.logic
             set { rolDesc = value; }
         }
         
-        public int[] RolSegId
+        public RolSeguridad_Logic RolSeg
         {
-            get { return rolSegId; }
-            set { rolSegId = value; }
+            get { return rolSeg; }
+            set { rolSeg = value; }
         }
 
-        public Rol_Logic(string rolCod, string rolDesc, int[]rolSegId){
+        public Rol_Logic(string rolCod, string rolDesc, string[] rolSeg){
             this.rolCod = rolCod;
             this.rolDesc = rolDesc;
-            this.rolSegId = rolSegId;
-        }
-
-        public Rol_Logic(string rolCod, int[]rolSegId){
-            this.rolCod = rolCod;
-            this.rolSegId = rolSegId;
+            this.rolSeg = new RolSeguridad_Logic(rolCod, rolSeg);
         }
 
         //cada entidad debe tener un constructor que solo reciba la clave, y en dicho caso haga la busqueda en la BD
@@ -51,7 +48,7 @@ namespace SeguimientoIncidentesBD1.logic
                 Rol_Persist rolPersist = new Rol_Persist(rolCod);
                 this.rolCod = rolPersist.RolCod;
                 this.rolDesc = rolPersist.RolDesc;
-                this.RolSegId = rolPersist.RolSegId;
+                this.rolSeg = new RolSeguridad_Logic(rolCod);
             }
             catch (Exception ex)
             {
@@ -60,18 +57,21 @@ namespace SeguimientoIncidentesBD1.logic
         }
 
         //persiste un rol en la base de datos
-        public void RolPersist(){
+        public void RolPersist()
+        {
             try
             {
-                Rol_Persist rolPersist = new Rol_Persist(this.rolCod, this.rolDesc, this.rolSegId);
+                Rol_Persist rolPersist = new Rol_Persist(this.rolCod, this.rolDesc);
                 rolPersist.RolCreate();
+                //persisto las seguridades del rol
+                this.rolSeg.RolSeguridadPersist();
             }
-            catch (Exception ex)
+            catch (SqlException sqlex)
             {
                 //el metodo CrearRol de la clase Rol_Persist debe hacer un throw de la excepcion en caso de que no
                 //se pueda persistir el rol en la base de datos.
                 //ESTE MANEJO DE EXPCECIONES DEBE REALIZARSE SIEMPRE
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+                throw sqlex;
             }
         }
 
@@ -90,30 +90,15 @@ namespace SeguimientoIncidentesBD1.logic
         }
 
         //persiste un rol en la base de datos
-        public void RolModify(string rolCod, string nuevaDesc, int[] rolSegId)
+        public void RolModify(string rolCod, string nuevaDesc, string[] rolSeg)
         {
             try
             {
                 Rol_Persist rolPersist = new Rol_Persist(rolCod);
                 //primero actualizo la nueva descripción
                 rolPersist.RolDescUpdate(nuevaDesc);
-                //luego comparo uno a uno los rolSegId, si no existe, lo agrego
-                foreach (int rolSeg in rolSegId)
-                {
-                    Boolean rolExiste = false;
-                    foreach (int rolSegExistente in rolPersist.RolSegId)
-                    {
-                        if (rolSeg == rolSegExistente)
-                        {
-                            rolExiste = true;
-                            break;
-                        }
-                    }
-                    if (!rolExiste)
-                    {
-                        rolPersist.RolSegCodAdd(rolSeg);
-                    }
-                }
+                //actualizo las seguridades del rol
+                this.rolSeg.RolSeguridadModify(rolSeg);
             }
             catch (Exception ex)
             {

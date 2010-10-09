@@ -12,7 +12,6 @@ namespace SeguimientoIncidentesBD1.persist
     {
         private string rolCod;
         private string rolDesc;
-        private string[] rolSegCod;
 
         public string RolCod
         {
@@ -26,17 +25,10 @@ namespace SeguimientoIncidentesBD1.persist
             set { rolDesc = value; }
         }
 
-        public string[] RolSegCod
-        {
-            get { return rolSegCod; }
-            set { rolSegCod = value; }
-        }
-
-        public Rol_Persist(string rolCod, string rolDesc, string[] rolSegCod)
+        public Rol_Persist(string rolCod, string rolDesc)
         {
             this.rolCod = rolCod;
             this.rolDesc = rolDesc;
-            this.rolSegCod = rolSegCod;
         }
 
         //este al recibir el rolCod debe hacer una busqueda en la BD y traer los datos
@@ -122,6 +114,11 @@ namespace SeguimientoIncidentesBD1.persist
         }
 
         internal void RolCreate(string p, string p_2)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void RolDescUpdate(string nuevaDesc)
         {
             throw new NotImplementedException();
         }
