@@ -9,7 +9,7 @@ using System.IO;
 
 namespace SeguimientoIncidentesBD1.persist
 {
-    class Conexion
+    public class Conexion
     {
         XmlDocument doc;
         XmlReader reader;

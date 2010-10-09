@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace SeguimientoIncidentesBD1.persist
 {
-    class Proyecto_Persist
+    public class Proyecto_Persist
     {
     }
 }

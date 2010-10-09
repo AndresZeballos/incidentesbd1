@@ -7,21 +7,29 @@ using System.Data.SqlClient;
 
 namespace SeguimientoIncidentesBD1.persist
 {
-    class SQLExecute
+    public class SQLExecute
     {
         public SQLExecute() { }
         
-        public void Execute(SqlCommand cmd)
+        public DataSet Execute(SqlCommand cmd)
         {
             try
             {
                 Conexion cnx = new Conexion();
                 cmd.Connection = cnx.Connection;
 
-                SqlDataReader dr;
+                //SqlDataReader dr;
                 cnx.Connection.Open();
-                dr = cmd.ExecuteReader();
+
+                DataSet ds = new DataSet();
+                SqlDataAdapter da = new SqlDataAdapter();
+
+                da.SelectCommand = cmd;
+                da.Fill(ds);
+                //dr = cmd.ExecuteReader();
+
                 cnx.Connection.Close();
+                return ds;
             }
             catch(SqlException sqlex)
             {
