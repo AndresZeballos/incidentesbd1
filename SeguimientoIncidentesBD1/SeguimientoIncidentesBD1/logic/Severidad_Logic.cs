@@ -8,11 +8,8 @@ using SeguimientoIncidentesBD1.persist;
 
 namespace SeguimientoIncidentesBD1.logic
 {
-    public class Usuario_Logic
+    public class Severidad_Logic
     {
-        private string usuCod;
-        private string usuPassword;
-        private string usuNom;
-        private Rol_Logic[] usuRol;
+        private string severidadNom;
     }
 }

@@ -34,8 +34,8 @@ namespace SeguimientoIncidentesBD1.logic
         {
             try
             {
-                Seguridad_Persist segPersist = new Seguridad_Persist(segCod);
-                this.segCod = segPersist.SegCod;
+                this.segCod = segCod;
+                Seguridad_Persist segPersist = Seguridad_Persist(segCod);
                 this.segDesc = segPersist.SegDesc;
             }
             catch (Exception ex)
@@ -48,7 +48,7 @@ namespace SeguimientoIncidentesBD1.logic
         public void SeguridadPersist(){
             try
             {
-                Seguridad_Persist segPersist = new Seguridad_Persist(this.segCod, this.segDesc);
+                Seguridad_Persist segPersist = new Seguridad_Persist(this.segDesc);
                 segPersist.SeguridadCreate();
             }
             catch (Exception ex)
@@ -88,6 +88,10 @@ namespace SeguimientoIncidentesBD1.logic
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }
         }
-    }
+
+                private Seguridad_Persist Seguridad_Persist(string segCod)
+        {
+ 	        throw new NotImplementedException();
+        }
     }
 }

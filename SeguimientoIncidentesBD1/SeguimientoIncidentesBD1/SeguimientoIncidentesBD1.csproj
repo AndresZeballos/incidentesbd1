@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="logic\Categoria_Logic.cs" />
+    <Compile Include="logic\Estado_Logic.cs" />
+    <Compile Include="logic\Modificacion_Logic.cs" />
+    <Compile Include="logic\Prioridad_Logic.cs" />
+    <Compile Include="logic\RolSeguridad_Logic.cs" />
+    <Compile Include="logic\Severidad_Logic.cs" />
     <Compile Include="persist\GrupoUsuario_Persist.cs" />
     <Compile Include="logic\Incidente_Logic.cs" />
     <Compile Include="logic\Proyecto_Logic.cs" />
@@ -67,6 +73,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="persist\Proyecto_Persist.cs" />
+    <Compile Include="persist\RolSeguridad_Persist.cs" />
     <Compile Include="persist\Seguridad_Persist.cs" />
     <Compile Include="persist\SQLExecute.cs" />
     <Compile Include="persist\Rol_Persist.cs" />
