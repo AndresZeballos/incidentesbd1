@@ -64,7 +64,7 @@ namespace SeguimientoIncidentesBD1.logic
         internal void RolSeguridadModify(string[] rolSeg)
         {
             RolSeguridad_Persist rolSegPersist = new RolSeguridad_Persist();
-            Seguridad_Persist segPersist = new Seguridad_Persist();
+            Seguridad_Persist segPersist = new Seguridad_Persist("");
             try
             {
                 //luego comparo uno a uno los rolSeg, si no existe, lo agrego
