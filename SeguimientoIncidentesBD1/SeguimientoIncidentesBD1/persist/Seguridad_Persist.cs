@@ -88,5 +88,10 @@ namespace SeguimientoIncidentesBD1.persist
         {
             throw new NotImplementedException();
         }
+
+        internal void SegCodAdd(string seg)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
