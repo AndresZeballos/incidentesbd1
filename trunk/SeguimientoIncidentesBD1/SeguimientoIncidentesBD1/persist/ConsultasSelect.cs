@@ -41,15 +41,23 @@ namespace SeguimientoIncidentesBD1.persist
             da.Fill(ds);
             return ds;
         }
+
         public DataSet ConsultaGeneral(String sqlText)
         {
-            DataSet ds = new DataSet();
-            SqlDataAdapter da = new SqlDataAdapter();
+            try
+            {
+                DataSet ds = new DataSet();
+                SqlDataAdapter da = new SqlDataAdapter();
 
-            SqlCommand cmd = new SqlCommand(sqlText, cnx.Connection);
-            da.SelectCommand = cmd;
-            da.Fill(ds);
-            return ds;
+                SqlCommand cmd = new SqlCommand(sqlText, cnx.Connection);
+                da.SelectCommand = cmd;
+                da.Fill(ds);
+                return ds;
+            }
+            catch (SqlException sqle) {
+                Console.WriteLine(sqle.ToString());
+                return null;
+            }
         }
     }
 }
