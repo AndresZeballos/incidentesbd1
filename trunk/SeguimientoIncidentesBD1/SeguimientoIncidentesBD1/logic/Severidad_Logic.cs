@@ -10,6 +10,43 @@ namespace SeguimientoIncidentesBD1.logic
 {
     public class Severidad_Logic
     {
-        private string severidadNom;
+        private string sevCod;
+
+        public string SevCod
+        {
+            get { return sevCod; }
+            set { sevCod = value; }
+        }
+
+        public Severidad_Logic(string sevCod)
+        {
+            this.sevCod = sevCod;
+        }
+
+        public void SeveridadPersist()
+        {
+            try
+            {
+                Severidad_Persist sev = new Severidad_Persist(this.sevCod);
+                sev.SeveridadCreate();
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+        
+        public void SeveridadDelete()
+        {
+            try
+            {
+                Severidad_Persist sev = new Severidad_Persist(this.sevCod);
+                sev.SeveridadDelete();
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
     }
 }

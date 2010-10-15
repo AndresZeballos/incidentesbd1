@@ -11,9 +11,9 @@ namespace SeguimientoIncidentesBD1.logic
     public class Rol_Logic
     {
         private string rolCod;
-        private string rolDesc;
+        private string rolDes;
         //un rol tiene una lista de seguridades, cada seguridad se corresponde con un nombre programa de la interfaz
-        private RolSeguridad_Logic rolSeg;
+        private IList<string> rolSeg;
 
         public string RolCod
         {
@@ -21,22 +21,24 @@ namespace SeguimientoIncidentesBD1.logic
             set { rolCod = value; }
         }
 
-        public string RolDesc
+        public string RolDes
         {
-            get { return rolDesc; }
-            set { rolDesc = value; }
+            get { return rolDes; }
+            set { rolDes = value; }
         }
         
-        public RolSeguridad_Logic RolSeg
+        //solo necesito tener el segCod
+        public IList<string> RolSeg
         {
             get { return rolSeg; }
             set { rolSeg = value; }
         }
 
-        public Rol_Logic(string rolCod, string rolDesc, string[] rolSeg){
+        public Rol_Logic(string rolCod, string rolDes, IList<string> rolSeg)
+        {
             this.rolCod = rolCod;
-            this.rolDesc = rolDesc;
-            this.rolSeg = new RolSeguridad_Logic(rolCod, rolSeg);
+            this.rolDes = rolDes;
+            this.rolSeg = rolSeg;
         }
 
         //cada entidad debe tener un constructor que solo reciba la clave, y en dicho caso haga la busqueda en la BD
@@ -47,12 +49,12 @@ namespace SeguimientoIncidentesBD1.logic
             {
                 Rol_Persist rolPersist = new Rol_Persist(rolCod);
                 this.rolCod = rolPersist.RolCod;
-                this.rolDesc = rolPersist.RolDesc;
-                this.rolSeg = new RolSeguridad_Logic(rolCod);
+                this.rolDes = rolPersist.RolDes;
+                this.rolSeg = rolPersist.RolSeg;
             }
-            catch (Exception ex)
+            catch (SqlException sqlex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+                throw sqlex;
             }
         }
 
@@ -61,10 +63,9 @@ namespace SeguimientoIncidentesBD1.logic
         {
             try
             {
-                Rol_Persist rolPersist = new Rol_Persist(this.rolCod, this.rolDesc);
+                Rol_Persist rolPersist = new Rol_Persist(this.rolCod, this.rolDes, this.rolSeg);
                 rolPersist.RolCreate();
                 //persisto las seguridades del rol
-                this.rolSeg.RolSeguridadPersist();
             }
             catch (SqlException sqlex)
             {
@@ -83,27 +84,49 @@ namespace SeguimientoIncidentesBD1.logic
                 Rol_Persist rolPersist = new Rol_Persist(rolCod);
                 rolPersist.RolDelete();
             }
-            catch (Exception ex)
+            catch (SqlException sqlex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+                throw sqlex;
             }
         }
 
-        //persiste un rol en la base de datos
-        public void RolModify(string rolCod, string nuevaDesc, string[] rolSeg)
+        //actualiza la descripción de un rol
+        public void RolDesUpdate(string rolCod, string nuevaDesc)
         {
             try
             {
                 Rol_Persist rolPersist = new Rol_Persist(rolCod);
                 //primero actualizo la nueva descripción
-                rolPersist.RolDescUpdate(nuevaDesc);
+                rolPersist.RolDesUpdate(nuevaDesc);
                 //actualizo las seguridades del rol
-                this.rolSeg.RolSeguridadModify(rolSeg);
+                //this.rolSeg.RolSeguridadModify(rolSeg);
             }
-            catch (Exception ex)
+            catch (SqlException sqlex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+                throw sqlex;
             }
         }
+
+        //actualiza la lista de seguridades asociadas al rol
+        public void RolSegUpdate(string rolCod, IList<string> rolSeg)
+        {
+            try
+            {
+                Rol_Persist rolPersist = new Rol_Persist(rolCod);
+                
+                //tengo que comparar la nueva lista con la actual e incovar rol RolSegUpdate pero solo de a una
+                //seguridad nueva
+
+                //rolPersist.RolSegUpdate(rolSeg);
+                
+
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+        internal 
     }
 }
