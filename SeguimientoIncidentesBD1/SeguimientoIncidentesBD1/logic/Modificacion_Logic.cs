@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SeguimientoIncidentesBD1.logic
 {
-    class Modificacion_Logic
+    public class Modificacion_Logic
     {
     }
 }

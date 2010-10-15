@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
+using System.Data.SqlClient;
 using SeguimientoIncidentesBD1.persist;
 
 namespace SeguimientoIncidentesBD1.logic
@@ -9,7 +11,7 @@ namespace SeguimientoIncidentesBD1.logic
     public class Seguridad_Logic
     {
         private string segCod;
-        private string segDesc;
+        private string segDes;
         
         public string SegCod
         {
@@ -17,15 +19,15 @@ namespace SeguimientoIncidentesBD1.logic
             set { segCod = value; }
         }
 
-        public string SegDesc
+        public string SegDes
         {
-            get { return segDesc; }
-            set { segDesc = value; }
+            get { return segDes; }
+            set { segDes = value; }
         }
         
-        public Seguridad_Logic(string segCod, string segDesc){
+        public Seguridad_Logic(string segCod, string segDes){
             this.segCod = segCod;
-            this.segDesc = segDesc;
+            this.segDes = segDes;
         }
 
         //cada entidad debe tener un constructor que solo reciba la clave, y en dicho caso haga la busqueda en la BD
@@ -35,12 +37,12 @@ namespace SeguimientoIncidentesBD1.logic
             try
             {
                 this.segCod = segCod;
-                Seguridad_Persist segPersist = Seguridad_Persist(segCod);
-                this.segDesc = segPersist.SegDesc;
+                Seguridad_Persist segPersist = new Seguridad_Persist(segCod);
+                this.segDes = segPersist.SegDes;
             }
-            catch (Exception ex)
+            catch (SqlException sqlex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+                throw sqlex;
             }
         }
 
@@ -48,15 +50,15 @@ namespace SeguimientoIncidentesBD1.logic
         public void SeguridadPersist(){
             try
             {
-                Seguridad_Persist segPersist = new Seguridad_Persist(this.segDesc);
+                Seguridad_Persist segPersist = new Seguridad_Persist(this.segDes);
                 segPersist.SeguridadCreate();
             }
-            catch (Exception ex)
+            catch (SqlException sqlex)
             {
                 //el metodo CrearRol de la clase Seguridad_Persist debe hacer un throw de la excepcion en caso de que no
                 //se pueda persistir el rol en la base de datos.
                 //ESTE MANEJO DE EXPCECIONES DEBE REALIZARSE SIEMPRE
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+                throw sqlex;
             }
         }
 
@@ -68,9 +70,9 @@ namespace SeguimientoIncidentesBD1.logic
                 Seguridad_Persist segPersist = new Seguridad_Persist(segCod);
                 segPersist.SeguridadDelete("");
             }
-            catch (Exception ex)
+            catch (SqlException sqlex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+                throw sqlex;
             }
         }
 
@@ -83,15 +85,10 @@ namespace SeguimientoIncidentesBD1.logic
                 //primero actualizo la nueva descripción
                 segPersist.SeguridadDescUpdate(nuevaDesc);
             }
-            catch (Exception ex)
+            catch (SqlException sqlex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+                throw sqlex;
             }
-        }
-
-                private Seguridad_Persist Seguridad_Persist(string segCod)
-        {
- 	        throw new NotImplementedException();
         }
     }
 }

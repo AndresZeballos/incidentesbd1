@@ -10,7 +10,7 @@ namespace SeguimientoIncidentesBD1.persist
     public class Seguridad_Persist
     {
         private string segCod;
-        private string segDesc;
+        private string segDes;
 
         public string SegCod
         {
@@ -18,16 +18,16 @@ namespace SeguimientoIncidentesBD1.persist
             set { segCod = value; }
         }
 
-        public string SegDesc
+        public string SegDes
         {
-            get { return segDesc; }
-            set { segDesc = value; }
+            get { return segDes; }
+            set { segDes = value; }
         }
 
-        public Seguridad_Persist(string segCod, string segDesc)
+        public Seguridad_Persist(string segCod, string segDes)
         {
             this.segCod = segCod;
-            this.segDesc = segDesc;
+            this.segDes = segDes;
         }
 
         public Seguridad_Persist(string segCod)
@@ -41,7 +41,7 @@ namespace SeguimientoIncidentesBD1.persist
                 SQLExecute sqlIns = new SQLExecute();
                 DataSet ds = sqlIns.Execute(sql);
                 DataTable dt = ds.Tables["seguridades"];
-                this.segDesc = dt.Rows[0].Field<string>("segDesc");
+                this.segDes = dt.Rows[0].Field<string>("segDes");
             }
             catch(SqlException sqlex)
             {
@@ -55,9 +55,9 @@ namespace SeguimientoIncidentesBD1.persist
             try
             {
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "INSERT INTO roles (segCod, segDesc) VALUES (@segCod, @segDesc)";
+                sql.CommandText = "INSERT INTO seguridad (segCod, segDes) VALUES (@segCod, @segDes)";
                 sql.Parameters.AddWithValue("@segCod", this.segCod);
-                sql.Parameters.AddWithValue("@segDesc", this.segDesc);
+                sql.Parameters.AddWithValue("@segDes", this.segDes);
                 SQLExecute sqlIns = new SQLExecute();
                 sqlIns.Execute(sql);
             }
