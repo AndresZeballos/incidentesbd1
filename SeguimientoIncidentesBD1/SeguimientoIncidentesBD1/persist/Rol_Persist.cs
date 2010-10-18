@@ -46,13 +46,13 @@ namespace SeguimientoIncidentesBD1.persist
         {
             try
             {
-                this.rolCod = rolCod;
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "SELECT * FROM rol WHERE rolCod = @rolCod";
-                sql.Parameters.AddWithValue("@rolCod", this.rolCod);
+                sql.Parameters.AddWithValue("@rolCod", rolCod);
                 SQLExecute sqlIns = new SQLExecute();
                 DataSet ds = sqlIns.Execute(sql);
                 DataTable dt = ds.Tables["rol"];
+                this.rolCod = dt.Rows[0].Field<string>("rolCod");
                 //cargo la descripción del rol
                 this.rolDes = dt.Rows[0].Field<string>("rolDes");
                 //hago la consulta sobre la tabla rolSeguridad
@@ -113,16 +113,16 @@ namespace SeguimientoIncidentesBD1.persist
             }
         }
 
-        internal void rolDesUpdate(string rolCod, string nuevaDesc)
+        public void RolDesUpdate(string nuevaDesc)
         {
             try
             {
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "UPDATE roles SET rolDes = @rolDes WHERE rolCod = @rolCod";
+                sql.CommandText = "UPDATE rol SET rolDes = @rolDes WHERE rolCod = @rolCod";
                 sql.Parameters.AddWithValue("@rolCod", this.rolCod);
-                sql.Parameters.AddWithValue("@rolDes", this.rolDes);
+                sql.Parameters.AddWithValue("@rolDes", nuevaDesc);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                sqlIns.Execute(sql);
             }
             catch (SqlException sqlex)
             {
@@ -130,24 +130,49 @@ namespace SeguimientoIncidentesBD1.persist
             }
         }
 
-        internal void rolSegAdd(int rolSeg)
+        /// <summary>
+        /// Este metodo recibe una seguridad y la agrega a las relaciones del rol con esa seguridad
+        /// </summary>
+        /// <param name="rolSeg"></param>
+        public void RolSegAdd(string segCod)
         {
-            throw new NotImplementedException();
+            try
+            {
+                SqlCommand sql = new SqlCommand();               
+                sql.CommandText = "INSERT INTO rolSeguridad (rolCod, rolSegCod) VALUES (@rolCod, @rolSegCod)";
+                //la base de datos debería controlar que el id exista en la tabla de seguridades
+                sql.Parameters.AddWithValue("@rolCod", this.rolCod);
+                sql.Parameters.AddWithValue("@rolSegCod", segCod);
+                SQLExecute sqlInsSeg = new SQLExecute();
+                sqlInsSeg.Execute(sql);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
         }
 
         internal void RolDelete()
         {
-            throw new NotImplementedException();
-        }
-
-        internal void RolCreate(string p, string p_2)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal void RolDesUpdate(string nuevaDesc)
-        {
-            throw new NotImplementedException();
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                //elimino primero las asociaciones del rol con seguridades
+                sql.CommandText = "DELETE FROM rolSeguridad WHERE rolCod=@rolCod";
+                sql.Parameters.AddWithValue("@rolCod", this.rolCod);
+                SQLExecute sqlIns = new SQLExecute();
+                sqlIns.Execute(sql);
+                sql.Parameters.Clear();
+                //elimino el rol propiamente dicho
+                sql.CommandText = "DELETE FROM	rol WHERE rolCod=@rolCod";
+                sql.Parameters.AddWithValue("@rolCod", this.rolCod);
+                SQLExecute sqlIns2 = new SQLExecute();
+                sqlIns2.Execute(sql);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
         }
     }
 }

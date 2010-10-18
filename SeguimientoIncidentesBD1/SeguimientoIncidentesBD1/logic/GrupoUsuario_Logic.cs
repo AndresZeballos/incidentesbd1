@@ -81,7 +81,35 @@ namespace SeguimientoIncidentesBD1.logic
             }
         }
 
-        public void GrupoUsuarioDes
+        //actualiza la descripción de un grupo de usuarios
+        public void GrupoUsuarioDesUpdate(string nuevaDesc)
+        {
+            try
+            {
+                GrupoUsuario_Persist grpPersist = new GrupoUsuario_Persist(this.grpUsuCod);
+                //actualizo la nueva descripción
+                grpPersist.GrpUsuDesUpdate(nuevaDesc);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
 
+        //agrega una nueva seguridad relacionada al rol
+        public void GrpUsuAdd(string usuCod)
+        {
+            try
+            {
+                //actualizo la lista de seguridades
+                this.usuGrpUsuCod.Add(usuCod);
+                GrupoUsuario_Persist grpPersist = new GrupoUsuario_Persist(this.grpUsuCod);
+                grpPersist.GrpUsuUsuAdd(usuCod);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
     }
 }

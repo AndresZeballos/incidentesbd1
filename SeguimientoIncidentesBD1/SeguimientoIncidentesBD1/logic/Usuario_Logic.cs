@@ -11,8 +11,9 @@ namespace SeguimientoIncidentesBD1.logic
     public class Usuario_Logic
     {
         private string usuCod;
-        private string usuPassword;
+        private string usuPass;
         private string usuNom;
-        private Rol_Logic[] usuRol;
+        private string usuMail;
+        private IList<string> usuRol;
     }
 }
