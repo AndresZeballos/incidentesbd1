@@ -9,5 +9,9 @@ namespace SeguimientoIncidentesBD1.persist
 {
     public class Proyecto_Persist
     {
+        private int proCod;
+        private string proNom;
+        private string proDes;
+        private string proEst
     }
 }

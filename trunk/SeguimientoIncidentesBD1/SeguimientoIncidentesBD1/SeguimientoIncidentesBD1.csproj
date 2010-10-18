@@ -52,7 +52,7 @@
   <ItemGroup>
     <Compile Include="logic\Categoria_Logic.cs" />
     <Compile Include="logic\Estado_Logic.cs" />
-    <Compile Include="logic\Modificacion_Logic.cs" />
+    <Compile Include="logic\Historia_Logic.cs" />
     <Compile Include="logic\Prioridad_Logic.cs" />
     <Compile Include="logic\Severidad_Logic.cs" />
     <Compile Include="persist\Categoria_Persist.cs" />
@@ -62,6 +62,7 @@
     <Compile Include="logic\Proyecto_Logic.cs" />
     <Compile Include="logic\Usuario_Logic.cs" />
     <Compile Include="logic\GrupoUsuario_Logic.cs" />
+    <Compile Include="persist\Historia_Persist.cs" />
     <Compile Include="persist\Incidente_Persist.cs" />
     <Compile Include="logic\Rol_Logic.cs" />
     <Compile Include="logic\Seguridad_Logic.cs" />

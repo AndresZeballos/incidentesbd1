@@ -57,5 +57,15 @@ namespace SeguimientoIncidentesBD1.persist
         {
             throw new NotImplementedException();
         }
+
+        internal void GrpUsuDesUpdate(string nuevaDesc)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void GrpUsuUsuAdd(string usuCod)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

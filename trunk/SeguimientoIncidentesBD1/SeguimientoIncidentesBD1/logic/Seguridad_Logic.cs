@@ -83,7 +83,7 @@ namespace SeguimientoIncidentesBD1.logic
             {
                 Seguridad_Persist segPersist = new Seguridad_Persist(segCod);
                 //primero actualizo la nueva descripción
-                segPersist.SeguridadDescUpdate(nuevaDesc);
+                segPersist.SeguridadDesUpdate(nuevaDesc);
             }
             catch (SqlException sqlex)
             {

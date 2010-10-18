@@ -7,5 +7,9 @@ namespace SeguimientoIncidentesBD1.logic
 {
     public class Proyecto_Logic
     {
+        private int proCod;
+        private string proNom;
+        private string proDes;
+        private string proEst;
     }
 }

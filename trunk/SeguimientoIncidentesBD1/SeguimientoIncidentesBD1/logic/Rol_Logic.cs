@@ -77,11 +77,11 @@ namespace SeguimientoIncidentesBD1.logic
         }
 
         //persiste un rol en la base de datos
-        public void RolDelete(string rolCod)
+        public void RolDelete()
         {
             try
             {
-                Rol_Persist rolPersist = new Rol_Persist(rolCod);
+                Rol_Persist rolPersist = new Rol_Persist(this.rolCod);
                 rolPersist.RolDelete();
             }
             catch (SqlException sqlex)
@@ -91,15 +91,13 @@ namespace SeguimientoIncidentesBD1.logic
         }
 
         //actualiza la descripción de un rol
-        public void RolDesUpdate(string rolCod, string nuevaDesc)
+        public void RolDesUpdate(string nuevaDesc)
         {
             try
             {
-                Rol_Persist rolPersist = new Rol_Persist(rolCod);
+                Rol_Persist rolPersist = new Rol_Persist(this.rolCod);
                 //primero actualizo la nueva descripción
                 rolPersist.RolDesUpdate(nuevaDesc);
-                //actualizo las seguridades del rol
-                //this.rolSeg.RolSeguridadModify(rolSeg);
             }
             catch (SqlException sqlex)
             {
@@ -107,26 +105,20 @@ namespace SeguimientoIncidentesBD1.logic
             }
         }
 
-        //actualiza la lista de seguridades asociadas al rol
-        public void RolSegUpdate(string rolCod, IList<string> rolSeg)
+        //agrega una nueva seguridad relacionada al rol
+        public void RolSegAdd(string rolSeg)
         {
             try
             {
-                Rol_Persist rolPersist = new Rol_Persist(rolCod);
-                
-                //tengo que comparar la nueva lista con la actual e incovar rol RolSegUpdate pero solo de a una
-                //seguridad nueva
-
-                //rolPersist.RolSegUpdate(rolSeg);
-                
-
+                //actualizo la lista de seguridades
+                this.rolSeg.Add(rolSeg);
+                Rol_Persist rolPersist = new Rol_Persist(this.rolCod);
+                rolPersist.RolSegAdd(rolSeg);              
             }
             catch (SqlException sqlex)
             {
                 throw sqlex;
             }
         }
-
-        internal 
     }
 }

@@ -34,13 +34,13 @@ namespace SeguimientoIncidentesBD1.persist
         {
             try
             {
-                this.segCod = segCod;
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "SELECT * FROM seguridades WHERE segCod = @segCod";
+                sql.CommandText = "SELECT * FROM seguridad WHERE segCod = @segCod";
                 sql.Parameters.AddWithValue("@segCod", this.segCod);
                 SQLExecute sqlIns = new SQLExecute();
                 DataSet ds = sqlIns.Execute(sql);
-                DataTable dt = ds.Tables["seguridades"];
+                DataTable dt = ds.Tables["seguridad"];
+                this.segCod = dt.Rows[0].Field<string>("segCod");
                 this.segDes = dt.Rows[0].Field<string>("segDes");
             }
             catch(SqlException sqlex)
@@ -50,7 +50,7 @@ namespace SeguimientoIncidentesBD1.persist
             
         }
 
-        internal void SeguridadCreate()
+        public void SeguridadCreate()
         {
             try
             {
@@ -67,13 +67,13 @@ namespace SeguimientoIncidentesBD1.persist
             }
         }
 
-        internal void SeguridadDelete(string segCod)
+        public void SeguridadDelete(string segCod)
         {
             try
             {
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "DELETE FROM seguridades WHERE segCod = @segCod";
-                sql.Parameters.AddWithValue("@segCod", this.segCod);
+                sql.CommandText = "DELETE FROM seguridad WHERE segCod = @segCod";
+                sql.Parameters.AddWithValue("@segCod", segCod);
                 SQLExecute sqlIns = new SQLExecute();
                 DataSet ds = sqlIns.Execute(sql);
             }
@@ -84,12 +84,7 @@ namespace SeguimientoIncidentesBD1.persist
             
         }
 
-        internal void SeguridadDescUpdate(string nuevaDesc)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal void SegCodAdd(string seg)
+        internal void SeguridadDesUpdate(string nuevaDesc)
         {
             throw new NotImplementedException();
         }
