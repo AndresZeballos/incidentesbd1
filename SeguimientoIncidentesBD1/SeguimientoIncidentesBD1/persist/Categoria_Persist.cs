@@ -32,7 +32,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@catCod", catCod);
                 SQLExecute sqlIns = new SQLExecute();
                 DataSet ds = sqlIns.Execute(sql);
-                DataTable dt = ds.Tables["seguridad"];
+                DataTable dt = ds.Tables["categoria"];
                 return (dt.Rows[0].Field<string>("catCod") != null);
             }
             catch (SqlException sqlex)
@@ -41,6 +41,11 @@ namespace SeguimientoIncidentesBD1.persist
             }
         }
 
+        public Categoria_Persist()
+        {
+            //crea una cateogira vacia para comprobar si una cateogira existe
+        }
+        
         public Categoria_Persist(string catCod)
         {
             this.catCod = catCod;            
@@ -62,13 +67,13 @@ namespace SeguimientoIncidentesBD1.persist
             }
         }
 
-        public void CategoriaDelete(string catCod)
+        public void CategoriaDelete()
         {
             try
             {
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "DELETE FROM categoria WHERE catCod = @catCod";
-                sql.Parameters.AddWithValue("@catod", catCod);
+                sql.Parameters.AddWithValue("@catCod", this.catCod);
                 SQLExecute sqlIns = new SQLExecute();
                 sqlIns.Execute(sql);
             }

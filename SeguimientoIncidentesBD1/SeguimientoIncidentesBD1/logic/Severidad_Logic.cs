@@ -23,6 +23,19 @@ namespace SeguimientoIncidentesBD1.logic
             this.sevCod = sevCod;
         }
 
+        public bool SeveridadExiste(string sevCod)
+        {
+            try
+            {
+                Severidad_Persist sev = new Severidad_Persist();
+                return sev.SeveridadExiste(sevCod);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
         public void SeveridadPersist()
         {
             try

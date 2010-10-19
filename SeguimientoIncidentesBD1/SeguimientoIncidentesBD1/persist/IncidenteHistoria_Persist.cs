@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace SeguimientoIncidentesBD1.persist
 {
-    public class Historia_Persist
+    public class IncidenteHistoria_Persist
     {
         private DateTime histFec;
         private string histEstIni;

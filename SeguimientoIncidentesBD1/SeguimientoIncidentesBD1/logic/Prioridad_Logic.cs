@@ -18,6 +18,19 @@ namespace SeguimientoIncidentesBD1.logic
             set { priCod = value; }
         }
 
+        public bool PrioridadExiste(string priCod)
+        {
+            try
+            {
+                Prioridad_Persist pri = new Prioridad_Persist();
+                return pri.PrioridadExiste(priCod);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
         public Prioridad_Logic(string priCod)
         {
             this.priCod = priCod;
@@ -40,8 +53,8 @@ namespace SeguimientoIncidentesBD1.logic
         {
             try
             {
-                Prioridad_Persist est = new Prioridad_Persist(this.priCod);
-                est.PrioridadDelete();
+                Prioridad_Persist pri = new Prioridad_Persist(this.priCod);
+                pri.PrioridadDelete();
             }
             catch (SqlException sqlex)
             {
