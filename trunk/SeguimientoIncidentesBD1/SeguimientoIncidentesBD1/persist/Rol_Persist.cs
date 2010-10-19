@@ -56,10 +56,11 @@ namespace SeguimientoIncidentesBD1.persist
                 //cargo la descripción del rol
                 this.rolDes = dt.Rows[0].Field<string>("rolDes");
                 //hago la consulta sobre la tabla rolSeguridad
+                sql.Parameters.Clear();
                 sql.CommandText = "SELECT * FROM rolSeguridad WHERE rolCod = @rolCod";
                 sql.Parameters.AddWithValue("@rolCod", this.rolCod);
                 SQLExecute sqlInsRolSeg = new SQLExecute();
-                DataSet dsRolSeg = sqlIns.Execute(sql);
+                DataSet dsRolSeg = sqlInsRolSeg.Execute(sql);
                 DataTable dtRolSeg = dsRolSeg.Tables["rolSeguridad"];
                 int i = 0;
                 foreach (DataRow drow in dtRolSeg.Rows)
@@ -100,9 +101,9 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@rolCod", "");
                 sql.Parameters.AddWithValue("@rolSegCod", "");
                 sql.Parameters[0].Value = this.rolCod;
-                foreach (string rolSegCod in this.rolSeg)
+                foreach (string rolSegCodActual in this.rolSeg)
                 {
-                    sql.Parameters[1].Value = rolSegCod;
+                    sql.Parameters[1].Value = rolSegCodActual;
                     SQLExecute sqlInsSeg = new SQLExecute();
                     sqlInsSeg.Execute(sql);
                 }
@@ -152,7 +153,7 @@ namespace SeguimientoIncidentesBD1.persist
             }
         }
 
-        internal void RolDelete()
+        public void RolDelete()
         {
             try
             {
@@ -164,6 +165,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sqlIns.Execute(sql);
                 sql.Parameters.Clear();
                 //elimino el rol propiamente dicho
+                sql.Parameters.Clear();
                 sql.CommandText = "DELETE FROM	rol WHERE rolCod=@rolCod";
                 sql.Parameters.AddWithValue("@rolCod", this.rolCod);
                 SQLExecute sqlIns2 = new SQLExecute();

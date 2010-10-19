@@ -23,6 +23,19 @@ namespace SeguimientoIncidentesBD1.logic
             this.catCod = catCod;
         }
 
+        public bool CategoriaExiste(string catCod)
+        {
+            try
+            {
+                Categoria_Persist cat = new Categoria_Persist();
+                return cat.CategoriaExiste(catCod);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
         public void CategoriaPersist()
         {
             try

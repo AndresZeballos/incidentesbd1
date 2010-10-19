@@ -7,23 +7,30 @@ namespace SeguimientoIncidentesBD1.logic
 {
     public class Incidente_Logic
     {
-        private string incDes;
-        private string incRes;
+        private int incCod;
+        private int incProCod;
         private string incCatCod;
-        private int incComp;
+        private string incSevCod;
+        private string incPriCod;
+        private string incEstCod;
+        private int incEstHrs;
         private DateTime incFecIng;
         private DateTime incFecUltAct;
         private DateTime incFecFin;
-        private string incUsuCod;
-        private string incUsuAsig;
-        private string incProCod;
-        private string incEst;
         private DateTime incEstFecIni;
         private DateTime incEstFecFin;
-        private string incEstCod;
-        private string incSevCod;
-        private string incCatCod;
-        private string incPriCod;
+        private string incUsuCod;
+        private string incUsuAsig;
+        private string incDes;
+        private string incRes;
+
+
+
+
+
+
+
+
 
     }
 }

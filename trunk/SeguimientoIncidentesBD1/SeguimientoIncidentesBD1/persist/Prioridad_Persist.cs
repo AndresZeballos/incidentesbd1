@@ -17,20 +17,65 @@ namespace SeguimientoIncidentesBD1.persist
             set { priCod = value; }
         }
 
-        public Prioridad_Persist(string p)
+        public Prioridad_Persist(string priCod)
         {
             // TODO: Complete member initialization
-            this.p = p;
+            this.priCod = priCod;
         }
 
-        internal void PrioridadCreate()
+        public Prioridad_Persist()
         {
-            throw new NotImplementedException();
+            //constructor vacio para usar PrioridadExiste
         }
 
-        internal void PrioridadDelete()
+        public bool PrioridadExiste(string priCod)
         {
-            throw new NotImplementedException();
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "SELECT * FROM prioridad WHERE priCod = @priCod";
+                sql.Parameters.AddWithValue("@priCod", priCod);
+                SQLExecute sqlIns = new SQLExecute();
+                DataSet ds = sqlIns.Execute(sql);
+                DataTable dt = ds.Tables["prioridad"];
+                return (dt.Rows[0].Field<string>("priCod") != null);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+        public void PrioridadCreate()
+        {
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "INSERT INTO prioridad (priCod) VALUES (@priCod)";
+                sql.Parameters.AddWithValue("@priCod", this.priCod);
+                SQLExecute sqlIns = new SQLExecute();
+                sqlIns.Execute(sql);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+        public void PrioridadDelete()
+        {
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "DELETE FROM prioridad WHERE priCod = @priCod";
+                sql.Parameters.AddWithValue("@priCod", this.priCod);
+                SQLExecute sqlIns = new SQLExecute();
+                sqlIns.Execute(sql);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
         }
     }
 }

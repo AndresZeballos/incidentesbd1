@@ -65,7 +65,6 @@ namespace SeguimientoIncidentesBD1.logic
             {
                 Rol_Persist rolPersist = new Rol_Persist(this.rolCod, this.rolDes, this.rolSeg);
                 rolPersist.RolCreate();
-                //persisto las seguridades del rol
             }
             catch (SqlException sqlex)
             {

@@ -84,9 +84,21 @@ namespace SeguimientoIncidentesBD1.persist
             
         }
 
-        internal void SeguridadDesUpdate(string nuevaDesc)
+        public void SeguridadDesUpdate(string nuevaDesc)
         {
-            throw new NotImplementedException();
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "UPDATE seguridad SET segDes = @segDes WHERE segCod = @segCod";
+                sql.Parameters.AddWithValue("@segCod", this.segCod);
+                sql.Parameters.AddWithValue("@segDes", nuevaDesc);
+                SQLExecute sqlIns = new SQLExecute();
+                sqlIns.Execute(sql);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
         }
     }
 }
