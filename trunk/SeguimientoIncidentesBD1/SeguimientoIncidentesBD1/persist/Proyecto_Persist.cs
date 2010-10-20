@@ -13,6 +13,7 @@ namespace SeguimientoIncidentesBD1.persist
         private string proNom;
         private string proDes;
         private string proEst;
+        private string proCod_2;
 
         public int ProCod
         {
@@ -66,6 +67,12 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 throw sqlex;
             }
+        }
+
+        public Proyecto_Persist(string proCod_2)
+        {
+            // TODO: Complete member initialization
+            this.proCod_2 = proCod_2;
         }
 
         public void ProyectoCreate()

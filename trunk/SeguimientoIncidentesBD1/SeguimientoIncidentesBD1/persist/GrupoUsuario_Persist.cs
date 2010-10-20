@@ -116,7 +116,7 @@ namespace SeguimientoIncidentesBD1.persist
                 //elimino el grupo de usuarios propiamente dicho
                 sql.Parameters.Clear();
                 sql.CommandText = "DELETE FROM	grupoUsuario WHERE grpUsuCod=@grpUsuCod";
-                sql.Parameters.AddWithValue("@grpUsuCod", this.grpUsuCod;
+                sql.Parameters.AddWithValue("@grpUsuCod", this.grpUsuCod);
                 SQLExecute sqlIns2 = new SQLExecute();
                 sqlIns2.Execute(sql);
             }

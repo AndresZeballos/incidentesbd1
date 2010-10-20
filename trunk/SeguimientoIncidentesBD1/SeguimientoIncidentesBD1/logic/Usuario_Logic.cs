@@ -50,7 +50,7 @@ namespace SeguimientoIncidentesBD1.logic
         {
             this.usuCod = usuCod;
             this.usuNom = usuNom;
-            this.usuPass = usuPass
+            this.usuPass = usuPass;
             this.usuMail = usuMail;
             this.usuRol = usuRol;
         }

@@ -25,7 +25,7 @@ namespace SeguimientoIncidentesBD1.persist
         private DateTime incEstFecFin;
         private string incEstCod;
         private string incSevCod;
-        private string incCatCod;
+        //private string incCatCod;
         private string incPriCod;
     }
 }
