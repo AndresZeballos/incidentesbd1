@@ -226,11 +226,15 @@
     <Compile Include="show\AdminWindows\Users\ViewUser_Window.designer.cs">
       <DependentUpon>ViewUser_Window.cs</DependentUpon>
     </Compile>
-    <Compile Include="show\LoginPrincipal\Login_Window.cs" />
+    <Compile Include="show\LoginPrincipal\Login_Window.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="show\LoginPrincipal\Login_Window.designer.cs">
       <DependentUpon>Login_Window.cs</DependentUpon>
     </Compile>
-    <Compile Include="show\LoginPrincipal\Principal_Window.cs" />
+    <Compile Include="show\LoginPrincipal\Principal_Window.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="show\LoginPrincipal\Principal_Window.designer.cs">
       <DependentUpon>Principal_Window.cs</DependentUpon>
     </Compile>

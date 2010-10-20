@@ -4,7 +4,6 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Data;
 using SeguimientoIncidentesBD1.logic;
-using SeguimientoIncidentesBD1.persist;
 using WindowsFormsApplication1;
 
 namespace SeguimientoIncidentesBD1
