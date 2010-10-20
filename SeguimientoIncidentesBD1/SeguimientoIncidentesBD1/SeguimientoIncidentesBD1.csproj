@@ -100,6 +100,139 @@
     <Compile Include="persist\View_Persist.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="show\AdminWindows\Admin_Window.cs" />
+    <Compile Include="show\AdminWindows\Admin_Window.designer.cs">
+      <DependentUpon>Admin_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\AdminWindows\Groups\GroupsAdmin_Window.cs" />
+    <Compile Include="show\AdminWindows\Groups\GroupsAdmin_Window.designer.cs">
+      <DependentUpon>GroupsAdmin_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\AdminWindows\Groups\NewGroup_Window.cs" />
+    <Compile Include="show\AdminWindows\Groups\NewGroup_Window.designer.cs">
+      <DependentUpon>NewGroup_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\AdminWindows\Groups\UserGroup.cs" />
+    <Compile Include="show\AdminWindows\Groups\UserGroup.designer.cs">
+      <DependentUpon>UserGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\AdminWindows\Groups\ViewGroup_Window.cs" />
+    <Compile Include="show\AdminWindows\Groups\ViewGroup_Window.designer.cs">
+      <DependentUpon>ViewGroup_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\AdminWindows\Project\GroupsProject.cs" />
+    <Compile Include="show\AdminWindows\Project\GroupsProject.designer.cs">
+      <DependentUpon>GroupsProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\AdminWindows\Project\NewProject_Window.cs" />
+    <Compile Include="show\AdminWindows\Project\NewProject_Window.designer.cs">
+      <DependentUpon>NewProject_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\AdminWindows\Project\ProjectsAdmin_Window.cs" />
+    <Compile Include="show\AdminWindows\Project\ProjectsAdmin_Window.designer.cs">
+      <DependentUpon>ProjectsAdmin_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\AdminWindows\Project\ViewProject_Window.cs" />
+    <Compile Include="show\AdminWindows\Project\ViewProject_Window.designer.cs">
+      <DependentUpon>ViewProject_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\AdminWindows\Rol\NewRol_Window.cs" />
+    <Compile Include="show\AdminWindows\Rol\NewRol_Window.designer.cs">
+      <DependentUpon>NewRol_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\AdminWindows\Rol\RolAdmin_Window.cs" />
+    <Compile Include="show\AdminWindows\Rol\RolAdmin_Window.designer.cs">
+      <DependentUpon>RolAdmin_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\AdminWindows\Rol\RolSecurity.cs" />
+    <Compile Include="show\AdminWindows\Rol\RolSecurity.designer.cs">
+      <DependentUpon>RolSecurity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\AdminWindows\Rol\ViewRol_Window.cs" />
+    <Compile Include="show\AdminWindows\Rol\ViewRol_Window.designer.cs">
+      <DependentUpon>ViewRol_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\AdminWindows\State\NewState_Window.cs" />
+    <Compile Include="show\AdminWindows\State\NewState_Window.designer.cs">
+      <DependentUpon>NewState_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\AdminWindows\State\NextState.cs" />
+    <Compile Include="show\AdminWindows\State\NextState.designer.cs">
+      <DependentUpon>NextState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\AdminWindows\State\StateAdmin_Window.cs" />
+    <Compile Include="show\AdminWindows\State\StateAdmin_Window.designer.cs">
+      <DependentUpon>StateAdmin_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\AdminWindows\State\ViewState.cs" />
+    <Compile Include="show\AdminWindows\State\ViewState.designer.cs">
+      <DependentUpon>ViewState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\AdminWindows\Users\NewUser_Window.cs" />
+    <Compile Include="show\AdminWindows\Users\NewUser_Window.designer.cs">
+      <DependentUpon>NewUser_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\AdminWindows\Users\RolUser.cs" />
+    <Compile Include="show\AdminWindows\Users\RolUser.designer.cs">
+      <DependentUpon>RolUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\AdminWindows\Users\UserAdmin_Window.cs" />
+    <Compile Include="show\AdminWindows\Users\UserAdmin_Window.designer.cs">
+      <DependentUpon>UserAdmin_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\AdminWindows\Users\ViewUser_Window.cs" />
+    <Compile Include="show\AdminWindows\Users\ViewUser_Window.designer.cs">
+      <DependentUpon>ViewUser_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\LoginPrincipal\Login_Window.cs" />
+    <Compile Include="show\LoginPrincipal\Login_Window.designer.cs">
+      <DependentUpon>Login_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\LoginPrincipal\Principal_Window.cs" />
+    <Compile Include="show\LoginPrincipal\Principal_Window.designer.cs">
+      <DependentUpon>Principal_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\ProjectWindows\IncidentWindows\AddNote_Window.cs" />
+    <Compile Include="show\ProjectWindows\IncidentWindows\AddNote_Window.designer.cs">
+      <DependentUpon>AddNote_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\ProjectWindows\IncidentWindows\ChangeIncident_Window.cs" />
+    <Compile Include="show\ProjectWindows\IncidentWindows\ChangeIncident_Window.designer.cs">
+      <DependentUpon>ChangeIncident_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\ProjectWindows\IncidentWindows\EstimateIncident_Window.cs" />
+    <Compile Include="show\ProjectWindows\IncidentWindows\EstimateIncident_Window.designer.cs">
+      <DependentUpon>EstimateIncident_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\ProjectWindows\IncidentWindows\Search_Window.cs" />
+    <Compile Include="show\ProjectWindows\IncidentWindows\Search_Window.designer.cs">
+      <DependentUpon>Search_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\ProjectWindows\IncidentWindows\ViewHistory_Window.cs" />
+    <Compile Include="show\ProjectWindows\IncidentWindows\ViewHistory_Window.designer.cs">
+      <DependentUpon>ViewHistory_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\ProjectWindows\IncidentWindows\ViewIncident_Window.cs" />
+    <Compile Include="show\ProjectWindows\IncidentWindows\ViewIncident_Window.designer.cs">
+      <DependentUpon>ViewIncident_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\ProjectWindows\IncidentWindows\ViewNote.cs" />
+    <Compile Include="show\ProjectWindows\IncidentWindows\ViewNote.designer.cs">
+      <DependentUpon>ViewNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\ProjectWindows\Project_Window.cs" />
+    <Compile Include="show\ProjectWindows\Project_Window.designer.cs">
+      <DependentUpon>Project_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\ProjectWindows\Report_Window.cs" />
+    <Compile Include="show\ProjectWindows\Report_Window.designer.cs">
+      <DependentUpon>Report_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\User.cs" />
+    <Compile Include="show\UserWindows\User_Window.cs" />
+    <Compile Include="show\UserWindows\User_Window.designer.cs">
+      <DependentUpon>User_Window.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -109,6 +242,105 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="show\AdminWindows\Admin_Window.resx">
+      <DependentUpon>Admin_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\AdminWindows\Groups\GroupsAdmin_Window.resx">
+      <DependentUpon>GroupsAdmin_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\AdminWindows\Groups\NewGroup_Window.resx">
+      <DependentUpon>NewGroup_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\AdminWindows\Groups\UserGroup.resx">
+      <DependentUpon>UserGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\AdminWindows\Groups\ViewGroup_Window.resx">
+      <DependentUpon>ViewGroup_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\AdminWindows\Project\GroupsProject.resx">
+      <DependentUpon>GroupsProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\AdminWindows\Project\NewProject_Window.resx">
+      <DependentUpon>NewProject_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\AdminWindows\Project\ProjectsAdmin_Window.resx">
+      <DependentUpon>ProjectsAdmin_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\AdminWindows\Project\ViewProject_Window.resx">
+      <DependentUpon>ViewProject_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\AdminWindows\Rol\NewRol_Window.resx">
+      <DependentUpon>NewRol_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\AdminWindows\Rol\RolAdmin_Window.resx">
+      <DependentUpon>RolAdmin_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\AdminWindows\Rol\RolSecurity.resx">
+      <DependentUpon>RolSecurity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\AdminWindows\Rol\ViewRol_Window.resx">
+      <DependentUpon>ViewRol_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\AdminWindows\State\NewState_Window.resx">
+      <DependentUpon>NewState_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\AdminWindows\State\NextState.resx">
+      <DependentUpon>NextState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\AdminWindows\State\StateAdmin_Window.resx">
+      <DependentUpon>StateAdmin_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\AdminWindows\State\ViewState.resx">
+      <DependentUpon>ViewState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\AdminWindows\Users\NewUser_Window.resx">
+      <DependentUpon>NewUser_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\AdminWindows\Users\RolUser.resx">
+      <DependentUpon>RolUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\AdminWindows\Users\UserAdmin_Window.resx">
+      <DependentUpon>UserAdmin_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\AdminWindows\Users\ViewUser_Window.resx">
+      <DependentUpon>ViewUser_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\LoginPrincipal\Login_Window.resx">
+      <DependentUpon>Login_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\LoginPrincipal\Principal_Window.resx">
+      <DependentUpon>Principal_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\ProjectWindows\IncidentWindows\AddNote_Window.resx">
+      <DependentUpon>AddNote_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\ProjectWindows\IncidentWindows\ChangeIncident_Window.resx">
+      <DependentUpon>ChangeIncident_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\ProjectWindows\IncidentWindows\EstimateIncident_Window.resx">
+      <DependentUpon>EstimateIncident_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\ProjectWindows\IncidentWindows\Search_Window.resx">
+      <DependentUpon>Search_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\ProjectWindows\IncidentWindows\ViewHistory_Window.resx">
+      <DependentUpon>ViewHistory_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\ProjectWindows\IncidentWindows\ViewIncident_Window.resx">
+      <DependentUpon>ViewIncident_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\ProjectWindows\IncidentWindows\ViewNote.resx">
+      <DependentUpon>ViewNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\ProjectWindows\Project_Window.resx">
+      <DependentUpon>Project_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\ProjectWindows\Report_Window.resx">
+      <DependentUpon>Report_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\UserWindows\User_Window.resx">
+      <DependentUpon>User_Window.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -119,7 +351,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="show\LoginPrincipal\fondoblue.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
       <Visible>False</Visible>
