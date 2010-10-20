@@ -53,10 +53,10 @@ namespace SeguimientoIncidentesBD1.logic
         {
             try
             {
-                Proyecto_Persist proPersist = new Proyecto_Persist(proCod);
-                this.proNom = proPersist.ProNom;
-                this.proDes = proPersist.ProDes;
-                this.proEst = proPersist.ProEst;
+                //Proyecto_Persist proPersist = new Proyecto_Persist(proCod);
+                //this.proNom = proPersist.ProNom;
+                //this.proDes = proPersist.ProDes;
+                //this.proEst = proPersist.ProEst;
             }
             catch (SqlException sqlex)
             {
