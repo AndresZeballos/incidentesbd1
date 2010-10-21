@@ -66,7 +66,7 @@ namespace SeguimientoIncidentesBD1.persist
             }
         }
 
-        public DataSet View_GeneralIncidents()
+        public DataSet View_GeneralIncidents(int incProCod)
         {
             //Tabla:
             //Código
@@ -76,7 +76,10 @@ namespace SeguimientoIncidentesBD1.persist
             try
             {
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "SELECT incCod, incRes, incUsuAsig, incEstCod FROM incidente";
+                sql.CommandText = "SELECT incCod, incRes, incUsuAsig, incEstCod " + 
+                                  "FROM incidente " +
+                                  "WHERE incidente.incProCod = @incProCod";
+                sql.Parameters.AddWithValue("@incProCod", incProCod);
                 SQLExecute sqlIns = new SQLExecute();
                 DataSet ds = sqlIns.Execute(sql);
                 return ds;
