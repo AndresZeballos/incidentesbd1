@@ -226,6 +226,14 @@
     <Compile Include="show\AdminWindows\Users\ViewUser_Window.designer.cs">
       <DependentUpon>ViewUser_Window.cs</DependentUpon>
     </Compile>
+    <Compile Include="show\LoginPrincipal\Login_Window.cs" />
+    <Compile Include="show\LoginPrincipal\Login_Window.designer.cs">
+      <DependentUpon>Login_Window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="show\LoginPrincipal\Principal_Window.cs" />
+    <Compile Include="show\LoginPrincipal\Principal_Window.designer.cs">
+      <DependentUpon>Principal_Window.cs</DependentUpon>
+    </Compile>
     <Compile Include="show\ProjectWindows\IncidentWindows\AddNote_Window.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -295,6 +303,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="show\AdminWindows\Admin_Window.resx">
       <DependentUpon>Admin_Window.cs</DependentUpon>
@@ -359,6 +368,12 @@
     <EmbeddedResource Include="show\AdminWindows\Users\ViewUser_Window.resx">
       <DependentUpon>ViewUser_Window.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="show\LoginPrincipal\Login_Window.resx">
+      <DependentUpon>Login_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\LoginPrincipal\Principal_Window.resx">
+      <DependentUpon>Principal_Window.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="show\ProjectWindows\IncidentWindows\AddNote_Window.resx">
       <DependentUpon>AddNote_Window.cs</DependentUpon>
     </EmbeddedResource>
@@ -420,6 +435,9 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="show\LoginPrincipal\fondoblue.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
