@@ -474,7 +474,7 @@ namespace SeguimientoIncidentesBD1.persist
                                           "incidente.incUsuAsig = @incUsuAsig AND " +
                                           "incidente.incSevCod = @incSevCod ";
 
-                if (incProCod != null)
+                if (incProCod != 0)
                     sql.Parameters.AddWithValue("@incProCod", incProCod);
                 else
                     sql.Parameters.AddWithValue("@incProCod", any);
@@ -494,7 +494,7 @@ namespace SeguimientoIncidentesBD1.persist
                 else
                     sql.Parameters.AddWithValue("@incCatCod", any);
 
-                if (incUsuAsig != null)
+                if (incUsuAsig != 0)
                     sql.Parameters.AddWithValue("@incUsuAsig", incUsuAsig);
                 else
                     sql.Parameters.AddWithValue("@incUsuAsig", any);
