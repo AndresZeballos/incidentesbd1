@@ -30,7 +30,10 @@ namespace WindowsFormsApplication1
         {
             if (MessageBox.Show("Estas seguro de crear rol", "AVISO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                //Eliminar rol
+                string rolNom = this.textBox1.Text;
+                string rolDes = this.textBox2.Text;
+
+                //Crea el rol
             }
         }
 
