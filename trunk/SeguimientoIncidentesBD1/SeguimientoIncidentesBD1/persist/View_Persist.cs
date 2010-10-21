@@ -90,7 +90,7 @@ namespace SeguimientoIncidentesBD1.persist
             }
         }
 
-        public DataSet View_History()
+        public DataSet View_History(int ProCod)
         {
             //Tabla:
             //Integer (código)
@@ -101,7 +101,9 @@ namespace SeguimientoIncidentesBD1.persist
             try
             {
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "SELECT histCod, histFec, histEstIni, histEstFin, histTiempo FROM historia";
+                sql.CommandText = "SELECT histCod, histFec, histEstIni, histEstFin, histTiempo FROM historia" +
+                                  "WHERE historia.ProCod = @ProCod";
+                sql.Parameters.AddWithValue("@ProCod", ProCod);
                 SQLExecute sqlIns = new SQLExecute();
                 DataSet ds = sqlIns.Execute(sql);
                 return ds;
@@ -193,8 +195,8 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "SELECT rolCod FROM rol_usuario " +
-                  "MINUS " +
-                  "SELECT rolCod FROM rol_usuario WHERE rol_usuario.usuCod = @usuCOd";
+                                  "MINUS " +
+                                  "SELECT rolCod FROM rol_usuario WHERE rol_usuario.usuCod = @usuCOd";
                 sql.Parameters.AddWithValue("@usuCod", usuCod);
                 SQLExecute sqlIns = new SQLExecute();
                 DataSet ds = sqlIns.Execute(sql);
@@ -233,8 +235,8 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "SELECT segCod FROM seguridad_rol " +
-                                    "MINUS " +
-                                    "SELECT segCod FROM seguridad_rol WHERE seguridad_rol.rolCod = @rolCod";
+                                  "MINUS " +
+                                  "SELECT segCod FROM seguridad_rol WHERE seguridad_rol.rolCod = @rolCod";
                 sql.Parameters.AddWithValue("@rolCod", rolCod);
                 SQLExecute sqlIns = new SQLExecute();
                 DataSet ds = sqlIns.Execute(sql);
@@ -273,8 +275,8 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "SELECT grpCod FROM grupo_proyecto " +
-                                    "MINUS " +
-                                    "SELECT grpCod FROM grupo_proyecto WHERE grupo_proyecto.proCod = @proCod";
+                                  "MINUS " +
+                                  "SELECT grpCod FROM grupo_proyecto WHERE grupo_proyecto.proCod = @proCod";
                 sql.Parameters.AddWithValue("@proCod", proCod);
                 SQLExecute sqlIns = new SQLExecute();
                 DataSet ds = sqlIns.Execute(sql);
@@ -301,8 +303,8 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "SELECT incCatCod, incEstCod, incPriCod, incSevCod, IncRes, incDes, incUsuAsig, incFecIng " +
-                                    "FROM incidente " +
-                                    "WHERE incidente.incCod = @incCod";
+                                  "FROM incidente " +
+                                  "WHERE incidente.incCod = @incCod";
                 sql.Parameters.AddWithValue("@incCod", incCod);
                 SQLExecute sqlIns = new SQLExecute();
                 DataSet ds = sqlIns.Execute(sql);
