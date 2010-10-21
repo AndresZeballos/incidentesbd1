@@ -35,7 +35,7 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
-            return null;
+             
         }
 
         public DataSet View_GeneralGroups()
@@ -60,7 +60,7 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
-            return null;
+             
         }
 
         public DataSet View_GeneralUsers()
@@ -85,7 +85,7 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
-            return null;
+             
         }
 
         public DataSet View_GeneralIncidents()
@@ -113,7 +113,7 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
-            return null;
+             
         }
 
         public DataSet View_History()
@@ -143,7 +143,7 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
-            return null;
+             
         }
 
         public DataSet View_GeneralRol()
@@ -167,7 +167,7 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
-            return null;
+             
         }
 
         public DataSet View_GeneralState()
@@ -193,7 +193,7 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
-            return null;
+             
         }
 
         public DataSet View_GeneralSecurity()
@@ -217,7 +217,7 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
-            return null;
+             
         }
 
         public DataSet View_UserRol(int usuCod)
@@ -242,7 +242,7 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
-            return null;
+             
         }
 
         public DataSet View_Option_UserRol(int usuCod)
@@ -269,7 +269,7 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
-            return null;
+             
         }
 
         public DataSet View_RolSecurity(string rolCod)
@@ -294,7 +294,7 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
-            return null;
+             
         }
 
         public DataSet View_Option_RolSecurity(string rolCod)
@@ -320,7 +320,7 @@ namespace SeguimientoIncidentesBD1.persist
             }
 
 
-            return null;
+             
         }
 
         public DataSet View_ProjectGroup(int proCod)
@@ -346,7 +346,7 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
-            return null;
+             
         }
 
         public DataSet View_Option_ProjectGroup(int proCod)
@@ -373,7 +373,7 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
-            return null;
+             
         }
 
         public DataSet Consult_Incident(int incCod)
@@ -408,7 +408,7 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
-            return null;
+             
         }
 
         public DataSet Consult_HistoryNote(int histCod)
@@ -436,7 +436,7 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
-            return null;
+             
 
         }
 
@@ -517,7 +517,7 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
-            return null;
+             
 
         }
 
@@ -555,7 +555,7 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
-            return null;
+             
 
         }
 
@@ -591,7 +591,7 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
-            return null;
+             
 
         }
 
@@ -627,7 +627,7 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
-            return null;
+             
 
         }
 
@@ -663,7 +663,7 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
-            return null;
+             
 
         }
 
@@ -698,7 +698,7 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
-            return null;
+             
 
         }
 
@@ -733,7 +733,7 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
-            return null;
+             
 
         }
 
