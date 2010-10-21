@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using WindowsFormsASeguimientoIncidentesBD1.show;
 
 namespace WindowsFormsApplication1
 {
@@ -22,8 +23,8 @@ namespace WindowsFormsApplication1
             this.loginWindow = loginWindow;
             this.Location = this.loginWindow.Location;
 
-            //tiene permiso de administrador.
-            Boolean esAdministrador = true;
+            //si tiene permiso de administrador.
+            Boolean esAdministrador = DataCurrentUser.validarSeguridad("Administrador");
             if (!esAdministrador)
             {
                 this.button3.Visible = false;

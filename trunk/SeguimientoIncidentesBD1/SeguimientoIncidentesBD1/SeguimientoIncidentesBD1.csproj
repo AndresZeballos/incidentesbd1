@@ -292,7 +292,7 @@
     <Compile Include="show\ProjectWindows\Report_Window.designer.cs">
       <DependentUpon>Report_Window.cs</DependentUpon>
     </Compile>
-    <Compile Include="show\User.cs" />
+    <Compile Include="show\DataCurrentUser.cs" />
     <Compile Include="show\UserWindows\User_Window.cs">
       <SubType>Form</SubType>
     </Compile>
