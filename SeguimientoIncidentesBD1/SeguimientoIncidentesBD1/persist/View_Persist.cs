@@ -16,9 +16,6 @@ namespace SeguimientoIncidentesBD1.persist
             //Código
             //Nombre
             //Estado
-
-
-
             try
             {
                 SqlCommand sql = new SqlCommand();
@@ -31,20 +28,12 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 throw sqlex;
             }
-
-
-
-
-             
         }
 
         public DataSet View_GeneralGroups()
         {
             //Tabla:
             //Código
-
-
-
             try
             {
                 SqlCommand sql = new SqlCommand();
@@ -57,19 +46,12 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 throw sqlex;
             }
-
-
-
-             
         }
 
         public DataSet View_GeneralUsers()
         {
             //Tabla:
             //Nombre
-
-
-
             try
             {
                 SqlCommand sql = new SqlCommand();
@@ -82,10 +64,6 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 throw sqlex;
             }
-
-
-
-             
         }
 
         public DataSet View_GeneralIncidents()
@@ -95,9 +73,6 @@ namespace SeguimientoIncidentesBD1.persist
             //Resumen
             //Asignado
             //estado
-
-
-
             try
             {
                 SqlCommand sql = new SqlCommand();
@@ -110,10 +85,6 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 throw sqlex;
             }
-
-
-
-             
         }
 
         public DataSet View_History()
@@ -124,9 +95,6 @@ namespace SeguimientoIncidentesBD1.persist
             //Estado inicial
             //Estado final
             //Tiempos (horas)
-
-
-
             try
             {
                 SqlCommand sql = new SqlCommand();
@@ -139,19 +107,12 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 throw sqlex;
             }
-
-
-
-
-             
         }
 
         public DataSet View_GeneralRol()
         {
             //Tabla:
             //codigo
-
-
             try
             {
                 SqlCommand sql = new SqlCommand();
@@ -164,19 +125,12 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 throw sqlex;
             }
-
-
-
-             
         }
 
         public DataSet View_GeneralState()
         {
             //Tabla:
             //Nombre (es el código verdad¿?) igual q en rol y seguridad
-
-
-
             try
             {
                 SqlCommand sql = new SqlCommand();
@@ -189,19 +143,12 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 throw sqlex;
             }
-
-
-
-
-             
         }
 
         public DataSet View_GeneralSecurity()
         {
             //Tabla:
             //codigo
-
-
             try
             {
                 SqlCommand sql = new SqlCommand();
@@ -214,18 +161,12 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 throw sqlex;
             }
-
-
-
-             
         }
 
         public DataSet View_UserRol(int usuCod)
         {
             //Tabla:
             //Código (todos los roles del usuario)
-
-
             try
             {
                 SqlCommand sql = new SqlCommand();
@@ -239,18 +180,12 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 throw sqlex;
             }
-
-
-
-             
         }
 
         public DataSet View_Option_UserRol(int usuCod)
         {
             //Tabla:
             //Código (todos los roles del sistema excepto los que tiene ese usuario)
-
-
             try
             {
                 SqlCommand sql = new SqlCommand();
@@ -266,18 +201,12 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 throw sqlex;
             }
-
-
-
-             
         }
 
         public DataSet View_RolSecurity(string rolCod)
         {
             //Tabla:
             //Código (todos las seguridades del rol)
-
-
             try
             {
                 SqlCommand sql = new SqlCommand();
@@ -291,18 +220,12 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 throw sqlex;
             }
-
-
-
-             
         }
 
         public DataSet View_Option_RolSecurity(string rolCod)
         {
             //Tabla:
             //Código (todas las seguridades del sistema excepto las que tiene ese rol)
-
-
             try
             {
                 SqlCommand sql = new SqlCommand();
@@ -318,17 +241,12 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 throw sqlex;
             }
-
-
-             
         }
 
         public DataSet View_ProjectGroup(int proCod)
         {
             //Tabla:
             //Código (todos los grupos del proyecto)
-
-
             try
             {
                 SqlCommand sql = new SqlCommand();
@@ -342,19 +260,12 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 throw sqlex;
             }
-
-
-
-
-             
         }
 
         public DataSet View_Option_ProjectGroup(int proCod)
         {
             //Tabla:
             //Código (todos los grupos del sistema excepto los que tiene ese proyecto)
-
-
             try
             {
                 SqlCommand sql = new SqlCommand();
@@ -370,10 +281,6 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 throw sqlex;
             }
-
-
-
-             
         }
 
         public DataSet Consult_Incident(int incCod)
@@ -387,8 +294,6 @@ namespace SeguimientoIncidentesBD1.persist
             //Descripción
             //Asignado
             //Fecha de reporte
-
-
             try
             {
                 SqlCommand sql = new SqlCommand();
@@ -404,11 +309,6 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 throw sqlex;
             }
-
-
-
-
-             
         }
 
         public DataSet Consult_HistoryNote(int histCod)
@@ -416,8 +316,6 @@ namespace SeguimientoIncidentesBD1.persist
             //Datos:
             //Nota (solo te voy a pasar historia q si tengan notas, eso lo controlo 
             //yo en la interfaz, igual siempre mantene todo en un try y catch ?).
-
-
             try
             {
                 SqlCommand sql = new SqlCommand();
@@ -433,11 +331,6 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 throw sqlex;
             }
-
-
-
-             
-
         }
 
         //FALTO LA VISTA DE LA BUSQUEDA AVANZADA!!!!!!!!!!!!!!!!!!!!
@@ -459,9 +352,7 @@ namespace SeguimientoIncidentesBD1.persist
             //Resumen
             //Asignado
             //Estado
-
             string any = "*";
-
             try
             {
                 SqlCommand sql = new SqlCommand();
@@ -513,12 +404,6 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 throw sqlex;
             }
-
-
-
-
-             
-
         }
 
         //También faltan las vistas de los filtros simples (“simples”je agarrate)
@@ -531,8 +416,6 @@ namespace SeguimientoIncidentesBD1.persist
             //Resumen
             //Asignado
             //Estado
-
-
             try
             {
                 SqlCommand sql = new SqlCommand();
@@ -551,12 +434,6 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 throw sqlex;
             }
-
-
-
-
-             
-
         }
 
         public DataSet View_IncidentOrderBy_Priority(int incProCod, string incPriCod)
@@ -567,8 +444,6 @@ namespace SeguimientoIncidentesBD1.persist
             //Asignado
             //Estado
             //Prioridad
-
-
             try
             {
                 SqlCommand sql = new SqlCommand();
@@ -587,12 +462,6 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 throw sqlex;
             }
-
-
-
-
-             
-
         }
 
         public DataSet View_IncidentOrderBy_Category(int incProCod, string incCatCod)
@@ -603,9 +472,6 @@ namespace SeguimientoIncidentesBD1.persist
             //Asignado
             //Estado
             //Categoria
-
-
-
             try
             {
                 SqlCommand sql = new SqlCommand();
@@ -624,11 +490,6 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 throw sqlex;
             }
-
-
-
-             
-
         }
 
         public DataSet View_IncidentOrderBy_Severity(int incProCod, string incSevCod)
@@ -639,9 +500,6 @@ namespace SeguimientoIncidentesBD1.persist
             //Asignado
             //Estado
             //Severidad
-
-
-
             try
             {
                 SqlCommand sql = new SqlCommand();
@@ -660,11 +518,6 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 throw sqlex;
             }
-
-
-
-             
-
         }
 
         public DataSet View_IncidentOrderBy_Date(int incProCod)
@@ -675,9 +528,6 @@ namespace SeguimientoIncidentesBD1.persist
             //Asignado
             //Estado
             //Fecha
-
-
-
             try
             {
                 SqlCommand sql = new SqlCommand();
@@ -694,12 +544,6 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 throw sqlex;
             }
-
-
-
-
-             
-
         }
 
         public DataSet View_IncidentOrderBy_LastestUpdate(int incProCod)
@@ -710,9 +554,6 @@ namespace SeguimientoIncidentesBD1.persist
             //Asignado
             //Estado
             //Fecha
-
-
-
             try
             {
                 SqlCommand sql = new SqlCommand();
@@ -730,86 +571,160 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 throw sqlex;
             }
-
-
-
-             
-
         }
 
 
 
         public DataSet View_IncidentOrderBy(int incProCod, string by){
-		string command = "";
+    		string command = "";
 		
-		switch (by) {
-			case "Estado":
-
-				command = "SELECT incCod, incRes, incUsuAsig, incEstCod, incEstCod FROM incidente " +
-								  "WHERE incidente.incProCod = @incProCod " + 
-								  "ORDER BY incidente.incEstCod";
-				
-				break;
-			case "Prioridad":
-
-				command = "SELECT incCod, incRes, incUsuAsig, incEstCod, incPriCod FROM incidente " +
-								  "WHERE incidente.incProCod = @incProCod " + 
-								  "ORDER BY incidente.incPriCod";
-				
-				break;
-			case "Categoria":
-
-				command = "SELECT incCod, incRes, incUsuAsig, incEstCod, incCatCod FROM incidente " +
-								  "WHERE incidente.incProCod = @incProCod " + 
-								  "ORDER BY incidente.incCatCod";
-				
-				break;
-			case "Severidad":
-
-				command = "SELECT incCod, incRes, incUsuAsig, incEstCod, incSevCod FROM incidente " +
-								  "WHERE incidente.incProCod = @incProCod " + 
-								  "ORDER BY incidente.incSevCod";
-				
-				break;
-			case "Fecha de reporte":
-
-				command = "SELECT incCod, incRes, incUsuAsig, incEstCod, incFecIng FROM incidente " +
+    		switch (by) {
+	    		case "Estado":
+    				command = "SELECT incCod, incRes, incUsuAsig, incEstCod, incEstCod FROM incidente " +
+							  "WHERE incidente.incProCod = @incProCod " + 
+							  "ORDER BY incidente.incEstCod";
+	    			break;
+		    	case "Prioridad":
+		    		command = "SELECT incCod, incRes, incUsuAsig, incEstCod, incPriCod FROM incidente " +
+							  "WHERE incidente.incProCod = @incProCod " + 
+							  "ORDER BY incidente.incPriCod";
+		    		break;
+		    	case "Categoria":
+    				command = "SELECT incCod, incRes, incUsuAsig, incEstCod, incCatCod FROM incidente " +
+							  "WHERE incidente.incProCod = @incProCod " + 
+							  "ORDER BY incidente.incCatCod";
+	    			break;
+		    	case "Severidad":
+    				command = "SELECT incCod, incRes, incUsuAsig, incEstCod, incSevCod FROM incidente " +
+							  "WHERE incidente.incProCod = @incProCod " + 
+							  "ORDER BY incidente.incSevCod";
+	    			break;
+		    	case "Fecha de reporte":
+    				command = "SELECT incCod, incRes, incUsuAsig, incEstCod, incFecIng FROM incidente " +
 								  "WHERE incidente.incProCod = @incProCod" +
 								  "ORDER BY incidente.incFecIng";
-
-				
-				break;
-			case "Ultima modificacion":
-				
-				command = "SELECT incCod, incRes, incUsuAsig, incEstCod, incFecUltAct FROM incidente " +
-								  "WHERE incidente.incProCod = @incProCod " +
-								  "ORDER BY incidente.incFecUltAct";
-				
-				break;
-/*
-			case "":
-				
-				break;
-
-*/
-
-		}
-		
-		
-		try
-		{
-                	SqlCommand sql = new SqlCommand();
-                	sql.CommandText = command;
-			sql.Parameters.AddWithValue("@incProCod", incProCod);            
-			SQLExecute sqlIns = new SQLExecute();
-			DataSet ds = sqlIns.Execute(sql);
-                	return ds;
-            	}
-            	catch (SqlException sqlex)
-            	{
-                	throw sqlex;
-            	}
+				    break;
+    			case "Ultima modificacion":
+	    			command = "SELECT incCod, incRes, incUsuAsig, incEstCod, incFecUltAct FROM incidente " +
+							  "WHERE incidente.incProCod = @incProCod " +
+							  "ORDER BY incidente.incFecUltAct";
+		    		break;
+		        }
+		    try
+		    {
+               	SqlCommand sql = new SqlCommand();
+               	sql.CommandText = command;
+			    sql.Parameters.AddWithValue("@incProCod", incProCod);            
+    			SQLExecute sqlIns = new SQLExecute();
+    			DataSet ds = sqlIns.Execute(sql);
+               	return ds;
+           	}
+           	catch (SqlException sqlex)
+           	{
+               	throw sqlex;
+           	}
 	    }
+
+
+
+
+
+
+
+        public DataSet consult_searchUser(string usuCod)
+        {
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "SELECT proCod " +
+                                  "FROM grupoProyecto " +
+                                  "WHERE grupoProyecto.grpCod IN " + 
+                                  "(SELECT grpCod FROM grupoUsuario g WHERE g.usuCod = @usuCod) ";
+
+                sql.Parameters.AddWithValue("@usuCod", usuCod);
+
+                SQLExecute sqlIns = new SQLExecute();
+                DataSet ds = sqlIns.Execute(sql);
+                return ds;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+
+        public DataSet consult_2(string usuCod){
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "SELECT segCod " +
+                                  "FROM seguridadRol " +
+                                  "WHERE seguridadRol.rolCod IN " +
+                                  "(SELECT rolCod FROM rolUsuario r WHERE r.usuCod = @usuCod) ";
+
+                sql.Parameters.AddWithValue("@usuCod", usuCod);
+
+                SQLExecute sqlIns = new SQLExecute();
+                DataSet ds = sqlIns.Execute(sql);
+                return ds;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+        public DataSet consult_3(string usuCod)
+        {
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "SELECT * " +
+                                  "FROM usuario " +
+                                  "WHERE usuNom = @usuCod";
+
+                sql.Parameters.AddWithValue("@usuCod", usuCod);
+
+                SQLExecute sqlIns = new SQLExecute();
+                DataSet ds = sqlIns.Execute(sql);
+                return ds;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+        public DataSet consult_4(string usuNom)
+        {
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "SELECT rolCod " +
+                                  "FROM rolUsuario " +
+                                  "WHERE usuNom = @usuNom";
+
+                sql.Parameters.AddWithValue("@usuNom", usuNom);
+
+                SQLExecute sqlIns = new SQLExecute();
+                DataSet ds = sqlIns.Execute(sql);
+                return ds;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+
+
+
+
+
+
+
+
 
     }
 }
