@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using WindowsFormsASeguimientoIncidentesBD1.show;
 
 namespace WindowsFormsApplication1
 {
@@ -44,27 +45,23 @@ namespace WindowsFormsApplication1
         {
             //Buscar usuario y validar contraseña
 
-            Principal_Window principal = new Principal_Window(this);
-            this.Visible = false;
-            principal.Visible = true;
-            /*
-             * if (validarUsuario){
+            string usuCod = this.textBox1.Text;
+            string usuPass = this.textBox2.Text;
 
-             * 
-            //Cargar usuario.
-            //Se sargaran los roles, los cuales serán utilizados por la ventana principal y posteriores
-            //para habilitar o inhabilitar opciones.
-             
-             * }
-             * else
-             * {
-             
-            System.Windows.Forms.MessageBox.Show("Usuario inválido");
-            this.textBox1.Text = "";
-            this.textBox2.Text = "";
-             *
-             */
+            if (DataCurrentUser.validarUsuario(usuCod, usuPass))
+            {
+
+                Principal_Window principal = new Principal_Window(this);
+                this.Visible = false;
+                principal.Visible = true;
             
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("Usuario inválido");
+                this.textBox1.Text = "";
+                this.textBox2.Text = "";
+            }            
         }
     }
 }

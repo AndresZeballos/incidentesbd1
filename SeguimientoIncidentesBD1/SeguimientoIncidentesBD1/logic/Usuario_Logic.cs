@@ -15,6 +15,7 @@ namespace SeguimientoIncidentesBD1.logic
         private string usuNom;
         private string usuMail;
         private IList<string> usuRol;
+        private IList<string> usuSeg;
 
         public string UsuCod
         {
@@ -44,6 +45,12 @@ namespace SeguimientoIncidentesBD1.logic
         {
             get{return usuRol;}
             set{usuRol = value;}
+        }
+
+        public IList<string> UsuSeg
+        {
+            get { return UsuSeg; }
+            set { UsuSeg = value; }
         }
 
         public Usuario_Logic(string usuCod, string usuNom, string usuPass, string usuMail, IList<string> usuRol)

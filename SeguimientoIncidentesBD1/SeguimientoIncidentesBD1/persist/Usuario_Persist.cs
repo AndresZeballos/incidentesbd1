@@ -14,6 +14,7 @@ namespace SeguimientoIncidentesBD1.persist
         private string usuNom;
         private string usuMail;
         private IList<string> usuRol;
+        private IList<string> usuSeg;
 
         public string UsuCod
         {
@@ -43,6 +44,12 @@ namespace SeguimientoIncidentesBD1.persist
         {
             get { return usuRol; }
             set { usuRol = value; }
+        }
+
+        public IList<string> UsuSeg
+        {
+            get { return UsuSeg; }
+            set { UsuSeg = value; }
         }
 
         public Usuario_Persist(string usuCod, string usuNom, string usuPass, string usuMail, IList<string> usuRol)
@@ -83,10 +90,25 @@ namespace SeguimientoIncidentesBD1.persist
                     this.usuRol[i] = drow.Field<string>("usuRol");
                     i++;
                 }
+                /*
+                //hago la consulta sobre la tabla usuarioRol
+                sql.Parameters.Clear();
+                sql.CommandText = "SELECT * FROM usuarioRol WHERE usuCod = @usuCod";
+                sql.Parameters.AddWithValue("@usuCod", this.usuCod);
+                SQLExecute sqlIns3 = new SQLExecute();
+                DataSet ds3 = sqlIns3.Execute(sql);
+                DataTable dt3 = ds3.Tables["usuarioRol"];
+                int j = 0;
+                foreach (DataRow drow in dt3.Rows)
+                {
+
+                    this.usuRol[j] = drow.Field<string>("usuSeg");
+                    j++;
+                }*/
             }
             catch (SqlException sqlex)
             {
-                throw sqlex;
+                //throw sqlex;
             }
         }
 
