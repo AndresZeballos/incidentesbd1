@@ -32,11 +32,18 @@ namespace WindowsFormsApplication1
                 this.button4.Visible = false;
                 this.textBox3.Visible = false;
             }
-            View_Persist view = new View_Persist();
-            DataSet incidentes = view.View_GeneralIncidents(DataCurrentUser.proyectoActual());
-            
 
             //Controla que tenga permiso a ver los incidentes?????????????????????????????????????
+
+            Boolean verIncidentes = DataCurrentUser.validarSeguridad("verIncidentes");
+
+            if (verIncidentes)
+            {
+                View_Persist view = new View_Persist();
+                DataSet incidentes = view.View_GeneralIncidents(DataCurrentUser.proyectoActual());
+                this.dataGridView2.DataSource = incidentes;
+            }
+            
         }
 
         private void button4_Click(object sender, EventArgs e)
