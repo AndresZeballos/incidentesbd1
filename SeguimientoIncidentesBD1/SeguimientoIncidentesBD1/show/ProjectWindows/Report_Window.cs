@@ -49,11 +49,29 @@ namespace WindowsFormsApplication1
                 this.button1.Enabled = true;
             }
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
+            // OBTENER TODOS LOS VALORES
+            string incRes = this.textBox1.Text;
+            string incDes = this.textBox2.Text;
+            string incPri = this.comboBox1.Text;
+            string incSev = this.comboBox2.Text;
+            string incCat = this.comboBox3.Text;
+            string incUsuAsig = this.comboBox4.Text;
+
+            // VALIDARLOS
+            if (incRes != "" && incDes != "")
+            {
+                // GUARDAR EL INCIDENTE
+            }
+            else
+            {
+                // DATOS INCORRECTOS!!!!!!!!
+            }
 
         }
+
+
 
         private void button6_Click(object sender, EventArgs e)
         {
