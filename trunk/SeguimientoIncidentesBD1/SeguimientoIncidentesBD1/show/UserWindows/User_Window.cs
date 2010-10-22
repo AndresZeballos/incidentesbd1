@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using WindowsFormsASeguimientoIncidentesBD1.show;
 
 namespace WindowsFormsApplication1
 {
@@ -45,6 +46,13 @@ namespace WindowsFormsApplication1
         {
             this.Close();
         }
+
+        // ACTUALIZAR
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DataCurrentUser.actualizarUsuario(this.textBox1.Text, this.textBox2.Text, this.textBox3.Text);
+        }
+
 
     }
 }
