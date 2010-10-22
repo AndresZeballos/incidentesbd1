@@ -12,7 +12,7 @@ namespace SeguimientoIncidentesBD1.logic
     {
         private string grpUsuCod;
         private string grpUsuDes;
-        private IList<string> usuGrpUsuCod;
+        private IList<string> usuGrpUsuCod = new List<string>();
 
         public string GrpUsuCod
         {
@@ -43,8 +43,8 @@ namespace SeguimientoIncidentesBD1.logic
         {
             try
             {
-                this.grpUsuCod = grpUsuCod;
                 GrupoUsuario_Persist grupo = new GrupoUsuario_Persist(grpUsuCod);
+                this.grpUsuCod = grpUsuCod;
                 this.grpUsuDes = grupo.GrpUsuDes;
                 this.usuGrpUsuCod = grupo.UsuGrpUsuCod;
             }

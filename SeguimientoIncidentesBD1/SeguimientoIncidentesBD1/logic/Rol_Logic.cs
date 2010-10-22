@@ -13,7 +13,7 @@ namespace SeguimientoIncidentesBD1.logic
         private string rolCod;
         private string rolDes;
         //un rol tiene una lista de seguridades, cada seguridad se corresponde con un nombre programa de la interfaz
-        private IList<string> rolSeg;
+        private IList<string> rolSeg = new List<string>();
 
         public string RolCod
         {

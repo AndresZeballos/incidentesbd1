@@ -13,8 +13,8 @@ namespace SeguimientoIncidentesBD1.persist
         private string usuPass;
         private string usuNom;
         private string usuMail;
-        private IList<string> usuRol;
-        private IList<string> usuSeg;
+        private IList<string> usuRol = new List<string>();
+        private IList<string> usuSeg = new List<string>();
 
         public string UsuCod
         {

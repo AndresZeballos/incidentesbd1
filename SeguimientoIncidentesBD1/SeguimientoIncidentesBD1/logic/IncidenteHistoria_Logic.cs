@@ -18,6 +18,13 @@ namespace SeguimientoIncidentesBD1.logic
         private string incHistAcc;
         private string incHistUsuCod;
         private string incHistNota;
-        private TimeSpan incHistTiempo;   
+        private int incHistTiempo;
+        private int hist;
+
+        public IncidenteHistoria_Logic(int hist)
+        {
+            // TODO: Complete member initialization
+            this.hist = hist;
+        }   
     }
 }

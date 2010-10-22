@@ -11,7 +11,7 @@ namespace SeguimientoIncidentesBD1.persist
     {
         private string estCod;
         //falta incluir los siguientes atributos en el código
-        private IList<string> estSigEstCod;
+        private IList<string> estSigEstCod = new List<string>();
         private bool estIni;
         private bool estFin;
         private bool estEst;
@@ -91,7 +91,7 @@ namespace SeguimientoIncidentesBD1.persist
             }
         }
 
-        internal void EstadoCreate()
+        public void EstadoCreate()
         {
             try
             {
@@ -123,7 +123,7 @@ namespace SeguimientoIncidentesBD1.persist
             }
         }
 
-        internal void EstadoDelete()
+        public void EstadoDelete()
         {
             try
             {

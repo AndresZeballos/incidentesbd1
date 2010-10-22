@@ -11,7 +11,7 @@ namespace SeguimientoIncidentesBD1.persist
     {
         private string grpUsuCod;
         private string grpUsuDes;
-        private IList<string> usuGrpUsuCod;
+        private IList<string> usuGrpUsuCod = new List<string>();
 
         public string GrpUsuCod
         {

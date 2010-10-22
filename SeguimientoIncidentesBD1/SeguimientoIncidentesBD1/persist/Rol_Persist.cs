@@ -13,7 +13,7 @@ namespace SeguimientoIncidentesBD1.persist
     {
         private string rolCod;
         private string rolDes;
-        private IList<string> rolSeg;
+        private IList<string> rolSeg = new List<string>();
 
         public string RolCod
         {
