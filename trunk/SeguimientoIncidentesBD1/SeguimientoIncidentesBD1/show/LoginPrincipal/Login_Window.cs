@@ -41,9 +41,15 @@ namespace WindowsFormsApplication1
             }
         }
 
+        //private Boolean validarUsuario()
+        //{
+        //    DataSet userCurrent = consult_searchUser();
+
+        //}
         private void button1_Click(object sender, EventArgs e)
         {
             //Buscar usuario y validar contraseña
+            //validarUsuario();
 
             string usuCod = this.textBox1.Text;
             string usuPass = this.textBox2.Text;

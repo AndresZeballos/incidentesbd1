@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SeguimientoIncidentesBD1.persist;
 
 namespace WindowsFormsApplication1
 {
@@ -19,6 +20,9 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             this.adminWindow = adminWindow;
             this.Location = this.adminWindow.Location;
+            DataSet grupos = new View_Persist().View_GeneralGroups();
+            this.dataGridView2.DataSource = grupos;
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
