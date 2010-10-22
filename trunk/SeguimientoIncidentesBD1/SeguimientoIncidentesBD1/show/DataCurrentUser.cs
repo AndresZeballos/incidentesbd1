@@ -85,5 +85,12 @@ namespace WindowsFormsASeguimientoIncidentesBD1.show
             return incidente;
         }
 
+        public void ingresarIncidente(string incRes, string incDes, string incPri, string incSev, string incCat, string incUsuAsig)
+		{
+			
+		}
+		
+		
+
     }
 }
