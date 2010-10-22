@@ -66,7 +66,7 @@ namespace SeguimientoIncidentesBD1.persist
             }
         }
 
-        public DataSet View_GeneralIncidents(int incProCod)
+        public DataSet View_GeneralIncidents(string incProCod)
         {
             //Tabla:
             //Código

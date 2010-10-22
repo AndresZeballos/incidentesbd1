@@ -13,6 +13,7 @@ namespace WindowsFormsASeguimientoIncidentesBD1.show
 
         private static DataCurrentUser currentUser;
         private static Usuario_Logic current;
+        private static string currentProject;
 
         public static DataCurrentUser getInstance()
         {
@@ -45,5 +46,21 @@ namespace WindowsFormsASeguimientoIncidentesBD1.show
         {
             return current.UsuSeg.Contains(seguridad);
         }
+
+        public static void actualizarUsuario(string usuNom, string usuPass, string usuMail)
+        {
+            current.UsuarioUpdate(usuNom, usuPass, usuMail);
+        }
+
+        public static void cargarProyecto(string proCod)
+        {
+            currentProject = proCod;
+        }
+
+        public static string proyectoActual()
+        {
+            return currentProject;
+        }
+
     }
 }

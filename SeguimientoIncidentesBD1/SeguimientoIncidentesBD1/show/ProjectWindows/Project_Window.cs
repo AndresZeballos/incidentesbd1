@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SeguimientoIncidentesBD1.persist;
+using WindowsFormsASeguimientoIncidentesBD1.show;
 
 namespace WindowsFormsApplication1
 {
@@ -32,8 +33,8 @@ namespace WindowsFormsApplication1
                 this.textBox3.Visible = false;
             }
             View_Persist view = new View_Persist();
-            DataSet incidentes = view.View_GeneralIncidents();
-
+            DataSet incidentes = view.View_GeneralIncidents(DataCurrentUser.proyectoActual());
+            
 
             //Controla que tenga permiso a ver los incidentes?????????????????????????????????????
         }
