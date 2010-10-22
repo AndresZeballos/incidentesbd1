@@ -20,6 +20,7 @@ namespace WindowsFormsApplication1
             this.project = project;
         }
 
+        // Modificar datos
         private void button4_Click(object sender, EventArgs e)
         {
             this.button4.Visible = false;
