@@ -12,7 +12,7 @@ namespace SeguimientoIncidentesBD1.logic
     {
         private string estCod;
         //falta incluir los siguientes atributos en el código
-        private IList<string> estSigEstCod;
+        private IList<string> estSigEstCod = new List<string>();
         private bool estIni;
         private bool estFin;
         private bool estEst;
