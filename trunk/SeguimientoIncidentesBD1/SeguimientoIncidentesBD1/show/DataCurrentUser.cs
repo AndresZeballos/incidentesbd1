@@ -5,6 +5,7 @@ using System.Text;
 using SeguimientoIncidentesBD1;
 using SeguimientoIncidentesBD1.persist;
 using SeguimientoIncidentesBD1.logic;
+using System.Data;
 
 namespace WindowsFormsASeguimientoIncidentesBD1.show
 {
@@ -13,7 +14,9 @@ namespace WindowsFormsASeguimientoIncidentesBD1.show
 
         private static DataCurrentUser currentUser;
         private static Usuario_Logic current;
+        private static Incidente_Logic incidente;
         private static string currentProject;
+        private static string currentIncident;
 
         public static DataCurrentUser getInstance()
         {
@@ -60,6 +63,26 @@ namespace WindowsFormsASeguimientoIncidentesBD1.show
         public static string proyectoActual()
         {
             return currentProject;
+        }
+
+        public static void cargarIncidente(string incCod)
+        {
+            currentIncident = incCod;
+        }
+
+        public static string incidenteActual()
+        {
+            return currentIncident;
+        }
+
+        public static Incidente_Logic verIncidente()
+        {
+            int incCodNum = Int32.Parse(currentIncident);
+            incidente = new Incidente_Logic(incCodNum);
+            int curProNum = Int32.Parse(currentProject);
+            if (incidente.IncProCod != incCodNum)
+                incidente = null;
+            return incidente;
         }
 
     }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using SeguimientoIncidentesBD1.persist;
 using WindowsFormsASeguimientoIncidentesBD1.show;
+using SeguimientoIncidentesBD1.logic;
 
 namespace WindowsFormsApplication1
 {
@@ -25,7 +26,7 @@ namespace WindowsFormsApplication1
 
             //Controla que tenga el permiso para visualizar la opción de reportar
 
-            Boolean puedeReportar = true;
+            Boolean puedeReportar = DataCurrentUser.validarSeguridad("puedeReportar");
 
             if (!puedeReportar)
             {
@@ -42,6 +43,10 @@ namespace WindowsFormsApplication1
                 View_Persist view = new View_Persist();
                 DataSet incidentes = view.View_GeneralIncidents(DataCurrentUser.proyectoActual());
                 this.dataGridView2.DataSource = incidentes;
+            }
+            else
+            {
+                this.button7.Visible = false;
             }
             
         }
@@ -81,6 +86,17 @@ namespace WindowsFormsApplication1
         {
             this.principal.Location = this.Location;
             this.principal.Visible = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string incCod = this.textBox1.Text;
+            DataCurrentUser.cargarIncidente(incCod);
+            Incidente_Logic incidente = DataCurrentUser.verIncidente();
+            if (incidente != null)
+            {
+
+            }
         }
 
     }
