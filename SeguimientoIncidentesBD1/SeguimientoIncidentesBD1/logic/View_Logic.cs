@@ -200,7 +200,7 @@ namespace SeguimientoIncidentesBD1.logic
         public DataSet consult_4(string usuNom)
         {
             View_Persist vp = new View_Persist();
-            return vp. onsult_4(usuNom);
+            return vp. consult_4(usuNom);
         }
 
 
