@@ -35,9 +35,9 @@ namespace SeguimientoIncidentesBD1.persist
             try
             {
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "SELECT grpCod FROM grupo";
+                sql.CommandText = "SELECT grpUsuCod FROM grupoUsuario";
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql, "grupo");
+                DataSet ds = sqlIns.Execute(sql, "grupoUsuario");
                 return ds;
             }
             catch (SqlException sqlex)
