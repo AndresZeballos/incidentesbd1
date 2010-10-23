@@ -21,9 +21,6 @@ namespace SeguimientoIncidentesBD1.show
             InitializeComponent();
             this.projectAdmin = projectAdmin;
             this.Location = this.projectAdmin.Location;
-            this.comboBox1.Items.Add("Desarrollo");
-            this.comboBox1.Items.Add("Produccion");
-            this.comboBox1.Items.Add("Obsoleto");
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -49,7 +46,7 @@ namespace SeguimientoIncidentesBD1.show
         {
             string proNom = this.textBox1.Text;
             string proDes = this.textBox5.Text;
-            string proEst = this.comboBox1.SelectedText;
+            string proEst = this.comboBox1.SelectedItem.ToString();
 
             if (proNom.Equals("") || proDes.Equals(""))
             {

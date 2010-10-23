@@ -13,9 +13,9 @@ namespace SeguimientoIncidentesBD1.logic
         private string estCod;
         //falta incluir los siguientes atributos en el código
         private IList<string> estSigEstCod = new List<string>();
-        private bool estIni;
-        private bool estFin;
-        private bool estEst;
+        private byte estIni;
+        private byte estFin;
+        private byte estEst;
 
         public string EstCod
         {
@@ -29,28 +29,28 @@ namespace SeguimientoIncidentesBD1.logic
             set { estSigEstCod = value; }
         }
 
-        public bool EstIni
+        public byte EstIni
         {
             get { return estIni; }
             set { estIni = value; }
         }
 
-        public bool EstFin
+        public byte EstFin
         {
             get { return estFin; }
             set { estFin = value; }
         }
 
-        public bool EstEst
+        public byte EstEst
         {
             get { return estEst; }
             set { estEst = value; }
         }
 
-        public Estado_Logic(string estCod, IList<string> estSigEstCod, bool estIni, bool estFin, bool estEst)
+
+        public Estado_Logic(string estCod, byte estIni, byte estFin, byte estEst)
         {
             this.estCod = estCod;
-            this.estSigEstCod = estSigEstCod;
             this.estIni = estIni;
             this.estFin = estFin;
             this.estEst = estEst;
@@ -69,7 +69,7 @@ namespace SeguimientoIncidentesBD1.logic
         {
             try
             {
-                Estado_Persist est = new Estado_Persist(this.estCod, this.estSigEstCod, this.estIni, this.estFin, this.estEst);
+                Estado_Persist est = new Estado_Persist(this.estCod, this.estIni, this.estFin, this.estEst);
                 est.EstadoCreate();
             }
             catch (SqlException sqlex)
@@ -99,6 +99,21 @@ namespace SeguimientoIncidentesBD1.logic
                 this.estSigEstCod.Add(estCod);
                 Estado_Persist estPersist = new Estado_Persist(this.estCod);
                 estPersist.EstadoSigAdd(estCod);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+        public void EstadoSigAddAll(IList<string> estCod)
+        {
+            try
+            {
+                //actualizo la lista de seguridades
+                this.estSigEstCod = estCod;
+                Estado_Persist estPersist = new Estado_Persist(this.estCod);
+                estPersist.EstadoSigAddAll(estCod);
             }
             catch (SqlException sqlex)
             {
