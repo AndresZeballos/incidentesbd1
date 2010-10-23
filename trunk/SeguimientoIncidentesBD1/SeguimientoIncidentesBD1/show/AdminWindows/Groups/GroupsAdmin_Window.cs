@@ -23,6 +23,8 @@ namespace SeguimientoIncidentesBD1.show
             this.Location = this.adminWindow.Location;
             DataSet grupos = new View_Persist().View_GeneralGroups();
             this.dataGridView2.DataSource = grupos;
+            this.dataGridView2.DataMember = "grupoUsuario";
+            this.dataGridView2.Columns[0].HeaderText = "Codigo";
             
         }
 
