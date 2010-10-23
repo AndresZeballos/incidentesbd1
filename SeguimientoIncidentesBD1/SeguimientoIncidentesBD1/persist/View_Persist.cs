@@ -756,7 +756,24 @@ namespace SeguimientoIncidentesBD1.persist
             }
         }
 
+        public DataSet userByProject(int proCod)
+        {
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "SELECT usuCod FROM UserByProject WHERE proCod = @proCod";
 
+                sql.Parameters.AddWithValue("@proCod", proCod);
+
+                SQLExecute sqlIns = new SQLExecute();
+                DataSet ds = sqlIns.Execute(sql, "UserByProject");
+                return ds;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
 
 
 
