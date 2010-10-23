@@ -178,10 +178,22 @@ namespace SeguimientoIncidentesBD1.logic
 
 
 
-        public DataSet consult_projectOfUser(string usuCod)
+        public List<string> consult_projectOfUser(string usuCod)
         {
+            List<string> result = new List<string>();
+
             View_Persist vp = new View_Persist();
-            return vp.consult_projectOfUser(usuCod);
+            DataSet ds = vp.consult_projectOfUser(usuCod);
+            DataTable dt = ds.Tables["proyectoGrupoUsuario"];
+            if (dt.Rows.Count != 0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    result.Add(dt.Rows[i].Field<string>("rolCod"));
+                }
+            }
+            
+            return result;
         }
 
 
