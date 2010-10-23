@@ -34,7 +34,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            ViewUser_Window viewUser = new ViewUser_Window(this);
+            ViewUser_Window viewUser = new ViewUser_Window(this, this.cache);
             this.Visible = false;
             viewUser.Visible = true;
         }
@@ -52,7 +52,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            NewUser_Window newUser = new NewUser_Window(this);
+            NewUser_Window newUser = new NewUser_Window(this, this.cache);
             this.Visible = false;
             newUser.Visible = true;
         }

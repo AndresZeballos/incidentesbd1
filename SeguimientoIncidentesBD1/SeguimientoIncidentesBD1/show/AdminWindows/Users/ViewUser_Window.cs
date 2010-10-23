@@ -11,13 +11,14 @@ namespace SeguimientoIncidentesBD1.show
 {
     public partial class ViewUser_Window : Form
     {
-
+        private Cache cache;
         private UserAdmin_Window userAdmin;
 
-        public ViewUser_Window(UserAdmin_Window userAdmin)
+        public ViewUser_Window(UserAdmin_Window userAdmin, Cache cache)
         {
             InitializeComponent();
             this.userAdmin = userAdmin;
+            this.cache = cache;
             this.Location = this.userAdmin.Location;
         }
 
@@ -50,7 +51,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button5_Click(object sender, EventArgs e)
         {
-            RolUser rolUser = new RolUser(this);
+            RolUser rolUser = new RolUser(this, this.cache);
             this.Visible = false;
             rolUser.Visible = true;
         }

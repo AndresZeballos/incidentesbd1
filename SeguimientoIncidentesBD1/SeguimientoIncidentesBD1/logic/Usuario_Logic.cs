@@ -53,13 +53,12 @@ namespace SeguimientoIncidentesBD1.logic
             set { usuSeg = value; }
         }
 
-        public Usuario_Logic(string usuCod, string usuNom, string usuPass, string usuMail, IList<string> usuRol)
+        public Usuario_Logic(string usuCod, string usuNom, string usuPass, string usuMail)
         {
             this.usuCod = usuCod;
             this.usuNom = usuNom;
             this.usuPass = usuPass;
             this.usuMail = usuMail;
-            this.usuRol = usuRol;
         }
 
         //cada entidad debe tener un constructor que solo reciba la clave, y en dicho caso haga la busqueda en la BD
@@ -87,7 +86,7 @@ namespace SeguimientoIncidentesBD1.logic
         {
             try
             {
-                Usuario_Persist usuPersist = new Usuario_Persist(this.usuCod, this.usuNom, this.usuPass, this.usuMail, this.usuRol);
+                Usuario_Persist usuPersist = new Usuario_Persist(this.usuCod, this.usuNom, this.usuPass, this.usuMail);
                 usuPersist.UsuarioCreate();
             }
             catch (SqlException sqlex)
@@ -136,10 +135,26 @@ namespace SeguimientoIncidentesBD1.logic
         {
             try
             {
-                //actualizo la lista de seguridades
+                //actualizo la lista de roles
                 this.usuRol.Add(rolCod);
                 Usuario_Persist usuPersist = new Usuario_Persist(this.usuCod);
                 usuPersist.UsuarioRolAdd(rolCod);              
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+        //agrega los roles del usuario
+        public void UsuarioRolAddAll(IList<string> rolCod)
+        {
+            try
+            {
+                //actualizo la lista de roles
+                this.usuRol = rolCod;
+                Usuario_Persist usuPersist = new Usuario_Persist(this.usuCod);
+                usuPersist.UsuarioRolAddAll(rolCod);
             }
             catch (SqlException sqlex)
             {
