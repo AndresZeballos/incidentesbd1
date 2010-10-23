@@ -15,10 +15,14 @@ namespace SeguimientoIncidentesBD1
         private Usuario_Logic usuario;
 
         private GrupoUsuario_Logic grupo;
+
+        private Proyecto_Logic proyecto;
         
         public Usuario_Logic Usuario { get; set; }
 
         public GrupoUsuario_Logic Grupo { get; set; }
+
+        public Proyecto_Logic Proyecto { get; set; }
 
         public Cache()
         {
