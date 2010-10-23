@@ -178,10 +178,10 @@ namespace SeguimientoIncidentesBD1.logic
 
 
 
-        public DataSet consult_searchUser(string usuCod)
+        public DataSet consult_projectOfUser(string usuCod)
         {
             View_Persist vp = new View_Persist();
-            return vp.consult_searchUser(usuCod);
+            return vp.consult_projectOfUser(usuCod);
         }
 
 
