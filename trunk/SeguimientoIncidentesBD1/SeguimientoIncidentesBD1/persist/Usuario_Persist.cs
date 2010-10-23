@@ -52,27 +52,12 @@ namespace SeguimientoIncidentesBD1.persist
             set { usuSeg = value; }
         }
 
-        public Usuario_Persist(string usuCod, string usuNom, string usuPass, string usuMail, IList<string> usuRol)
+        public Usuario_Persist(string usuCod, string usuNom, string usuPass, string usuMail)
         {
             this.usuCod = usuCod;
             this.usuNom = usuNom;
             this.usuPass = usuPass;
             this.usuMail = usuMail;
-            this.usuRol = usuRol;
-            //cargo las seguridades asociadas a los roles del usuario
-            foreach (string rol in this.usuRol)
-            {
-                SqlCommand sql = new SqlCommand();
-                sql.CommandText = "SELECT * FROM rolSeguridad WHERE rolCod = @rolCod";
-                sql.Parameters.AddWithValue("@rolCod", rol);
-                SQLExecute sqlIns3 = new SQLExecute();
-                DataSet ds3 = sqlIns3.Execute(sql, "rolSeguridad");
-                DataTable dt3 = ds3.Tables["rolSeguridad"];
-                foreach (DataRow drow in dt3.Rows)
-                {
-                    this.usuSeg.Add(drow.Field<string>("rolSegCod"));
-                }
-            }
         }
 
         public Usuario_Persist(string usuCod)
@@ -142,19 +127,6 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@usuMail", this.usuMail);
                 SQLExecute sqlIns = new SQLExecute();
                 sqlIns.Execute(sql, "usuario");
-                sql.Parameters.Clear();
-                //agrego los roles del usuario
-                sql.CommandText = "INSERT INTO usuarioRol (usuCod, usuRolCod) VALUES (@usuCod, @usuRolCod)";
-                //la base de datos debería controlar que el id exista en la tabla de roles
-                sql.Parameters.AddWithValue("@usuCod", "");
-                sql.Parameters.AddWithValue("@usuRolCod", "");
-                sql.Parameters[0].Value = this.usuCod;
-                foreach (string usuRolCodActual in this.usuRol)
-                {
-                    sql.Parameters[1].Value = usuRolCodActual;
-                    SQLExecute sqlInsSeg = new SQLExecute();
-                    sqlInsSeg.Execute(sql, "usuarioRol");
-                }
             }
             catch (SqlException sqlex)
             {
@@ -216,6 +188,32 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@usuRolCod", rolCod);
                 SQLExecute sqlInsSeg = new SQLExecute();
                 sqlInsSeg.Execute(sql, "usuarioRol");
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+        public void UsuarioRolAddAll(IList<string> rolCod)
+        {
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                this.usuRol = rolCod;
+                sql.Parameters.Clear();
+                //agrego los roles del usuario
+                sql.CommandText = "INSERT INTO usuarioRol (usuCod, usuRolCod) VALUES (@usuCod, @usuRolCod)";
+                //la base de datos debería controlar que el id exista en la tabla de roles
+                sql.Parameters.AddWithValue("@usuCod", "");
+                sql.Parameters.AddWithValue("@usuRolCod", "");
+                sql.Parameters[0].Value = this.usuCod;
+                foreach (string usuRolCodActual in this.usuRol)
+                {
+                    sql.Parameters[1].Value = usuRolCodActual;
+                    SQLExecute sqlInsSeg = new SQLExecute();
+                    sqlInsSeg.Execute(sql, "usuarioRol");
+                }
             }
             catch (SqlException sqlex)
             {
