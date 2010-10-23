@@ -182,7 +182,7 @@ namespace SeguimientoIncidentesBD1.logic
 
 
 
-
+        
 
         public List<string> consult_projectOfUser(string usuCod)
         {
