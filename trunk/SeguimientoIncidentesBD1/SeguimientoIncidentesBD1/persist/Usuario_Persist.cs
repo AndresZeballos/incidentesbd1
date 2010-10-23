@@ -71,44 +71,35 @@ namespace SeguimientoIncidentesBD1.persist
                 SQLExecute sqlIns = new SQLExecute();
                 DataSet ds = sqlIns.Execute(sql);
                 DataTable dt = ds.Tables["usuario"];
-                this.usuCod = dt.Rows[0].Field<string>("usuCod");
-                //cargo los atributos del usuario
-                this.usuNom = dt.Rows[0].Field<string>("usuNom");
-                this.usuPass = dt.Rows[0].Field<string>("usuPass");
-                this.usuMail = dt.Rows[0].Field<string>("usuMail");
-                //hago la consulta sobre la tabla usuarioRol
-                sql.Parameters.Clear();
-                sql.CommandText = "SELECT * FROM usuarioRol WHERE usuCod = @usuCod";
-                sql.Parameters.AddWithValue("@usuCod", this.usuCod);
-                SQLExecute sqlIns2 = new SQLExecute();
-                DataSet ds2 = sqlIns2.Execute(sql);
-                DataTable dt2 = ds2.Tables["usuarioRol"];
-                int i = 0;
-                foreach (DataRow drow in dt2.Rows)
+                if (dt!=null)
                 {
-
-                    this.usuRol[i] = drow.Field<string>("usuRol");
-                    i++;
+                    this.usuCod = dt.Rows[0].Field<string>("usuCod");
+                    //cargo los atributos del usuario
+                    this.usuNom = dt.Rows[0].Field<string>("usuNom");
+                    this.usuPass = dt.Rows[0].Field<string>("usuPass");
+                    this.usuMail = dt.Rows[0].Field<string>("usuMail");
+                    //hago la consulta sobre la tabla usuarioRol
+                    sql.Parameters.Clear();
+                    sql.CommandText = "SELECT * FROM usuarioRol WHERE usuCod = @usuCod";
+                    sql.Parameters.AddWithValue("@usuCod", this.usuCod);
+                    SQLExecute sqlIns2 = new SQLExecute();
+                    DataSet ds2 = sqlIns2.Execute(sql);
+                    DataTable dt2 = ds2.Tables["usuarioRol"];
+                    int i = 0;
+                    foreach (DataRow drow in dt2.Rows)
+                    {
+                        this.usuRol[i] = drow.Field<string>("usuRol");
+                        i++;
+                    }
                 }
-                /*
-                //hago la consulta sobre la tabla usuarioRol
-                sql.Parameters.Clear();
-                sql.CommandText = "SELECT * FROM usuarioRol WHERE usuCod = @usuCod";
-                sql.Parameters.AddWithValue("@usuCod", this.usuCod);
-                SQLExecute sqlIns3 = new SQLExecute();
-                DataSet ds3 = sqlIns3.Execute(sql);
-                DataTable dt3 = ds3.Tables["usuarioRol"];
-                int j = 0;
-                foreach (DataRow drow in dt3.Rows)
+                else
                 {
-
-                    this.usuRol[j] = drow.Field<string>("usuSeg");
-                    j++;
-                }*/
+                    System.Windows.Forms.MessageBox.Show("Usuario inexistente");
+                }                    
             }
             catch (SqlException sqlex)
             {
-                //throw sqlex;
+                throw sqlex;
             }
         }
 

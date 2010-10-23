@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace SeguimientoIncidentesBD1.show
 {
     partial class ChangeIncident_Window
     {

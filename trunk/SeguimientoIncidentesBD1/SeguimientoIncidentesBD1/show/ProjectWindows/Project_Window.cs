@@ -7,10 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SeguimientoIncidentesBD1.persist;
-using WindowsFormsASeguimientoIncidentesBD1.show;
 using SeguimientoIncidentesBD1.logic;
 
-namespace WindowsFormsApplication1
+namespace SeguimientoIncidentesBD1.show
 {
     public partial class Project_Window : Form
     {

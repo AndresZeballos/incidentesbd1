@@ -7,9 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SeguimientoIncidentesBD1.logic;
-using WindowsFormsASeguimientoIncidentesBD1.show;
 
-namespace WindowsFormsApplication1
+namespace SeguimientoIncidentesBD1.show
 {
     public partial class ViewIncident_Window : Form
     {

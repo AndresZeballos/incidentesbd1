@@ -4,8 +4,8 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Data;
 using SeguimientoIncidentesBD1.logic;
-using WindowsFormsApplication1;
 using SeguimientoIncidentesBD1.persist;
+using SeguimientoIncidentesBD1.show;
 
 namespace SeguimientoIncidentesBD1
 {
@@ -17,7 +17,6 @@ namespace SeguimientoIncidentesBD1
         [STAThread]
         static void Main()
         {
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login_Window());

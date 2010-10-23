@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using SeguimientoIncidentesBD1.persist;
 
-namespace WindowsFormsApplication1
+namespace SeguimientoIncidentesBD1.show
 {
     public partial class GroupsAdmin_Window : Form
     {
