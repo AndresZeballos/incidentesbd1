@@ -38,6 +38,7 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //this.dataGridView2.SelectedRows;
             ViewGroups_Window viewGroups = new ViewGroups_Window(this);
             this.Visible = false;
             viewGroups.Visible = true;
