@@ -34,6 +34,7 @@ namespace SeguimientoIncidentesBD1.show
             this.label3.Visible = true;
             this.textBox2.Visible = true;
             this.textBox2.Enabled = false;
+            this.textBox2.Text = cache.Usuario.UsuPass;
             //this.label3.Visible = false;
             this.button3.Visible = true;
             this.button3.Enabled = true;
