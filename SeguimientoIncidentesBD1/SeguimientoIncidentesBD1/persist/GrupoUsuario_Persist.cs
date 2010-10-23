@@ -31,11 +31,10 @@ namespace SeguimientoIncidentesBD1.persist
             set { usuGrpUsuCod = value; }
         }
 
-        public GrupoUsuario_Persist(string grpUsuCod, string grpUsuDes, IList<string> usuGrpUsuCod)
+        public GrupoUsuario_Persist(string grpUsuCod, string grpUsuDes)
         {
             this.grpUsuCod = grpUsuCod;
             this.grpUsuDes = grpUsuDes;
-            this.usuGrpUsuCod = usuGrpUsuCod;
         }
 
         public GrupoUsuario_Persist(string grpUsuCod)
@@ -58,12 +57,9 @@ namespace SeguimientoIncidentesBD1.persist
                 SQLExecute sqlInsGrpUsu = new SQLExecute();
                 DataSet dsGrpUsu = sqlInsGrpUsu.Execute(sql, "usuarioGrupoUsuario");
                 DataTable dtGrpUsu = dsGrpUsu.Tables["usuarioGrupoUsuario"];
-                int i = 0;
                 foreach (DataRow drow in dtGrpUsu.Rows)
                 {
-
-                    this.usuGrpUsuCod[i] = drow.Field<string>("usuGrpUsuCod");
-                    i++;
+                    this.usuGrpUsuCod.Add(drow.Field<string>("usuGrpUsuCod"));
                 }
             }
             catch (SqlException sqlex)
@@ -81,20 +77,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@grpUsuCod", this.grpUsuCod);
                 sql.Parameters.AddWithValue("@grpUsuDes", this.grpUsuDes);
                 SQLExecute sqlIns = new SQLExecute();
-                sqlIns.Execute(sql, "grupoUsuario");
-                sql.Parameters.Clear();
-                //agrego las seguridades del rol
-                sql.CommandText = "INSERT INTO usuarioGrupoUsuario (grpUsuCod, usuGrpUsuCod) VALUES (@grpUsuCod, @usuGrpUsuCod)";
-                //la base de datos debería controlar que el id exista en la tabla de seguridades
-                sql.Parameters.AddWithValue("@grpUsuCod", "");
-                sql.Parameters.AddWithValue("@usuGrpUsuCod", "");
-                sql.Parameters[0].Value = this.grpUsuCod;
-                foreach (string usuGrpUsuCodActual in this.usuGrpUsuCod)
-                {
-                    sql.Parameters[1].Value = usuGrpUsuCodActual;
-                    SQLExecute sqlGrpUsu = new SQLExecute();
-                    sqlGrpUsu.Execute(sql, "usuarioGrupoUsuario");
-                }
+                sqlIns.Execute(sql, "grupoUsuario");                
             }
             catch (SqlException sqlex)
             {
@@ -160,5 +143,31 @@ namespace SeguimientoIncidentesBD1.persist
                 throw sqlex;
             }
         }
+
+        public void GrpUsuUsuAddAll(IList<string> usuCod)
+        {
+            try
+            {
+                this.usuGrpUsuCod = usuCod;
+                SqlCommand sql = new SqlCommand();
+                //agrego los usuarios del grupo
+                sql.CommandText = "INSERT INTO usuarioGrupoUsuario (grpUsuCod, usuGrpUsuCod) VALUES (@grpUsuCod, @usuGrpUsuCod)";
+                //la base de datos debería controlar que el id exista en la tabla de seguridades
+                sql.Parameters.AddWithValue("@grpUsuCod", "");
+                sql.Parameters.AddWithValue("@usuGrpUsuCod", "");
+                sql.Parameters[0].Value = this.grpUsuCod;
+                foreach (string usuGrpUsuCodActual in this.usuGrpUsuCod)
+                {
+                    sql.Parameters[1].Value = usuGrpUsuCodActual;
+                    SQLExecute sqlGrpUsu = new SQLExecute();
+                    sqlGrpUsu.Execute(sql, "usuarioGrupoUsuario");
+                }
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+        
     }
 }

@@ -32,11 +32,10 @@ namespace SeguimientoIncidentesBD1.logic
             set { usuGrpUsuCod = value; }
         }
 
-        public GrupoUsuario_Logic(string grpUsuCod, string grpUsuDes, IList<string> usuGrpUsuCod)
+        public GrupoUsuario_Logic(string grpUsuCod, string grpUsuDes)
         {
             this.grpUsuCod = grpUsuCod;
             this.grpUsuDes = grpUsuDes;
-            this.usuGrpUsuCod = usuGrpUsuCod;
         }
 
         public GrupoUsuario_Logic(string grpUsuCod)
@@ -58,8 +57,7 @@ namespace SeguimientoIncidentesBD1.logic
         {
             try
             {
-                GrupoUsuario_Persist grupo = new GrupoUsuario_Persist(this.grpUsuCod, this.grpUsuDes, 
-                    this.usuGrpUsuCod);
+                GrupoUsuario_Persist grupo = new GrupoUsuario_Persist(this.grpUsuCod, this.grpUsuDes);
                 grupo.GrupoUsuarioCreate();
             }
             catch(SqlException sqlex)
@@ -105,6 +103,22 @@ namespace SeguimientoIncidentesBD1.logic
                 this.usuGrpUsuCod.Add(usuCod);
                 GrupoUsuario_Persist grpPersist = new GrupoUsuario_Persist(this.grpUsuCod);
                 grpPersist.GrpUsuUsuAdd(usuCod);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+        //agrega una nueva seguridad relacionada al rol
+        public void GrpUsuAddAll(IList<string> usuCod)
+        {
+            try
+            {
+                //actualizo la lista de seguridades
+                this.usuGrpUsuCod = usuCod;
+                GrupoUsuario_Persist grpPersist = new GrupoUsuario_Persist(this.grpUsuCod);
+                grpPersist.GrpUsuUsuAddAll(usuCod);
             }
             catch (SqlException sqlex)
             {
