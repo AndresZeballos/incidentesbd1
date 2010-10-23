@@ -17,12 +17,22 @@ namespace SeguimientoIncidentesBD1
         private GrupoUsuario_Logic grupo;
 
         private Proyecto_Logic proyecto;
+
+        private Estado_Logic estadoInicial;
+
+        private Estado_Logic estadoFinal;
+
         
         public Usuario_Logic Usuario { get; set; }
 
         public GrupoUsuario_Logic Grupo { get; set; }
 
         public Proyecto_Logic Proyecto { get; set; }
+
+        public Estado_Logic EstadoInicial { get; set; }
+
+        public Estado_Logic EstadoFinal { get; set; }
+
 
         public Cache()
         {
