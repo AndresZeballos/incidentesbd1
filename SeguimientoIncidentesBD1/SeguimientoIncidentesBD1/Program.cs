@@ -17,9 +17,10 @@ namespace SeguimientoIncidentesBD1
         [STAThread]
         static void Main()
         {
+            Cache cache = new Cache();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login_Window());
+            Application.Run(new Login_Window(cache));
 
             //Usuario_Logic usuario = new Usuario_Logic("bugsys");
             //System.Windows.Forms.MessageBox.Show(usuario.UsuNom);

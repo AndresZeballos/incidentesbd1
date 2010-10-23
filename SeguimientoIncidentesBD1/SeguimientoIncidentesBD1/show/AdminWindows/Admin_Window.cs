@@ -11,19 +11,20 @@ namespace SeguimientoIncidentesBD1.show
 {
     public partial class Admin_Window : Form
     {
-
+        private Cache cache;
         private Principal_Window principal;
 
-        public Admin_Window(Principal_Window principal)
+        public Admin_Window(Principal_Window principal, Cache cache)
         {
             InitializeComponent();
+            this.cache = cache;
             this.principal = principal;
             this.Location = this.principal.Location;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            RolAdmin_Window rolAdmin = new RolAdmin_Window(this);
+            RolAdmin_Window rolAdmin = new RolAdmin_Window(this, this.cache);
             this.Visible = false;
             rolAdmin.Visible = true;
         }
@@ -41,28 +42,28 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button1_Click(object sender, EventArgs e)
         {
-            UserAdmin_Window userAdmin = new UserAdmin_Window(this);
+            UserAdmin_Window userAdmin = new UserAdmin_Window(this, this.cache);
             this.Visible = false;
             userAdmin.Visible = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            GroupsAdmin_Window groupsAdmin = new GroupsAdmin_Window(this);
+            GroupsAdmin_Window groupsAdmin = new GroupsAdmin_Window(this, this.cache);
             this.Visible = false;
             groupsAdmin.Visible = true;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            ProjectsAdmin_Window projectAdmin = new ProjectsAdmin_Window(this);
+            ProjectsAdmin_Window projectAdmin = new ProjectsAdmin_Window(this, this.cache);
             this.Visible = false;
             projectAdmin.Visible = true;
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            StateAdmin_Window stateAdmin = new StateAdmin_Window(this);
+            StateAdmin_Window stateAdmin = new StateAdmin_Window(this, this.cache);
             this.Visible = false;
             stateAdmin.Visible = true;
         }

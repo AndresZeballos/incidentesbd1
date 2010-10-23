@@ -49,6 +49,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(250, 21);
             this.textBox1.TabIndex = 0;
+            //
             // 
             // textBox3
             // 
@@ -58,6 +59,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(250, 21);
             this.textBox3.TabIndex = 2;
+            // 
             // 
             // label1
             // 
@@ -120,6 +122,7 @@
             this.button2.TabIndex = 9;
             this.button2.Text = "Actualizar";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button5
             // 

@@ -21,7 +21,7 @@ namespace SeguimientoIncidentesBD1.show
             this.projectWindow = projectWindow;
             this.Location = this.projectWindow.Location;
 
-            Incidente_Logic incidente = DataCurrentUser.verIncidente();
+            //Incidente_Logic incidente = DataCurrentUser.VerIncidente();
 
         }
 

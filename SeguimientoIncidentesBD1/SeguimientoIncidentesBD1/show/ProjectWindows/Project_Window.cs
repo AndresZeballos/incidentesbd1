@@ -15,17 +15,19 @@ namespace SeguimientoIncidentesBD1.show
     {
 
         private Principal_Window principal;
+        private Cache cache;
 
-        public Project_Window(Principal_Window principal)
+        public Project_Window(Principal_Window principal, Cache cache)
         {
             InitializeComponent();
             this.principal = principal;
+            this.cache = cache;
             this.Location = this.principal.Location;
 
 
             //Controla que tenga el permiso para visualizar la opción de reportar
 
-            Boolean puedeReportar = DataCurrentUser.validarSeguridad("puedeReportar");
+            Boolean puedeReportar = DataCurrentUser.ValidarSeguridad("Reportador", cache.Usuario);
 
             if (!puedeReportar)
             {
@@ -35,13 +37,13 @@ namespace SeguimientoIncidentesBD1.show
 
             //Controla que tenga permiso a ver los incidentes?????????????????????????????????????
 
-            Boolean verIncidentes = DataCurrentUser.validarSeguridad("verIncidentes");
+            Boolean verIncidentes = DataCurrentUser.ValidarSeguridad("Espectador", cache.Usuario);
 
             if (verIncidentes)
             {
                 View_Persist view = new View_Persist();
-                DataSet incidentes = view.View_GeneralIncidents(DataCurrentUser.proyectoActual());
-                this.dataGridView2.DataSource = incidentes;
+                //DataSet incidentes = view.View_GeneralIncidents(DataCurrentUser.ProyectoActual());
+                //this.dataGridView2.DataSource = incidentes;
             }
             else
             {
@@ -90,12 +92,12 @@ namespace SeguimientoIncidentesBD1.show
         private void button1_Click(object sender, EventArgs e)
         {
             string incCod = this.textBox1.Text;
-            DataCurrentUser.cargarIncidente(incCod);
-            Incidente_Logic incidente = DataCurrentUser.verIncidente();
-            if (incidente != null)
-            {
+            //DataCurrentUser.CargarIncidente(incCod);
+            //Incidente_Logic incidente = DataCurrentUser.VerIncidente();
+            //if (incidente != null)
+            //{
 
-            }
+            //}
         }
 
     }

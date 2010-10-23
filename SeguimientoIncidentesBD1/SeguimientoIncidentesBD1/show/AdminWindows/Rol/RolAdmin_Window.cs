@@ -11,12 +11,13 @@ namespace SeguimientoIncidentesBD1.show
 {
     public partial class RolAdmin_Window : Form
     {
-
+        private Cache cache;
         private Admin_Window admin;
 
-        public RolAdmin_Window(Admin_Window admin)
+        public RolAdmin_Window(Admin_Window admin, Cache cache)
         {
             InitializeComponent();
+            this.cache = cache;
             this.admin = admin;
             this.Location = this.admin.Location;
         }

@@ -12,20 +12,21 @@ namespace SeguimientoIncidentesBD1.show
 {
     public partial class Principal_Window : Form
     {
-
+        public const string seguridad = "Administrador";
         private Login_Window loginWindow;
+        private Cache cache;
 
-        public Principal_Window(Login_Window loginWindow)
+        public Principal_Window(Login_Window loginWindow, Cache cache)
         {
             
             InitializeComponent();
 
             this.loginWindow = loginWindow;
+            this.cache = cache;
             this.Location = this.loginWindow.Location;
 
-            //si tiene permiso de administrador.
-            Boolean esAdministrador = DataCurrentUser.validarSeguridad("Administrador");
-            if (!esAdministrador)
+            //valido si tiene permiso de acceso a las opciones de administraci'on
+            if (!DataCurrentUser.ValidarSeguridad(seguridad, this.cache.Usuario))
             {
                 this.button3.Visible = false;
                 this.textBox3.Visible = false;
@@ -34,7 +35,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Project_Window project = new Project_Window(this);
+            Project_Window project = new Project_Window(this, this.cache);
             this.Visible = false;
             project.Visible = true;
         }
@@ -46,7 +47,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button2_Click(object sender, EventArgs e)
         {
-            User_Window userWindow = new User_Window(this);
+            User_Window userWindow = new User_Window(this, this.cache);
             this.Visible = false;
             userWindow.Visible = true;
         }
@@ -58,7 +59,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Admin_Window adminWindow = new Admin_Window(this);
+            Admin_Window adminWindow = new Admin_Window(this, this.cache);
             this.Visible = false;
             adminWindow.Visible = true;
         }
