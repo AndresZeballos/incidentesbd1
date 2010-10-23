@@ -26,6 +26,7 @@ namespace SeguimientoIncidentesBD1.show
             this.textBox1.Text = cache.Grupo.GrpUsuCod;
             this.textBox5.Text = cache.Grupo.GrpUsuDes;
             DataSet usuariosGrupo = new View_Logic().View_GroupUsers(this.cache.Grupo.GrpUsuCod);
+            this.cache.UsuariosGrupo = usuariosGrupo;
             this.dataGridView1.DataSource = usuariosGrupo;
             this.dataGridView1.DataMember = "usuarioGrupoUsuario";
             this.dataGridView1.Columns[0].HeaderText = "Usuarios";
