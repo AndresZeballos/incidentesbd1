@@ -223,6 +223,12 @@ namespace SeguimientoIncidentesBD1.logic
             return vp.consult_4(usuNom);
         }
 
+        public List<string> userByProject(string usuCod)
+        {
+
+            //SELECT proCod FROM UserByProject WHERE usuCod = @usuCod
+            return null;
+        }
 
 
 
