@@ -54,5 +54,58 @@ namespace SeguimientoIncidentesBD1.show
             this.Visible = false;
             nextState.Visible = true;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string estCod = this.textBox1.Text;
+            byte estIni;
+            byte estFin;
+            byte estEst;
+
+            if (this.comboBox1.SelectedItem.ToString().Equals("Si"))
+            {
+                estIni = 1;
+            }
+            else
+            {
+                estIni = 0;
+            }
+
+            if (this.comboBox1.SelectedItem.ToString().Equals("Si"))
+            {
+                estFin = 1;
+            }
+            else
+            {
+                estFin = 0;
+            }
+
+            if (this.comboBox1.SelectedItem.ToString().Equals("Si"))
+            {
+                estEst = 1;
+            }
+            else
+            {
+                estEst = 0;
+            }
+
+            if (estCod.Equals(""))
+            {
+                MessageBox.Show("Falta ingresar un campo");
+            }
+            else
+            {
+                try
+                {
+                    Estado_Logic estado = new Estado_Logic(estCod, estIni, estFin, estEst);
+                    estado.EstadoPersist();
+                    MessageBox.Show("Estado creado con exito");
+                }
+                catch (SqlException sqlex)
+                {
+                    MessageBox.Show("Error al crear el estado: " + sqlex.Message);
+                }
+            }
+        }
     }
 }

@@ -12,9 +12,9 @@ namespace SeguimientoIncidentesBD1.persist
         private string estCod;
         //falta incluir los siguientes atributos en el código
         private IList<string> estSigEstCod = new List<string>();
-        private bool estIni;
-        private bool estFin;
-        private bool estEst;
+        private byte estIni;
+        private byte estFin;
+        private byte estEst;
 
         public string EstCod
         {
@@ -28,28 +28,27 @@ namespace SeguimientoIncidentesBD1.persist
             set { estSigEstCod = value; }
         }
 
-        public bool EstIni
+        public byte EstIni
         {
             get { return estIni; }
             set { estIni = value; }
         }
 
-        public bool EstFin
+        public byte EstFin
         {
             get { return estFin; }
             set { estFin = value; }
         }
 
-        public bool EstEst
+        public byte EstEst
         {
             get { return estEst; }
             set { estEst = value; }
         }
 
-        public Estado_Persist(string estCod, IList<string> estSigEstCod, bool estIni, bool estFin, bool estEst)
+        public Estado_Persist(string estCod, byte estIni, byte estFin, byte estEst)
         {
             this.estCod = estCod;
-            this.estSigEstCod = estSigEstCod;
             this.estIni = estIni;
             this.estFin = estFin;
             this.estEst = estEst;
@@ -68,9 +67,9 @@ namespace SeguimientoIncidentesBD1.persist
                 DataTable dt = ds.Tables["estado"];
                 this.estCod = dt.Rows[0].Field<string>("estCod");
                 //cargo la los atributos del estado
-                this.estIni = dt.Rows[0].Field<bool>("estIni");
-                this.estFin = dt.Rows[0].Field<bool>("estFin");
-                this.estEst = dt.Rows[0].Field<bool>("estEst");
+                this.estIni = dt.Rows[0].Field<byte>("estIni");
+                this.estFin = dt.Rows[0].Field<byte>("estFin");
+                this.estEst = dt.Rows[0].Field<byte>("estEst");
                 sql.Parameters.Clear();
                 //hago la consulta sobre la tabla estadoSeguridad
                 sql.CommandText = "SELECT * FROM estadoSiguiente WHERE estCod = @estCod";
@@ -78,11 +77,9 @@ namespace SeguimientoIncidentesBD1.persist
                 SQLExecute sqlInsestadoSeg = new SQLExecute();
                 DataSet dsestadoSig = sqlIns.Execute(sql, "estadoSiguiente");
                 DataTable dtestadoSig = dsestadoSig.Tables["estadoSiguiente"];
-                int i = 0;
                 foreach (DataRow drow in dtestadoSig.Rows)
                 {
-                    this.estSigEstCod[i] = drow.Field<string>("estSigEstCod");
-                    i++;
+                    this.estSigEstCod.Add(drow.Field<string>("estSigEstCod"));
                 }
             }
             catch (SqlException sqlex)
@@ -102,20 +99,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@estFin", this.estFin);
                 sql.Parameters.AddWithValue("@estEst", this.estEst);
                 SQLExecute sqlIns = new SQLExecute();
-                sqlIns.Execute(sql, "estado");
-                sql.Parameters.Clear();
-                //agrego los siguientes estados del estado
-                sql.CommandText = "INSERT INTO estadoSiguiente (estCod, estSigEstCod) VALUES (@estCod, @estSigEstCod)";
-                //la base de datos debería chequear que el id exista en la tabla de estados
-                sql.Parameters.AddWithValue("@estCod", "");
-                sql.Parameters.AddWithValue("@estSigEstCod", "");
-                sql.Parameters[0].Value = this.estCod;
-                foreach (string estSig in this.estSigEstCod)
-                {
-                    sql.Parameters[1].Value = estSig;
-                    SQLExecute sqlInsSeg = new SQLExecute();
-                    sqlInsSeg.Execute(sql, "estadoSiguiente");
-                }
+                sqlIns.Execute(sql, "estado");                
             }
             catch (SqlException sqlex)
             {
@@ -157,6 +141,31 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@estSigEstCod", estCod);
                 SQLExecute sqlInsSeg = new SQLExecute();
                 sqlInsSeg.Execute(sql, "estadoSiguiente");
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+        public void EstadoSigAddAll(IList<string> estCod)
+        {
+            try
+            {
+                this.estSigEstCod = estCod;
+                SqlCommand sql = new SqlCommand();
+                //agrego los siguientes estados del estado
+                sql.CommandText = "INSERT INTO estadoSiguiente (estCod, estSigEstCod) VALUES (@estCod, @estSigEstCod)";
+                //la base de datos debería chequear que el id exista en la tabla de estados
+                sql.Parameters.AddWithValue("@estCod", "");
+                sql.Parameters.AddWithValue("@estSigEstCod", "");
+                sql.Parameters[0].Value = this.estCod;
+                foreach (string estSig in this.estSigEstCod)
+                {
+                    sql.Parameters[1].Value = estSig;
+                    SQLExecute sqlInsSeg = new SQLExecute();
+                    sqlInsSeg.Execute(sql, "estadoSiguiente");
+                }
             }
             catch (SqlException sqlex)
             {

@@ -59,6 +59,7 @@
             // 
             this.comboBox1.ForeColor = System.Drawing.Color.MidnightBlue;
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] { "Desarrollo", "Produccion", "Obsoleto" });
             this.comboBox1.Location = new System.Drawing.Point(95, 219);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.comboBox1.Name = "comboBox1";
