@@ -85,7 +85,7 @@ namespace SeguimientoIncidentesBD1.persist
                 SQLExecute sqlIns = new SQLExecute();
                 DataSet ds = sqlIns.Execute(sql, "usuario");
                 DataTable dt = ds.Tables["usuario"];
-                if (dt!=null)
+                if (dt.Rows.Count != 0)
                 {
                     this.usuCod = dt.Rows[0].Field<string>("usuCod");
                     //cargo los atributos del usuario
