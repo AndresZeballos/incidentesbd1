@@ -25,7 +25,7 @@ namespace SeguimientoIncidentesBD1.show
             this.cache = cache;
             this.textBox1.Text = cache.Grupo.GrpUsuCod;
             this.textBox5.Text = cache.Grupo.GrpUsuDes;
-             
+            DataSet usuariosGrupo = new View_Logic
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -51,7 +51,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button5_Click(object sender, EventArgs e)
         {
-            UserGroup userGroup = new UserGroup(this);
+            UserGroup userGroup = new UserGroup(this, this.cache);
             this.Visible = false;
             userGroup.Visible = true;
         }

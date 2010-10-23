@@ -13,12 +13,14 @@ namespace SeguimientoIncidentesBD1.show
     {
 
         private Form beforeGroupsWindow;
+        private Cache cache;
 
-        public UserGroup(Form beforeGroupsWindow)
+        public UserGroup(Form beforeGroupsWindow, Cache cache)
         {
             InitializeComponent();
             this.beforeGroupsWindow = beforeGroupsWindow;
             this.Location = this.beforeGroupsWindow.Location;
+            this.cache = cache;
         }
 
         private void button3_Click(object sender, EventArgs e)

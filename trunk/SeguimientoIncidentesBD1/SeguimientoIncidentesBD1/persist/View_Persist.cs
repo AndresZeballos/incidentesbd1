@@ -64,6 +64,26 @@ namespace SeguimientoIncidentesBD1.persist
             }
         }
 
+        public DataSet View_GroupUsers(String grpUsuCod)
+        {
+            //Tabla:
+            //Nombre
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "SELECT * FROM usuarioGrupoUsuario WHERE usuGrpCod = @usuGrpCod";
+                sql.Parameters.AddWithValue("@usuGrpCod", grpUsuCod);
+                SQLExecute sqlInsGrpUsu = new SQLExecute();
+                DataSet ds = sqlInsGrpUsu.Execute(sql, "usuarioGrupoUsuario");
+                return ds;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+       
+
         public DataSet View_GeneralIncidents(string incProCod)
         {
             //Tabla:
