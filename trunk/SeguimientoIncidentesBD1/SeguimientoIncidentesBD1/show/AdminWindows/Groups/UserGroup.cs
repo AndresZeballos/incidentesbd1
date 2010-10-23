@@ -23,17 +23,24 @@ namespace SeguimientoIncidentesBD1.show
             this.Location = this.beforeGroupsWindow.Location;
             this.cache = cache;
 
-            //
+            cargarGridUsuarios();
+
+            cargarGridrestoUsuarios();
+        }
+
+        private void cargarGridUsuarios()
+        {
             this.dataGridView2.DataSource = this.cache.UsuariosGrupo;
             this.dataGridView2.DataMember = "usuarioGrupoUsuario";
             this.dataGridView2.Columns[0].HeaderText = "Usuarios del grupo";
+        }
 
-            //
+        private void cargarGridrestoUsuarios()
+        {
             DataSet restoUsuarios = new View_Logic().View_Option_GroupUser(this.cache.Grupo.GrpUsuCod);
             this.dataGridView3.DataSource = restoUsuarios;
             this.dataGridView3.DataMember = "usuario";
             this.dataGridView3.Columns[0].HeaderText = "Usuarios del Sistema";
-            
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -45,6 +52,16 @@ namespace SeguimientoIncidentesBD1.show
         {
             this.beforeGroupsWindow.Location = this.Location;
             this.beforeGroupsWindow.Visible = true;
+        }
+
+        //Agregar
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string userSelected = this.dataGridView3.CurrentRow.Cells[0].Value.ToString();
+            GrupoUsuario_Logic nuevoUser = new GrupoUsuario_Logic(this.cache.Grupo.GrpUsuCod);
+            nuevoUser.GrpUsuAdd(userSelected);
+            this.cache.UsuariosGrupo.Tables[0].Rows.Add(userSelected);
+            cargarGridUsuarios();
         }
     }
 }
