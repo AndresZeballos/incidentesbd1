@@ -51,8 +51,8 @@ namespace SeguimientoIncidentesBD1.show
         //}
         private void button1_Click(object sender, EventArgs e)
         {
-            string usuPass = this.textBox1.Text;
-            string usuCod = this.textBox2.Text;
+            string usuPass = this.textBox2.Text;
+            string usuCod = this.textBox1.Text;
 
             if (DataCurrentUser.ValidarUsuario(usuCod, usuPass))
             //chequeo si la contrasena es correcta
