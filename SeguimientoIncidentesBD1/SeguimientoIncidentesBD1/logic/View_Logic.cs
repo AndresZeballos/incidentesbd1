@@ -187,22 +187,23 @@ namespace SeguimientoIncidentesBD1.logic
         public List<string> consult_projectOfUser(string usuCod)
         {
             List<string> result = new List<string>();
-
+            
             View_Persist vp = new View_Persist();
             DataSet ds = vp.consult_projectOfUser(usuCod);
-            DataTable dt = ds.Tables["proyectoGrupoUsuario"];
+            DataTable dt = ds.Tables["ProjectByUser"];
             if (dt.Rows.Count != 0)
             {
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     int proCod = dt.Rows[i].Field<int>("proCod");
-                    result.Add(proCod.ToString());
+                    string proNom = dt.Rows[i].Field<string>("proNom");
+                    result.Add(proCod + "- " + proNom);
                 }
             }
+
             
             return result;
         }
-
 
         public DataSet consult_2(string usuCod)
         {

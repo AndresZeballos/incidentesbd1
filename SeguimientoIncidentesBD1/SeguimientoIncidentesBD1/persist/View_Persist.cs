@@ -659,15 +659,12 @@ namespace SeguimientoIncidentesBD1.persist
             try
             {
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "SELECT proCod " +
-                                  "FROM proyectoGrupoUsuario " +
-                                  "WHERE proyectoGrupoUsuario.proGrpUsuCod IN " +
-                                  "(SELECT usuGrpCod FROM usuarioGrupoUsuario WHERE usuarioGrupoUsuario.usuGrpUsuCod = @usuCod) ";
+                sql.CommandText = "SELECT proCod, proNom FROM ProjectByUser WHERE usuCod = @usuCod";
 
                 sql.Parameters.AddWithValue("@usuCod", usuCod);
 
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql, "proyectoGrupoUsuario");
+                DataSet ds = sqlIns.Execute(sql, "ProjectByUser");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -675,8 +672,7 @@ namespace SeguimientoIncidentesBD1.persist
                 throw sqlex;
             }
         }
-
-
+        
         public DataSet consult_2(string usuCod){
             try
             {
