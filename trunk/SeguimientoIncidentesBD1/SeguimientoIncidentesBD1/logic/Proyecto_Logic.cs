@@ -48,14 +48,15 @@ namespace SeguimientoIncidentesBD1.logic
 
         //cada entidad debe tener un constructor que solo reciba la clave, y en dicho caso haga la busqueda en la BD
         //y cargue los datos a partir de los datos del usuario en la base
-        public Proyecto_Logic(string proCod)
+        public Proyecto_Logic(int proCod)
         {
             try
             {
-                //Proyecto_Persist proPersist = new Proyecto_Persist(proCod);
-                //this.proNom = proPersist.ProNom;
-                //this.proDes = proPersist.ProDes;
-                //this.proEst = proPersist.ProEst;
+                Proyecto_Persist proPersist = new Proyecto_Persist(proCod);
+                this.proCod = proPersist.ProCod;
+                this.proNom = proPersist.ProNom;
+                this.proDes = proPersist.ProDes;
+                this.proEst = proPersist.ProEst;
             }
             catch (SqlException sqlex)
             {
