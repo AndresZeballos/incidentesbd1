@@ -11,14 +11,15 @@ namespace SeguimientoIncidentesBD1.show
 {
     public partial class ViewState_Window : Form
     {
-
+        private Cache cache;
         private StateAdmin_Window stateAdmin;
 
-        public ViewState_Window(StateAdmin_Window stateAdmin)
+        public ViewState_Window(StateAdmin_Window stateAdmin, Cache cache)
         {
             InitializeComponent();
             this.stateAdmin = stateAdmin;
             this.Location = this.stateAdmin.Location;
+            this.cache = cache;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -45,7 +46,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button5_Click(object sender, EventArgs e)
         {
-            NextState nextState = new NextState(this);
+            NextState nextState = new NextState(this, this.cache);
             this.Visible = false;
             nextState.Visible = true;
         }
