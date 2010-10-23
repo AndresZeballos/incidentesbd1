@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SeguimientoIncidentesBD1.logic;
+using System.Data;
 
 namespace SeguimientoIncidentesBD1
 {
@@ -22,6 +23,7 @@ namespace SeguimientoIncidentesBD1
 
         private Estado_Logic estadoFinal;
 
+        private DataSet usuariosGrupo;
         
         public Usuario_Logic Usuario { get; set; }
 
@@ -33,6 +35,7 @@ namespace SeguimientoIncidentesBD1
 
         public Estado_Logic EstadoFinal { get; set; }
 
+        public DataSet UsuariosGrupo { get; set; }
 
         public Cache()
         {
