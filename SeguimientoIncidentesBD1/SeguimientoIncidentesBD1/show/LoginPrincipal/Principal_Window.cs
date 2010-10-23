@@ -45,6 +45,13 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string seleccion = this.comboBox1.Text;
+            string stringProCod = seleccion.Split('-')[0];
+            int proCod = Int32.Parse(stringProCod);
+
+            Proyecto_Logic proyecto = new Proyecto_Logic(proCod);
+            cache.Proyecto = proyecto;
+
             Project_Window project = new Project_Window(this, this.cache);
             this.Visible = false;
             project.Visible = true;
