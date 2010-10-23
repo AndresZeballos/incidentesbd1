@@ -195,7 +195,8 @@ namespace SeguimientoIncidentesBD1.logic
             {
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    result.Add(dt.Rows[i].Field<string>("rolCod"));
+                    int proCod = dt.Rows[i].Field<int>("proCod");
+                    result.Add(proCod.ToString());
                 }
             }
             
