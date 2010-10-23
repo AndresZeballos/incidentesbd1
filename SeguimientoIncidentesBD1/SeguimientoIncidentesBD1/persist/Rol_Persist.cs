@@ -34,11 +34,10 @@ namespace SeguimientoIncidentesBD1.persist
             set { rolSeg = value; }
         }
 
-        public Rol_Persist(string rolCod, string rolDes, IList<string>rolSeg)
+        public Rol_Persist(string rolCod, string rolDes)
         {
             this.rolCod = rolCod;
             this.rolDes = rolDes;
-            this.rolSeg = rolSeg;
         }
 
         //este al recibir el rolCod debe hacer una busqueda en la BD y traer los datos
@@ -55,19 +54,15 @@ namespace SeguimientoIncidentesBD1.persist
                 this.rolCod = dt.Rows[0].Field<string>("rolCod");
                 //cargo la descripción del rol
                 this.rolDes = dt.Rows[0].Field<string>("rolDes");
-                //hago la consulta sobre la tabla rolSeguridad
-                sql.Parameters.Clear();
                 sql.CommandText = "SELECT * FROM rolSeguridad WHERE rolCod = @rolCod";
+                sql.Parameters.Clear();
                 sql.Parameters.AddWithValue("@rolCod", this.rolCod);
                 SQLExecute sqlInsRolSeg = new SQLExecute();
                 DataSet dsRolSeg = sqlInsRolSeg.Execute(sql, "rolSeguridad");
                 DataTable dtRolSeg = dsRolSeg.Tables["rolSeguridad"];
-                int i = 0;
                 foreach (DataRow drow in dtRolSeg.Rows)
-                {
-                    
-                    this.rolSeg[i] = drow.Field<string>("rolSeg");
-                    i++;
+                {                    
+                    this.rolSeg.Add(drow.Field<string>("rolSeg"));
                 }
             }
             catch (SqlException sqlex)
@@ -93,20 +88,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@rolCod", this.rolCod);
                 sql.Parameters.AddWithValue("@rolDes", this.rolDes);
                 SQLExecute sqlIns = new SQLExecute();
-                sqlIns.Execute(sql, "rol");
-                sql.Parameters.Clear();
-                //agrego las seguridades del rol
-                sql.CommandText = "INSERT INTO rolSeguridad (rolCod, rolSegCod) VALUES (@rolCod, @rolSegCod)";
-                //la base de datos debería controlar que el id exista en la tabla de seguridades
-                sql.Parameters.AddWithValue("@rolCod", "");
-                sql.Parameters.AddWithValue("@rolSegCod", "");
-                sql.Parameters[0].Value = this.rolCod;
-                foreach (string rolSegCodActual in this.rolSeg)
-                {
-                    sql.Parameters[1].Value = rolSegCodActual;
-                    SQLExecute sqlInsSeg = new SQLExecute();
-                    sqlInsSeg.Execute(sql, "rolSeguridad");
-                }
+                sqlIns.Execute(sql, "rol");                
             }
             catch(SqlException sqlex)
             {
@@ -139,6 +121,7 @@ namespace SeguimientoIncidentesBD1.persist
         {
             try
             {
+                this.rolSeg.Add(segCod);
                 SqlCommand sql = new SqlCommand();               
                 sql.CommandText = "INSERT INTO rolSeguridad (rolCod, rolSegCod) VALUES (@rolCod, @rolSegCod)";
                 //la base de datos debería controlar que el id exista en la tabla de seguridades
@@ -174,6 +157,25 @@ namespace SeguimientoIncidentesBD1.persist
             catch (SqlException sqlex)
             {
                 throw sqlex;
+            }
+        }
+
+        public void RolSegAddAll(IList<string> rolSeg)
+        {
+            this.rolSeg = rolSeg;
+            //hago la consulta sobre la tabla rolSeguridad
+            SqlCommand sql = new SqlCommand();
+            //agrego las seguridades del rol
+            sql.CommandText = "INSERT INTO rolSeguridad (rolCod, rolSegCod) VALUES (@rolCod, @rolSegCod)";
+            //la base de datos debería controlar que el id exista en la tabla de seguridades
+            sql.Parameters.AddWithValue("@rolCod", "");
+            sql.Parameters.AddWithValue("@rolSegCod", "");
+            sql.Parameters[0].Value = this.rolCod;
+            foreach (string rolSegCodActual in this.rolSeg)
+            {
+                sql.Parameters[1].Value = rolSegCodActual;
+                SQLExecute sqlInsSeg = new SQLExecute();
+                sqlInsSeg.Execute(sql, "rolSeguridad");
             }
         }
     }

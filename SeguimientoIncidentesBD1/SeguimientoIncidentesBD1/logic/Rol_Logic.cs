@@ -34,11 +34,10 @@ namespace SeguimientoIncidentesBD1.logic
             set { rolSeg = value; }
         }
 
-        public Rol_Logic(string rolCod, string rolDes, IList<string> rolSeg)
+        public Rol_Logic(string rolCod, string rolDes)
         {
             this.rolCod = rolCod;
             this.rolDes = rolDes;
-            this.rolSeg = rolSeg;
         }
 
         //cada entidad debe tener un constructor que solo reciba la clave, y en dicho caso haga la busqueda en la BD
@@ -63,7 +62,7 @@ namespace SeguimientoIncidentesBD1.logic
         {
             try
             {
-                Rol_Persist rolPersist = new Rol_Persist(this.rolCod, this.rolDes, this.rolSeg);
+                Rol_Persist rolPersist = new Rol_Persist(this.rolCod, this.rolDes);
                 rolPersist.RolCreate();
             }
             catch (SqlException sqlex)
@@ -113,6 +112,22 @@ namespace SeguimientoIncidentesBD1.logic
                 this.rolSeg.Add(rolSeg);
                 Rol_Persist rolPersist = new Rol_Persist(this.rolCod);
                 rolPersist.RolSegAdd(rolSeg);              
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+        //agrega una lista de seguridades relacionada al rol
+        public void RolSegAddAll(IList<string> rolSeg)
+        {
+            try
+            {
+                //actualizo la lista de seguridades
+                this.rolSeg = rolSeg;
+                Rol_Persist rolPersist = new Rol_Persist(this.rolCod);
+                rolPersist.RolSegAddAll(rolSeg);
             }
             catch (SqlException sqlex)
             {

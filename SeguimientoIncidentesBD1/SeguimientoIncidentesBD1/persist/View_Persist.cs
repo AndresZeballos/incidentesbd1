@@ -32,8 +32,6 @@ namespace SeguimientoIncidentesBD1.persist
 
         public DataSet View_GeneralGroups()
         {
-            //Tabla:
-            //Código
             try
             {
                 SqlCommand sql = new SqlCommand();

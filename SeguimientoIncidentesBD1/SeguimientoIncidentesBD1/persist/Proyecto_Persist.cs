@@ -38,9 +38,8 @@ namespace SeguimientoIncidentesBD1.persist
             set { proEst = value; }
         }
 
-        public Proyecto_Persist(int proCod, string proNom, string proDes, string proEst)
+        public Proyecto_Persist(string proNom, string proDes, string proEst)
         {
-            this.proCod = proCod;
             this.proNom = proNom;
             this.proDes = proDes;
             this.proEst = proEst;
@@ -73,8 +72,7 @@ namespace SeguimientoIncidentesBD1.persist
             try
             {
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "INSERT INTO proyecto (proCod, proNom, proDes, proEst) VALUES (@proCod, @proNom, @proDes, @proEst)";
-                sql.Parameters.AddWithValue("@proCod", this.proCod);
+                sql.CommandText = "INSERT INTO proyecto (proNom, proDes, proEst) VALUES (@proNom, @proDes, @proEst)";
                 sql.Parameters.AddWithValue("@proNom", this.proNom);
                 sql.Parameters.AddWithValue("@proDes", this.proDes);
                 sql.Parameters.AddWithValue("@proEst", this.proEst);

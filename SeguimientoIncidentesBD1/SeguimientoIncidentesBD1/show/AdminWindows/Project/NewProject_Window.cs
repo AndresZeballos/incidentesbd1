@@ -6,12 +6,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SeguimientoIncidentesBD1.logic;
+using System.Data.SqlClient;
 
 namespace SeguimientoIncidentesBD1.show
 {
     public partial class NewProject_Window : Form
     {
-
+        
         private ProjectsAdmin_Window projectAdmin;
 
         public NewProject_Window(ProjectsAdmin_Window projectAdmin)
@@ -19,6 +21,9 @@ namespace SeguimientoIncidentesBD1.show
             InitializeComponent();
             this.projectAdmin = projectAdmin;
             this.Location = this.projectAdmin.Location;
+            this.comboBox1.Items.Add("Desarrollo");
+            this.comboBox1.Items.Add("Produccion");
+            this.comboBox1.Items.Add("Obsoleto");
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -37,6 +42,32 @@ namespace SeguimientoIncidentesBD1.show
             GroupsProject groupsProject = new GroupsProject(this);
             this.Visible = false;
             groupsProject.Visible = true;
+        }
+
+        //creo el proyecto
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string proNom = this.textBox1.Text;
+            string proDes = this.textBox5.Text;
+            string proEst = this.comboBox1.SelectedText;
+
+            if (proNom.Equals("") || proDes.Equals(""))
+            {
+                MessageBox.Show("Falta ingresar un campo");
+            }
+            else
+            {
+                try
+                {
+                    Proyecto_Logic proyecto = new Proyecto_Logic(proNom, proDes, proEst);
+                    proyecto.ProyectoPersist();
+                    MessageBox.Show("Proyecto creado con exito");
+                }
+                catch (SqlException sqlex)
+                {
+                    MessageBox.Show("Error al crear el proyecto: " + sqlex.Message);
+                }
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

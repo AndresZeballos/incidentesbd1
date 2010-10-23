@@ -39,9 +39,8 @@ namespace SeguimientoIncidentesBD1.logic
             set { proEst = value; }
         }
 
-        public Proyecto_Logic(int proCod, string proNom, string proDes, string proEst)
+        public Proyecto_Logic(string proNom, string proDes, string proEst)
         {
-            this.proCod = proCod;
             this.proNom = proNom;
             this.proDes = proDes;
             this.proEst = proEst;
@@ -69,7 +68,7 @@ namespace SeguimientoIncidentesBD1.logic
         {
             try
             {
-                Proyecto_Persist proPersist = new Proyecto_Persist(this.proCod, this.proNom, this.proDes, this.proEst);
+                Proyecto_Persist proPersist = new Proyecto_Persist(this.proNom, this.proDes, this.proEst);
                 proPersist.ProyectoCreate();
             }
             catch (SqlException sqlex)
