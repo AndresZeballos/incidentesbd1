@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SeguimientoIncidentesBD1.persist;
+using SeguimientoIncidentesBD1.logic;
 
 namespace SeguimientoIncidentesBD1.show
 {
@@ -13,12 +15,17 @@ namespace SeguimientoIncidentesBD1.show
     {
 
         private GroupsAdmin_Window groupAdmin;
+        private Cache cache;
 
-        public ViewGroups_Window(GroupsAdmin_Window groupAdmin)
+        public ViewGroups_Window(GroupsAdmin_Window groupAdmin, Cache cache)
         {
             InitializeComponent();
             this.groupAdmin = groupAdmin;
             this.Location = this.groupAdmin.Location;
+            this.cache = cache;
+            this.textBox1.Text = cache.Grupo.GrpUsuCod;
+            this.textBox5.Text = cache.Grupo.GrpUsuDes;
+             
         }
 
         private void button4_Click(object sender, EventArgs e)

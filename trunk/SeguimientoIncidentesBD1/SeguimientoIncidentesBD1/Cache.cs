@@ -13,8 +13,12 @@ namespace SeguimientoIncidentesBD1
     public class Cache
     {
         private Usuario_Logic usuario;
+
+        private GrupoUsuario_Logic grupo;
         
         public Usuario_Logic Usuario { get; set; }
+
+        public GrupoUsuario_Logic Grupo { get; set; }
 
         public Cache()
         {

@@ -59,7 +59,7 @@ namespace SeguimientoIncidentesBD1.show
             //if (login.ValidarLogin(usuCod, usuPass))
             {
                 cache.Usuario = new Usuario_Logic(usuCod);
-                Principal_Window principal = new Principal_Window(this, cache);
+                Principal_Window principal = new Principal_Window(this, this.cache);
                 this.Visible = false;
                 principal.Visible = true;            
             }
