@@ -64,7 +64,7 @@ namespace SeguimientoIncidentesBD1.persist
             }
         }
 
-        public DataSet View_GroupUsers(String grpUsuCod)
+        public DataSet View_GroupUsers(string grpUsuCod)
         {
             //Tabla:
             //Nombre
@@ -82,7 +82,6 @@ namespace SeguimientoIncidentesBD1.persist
                 throw sqlex;
             }
         }
-       
 
         public DataSet View_GeneralIncidents(string incProCod)
         {
@@ -298,6 +297,27 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@proCod", proCod);
                 SQLExecute sqlIns = new SQLExecute();
                 DataSet ds = sqlIns.Execute(sql, "grupo_proyecto");
+                return ds;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+        public DataSet View_Option_GroupUser(string grpCod)
+        {
+            //Tabla:
+            //Código (todos los grupos del sistema excepto los que tiene ese proyecto)
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "SELECT usuCod FROM usuario " +
+                                  "WHERE usuCod NOT IN (" +
+                                  "SELECT usuGrpUsuCod FROM usuarioGrupoUsuario WHERE usuarioGrupoUsuario.usuGrpCod = @grpCod)";
+                sql.Parameters.AddWithValue("@grpCod", grpCod);
+                SQLExecute sqlIns = new SQLExecute();
+                DataSet ds = sqlIns.Execute(sql, "usuario");
                 return ds;
             }
             catch (SqlException sqlex)

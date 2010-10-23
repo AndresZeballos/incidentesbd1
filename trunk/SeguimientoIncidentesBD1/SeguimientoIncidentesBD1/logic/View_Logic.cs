@@ -36,7 +36,7 @@ namespace SeguimientoIncidentesBD1.logic
             return vp.View_GeneralIncidents(incProCod);
         }
 
-        public DataSet View_GroupUsers(String grpUsuCod)
+        public DataSet View_GroupUsers(string grpUsuCod)
         {
             View_Persist vp = new View_Persist();
             return vp.View_GroupUsers(grpUsuCod);
@@ -88,6 +88,12 @@ namespace SeguimientoIncidentesBD1.logic
         {
             View_Persist vp = new View_Persist();
             return vp.View_Option_RolSecurity(rolCod);
+        }
+
+        public DataSet View_Option_GroupUser(string grpCod)
+        {
+            View_Persist vp = new View_Persist();
+            return vp.View_Option_GroupUser(grpCod);
         }
 
         public DataSet View_ProjectGroup(int proCod)
