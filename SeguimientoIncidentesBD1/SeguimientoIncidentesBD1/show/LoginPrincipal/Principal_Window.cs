@@ -31,6 +31,16 @@ namespace SeguimientoIncidentesBD1.show
                 this.button3.Visible = false;
                 this.textBox3.Visible = false;
             }
+
+            View_Logic vl = new View_Logic();
+            List<string> listaProyectos = vl.consult_projectOfUser(cache.Usuario.UsuCod);
+            foreach (string proy in listaProyectos)
+            {
+                this.comboBox1.Items.Add("Sistemas");
+            }
+
+
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
