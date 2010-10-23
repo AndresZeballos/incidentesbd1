@@ -634,20 +634,20 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
-        public DataSet consult_searchUser(string usuCod)
+        public DataSet consult_projectOfUser(string usuCod)
         {
             try
             {
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "SELECT proCod " +
-                                  "FROM grupoProyecto " +
-                                  "WHERE grupoProyecto.grpCod IN " + 
-                                  "(SELECT grpCod FROM grupoUsuario g WHERE g.usuCod = @usuCod) ";
+                                  "FROM proyectoGrupoUsuario " +
+                                  "WHERE proyectoGrupoUsuario.proGrpUsuCod IN " +
+                                  "(SELECT usuGrpCod FROM usuarioGrupoUsuario WHERE usuarioGrupoUsuario.usuGrpUsuCod = @usuCod) ";
 
                 sql.Parameters.AddWithValue("@usuCod", usuCod);
 
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql, "grupoProyecto");
+                DataSet ds = sqlIns.Execute(sql, "proyectoGrupoUsuario");
                 return ds;
             }
             catch (SqlException sqlex)
