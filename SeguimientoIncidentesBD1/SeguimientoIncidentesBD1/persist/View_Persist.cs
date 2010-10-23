@@ -71,7 +71,7 @@ namespace SeguimientoIncidentesBD1.persist
             try
             {
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "SELECT * FROM usuarioGrupoUsuario WHERE usuGrpCod = @usuGrpCod";
+                sql.CommandText = "SELECT usuGrpUsuCod FROM usuarioGrupoUsuario WHERE usuGrpCod = @usuGrpCod";
                 sql.Parameters.AddWithValue("@usuGrpCod", grpUsuCod);
                 SQLExecute sqlInsGrpUsu = new SQLExecute();
                 DataSet ds = sqlInsGrpUsu.Execute(sql, "usuarioGrupoUsuario");

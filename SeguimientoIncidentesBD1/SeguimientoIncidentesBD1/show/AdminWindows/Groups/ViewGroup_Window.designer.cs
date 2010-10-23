@@ -1,6 +1,6 @@
 ﻿namespace SeguimientoIncidentesBD1.show
 {
-    partial class ViewGroups_Window
+    partial class ViewGroup_Window
     {
         /// <summary>
         /// Required designer variable.
@@ -180,16 +180,20 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Enabled = false;
             this.dataGridView1.Location = new System.Drawing.Point(98, 147);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.Size = new System.Drawing.Size(264, 201);
             this.dataGridView1.TabIndex = 43;
             // 
-            // ViewGroups_Window
+            // ViewGroup_Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -211,7 +215,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
-            this.Name = "ViewGroups_Window";
+            this.Name = "ViewGroup_Window";
             this.Text = "Detalle de Grupo";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ViewGrupos_Window_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

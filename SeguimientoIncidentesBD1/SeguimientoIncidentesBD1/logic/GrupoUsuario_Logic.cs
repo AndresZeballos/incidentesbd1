@@ -12,7 +12,7 @@ namespace SeguimientoIncidentesBD1.logic
     {
         private string grpUsuCod;
         private string grpUsuDes;
-        private IList<string> usuGrpUsuCod = new List<string>();
+        private IList<string> usuGrpCod = new List<string>();
 
         public string GrpUsuCod
         {
@@ -28,8 +28,8 @@ namespace SeguimientoIncidentesBD1.logic
 
         public IList<string> UsuGrpUsuCod
         {
-            get { return usuGrpUsuCod; }
-            set { usuGrpUsuCod = value; }
+            get { return usuGrpCod; }
+            set { usuGrpCod = value; }
         }
 
         public GrupoUsuario_Logic(string grpUsuCod, string grpUsuDes)
@@ -45,7 +45,7 @@ namespace SeguimientoIncidentesBD1.logic
                 GrupoUsuario_Persist grupo = new GrupoUsuario_Persist(grpUsuCod);
                 this.grpUsuCod = grpUsuCod;
                 this.grpUsuDes = grupo.GrpUsuDes;
-                this.usuGrpUsuCod = grupo.UsuGrpUsuCod;
+                this.usuGrpCod = grupo.UsuGrpCod;
             }
             catch (SqlException sqlex)
             {
@@ -100,7 +100,7 @@ namespace SeguimientoIncidentesBD1.logic
             try
             {
                 //actualizo la lista de seguridades
-                this.usuGrpUsuCod.Add(usuCod);
+                this.usuGrpCod.Add(usuCod);
                 GrupoUsuario_Persist grpPersist = new GrupoUsuario_Persist(this.grpUsuCod);
                 grpPersist.GrpUsuUsuAdd(usuCod);
             }
@@ -116,7 +116,7 @@ namespace SeguimientoIncidentesBD1.logic
             try
             {
                 //actualizo la lista de seguridades
-                this.usuGrpUsuCod = usuCod;
+                this.usuGrpCod = usuCod;
                 GrupoUsuario_Persist grpPersist = new GrupoUsuario_Persist(this.grpUsuCod);
                 grpPersist.GrpUsuUsuAddAll(usuCod);
             }

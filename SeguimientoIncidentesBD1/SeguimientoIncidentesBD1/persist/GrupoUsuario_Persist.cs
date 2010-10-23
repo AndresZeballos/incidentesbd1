@@ -25,7 +25,7 @@ namespace SeguimientoIncidentesBD1.persist
             set { grpUsuDes = value; }
         }
 
-        public IList<string> UsuGrpUsuCod
+        public IList<string> UsuGrpCod
         {
             get { return usuGrpCod; }
             set { usuGrpCod = value; }
