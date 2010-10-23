@@ -114,7 +114,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Enabled = false;
+            this.textBox1.Enabled = true;
             this.textBox1.Location = new System.Drawing.Point(88, 40);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBox1.Name = "textBox1";

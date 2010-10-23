@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SeguimientoIncidentesBD1.logic;
+using System.Data.SqlClient;
 
 namespace SeguimientoIncidentesBD1.show
 {
@@ -28,12 +30,25 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Estas seguro de crear rol", "AVISO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                string rolNom = this.textBox1.Text;
-                string rolDes = this.textBox2.Text;
+            string rolNom = this.textBox1.Text;
+            string rolDes = this.textBox2.Text;
 
-                //Crea el rol
+            if (rolNom.Equals("") || rolDes.Equals(""))
+            {
+                MessageBox.Show("Falta ingresar un campo");
+            }
+            else
+            {
+                try
+                {
+                    Rol_Logic rol = new Rol_Logic(rolNom, rolDes);
+                    rol.RolPersist();
+                    MessageBox.Show("Rol ingresado cone exito");
+                }
+                catch (SqlException sqlex)
+                {
+                    MessageBox.Show("No se puede crear el rol" + sqlex.Message);
+                }
             }
         }
 
