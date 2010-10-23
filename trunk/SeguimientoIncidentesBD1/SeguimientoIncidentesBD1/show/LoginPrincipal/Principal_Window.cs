@@ -36,7 +36,7 @@ namespace SeguimientoIncidentesBD1.show
             List<string> listaProyectos = vl.consult_projectOfUser(cache.Usuario.UsuCod);
             foreach (string proy in listaProyectos)
             {
-                this.comboBox1.Items.Add("Sistemas");
+                this.comboBox1.Items.Add(proy);
             }
 
 
