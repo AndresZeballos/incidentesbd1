@@ -64,7 +64,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "SELECT * FROM estado WHERE estCod = @estCod";
                 sql.Parameters.AddWithValue("@estCod", estCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "estado");
                 DataTable dt = ds.Tables["estado"];
                 this.estCod = dt.Rows[0].Field<string>("estCod");
                 //cargo la los atributos del estado
@@ -76,7 +76,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "SELECT * FROM estadoSiguiente WHERE estCod = @estCod";
                 sql.Parameters.AddWithValue("@estCod", this.estCod);
                 SQLExecute sqlInsestadoSeg = new SQLExecute();
-                DataSet dsestadoSig = sqlIns.Execute(sql);
+                DataSet dsestadoSig = sqlIns.Execute(sql, "estadoSiguiente");
                 DataTable dtestadoSig = dsestadoSig.Tables["estadoSiguiente"];
                 int i = 0;
                 foreach (DataRow drow in dtestadoSig.Rows)
@@ -102,7 +102,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@estFin", this.estFin);
                 sql.Parameters.AddWithValue("@estEst", this.estEst);
                 SQLExecute sqlIns = new SQLExecute();
-                sqlIns.Execute(sql);
+                sqlIns.Execute(sql, "estado");
                 sql.Parameters.Clear();
                 //agrego los siguientes estados del estado
                 sql.CommandText = "INSERT INTO estadoSiguiente (estCod, estSigEstCod) VALUES (@estCod, @estSigEstCod)";
@@ -114,7 +114,7 @@ namespace SeguimientoIncidentesBD1.persist
                 {
                     sql.Parameters[1].Value = estSig;
                     SQLExecute sqlInsSeg = new SQLExecute();
-                    sqlInsSeg.Execute(sql);
+                    sqlInsSeg.Execute(sql, "estadoSiguiente");
                 }
             }
             catch (SqlException sqlex)
@@ -132,13 +132,13 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "DELETE FROM estadoSiguiente WHERE estCod=@estCod";
                 sql.Parameters.AddWithValue("@estCod", this.estCod);
                 SQLExecute sqlIns = new SQLExecute();
-                sqlIns.Execute(sql);
+                sqlIns.Execute(sql, "estadoSiguiente");
                 sql.Parameters.Clear();
                 //elimino el estado propiamente dicho
                 sql.CommandText = "DELETE FROM	estado WHERE estCod=@estCod";
                 sql.Parameters.AddWithValue("@estCod", this.estCod);
                 SQLExecute sqlIns2 = new SQLExecute();
-                sqlIns2.Execute(sql);
+                sqlIns2.Execute(sql, "estado");
             }
             catch (SqlException sqlex)
             {
@@ -156,7 +156,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@estCod", this.estCod);
                 sql.Parameters.AddWithValue("@estSigEstCod", estCod);
                 SQLExecute sqlInsSeg = new SQLExecute();
-                sqlInsSeg.Execute(sql);
+                sqlInsSeg.Execute(sql, "estadoSiguiente");
             }
             catch (SqlException sqlex)
             {

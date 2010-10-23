@@ -48,8 +48,8 @@ namespace SeguimientoIncidentesBD1.persist
 
         public IList<string> UsuSeg
         {
-            get { return UsuSeg; }
-            set { UsuSeg = value; }
+            get { return usuSeg; }
+            set { usuSeg = value; }
         }
 
         public Usuario_Persist(string usuCod, string usuNom, string usuPass, string usuMail, IList<string> usuRol)
@@ -59,6 +59,20 @@ namespace SeguimientoIncidentesBD1.persist
             this.usuPass = usuPass;
             this.usuMail = usuMail;
             this.usuRol = usuRol;
+            //cargo las seguridades asociadas a los roles del usuario
+            foreach (string rol in this.usuRol)
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "SELECT * FROM rolSeguridad WHERE rolCod = @rolCod";
+                sql.Parameters.AddWithValue("@rolCod", rol);
+                SQLExecute sqlIns3 = new SQLExecute();
+                DataSet ds3 = sqlIns3.Execute(sql, "rolSeguridad");
+                DataTable dt3 = ds3.Tables["rolSeguridad"];
+                foreach (DataRow drow in dt3.Rows)
+                {
+                    this.usuSeg.Add(drow.Field<string>("rolSegCod"));
+                }
+            }
         }
 
         public Usuario_Persist(string usuCod)
@@ -69,7 +83,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "SELECT * FROM usuario WHERE usuCod = @usuCod";
                 sql.Parameters.AddWithValue("@usuCod", usuCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "usuario");
                 DataTable dt = ds.Tables["usuario"];
                 if (dt!=null)
                 {
@@ -83,13 +97,26 @@ namespace SeguimientoIncidentesBD1.persist
                     sql.CommandText = "SELECT * FROM usuarioRol WHERE usuCod = @usuCod";
                     sql.Parameters.AddWithValue("@usuCod", this.usuCod);
                     SQLExecute sqlIns2 = new SQLExecute();
-                    DataSet ds2 = sqlIns2.Execute(sql);
+                    DataSet ds2 = sqlIns2.Execute(sql, "usuarioRol");
                     DataTable dt2 = ds2.Tables["usuarioRol"];
-                    int i = 0;
                     foreach (DataRow drow in dt2.Rows)
                     {
-                        this.usuRol[i] = drow.Field<string>("usuRol");
-                        i++;
+                        this.usuRol.Add(drow.Field<string>("usuRolCod"));
+                    }
+                    //hago la consulta sobre la tabla de rolSeguridad para cargar las seguridades del usuario
+                    //para cada rol del usuario, cargo las seguridades asociadas
+                    foreach (string rol in this.usuRol)
+                    {
+                        sql.Parameters.Clear();
+                        sql.CommandText = "SELECT * FROM rolSeguridad WHERE rolCod = @rolCod";
+                        sql.Parameters.AddWithValue("@rolCod", rol);
+                        SQLExecute sqlIns3 = new SQLExecute();
+                        DataSet ds3 = sqlIns3.Execute(sql, "rolSeguridad");
+                        DataTable dt3 = ds3.Tables["rolSeguridad"];
+                        foreach (DataRow drow in dt3.Rows)
+                        {
+                            this.usuSeg.Add(drow.Field<string>("rolSegCod"));
+                        }
                     }
                 }
                 else
@@ -114,7 +141,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@usuPass", this.usuPass);
                 sql.Parameters.AddWithValue("@usuMail", this.usuMail);
                 SQLExecute sqlIns = new SQLExecute();
-                sqlIns.Execute(sql);
+                sqlIns.Execute(sql, "usuario");
                 sql.Parameters.Clear();
                 //agrego los roles del usuario
                 sql.CommandText = "INSERT INTO usuarioRol (usuCod, usuRolCod) VALUES (@usuCod, @usuRolCod)";
@@ -126,7 +153,7 @@ namespace SeguimientoIncidentesBD1.persist
                 {
                     sql.Parameters[1].Value = usuRolCodActual;
                     SQLExecute sqlInsSeg = new SQLExecute();
-                    sqlInsSeg.Execute(sql);
+                    sqlInsSeg.Execute(sql, "usuarioRol");
                 }
             }
             catch (SqlException sqlex)
@@ -144,14 +171,14 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "DELETE FROM usuarioRol WHERE usuCod=@usuCod";
                 sql.Parameters.AddWithValue("@usuCod", this.usuCod);
                 SQLExecute sqlIns = new SQLExecute();
-                sqlIns.Execute(sql);
+                sqlIns.Execute(sql, "usuario");
                 sql.Parameters.Clear();
                 //elimino el usuario propiamente dicho
                 sql.Parameters.Clear();
                 sql.CommandText = "DELETE FROM usuario WHERE usuCod=@usuCod";
                 sql.Parameters.AddWithValue("@usuCod", this.usuCod);
                 SQLExecute sqlIns2 = new SQLExecute();
-                sqlIns2.Execute(sql);
+                sqlIns2.Execute(sql, "usuarioRol");
             }
             catch (SqlException sqlex)
             {
@@ -170,7 +197,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@usuPass", this.usuPass);
                 sql.Parameters.AddWithValue("@usuMail", this.usuMail);
                 SQLExecute sqlIns = new SQLExecute();
-                sqlIns.Execute(sql);
+                sqlIns.Execute(sql, "usuario");
             }
             catch (SqlException sqlex)
             {
@@ -188,7 +215,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@usuCod", this.usuCod);
                 sql.Parameters.AddWithValue("@usuRolCod", rolCod);
                 SQLExecute sqlInsSeg = new SQLExecute();
-                sqlInsSeg.Execute(sql);
+                sqlInsSeg.Execute(sql, "usuarioRol");
             }
             catch (SqlException sqlex)
             {

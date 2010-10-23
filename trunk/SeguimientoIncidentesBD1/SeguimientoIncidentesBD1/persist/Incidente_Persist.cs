@@ -89,7 +89,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "SELECT * FROM incidente WHERE incCod = @incCod";
                 sql.Parameters.AddWithValue("@incCod", incCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "incidente");
                 DataTable dt = ds.Tables["incidente"];
                 //cargo los atributos del incidente
                 this.incCod = dt.Rows[0].Field<int>("incCod");
@@ -144,7 +144,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@incDes", this.incDes);
                 sql.Parameters.AddWithValue("@incRes", this.incRes);
                 SQLExecute sqlIns = new SQLExecute();
-                sqlIns.Execute(sql);
+                sqlIns.Execute(sql, "incidente");
             }
             catch (SqlException sqlex)
             {
@@ -161,13 +161,13 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "DELETE FROM historia WHERE histIncCod=@histIncCod";
                 sql.Parameters.AddWithValue("@histIncCod", this.incCod);
                 SQLExecute sqlIns = new SQLExecute();
-                sqlIns.Execute(sql);
+                sqlIns.Execute(sql, "historia");
                 sql.Parameters.Clear();
                 //elimino el incidente propiamente dicho
                 sql.CommandText = "DELETE FROM	incidente WHERE incCod=@incCod";
                 sql.Parameters.AddWithValue("@incCod", this.incCod);
                 SQLExecute sqlIns2 = new SQLExecute();
-                sqlIns2.Execute(sql);
+                sqlIns2.Execute(sql, "incidente");
             }
             catch (SqlException sqlex)
             {
@@ -201,7 +201,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@incDes", this.incDes);
                 sql.Parameters.AddWithValue("@incRes", this.incRes);
                 SQLExecute sqlIns = new SQLExecute();
-                sqlIns.Execute(sql);
+                sqlIns.Execute(sql, "incidente");
             }
             catch (SqlException sqlex)
             {
@@ -218,7 +218,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@incCod", this.incCod);
                 sql.Parameters.AddWithValue("@incUsuAsig", this.incUsuAsig);
                 SQLExecute sqlIns = new SQLExecute();
-                sqlIns.Execute(sql);
+                sqlIns.Execute(sql, "incidente");
             }
             catch (SqlException sqlex)
             {
@@ -234,7 +234,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "SELECT * FROM historia WHERE histIncCod = @histIncCod";
                 sql.Parameters.AddWithValue("@histIncCod", this.incCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "historia");
                 DataTable dt = ds.Tables["historia"];
                 IList<int> lista = new List<int>();
                 //cargo la lista de eventos de la historia del incidente

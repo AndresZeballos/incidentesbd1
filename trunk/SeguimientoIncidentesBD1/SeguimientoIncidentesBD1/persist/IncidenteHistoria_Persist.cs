@@ -62,7 +62,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "SELECT * FROM historia WHERE histCod = @histCod";
                 sql.Parameters.AddWithValue("@histCod", incHistCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "historia");
                 DataTable dt = ds.Tables["historia"];
                 //cargo los atributos del incidente
                 this.incHistCod = dt.Rows[0].Field<int>("histCod");
@@ -94,7 +94,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "DELETE FROM	historia WHERE histCod=@histCod";
                 sql.Parameters.AddWithValue("@histCod", this.incHistCod);
                 SQLExecute sqlIns = new SQLExecute();
-                sqlIns.Execute(sql);
+                sqlIns.Execute(sql, "historia");
             }
             catch (SqlException sqlex)
             {

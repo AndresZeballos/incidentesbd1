@@ -49,8 +49,8 @@ namespace SeguimientoIncidentesBD1.logic
 
         public IList<string> UsuSeg
         {
-            get { return UsuSeg; }
-            set { UsuSeg = value; }
+            get { return usuSeg; }
+            set { usuSeg = value; }
         }
 
         public Usuario_Logic(string usuCod, string usuNom, string usuPass, string usuMail, IList<string> usuRol)
@@ -69,10 +69,12 @@ namespace SeguimientoIncidentesBD1.logic
             try
             {
                 Usuario_Persist usuPersist = new Usuario_Persist(usuCod);
+                this.usuCod = usuPersist.UsuCod;
                 this.usuNom = usuPersist.UsuNom;
                 this.usuPass = usuPersist.UsuPass;
                 this.usuMail = usuPersist.UsuMail;
                 this.usuRol = usuPersist.UsuRol;
+                this.usuSeg = usuPersist.UsuSeg;
             }
             catch (SqlException sqlex)
             {
@@ -81,7 +83,7 @@ namespace SeguimientoIncidentesBD1.logic
         }
 
         //persiste un rol en la base de datos
-        public void usuPersist()
+        public void UsuarioPersist()
         {
             try
             {

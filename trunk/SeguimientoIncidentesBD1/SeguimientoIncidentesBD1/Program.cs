@@ -20,17 +20,23 @@ namespace SeguimientoIncidentesBD1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login_Window());
-            ////Conexion cnx = new Conexion();
-            ////ConsultasSelect cs = new ConsultasSelect(cnx);
-            ////DataSet ds = cs.ConsultaGeneral("SELECT * FROM Usuarios");
 
-            ////DataTable dt = ds.Tables["Usuarios"];
-            ////int i = 0;
-            ////foreach (DataRow drow in dt.Rows)
-            ////{
-            ////    Console.WriteLine(drow.Field<string>("nombre"));
-            ////    i++;
-            ////}
+            //Usuario_Logic usuario = new Usuario_Logic("bugsys");
+            //System.Windows.Forms.MessageBox.Show(usuario.UsuNom);
+
+            //Conexion cnx = new Conexion();
+            //ConsultasSelect cs = new ConsultasSelect(cnx);
+            
+            //DataSet ds = cs.ConsultaGeneral("SELECT * FROM usuario;");
+
+            //DataTable dt = ds.Tables["usuario"];
+            //int i = 0;
+            //foreach (DataRow drow in dt.Rows)
+            //{
+            //    System.Windows.Forms.MessageBox.Show(drow.Field<string>("usuCod"));
+            //    i++;
+            //}
+
             //Seguridad_Persist seg = new Seguridad_Persist("hola", "seguridad hola");
             //seg.SeguridadCreate();
             //Seguridad_Persist seg2 = new Seguridad_Persist("chau", "seguridad chau");

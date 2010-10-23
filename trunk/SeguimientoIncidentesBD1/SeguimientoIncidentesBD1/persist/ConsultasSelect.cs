@@ -51,7 +51,7 @@ namespace SeguimientoIncidentesBD1.persist
 
                 SqlCommand cmd = new SqlCommand(sqlText, cnx.Connection);
                 da.SelectCommand = cmd;
-                da.Fill(ds);
+                da.Fill(ds, "usuario");
                 return ds;
             }
             catch (SqlException sqle) {
