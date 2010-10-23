@@ -44,9 +44,9 @@ namespace SeguimientoIncidentesBD1.show
         {
             String codeSelected = this.dataGridView2.CurrentRow.Cells[0].Value.ToString();
             this.cache.Grupo = new GrupoUsuario_Logic(codeSelected);
-            ViewGroups_Window viewGroups = new ViewGroups_Window(this,this.cache);
+            ViewGroup_Window viewGroup = new ViewGroup_Window(this,this.cache);
             this.Visible = false;
-            viewGroups.Visible = true;
+            viewGroup.Visible = true;
         }
 
         private void button2_Click(object sender, EventArgs e)

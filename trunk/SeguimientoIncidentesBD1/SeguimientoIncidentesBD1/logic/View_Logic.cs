@@ -39,7 +39,7 @@ namespace SeguimientoIncidentesBD1.logic
         public DataSet View_GroupUsers(String grpUsuCod)
         {
             View_Persist vp = new View_Persist();
-            return vp.View_GeneralIncidents(grpUsuCod);
+            return vp.View_GroupUsers(grpUsuCod);
         }
 
         public DataSet View_History(int ProCod)

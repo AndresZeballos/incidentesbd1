@@ -11,13 +11,13 @@ using SeguimientoIncidentesBD1.logic;
 
 namespace SeguimientoIncidentesBD1.show
 {
-    public partial class ViewGroups_Window : Form
+    public partial class ViewGroup_Window : Form
     {
 
         private GroupsAdmin_Window groupAdmin;
         private Cache cache;
 
-        public ViewGroups_Window(GroupsAdmin_Window groupAdmin, Cache cache)
+        public ViewGroup_Window(GroupsAdmin_Window groupAdmin, Cache cache)
         {
             InitializeComponent();
             this.groupAdmin = groupAdmin;
@@ -27,6 +27,8 @@ namespace SeguimientoIncidentesBD1.show
             this.textBox5.Text = cache.Grupo.GrpUsuDes;
             DataSet usuariosGrupo = new View_Logic().View_GroupUsers(this.cache.Grupo.GrpUsuCod);
             this.dataGridView1.DataSource = usuariosGrupo;
+            this.dataGridView1.DataMember = "usuarioGrupoUsuario";
+            this.dataGridView1.Columns[0].HeaderText = "Usuarios";
         }
 
         private void button4_Click(object sender, EventArgs e)
