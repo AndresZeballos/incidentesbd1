@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using SeguimientoIncidentesBD1.logic;
 
 namespace SeguimientoIncidentesBD1.show
 {
@@ -13,11 +15,13 @@ namespace SeguimientoIncidentesBD1.show
     {
 
         private Form beforeStateWindow;
+        private Cache cache;
 
-        public NextState(Form beforeStateWindow)
+        public NextState(Form beforeStateWindow, Cache cache)
         {
             InitializeComponent();
             this.beforeStateWindow = beforeStateWindow;
+            this.cache = cache;
             this.Location = this.beforeStateWindow.Location;
         }
 

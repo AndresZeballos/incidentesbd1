@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using SeguimientoIncidentesBD1.logic;
 
 namespace SeguimientoIncidentesBD1.show
 {
@@ -13,11 +15,13 @@ namespace SeguimientoIncidentesBD1.show
     {
 
         private StateAdmin_Window stateAdmin;
+        private Cache cache;
 
-        public NewState_Window(StateAdmin_Window stateAdmin)
+        public NewState_Window(StateAdmin_Window stateAdmin, Cache cache)
         {
             InitializeComponent();
             this.stateAdmin = stateAdmin;
+            this.cache = cache;
             this.Location = this.stateAdmin.Location;
         }
 
@@ -46,7 +50,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button5_Click(object sender, EventArgs e)
         {
-            NextState nextState = new NextState(this);
+            NextState nextState = new NextState(this, this.cache);
             this.Visible = false;
             nextState.Visible = true;
         }

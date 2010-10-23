@@ -24,14 +24,14 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ViewState_Window viewState = new ViewState_Window(this);
+            ViewState_Window viewState = new ViewState_Window(this, this.cache);
             this.Visible = false;
             viewState.Visible = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            NewState_Window newState = new NewState_Window(this);
+            NewState_Window newState = new NewState_Window(this, this.cache);
             this.Visible = false;
             newState.Visible = true;
         }
