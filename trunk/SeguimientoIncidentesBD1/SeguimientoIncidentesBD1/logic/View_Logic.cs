@@ -229,11 +229,22 @@ namespace SeguimientoIncidentesBD1.logic
             return vp.consult_4(usuNom);
         }
 
-        public List<string> userByProject(string usuCod)
+        public List<string> userByProject(int proCod)
         {
+            List<string> result = new List<string>();
 
-            //SELECT proCod FROM UserByProject WHERE usuCod = @usuCod
-            return null;
+            View_Persist vp = new View_Persist();
+            DataSet ds = vp.userByProject(proCod);
+            DataTable dt = ds.Tables["UserByProject"];
+            if (dt.Rows.Count != 0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    result.Add(dt.Rows[i].Field<string>("usuCod"));
+                }
+            }
+
+            return result;
         }
 
 
