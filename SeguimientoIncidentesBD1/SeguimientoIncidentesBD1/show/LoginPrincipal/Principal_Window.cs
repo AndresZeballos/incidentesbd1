@@ -6,9 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using WindowsFormsASeguimientoIncidentesBD1.show;
+using SeguimientoIncidentesBD1.logic;
 
-namespace WindowsFormsApplication1
+namespace SeguimientoIncidentesBD1.show
 {
     public partial class Principal_Window : Form
     {
@@ -19,7 +19,7 @@ namespace WindowsFormsApplication1
         {
             
             InitializeComponent();
-            
+
             this.loginWindow = loginWindow;
             this.Location = this.loginWindow.Location;
 

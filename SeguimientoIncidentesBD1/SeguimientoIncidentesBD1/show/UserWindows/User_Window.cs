@@ -6,9 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using WindowsFormsASeguimientoIncidentesBD1.show;
+using SeguimientoIncidentesBD1.show;
 
-namespace WindowsFormsApplication1
+namespace SeguimientoIncidentesBD1.show
 {
     public partial class User_Window : Form
     {
