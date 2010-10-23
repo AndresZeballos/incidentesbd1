@@ -11,7 +11,7 @@ namespace SeguimientoIncidentesBD1.persist
     {
         private string grpUsuCod;
         private string grpUsuDes;
-        private IList<string> usuGrpUsuCod = new List<string>();
+        private IList<string> usuGrpCod = new List<string>();
 
         public string GrpUsuCod
         {
@@ -27,8 +27,8 @@ namespace SeguimientoIncidentesBD1.persist
 
         public IList<string> UsuGrpUsuCod
         {
-            get { return usuGrpUsuCod; }
-            set { usuGrpUsuCod = value; }
+            get { return usuGrpCod; }
+            set { usuGrpCod = value; }
         }
 
         public GrupoUsuario_Persist(string grpUsuCod, string grpUsuDes)
@@ -47,19 +47,22 @@ namespace SeguimientoIncidentesBD1.persist
                 SQLExecute sqlIns = new SQLExecute();
                 DataSet ds = sqlIns.Execute(sql, "grupoUsuario");
                 DataTable dt = ds.Tables["grupoUsuario"];
-                this.grpUsuCod = dt.Rows[0].Field<string>("grpUsuCod");
-                //cargo la descripción del grupo de usuarios
-                this.grpUsuDes = dt.Rows[0].Field<string>("grpUsuDes");
-                //hago la consulta sobre la tabla usuarioGrupoUsuario
-                sql.Parameters.Clear();
-                sql.CommandText = "SELECT * FROM usuarioGrupoUsuario WHERE grpUsuCod = @grpUsuCod";
-                sql.Parameters.AddWithValue("@grpUsuCod", this.grpUsuCod);
-                SQLExecute sqlInsGrpUsu = new SQLExecute();
-                DataSet dsGrpUsu = sqlInsGrpUsu.Execute(sql, "usuarioGrupoUsuario");
-                DataTable dtGrpUsu = dsGrpUsu.Tables["usuarioGrupoUsuario"];
-                foreach (DataRow drow in dtGrpUsu.Rows)
+                if (dt.Rows.Count != 0)
                 {
-                    this.usuGrpUsuCod.Add(drow.Field<string>("usuGrpUsuCod"));
+                    this.grpUsuCod = dt.Rows[0].Field<string>("grpUsuCod");
+                    //cargo la descripción del grupo de usuarios
+                    this.grpUsuDes = dt.Rows[0].Field<string>("grpUsuDes");
+                    //hago la consulta sobre la tabla usuarioGrupoUsuario
+                    sql.Parameters.Clear();
+                    sql.CommandText = "SELECT * FROM usuarioGrupoUsuario WHERE usuGrpCod = @usuGrpCod";
+                    sql.Parameters.AddWithValue("@usuGrpCod", this.grpUsuCod);
+                    SQLExecute sqlInsGrpUsu = new SQLExecute();
+                    DataSet dsGrpUsu = sqlInsGrpUsu.Execute(sql, "usuarioGrupoUsuario");
+                    DataTable dtGrpUsu = dsGrpUsu.Tables["usuarioGrupoUsuario"];
+                    foreach (DataRow drow in dtGrpUsu.Rows)
+                    {
+                        this.usuGrpCod.Add(drow.Field<string>("usuGrpCod"));
+                    }
                 }
             }
             catch (SqlException sqlex)
@@ -148,7 +151,7 @@ namespace SeguimientoIncidentesBD1.persist
         {
             try
             {
-                this.usuGrpUsuCod = usuCod;
+                this.usuGrpCod = usuCod;
                 SqlCommand sql = new SqlCommand();
                 //agrego los usuarios del grupo
                 sql.CommandText = "INSERT INTO usuarioGrupoUsuario (grpUsuCod, usuGrpUsuCod) VALUES (@grpUsuCod, @usuGrpUsuCod)";
@@ -156,7 +159,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@grpUsuCod", "");
                 sql.Parameters.AddWithValue("@usuGrpUsuCod", "");
                 sql.Parameters[0].Value = this.grpUsuCod;
-                foreach (string usuGrpUsuCodActual in this.usuGrpUsuCod)
+                foreach (string usuGrpUsuCodActual in this.usuGrpCod)
                 {
                     sql.Parameters[1].Value = usuGrpUsuCodActual;
                     SQLExecute sqlGrpUsu = new SQLExecute();

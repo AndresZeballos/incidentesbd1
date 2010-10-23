@@ -13,8 +13,8 @@ namespace SeguimientoIncidentesBD1.show
 {
     public partial class GroupsAdmin_Window : Form
     {
-        private Cache cache;
         private Admin_Window adminWindow;
+        private Cache cache;
 
         public GroupsAdmin_Window(Admin_Window adminWindow, Cache cache)
         {
@@ -42,7 +42,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String codeSelected = this.dataGridView2.CurrentRow.Cells[0].ToolTipText;
+            String codeSelected = this.dataGridView2.CurrentRow.Cells[0].Value.ToString();
             this.cache.Grupo = new GrupoUsuario_Logic(codeSelected);
             ViewGroups_Window viewGroups = new ViewGroups_Window(this,this.cache);
             this.Visible = false;
@@ -51,7 +51,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button2_Click(object sender, EventArgs e)
         {
-            NewGroup_Window newGroup = new NewGroup_Window(this);
+            NewGroup_Window newGroup = new NewGroup_Window(this, this.cache);
             this.Visible = false;
             newGroup.Visible = true;
         }

@@ -15,12 +15,14 @@ namespace SeguimientoIncidentesBD1.show
     {
 
         private GroupsAdmin_Window groupsAdmin;
+        private Cache cache;
 
-        public NewGroup_Window(GroupsAdmin_Window groupsAdmin)
+        public NewGroup_Window(GroupsAdmin_Window groupsAdmin, Cache cache)
         {
             InitializeComponent();
             this.groupsAdmin = groupsAdmin;
             this.Location = this.groupsAdmin.Location;
+            this.cache = cache;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -36,7 +38,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button5_Click(object sender, EventArgs e)
         {
-            UserGroup userGroup = new UserGroup(this);
+            UserGroup userGroup = new UserGroup(this, this.cache);
             this.Visible = false;
             userGroup.Visible = true;
         }
