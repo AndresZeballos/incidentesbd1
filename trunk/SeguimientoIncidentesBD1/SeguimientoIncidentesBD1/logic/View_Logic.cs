@@ -66,6 +66,24 @@ namespace SeguimientoIncidentesBD1.logic
             return vp.View_GeneralSecurity();
         }
 
+        public IList<string> View_GeneralCategory()
+        {
+            View_Persist vp = new View_Persist();
+            return vp.View_GeneralCategory();
+        }
+
+        public IList<string> View_GeneralPriority()
+        {
+            View_Persist vp = new View_Persist();
+            return vp.View_GeneralPriority();
+        }
+
+        public IList<string> View_GeneralSeverity()
+        {
+            View_Persist vp = new View_Persist();
+            return vp.View_GeneralSeverity();
+        }
+
         public DataSet View_UserRol(int usuCod)
         {
             View_Persist vp = new View_Persist();
