@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SeguimientoIncidentesBD1.persist;
+using SeguimientoIncidentesBD1.logic;
 
 namespace SeguimientoIncidentesBD1.show
 {
@@ -41,8 +42,9 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //this.dataGridView2.SelectedRows;
-            ViewGroups_Window viewGroups = new ViewGroups_Window(this);
+            String codeSelected = this.dataGridView2.CurrentRow.Cells[0].ToolTipText;
+            this.cache.Grupo = new GrupoUsuario_Logic(codeSelected);
+            ViewGroups_Window viewGroups = new ViewGroups_Window(this,this.cache);
             this.Visible = false;
             viewGroups.Visible = true;
         }
