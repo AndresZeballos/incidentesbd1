@@ -118,9 +118,12 @@ namespace SeguimientoIncidentesBD1.logic
         {
             try
             {
+                this.usuNom = usuNom;
+                this.usuPass = usuPass;
+                this.usuMail = usuMail;
                 Usuario_Persist usuPersist = new Usuario_Persist(this.usuCod);
                 //actualizo los nuevos datos
-                usuPersist.UsuarioUpdate(usuNom, usuPass, usuMail);
+                usuPersist.UsuarioUpdate(this.usuNom, this.usuPass, this.usuMail);
             }
             catch (SqlException sqlex)
             {

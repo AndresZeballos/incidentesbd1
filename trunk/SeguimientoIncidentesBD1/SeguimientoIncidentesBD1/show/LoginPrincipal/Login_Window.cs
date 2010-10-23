@@ -12,8 +12,11 @@ namespace SeguimientoIncidentesBD1.show
 {
     public partial class Login_Window : Form
     {
-        public Login_Window()
+        private Cache cache;
+
+        public Login_Window(Cache cache)
         {
+            this.cache = cache;
             InitializeComponent();
         }
 
@@ -48,19 +51,15 @@ namespace SeguimientoIncidentesBD1.show
         //}
         private void button1_Click(object sender, EventArgs e)
         {
-            //Buscar usuario y validar contraseña
-            //validarUsuario();
-
             string usuPass = this.textBox1.Text;
             string usuCod = this.textBox2.Text;
 
-            //Login_Logic login = new Login_Logic();
-                        
-            if (DataCurrentUser.validarUsuario(usuCod, usuPass))
+            if (DataCurrentUser.ValidarUsuario(usuCod, usuPass))
             //chequeo si la contrasena es correcta
             //if (login.ValidarLogin(usuCod, usuPass))
             {
-                Principal_Window principal = new Principal_Window(this);
+                cache.Usuario = new Usuario_Logic(usuCod);
+                Principal_Window principal = new Principal_Window(this, cache);
                 this.Visible = false;
                 principal.Visible = true;            
             }

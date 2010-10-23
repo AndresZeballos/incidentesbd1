@@ -65,10 +65,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cache.cs" />
     <Compile Include="logic\Categoria_Logic.cs" />
     <Compile Include="logic\Estado_Logic.cs" />
     <Compile Include="logic\IncidenteHistoria_Logic.cs" />
-    <Compile Include="logic\Login_Logic.cs" />
     <Compile Include="logic\Prioridad_Logic.cs" />
     <Compile Include="logic\Severidad_Logic.cs" />
     <Compile Include="persist\Categoria_Persist.cs" />

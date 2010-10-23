@@ -11,12 +11,14 @@ namespace SeguimientoIncidentesBD1.show
 {
     public static class DataCurrentUser
     {
+        //NO SE PUEDEN DECLARAR  VARIABLES EN UNA CLASE ESTATICA QUE NO PUEDAN SER INSTANCIADAS
 
         //private static DataCurrentUser currentUser;
-        private static Usuario_Logic current;
-        private static Incidente_Logic incidente;
-        private static string currentProject;
-        private static string currentIncident;
+        //private static Incidente_Logic incidente;
+        //private static string currentProject;
+        //private static string currentIncident;
+
+        //public static Usuario_Logic Current { get; set; }
 
         //public static DataCurrentUser getInstance()
         //{
@@ -31,7 +33,7 @@ namespace SeguimientoIncidentesBD1.show
         //    current = user;
         //}
 
-        public static bool validarUsuario(string usuCod, string usuPass)
+        public static bool ValidarUsuario(string usuCod, string usuPass)
         {
             Usuario_Logic usuario = new Usuario_Logic(usuCod);
             
@@ -39,51 +41,50 @@ namespace SeguimientoIncidentesBD1.show
             {
                 if (usuario.UsuPass == usuPass)
                 {
-                    current = new Usuario_Logic(usuCod);
                     return true;
                 }
             }
             return false;
         }
 
-        public static bool validarSeguridad(string seguridad)
+        public static bool ValidarSeguridad(string seguridad, Usuario_Logic usuario)
         {
-            return current.UsuSeg.Contains(seguridad);
+            return usuario.UsuSeg.Contains(seguridad);
         }
 
-        public static void actualizarUsuario(string usuNom, string usuPass, string usuMail)
-        {
-            current.UsuarioUpdate(usuNom, usuPass, usuMail);
-        }
+        //public static void ActualizarUsuario(string usuNom, string usuPass, string usuMail, Usuario_Logic usuario)
+        //{
+        //    usuario.UsuarioUpdate(usuNom, usuPass, usuMail);
+        //}
 
-        public static void cargarProyecto(string proCod)
-        {
-            currentProject = proCod;
-        }
+        //public static void CargarProyecto(string proCod)
+        //{
+        //    currentProject = proCod;
+        //}
 
-        public static string proyectoActual()
-        {
-            return currentProject;
-        }
+        //public static string ProyectoActual()
+        //{
+        //    return currentProject;
+        //}
 
-        public static void cargarIncidente(string incCod)
-        {
-            currentIncident = incCod;
-        }
+        //public static void CargarIncidente(string incCod)
+        //{
+        //    currentIncident = incCod;
+        //}
 
-        public static string incidenteActual()
-        {
-            return currentIncident;
-        }
+        //public static string IncidenteActual()
+        //{
+        //    return currentIncident;
+        //}
 
-        public static Incidente_Logic verIncidente()
-        {
-            int incCodNum = Int32.Parse(currentIncident);
-            incidente = new Incidente_Logic(incCodNum);
-            int curProNum = Int32.Parse(currentProject);
-            if (incidente.IncProCod != incCodNum)
-                incidente = null;
-            return incidente;
-        }
+        //public static Incidente_Logic VerIncidente()
+        //{
+        //    int incCodNum = Int32.Parse(currentIncident);
+        //    incidente = new Incidente_Logic(incCodNum);
+        //    int curProNum = Int32.Parse(currentProject);
+        //    if (incidente.IncProCod != incCodNum)
+        //        incidente = null;
+        //    return incidente;
+        //}
     }
 }

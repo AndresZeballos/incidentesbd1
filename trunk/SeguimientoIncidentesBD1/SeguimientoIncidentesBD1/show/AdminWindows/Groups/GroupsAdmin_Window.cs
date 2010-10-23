@@ -12,12 +12,13 @@ namespace SeguimientoIncidentesBD1.show
 {
     public partial class GroupsAdmin_Window : Form
     {
-
+        private Cache cache;
         private Admin_Window adminWindow;
 
-        public GroupsAdmin_Window(Admin_Window adminWindow)
+        public GroupsAdmin_Window(Admin_Window adminWindow, Cache cache)
         {
             InitializeComponent();
+            this.cache = cache;
             this.adminWindow = adminWindow;
             this.Location = this.adminWindow.Location;
             DataSet grupos = new View_Persist().View_GeneralGroups();

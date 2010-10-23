@@ -11,12 +11,13 @@ namespace SeguimientoIncidentesBD1.show
 {
     public partial class UserAdmin_Window : Form
     {
-
+        private Cache cache;
         private Admin_Window adminWindow;
 
-        public UserAdmin_Window(Admin_Window adminWindow)
+        public UserAdmin_Window(Admin_Window adminWindow, Cache cache)
         {
             InitializeComponent();
+            this.cache = cache;
             this.adminWindow = adminWindow;
             this.Location = this.adminWindow.Location;
         }
