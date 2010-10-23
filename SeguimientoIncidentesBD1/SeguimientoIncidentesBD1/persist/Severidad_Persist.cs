@@ -36,7 +36,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "SELECT * FROM severidad WHERE sevCod = @sevCod";
                 sql.Parameters.AddWithValue("@sevCod", sevCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "severidad");
                 DataTable dt = ds.Tables["severidad"];
                 return (dt.Rows[0].Field<string>("sevCod") != null);
             }
@@ -54,7 +54,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "DELETE FROM severidad WHERE sevCod = @sevCod";
                 sql.Parameters.AddWithValue("@sevCod", this.sevCod);
                 SQLExecute sqlIns = new SQLExecute();
-                sqlIns.Execute(sql);
+                sqlIns.Execute(sql, "severidad");
             }
             catch (SqlException sqlex)
             {
@@ -70,7 +70,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "INSERT INTO severidad (sevCod) VALUES (@sevCod)";
                 sql.Parameters.AddWithValue("@sevCod", this.sevCod);
                 SQLExecute sqlIns = new SQLExecute();
-                sqlIns.Execute(sql);
+                sqlIns.Execute(sql, "severidad");
             }
             catch (SqlException sqlex)
             {

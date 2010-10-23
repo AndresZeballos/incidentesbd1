@@ -38,7 +38,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "SELECT * FROM seguridad WHERE segCod = @segCod";
                 sql.Parameters.AddWithValue("@segCod", this.segCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "seguridad");
                 DataTable dt = ds.Tables["seguridad"];
                 this.segCod = dt.Rows[0].Field<string>("segCod");
                 this.segDes = dt.Rows[0].Field<string>("segDes");
@@ -59,7 +59,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@segCod", this.segCod);
                 sql.Parameters.AddWithValue("@segDes", this.segDes);
                 SQLExecute sqlIns = new SQLExecute();
-                sqlIns.Execute(sql);
+                sqlIns.Execute(sql, "seguridad");
             }
             catch(SqlException sqlex)
             {
@@ -75,7 +75,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "DELETE FROM seguridad WHERE segCod = @segCod";
                 sql.Parameters.AddWithValue("@segCod", segCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "seguridad");
             }
             catch (SqlException sqlex)
             {
@@ -93,7 +93,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@segCod", this.segCod);
                 sql.Parameters.AddWithValue("@segDes", nuevaDesc);
                 SQLExecute sqlIns = new SQLExecute();
-                sqlIns.Execute(sql);
+                sqlIns.Execute(sql, "seguridad");
             }
             catch (SqlException sqlex)
             {

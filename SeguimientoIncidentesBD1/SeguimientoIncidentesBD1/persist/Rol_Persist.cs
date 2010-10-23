@@ -50,7 +50,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "SELECT * FROM rol WHERE rolCod = @rolCod";
                 sql.Parameters.AddWithValue("@rolCod", rolCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "rol");
                 DataTable dt = ds.Tables["rol"];
                 this.rolCod = dt.Rows[0].Field<string>("rolCod");
                 //cargo la descripción del rol
@@ -60,7 +60,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "SELECT * FROM rolSeguridad WHERE rolCod = @rolCod";
                 sql.Parameters.AddWithValue("@rolCod", this.rolCod);
                 SQLExecute sqlInsRolSeg = new SQLExecute();
-                DataSet dsRolSeg = sqlInsRolSeg.Execute(sql);
+                DataSet dsRolSeg = sqlInsRolSeg.Execute(sql, "rolSeguridad");
                 DataTable dtRolSeg = dsRolSeg.Tables["rolSeguridad"];
                 int i = 0;
                 foreach (DataRow drow in dtRolSeg.Rows)
@@ -93,7 +93,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@rolCod", this.rolCod);
                 sql.Parameters.AddWithValue("@rolDes", this.rolDes);
                 SQLExecute sqlIns = new SQLExecute();
-                sqlIns.Execute(sql);
+                sqlIns.Execute(sql, "rol");
                 sql.Parameters.Clear();
                 //agrego las seguridades del rol
                 sql.CommandText = "INSERT INTO rolSeguridad (rolCod, rolSegCod) VALUES (@rolCod, @rolSegCod)";
@@ -105,7 +105,7 @@ namespace SeguimientoIncidentesBD1.persist
                 {
                     sql.Parameters[1].Value = rolSegCodActual;
                     SQLExecute sqlInsSeg = new SQLExecute();
-                    sqlInsSeg.Execute(sql);
+                    sqlInsSeg.Execute(sql, "rolSeguridad");
                 }
             }
             catch(SqlException sqlex)
@@ -123,7 +123,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@rolCod", this.rolCod);
                 sql.Parameters.AddWithValue("@rolDes", nuevaDesc);
                 SQLExecute sqlIns = new SQLExecute();
-                sqlIns.Execute(sql);
+                sqlIns.Execute(sql, "rol");
             }
             catch (SqlException sqlex)
             {
@@ -145,7 +145,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@rolCod", this.rolCod);
                 sql.Parameters.AddWithValue("@rolSegCod", segCod);
                 SQLExecute sqlInsSeg = new SQLExecute();
-                sqlInsSeg.Execute(sql);
+                sqlInsSeg.Execute(sql, "rolSeguridad");
             }
             catch (SqlException sqlex)
             {
@@ -162,14 +162,14 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "DELETE FROM rolSeguridad WHERE rolCod=@rolCod";
                 sql.Parameters.AddWithValue("@rolCod", this.rolCod);
                 SQLExecute sqlIns = new SQLExecute();
-                sqlIns.Execute(sql);
+                sqlIns.Execute(sql, "rolSeguridad");
                 sql.Parameters.Clear();
                 //elimino el rol propiamente dicho
                 sql.Parameters.Clear();
                 sql.CommandText = "DELETE FROM	rol WHERE rolCod=@rolCod";
                 sql.Parameters.AddWithValue("@rolCod", this.rolCod);
                 SQLExecute sqlIns2 = new SQLExecute();
-                sqlIns2.Execute(sql);
+                sqlIns2.Execute(sql, "rol");
             }
             catch (SqlException sqlex)
             {

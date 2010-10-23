@@ -11,7 +11,7 @@ namespace SeguimientoIncidentesBD1.persist
     {
         public SQLExecute() { }
         
-        public DataSet Execute(SqlCommand cmd)
+        public DataSet Execute(SqlCommand cmd, string tabla)
         {
             try
             {
@@ -25,7 +25,7 @@ namespace SeguimientoIncidentesBD1.persist
                 SqlDataAdapter da = new SqlDataAdapter();
 
                 da.SelectCommand = cmd;
-                da.Fill(ds);
+                da.Fill(ds, tabla);
                 //dr = cmd.ExecuteReader();
 
                 cnx.Connection.Close();

@@ -54,7 +54,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "SELECT * FROM proyecto WHERE proCod = @proCod";
                 sql.Parameters.AddWithValue("@proCod", proCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "proyecto");
                 DataTable dt = ds.Tables["proyecto"];
                 this.proCod = dt.Rows[0].Field<int>("proCod");
                 //cargo los atributos del usuario
@@ -79,7 +79,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@proDes", this.proDes);
                 sql.Parameters.AddWithValue("@proEst", this.proEst);
                 SQLExecute sqlIns = new SQLExecute();
-                sqlIns.Execute(sql);
+                sqlIns.Execute(sql, "proyecto");
             }
             catch (SqlException sqlex)
             {
@@ -98,7 +98,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@proDes", this.proDes);
                 sql.Parameters.AddWithValue("@proEst", this.proEst);
                 SQLExecute sqlIns = new SQLExecute();
-                sqlIns.Execute(sql);
+                sqlIns.Execute(sql, "proyecto");
             }
             catch (SqlException sqlex)
             {

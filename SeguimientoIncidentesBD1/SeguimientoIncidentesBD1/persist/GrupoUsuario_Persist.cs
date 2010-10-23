@@ -46,7 +46,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "SELECT * FROM grupoUsuario WHERE grpUsuCod = @grpUsuCod";
                 sql.Parameters.AddWithValue("@grpUsuCod", grpUsuCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "grupoUsuario");
                 DataTable dt = ds.Tables["grupoUsuario"];
                 this.grpUsuCod = dt.Rows[0].Field<string>("grpUsuCod");
                 //cargo la descripción del grupo de usuarios
@@ -56,7 +56,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "SELECT * FROM usuarioGrupoUsuario WHERE grpUsuCod = @grpUsuCod";
                 sql.Parameters.AddWithValue("@grpUsuCod", this.grpUsuCod);
                 SQLExecute sqlInsGrpUsu = new SQLExecute();
-                DataSet dsGrpUsu = sqlInsGrpUsu.Execute(sql);
+                DataSet dsGrpUsu = sqlInsGrpUsu.Execute(sql, "usuarioGrupoUsuario");
                 DataTable dtGrpUsu = dsGrpUsu.Tables["usuarioGrupoUsuario"];
                 int i = 0;
                 foreach (DataRow drow in dtGrpUsu.Rows)
@@ -81,7 +81,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@grpUsuCod", this.grpUsuCod);
                 sql.Parameters.AddWithValue("@grpUsuDes", this.grpUsuDes);
                 SQLExecute sqlIns = new SQLExecute();
-                sqlIns.Execute(sql);
+                sqlIns.Execute(sql, "grupoUsuario");
                 sql.Parameters.Clear();
                 //agrego las seguridades del rol
                 sql.CommandText = "INSERT INTO usuarioGrupoUsuario (grpUsuCod, usuGrpUsuCod) VALUES (@grpUsuCod, @usuGrpUsuCod)";
@@ -93,7 +93,7 @@ namespace SeguimientoIncidentesBD1.persist
                 {
                     sql.Parameters[1].Value = usuGrpUsuCodActual;
                     SQLExecute sqlGrpUsu = new SQLExecute();
-                    sqlGrpUsu.Execute(sql);
+                    sqlGrpUsu.Execute(sql, "usuarioGrupoUsuario");
                 }
             }
             catch (SqlException sqlex)
@@ -111,14 +111,14 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "DELETE FROM usuarioGrupoUsuario WHERE grpUsuCod=@grpUsuCod";
                 sql.Parameters.AddWithValue("@grpUsuCod", this.grpUsuCod);
                 SQLExecute sqlIns = new SQLExecute();
-                sqlIns.Execute(sql);
+                sqlIns.Execute(sql, "usuarioGrupoUsuario");
                 sql.Parameters.Clear();
                 //elimino el grupo de usuarios propiamente dicho
                 sql.Parameters.Clear();
                 sql.CommandText = "DELETE FROM	grupoUsuario WHERE grpUsuCod=@grpUsuCod";
                 sql.Parameters.AddWithValue("@grpUsuCod", this.grpUsuCod);
                 SQLExecute sqlIns2 = new SQLExecute();
-                sqlIns2.Execute(sql);
+                sqlIns2.Execute(sql, "grupoUsuario");
             }
             catch (SqlException sqlex)
             {
@@ -135,7 +135,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@grpUsuCod", this.grpUsuCod);
                 sql.Parameters.AddWithValue("@grpUsuDes", nuevaDesc);
                 SQLExecute sqlIns = new SQLExecute();
-                sqlIns.Execute(sql);
+                sqlIns.Execute(sql, "grupoUsuario");
             }
             catch (SqlException sqlex)
             {
@@ -153,7 +153,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@grpUsuCod", this.grpUsuCod);
                 sql.Parameters.AddWithValue("@usuCod", usuCod);
                 SQLExecute sqlInsSeg = new SQLExecute();
-                sqlInsSeg.Execute(sql);
+                sqlInsSeg.Execute(sql, "usuarioGrupoUsuario");
             }
             catch (SqlException sqlex)
             {

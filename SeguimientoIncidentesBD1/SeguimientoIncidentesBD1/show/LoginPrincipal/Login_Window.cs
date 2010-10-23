@@ -51,8 +51,8 @@ namespace SeguimientoIncidentesBD1.show
             //Buscar usuario y validar contraseña
             //validarUsuario();
 
-            string usuCod = this.textBox1.Text;
-            string usuPass = this.textBox2.Text;
+            string usuPass = this.textBox1.Text;
+            string usuCod = this.textBox2.Text;
 
             //Login_Logic login = new Login_Logic();
                         

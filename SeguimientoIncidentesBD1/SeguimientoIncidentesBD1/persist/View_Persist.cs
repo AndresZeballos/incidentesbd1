@@ -21,7 +21,7 @@ namespace SeguimientoIncidentesBD1.persist
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "SELECT proCod, proNom, proEst FROM proyecto";
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "proyecto");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -39,7 +39,7 @@ namespace SeguimientoIncidentesBD1.persist
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "SELECT grpCod FROM grupo";
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "grupo");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -57,7 +57,7 @@ namespace SeguimientoIncidentesBD1.persist
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "SELECT usuNom FROM usuario";
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "usuario");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -81,7 +81,7 @@ namespace SeguimientoIncidentesBD1.persist
                                   "WHERE incidente.incProCod = @incProCod";
                 sql.Parameters.AddWithValue("@incProCod", incProCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "incidente");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -105,7 +105,7 @@ namespace SeguimientoIncidentesBD1.persist
                                   "WHERE historia.ProCod = @ProCod";
                 sql.Parameters.AddWithValue("@ProCod", ProCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "historia");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -123,7 +123,7 @@ namespace SeguimientoIncidentesBD1.persist
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "SELECT rolCod FROM rol";
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "rol");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -141,7 +141,7 @@ namespace SeguimientoIncidentesBD1.persist
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "SELECT estCod FROM estado";
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "estado");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -159,7 +159,7 @@ namespace SeguimientoIncidentesBD1.persist
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "SELECT secCod FROM seguridad";
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "seguridad");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -175,10 +175,10 @@ namespace SeguimientoIncidentesBD1.persist
             try
             {
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "SELECT rolCod FROM rol_usuario WHERE rol_usuario.usuCod = @usuCOd";
+                sql.CommandText = "SELECT rolCod FROM rolUsuario WHERE rol_usuario.usuCod = @usuCOd";
                 sql.Parameters.AddWithValue("@usuCod", usuCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "rolUsuario");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -199,7 +199,7 @@ namespace SeguimientoIncidentesBD1.persist
                                   "SELECT rolCod FROM rol_usuario WHERE rol_usuario.usuCod = @usuCOd";
                 sql.Parameters.AddWithValue("@usuCod", usuCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "rol_usuario");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -218,7 +218,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "SELECT segCod FROM seguridad_rol WHERE seguridad_rol.rolCod = @rolCod";
                 sql.Parameters.AddWithValue("@rolCod", rolCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "seguridad_rol");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -239,7 +239,7 @@ namespace SeguimientoIncidentesBD1.persist
                                   "SELECT segCod FROM seguridad_rol WHERE seguridad_rol.rolCod = @rolCod";
                 sql.Parameters.AddWithValue("@rolCod", rolCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "seguridad_rol");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -258,7 +258,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "SELECT grpCod FROM grupo_proyecto WHERE grupo_proyecto.proCod = @proCod";
                 sql.Parameters.AddWithValue("@proCod", proCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "grupo_proyecto");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -279,7 +279,7 @@ namespace SeguimientoIncidentesBD1.persist
                                   "SELECT grpCod FROM grupo_proyecto WHERE grupo_proyecto.proCod = @proCod";
                 sql.Parameters.AddWithValue("@proCod", proCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "grupo_proyecto");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -307,7 +307,7 @@ namespace SeguimientoIncidentesBD1.persist
                                   "WHERE incidente.incCod = @incCod";
                 sql.Parameters.AddWithValue("@incCod", incCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "incidente");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -329,7 +329,7 @@ namespace SeguimientoIncidentesBD1.persist
                                     "WHERE historia.histCod = @histCod";
                 sql.Parameters.AddWithValue("@histCod", histCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "historia");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -402,7 +402,7 @@ namespace SeguimientoIncidentesBD1.persist
 
 
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "incidente");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -432,7 +432,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@incEstCod", incEstCod);
 
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "incidente");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -460,7 +460,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@incPriCod", incPriCod);
 
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "incidente");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -488,7 +488,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@incCatCod", incCatCod);
 
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "incidente");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -516,7 +516,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@incSevCod", incSevCod);
 
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "incidente");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -542,7 +542,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@incProCod", incProCod);
 
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "incidente");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -569,7 +569,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@incProCod", incProCod);
 
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "incidente");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -621,7 +621,7 @@ namespace SeguimientoIncidentesBD1.persist
                	sql.CommandText = command;
 			    sql.Parameters.AddWithValue("@incProCod", incProCod);            
     			SQLExecute sqlIns = new SQLExecute();
-    			DataSet ds = sqlIns.Execute(sql);
+    			DataSet ds = sqlIns.Execute(sql, "incidente");
                	return ds;
            	}
            	catch (SqlException sqlex)
@@ -649,7 +649,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@usuCod", usuCod);
 
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "grupoProyecto");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -671,7 +671,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@usuCod", usuCod);
 
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "seguridadRol");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -692,7 +692,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@usuCod", usuCod);
 
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "usuario");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -713,7 +713,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@usuNom", usuNom);
 
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql);
+                DataSet ds = sqlIns.Execute(sql, "rolUsuario");
                 return ds;
             }
             catch (SqlException sqlex)
