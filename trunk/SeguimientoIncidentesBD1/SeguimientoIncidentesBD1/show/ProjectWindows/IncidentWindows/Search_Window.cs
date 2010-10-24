@@ -11,12 +11,16 @@ namespace SeguimientoIncidentesBD1.show
 {
     public partial class Search_Window : Form
     {
+        private Cache cache;
 
         private Project_Window projectWindow;
 
-        public Search_Window(Project_Window projectWindow)
+        public Search_Window(Project_Window projectWindow, Cache cache)
         {
             InitializeComponent();
+
+            this.cache = cache;
+
             this.projectWindow = projectWindow;
             this.Location = this.projectWindow.Location;
         }
@@ -34,7 +38,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button7_Click(object sender, EventArgs e)
         {
-            ViewIncident_Window viewIncident = new ViewIncident_Window(this);
+            ViewIncident_Window viewIncident = new ViewIncident_Window(this, cache);
             this.Visible = false;
             viewIncident.Visible = true;
         }

@@ -69,19 +69,46 @@ namespace SeguimientoIncidentesBD1.logic
         public IList<string> View_GeneralCategory()
         {
             View_Persist vp = new View_Persist();
-            return vp.View_GeneralCategory();
+
+            DataSet ds = vp.View_GeneralCategory();
+            DataTable dt = ds.Tables["categoria"];
+            IList<string> lista = new List<string>();
+            foreach (DataRow drow in dt.Rows)
+            {
+                lista.Add(drow.Field<string>("catCod"));
+            }
+
+            return lista;
         }
 
         public IList<string> View_GeneralPriority()
         {
             View_Persist vp = new View_Persist();
-            return vp.View_GeneralPriority();
+
+            DataSet ds = vp.View_GeneralPriority();
+            DataTable dt = ds.Tables["prioridad"];
+            IList<string> lista = new List<string>();
+            foreach (DataRow drow in dt.Rows)
+            {
+                lista.Add(drow.Field<string>("priCod"));
+            }
+
+            return lista;
         }
 
         public IList<string> View_GeneralSeverity()
         {
             View_Persist vp = new View_Persist();
-            return vp.View_GeneralSeverity();
+
+            DataSet ds = vp.View_GeneralSeverity();
+            DataTable dt = ds.Tables["severidad"];
+            IList<string> lista = new List<string>();
+            foreach (DataRow drow in dt.Rows)
+            {
+                lista.Add(drow.Field<string>("sevCod"));
+            }
+
+            return lista;
         }
 
         public DataSet View_UserRol(int usuCod)
