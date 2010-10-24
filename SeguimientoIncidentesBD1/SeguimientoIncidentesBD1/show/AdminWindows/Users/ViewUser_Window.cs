@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SeguimientoIncidentesBD1.logic;
 
 namespace SeguimientoIncidentesBD1.show
 {
@@ -22,6 +23,16 @@ namespace SeguimientoIncidentesBD1.show
             this.Location = this.userAdmin.Location;
         }
 
+        public void VerRoles()
+        {
+            DataSet rolesUsuario = new View_Logic().View_UserRol(this.cache.UsuarioSelected.UsuCod);
+            this.dataGridView3.DataSource = rolesUsuario;
+            this.dataGridView3.DataMember = "usuarioGrupoUsuario";
+            this.dataGridView3.Columns[0].HeaderText = "Usuarios";
+
+        }
+
+        //Modificar datos
         private void button4_Click(object sender, EventArgs e)
         {
             this.button2.Enabled = true;
@@ -54,6 +65,14 @@ namespace SeguimientoIncidentesBD1.show
             RolUser rolUser = new RolUser(this, this.cache);
             this.Visible = false;
             rolUser.Visible = true;
+        }
+
+        //Actualizar
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Usuario_Logic usuarioModificado = new Usuario_Logic(this.cache.UsuarioSelected.UsuCod);
+            usuarioModificado.UsuarioUpdate(this.textBox3.Text, this.textBox4.Text,this.textBox5.Text);
+            this.Close();
         }
     }
 }

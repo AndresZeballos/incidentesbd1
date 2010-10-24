@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SeguimientoIncidentesBD1.logic;
 
 namespace SeguimientoIncidentesBD1.show
 {
@@ -22,6 +23,14 @@ namespace SeguimientoIncidentesBD1.show
             this.Location = this.adminWindow.Location;
         }
 
+        private void cargarGridUsuarios()
+        {
+            DataSet usuarios = new View_Logic().View_GeneralUsers();
+            this.dataGridView3.DataSource = usuarios;
+            this.dataGridView3.DataMember = "usuario";
+            this.dataGridView3.Columns[0].HeaderText = "Codigo";
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -34,6 +43,8 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            String userSelected = this.dataGridView3.CurrentRow.Cells[0].Value.ToString();
+            this.cache.UsuarioSelected = new Usuario_Logic(userSelected);
             ViewUser_Window viewUser = new ViewUser_Window(this, this.cache);
             this.Visible = false;
             viewUser.Visible = true;
@@ -55,6 +66,11 @@ namespace SeguimientoIncidentesBD1.show
             NewUser_Window newUser = new NewUser_Window(this, this.cache);
             this.Visible = false;
             newUser.Visible = true;
+        }
+
+        private void UserAdmin_Window_VisibleChanged(object sender, EventArgs e)
+        {
+            cargarGridUsuarios();
         }
     }
 }
