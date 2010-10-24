@@ -54,7 +54,7 @@ namespace SeguimientoIncidentesBD1.persist
             try
             {
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "SELECT usuNom FROM usuario";
+                sql.CommandText = "SELECT usuCod FROM usuario";
                 SQLExecute sqlIns = new SQLExecute();
                 DataSet ds = sqlIns.Execute(sql, "usuario");
                 return ds;
