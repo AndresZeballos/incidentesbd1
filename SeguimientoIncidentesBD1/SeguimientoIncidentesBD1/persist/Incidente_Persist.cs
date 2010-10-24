@@ -119,17 +119,17 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "INSERT INTO incidente "+
-                "(incCod, incProCod, incCatCod, incSevCod, incPriCod, incEstCod, incEstHrs, incFecIng, incFecUltAct, "+
+                "(incProCod, incCatCod, incSevCod, incPriCod, incEstCod, incEstHrs, incFecIng, incFecUltAct, "+
                 "incFecFin, incEstFecIni, incEstFecFin, incUsuCod, " + 
                 "incUsuAsi, " + 
                 "incDes, incRes) "+
                 "VALUES "+
-                "(@incCod, @incProCod, @incCatCod, @incSevCod, @incPriCod, @incEstCod, @incEstHrs, @incFecIng, @incFecUltAct, " +
+                "(@incProCod, @incCatCod, @incSevCod, @incPriCod, @incEstCod, @incEstHrs, @incFecIng, @incFecUltAct, " +
                 "@incFecFin, @incEstFecIni, @incEstFecFin, @incUsuCod," + 
                 "@incUsuAsi, " + 
                 "@incDes, @incRes)";
 
-                sql.Parameters.AddWithValue("@incCod", 1234567);
+          
 
                 sql.Parameters.AddWithValue("@incProCod", this.incProCod);
                 sql.Parameters.AddWithValue("@incCatCod", this.incCatCod);
