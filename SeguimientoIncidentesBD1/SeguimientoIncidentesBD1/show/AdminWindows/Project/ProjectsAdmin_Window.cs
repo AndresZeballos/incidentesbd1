@@ -27,7 +27,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void cargarGridProyectos()
         {
-            DataSet proyectos = new View_Persist().View_GeneralProjects();
+            DataSet proyectos = new View_Logic().View_GeneralProjects();
             this.dataGridView2.DataSource = proyectos;
             this.dataGridView2.DataMember = "proyecto";
             this.dataGridView2.Columns[0].HeaderText = "Codigo";

@@ -24,8 +24,8 @@ namespace SeguimientoIncidentesBD1
         private Estado_Logic estadoFinal;
 
         private Incidente_Logic incidente;
-        
 
+        private Rol_Logic rol;
 
 
 
@@ -40,6 +40,8 @@ namespace SeguimientoIncidentesBD1
         public Estado_Logic EstadoFinal { get; set; }
 
         public Incidente_Logic Incidente { get; set; }
+
+        public Rol_Logic Rol { get; set; }
 
         public Cache()
         {
