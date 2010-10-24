@@ -137,7 +137,7 @@ namespace SeguimientoIncidentesBD1.logic
             }
         }
 
-        public DataSet View_GeneralCategory()
+        public DataSet Consult_GeneralCategory()
         {
             try
             {
@@ -173,7 +173,7 @@ namespace SeguimientoIncidentesBD1.logic
             }
         }
 
-        public DataSet View_GeneralPriority()
+        public DataSet Consult_GeneralPriority()
         {
             try
             {
@@ -208,7 +208,7 @@ namespace SeguimientoIncidentesBD1.logic
             }
         }
 
-        public DataSet View_GeneralSeverity()
+        public DataSet Consult_GeneralSeverity()
         {
             try
             {
