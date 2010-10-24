@@ -71,6 +71,7 @@ namespace SeguimientoIncidentesBD1.logic
             {
                 Proyecto_Persist proPersist = new Proyecto_Persist(this.proNom, this.proDes, this.proEst);
                 proPersist.ProyectoCreate();
+                this.ProCod = proPersist.ProCod;
             }
             catch (SqlException sqlex)
             {
