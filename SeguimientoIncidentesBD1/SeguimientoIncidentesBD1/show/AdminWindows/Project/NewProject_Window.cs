@@ -15,12 +15,14 @@ namespace SeguimientoIncidentesBD1.show
     {
         
         private ProjectsAdmin_Window projectAdmin;
+        private Cache cache;
 
-        public NewProject_Window(ProjectsAdmin_Window projectAdmin)
+        public NewProject_Window(ProjectsAdmin_Window projectAdmin, Cache cache)
         {
             InitializeComponent();
             this.projectAdmin = projectAdmin;
             this.Location = this.projectAdmin.Location;
+            this.cache = cache;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -36,7 +38,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button5_Click(object sender, EventArgs e)
         {
-            GroupsProject groupsProject = new GroupsProject(this);
+            GroupsProject groupsProject = new GroupsProject(this, this.cache);
             this.Visible = false;
             groupsProject.Visible = true;
         }

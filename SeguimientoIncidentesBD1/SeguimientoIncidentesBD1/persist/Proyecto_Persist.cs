@@ -92,9 +92,9 @@ namespace SeguimientoIncidentesBD1.persist
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "UPDATE proyecto SET proNom = @proNom, proDes = @proDes, proEst = @proEst WHERE proCod = @proCod";
                 sql.Parameters.AddWithValue("@proCod", this.proCod);
-                sql.Parameters.AddWithValue("@proNom", this.proNom);
-                sql.Parameters.AddWithValue("@proDes", this.proDes);
-                sql.Parameters.AddWithValue("@proEst", this.proEst);
+                sql.Parameters.AddWithValue("@proNom", proNom);
+                sql.Parameters.AddWithValue("@proDes", proDes);
+                sql.Parameters.AddWithValue("@proEst", proEst);
                 SQLExecute sqlIns = new SQLExecute();
                 sqlIns.Execute(sql, "proyecto");
             }

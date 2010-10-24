@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SeguimientoIncidentesBD1.logic;
 
 namespace SeguimientoIncidentesBD1.show
 {
@@ -13,12 +14,32 @@ namespace SeguimientoIncidentesBD1.show
     {
 
         private Form beforeProjectWindow;
+        private Cache cache;
 
-        public GroupsProject(Form beforeProjectWindow)
+        public GroupsProject(Form beforeProjectWindow, Cache cache)
         {
             InitializeComponent();
             this.beforeProjectWindow = beforeProjectWindow;
             this.Location = this.beforeProjectWindow.Location;
+            this.cache = cache;
+            cargarGridGrupos();
+            cargarGridrestoGrupos();
+        }
+
+        private void cargarGridGrupos()
+        {
+            DataSet gruposProyecto = new View_Logic().View_ProjectGroup(this.cache.Proyecto.ProCod);
+            this.dataGridView2.DataSource = gruposProyecto;
+            this.dataGridView2.DataMember = "proyectoGrupoUsuario";
+            this.dataGridView2.Columns[0].HeaderText = "Grupos del Proyecto";
+        }
+
+        private void cargarGridrestoGrupos()
+        {
+            DataSet restoGrupos = new View_Logic().View_Option_ProjectGroup(this.cache.Proyecto.ProCod);
+            this.dataGridView3.DataSource = restoGrupos;
+            this.dataGridView3.DataMember = "grupoUsuario";
+            this.dataGridView3.Columns[0].HeaderText = "Grupos del Sistema";
         }
 
         private void button3_Click(object sender, EventArgs e)
