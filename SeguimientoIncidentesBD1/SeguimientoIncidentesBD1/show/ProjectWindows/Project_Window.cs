@@ -84,9 +84,9 @@ namespace SeguimientoIncidentesBD1.show
             this.dataGridView2.Columns[1].HeaderText = "Resumen";
 
             this.dataGridView2.Columns[2].HeaderText = "Usuario asignado";
-            this.dataGridView2.Columns[2].Width = 170;
+            this.dataGridView2.Columns[2].Width = 150;
             this.dataGridView2.Columns[3].HeaderText = "Estado del incidente";
-            this.dataGridView2.Columns[3].Width = 170;
+            this.dataGridView2.Columns[3].Width = 150;
 
             if (opcion != "Estado")
             {
