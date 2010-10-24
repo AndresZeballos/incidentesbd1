@@ -56,13 +56,13 @@ namespace SeguimientoIncidentesBD1.persist
                 this.rolDes = dt.Rows[0].Field<string>("rolDes");
                 sql.CommandText = "SELECT * FROM rolSeguridad WHERE rolCod = @rolCod";
                 sql.Parameters.Clear();
-                sql.Parameters.AddWithValue("@rolCod", this.rolCod);
+                sql.Parameters.AddWithValue("@rolCod", rolCod);
                 SQLExecute sqlInsRolSeg = new SQLExecute();
                 DataSet dsRolSeg = sqlInsRolSeg.Execute(sql, "rolSeguridad");
                 DataTable dtRolSeg = dsRolSeg.Tables["rolSeguridad"];
                 foreach (DataRow drow in dtRolSeg.Rows)
                 {                    
-                    this.rolSeg.Add(drow.Field<string>("rolSeg"));
+                    this.rolSeg.Add(drow.Field<string>("rolSegCod"));
                 }
             }
             catch (SqlException sqlex)
@@ -100,6 +100,7 @@ namespace SeguimientoIncidentesBD1.persist
         {
             try
             {
+                this.rolDes = nuevaDesc;
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "UPDATE rol SET rolDes = @rolDes WHERE rolCod = @rolCod";
                 sql.Parameters.AddWithValue("@rolCod", this.rolCod);

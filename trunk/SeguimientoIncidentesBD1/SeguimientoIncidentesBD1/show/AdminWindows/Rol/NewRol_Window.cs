@@ -15,12 +15,14 @@ namespace SeguimientoIncidentesBD1.show
     {
 
         private RolAdmin_Window rolWindow;
+        private Cache cache;
 
-        public NewRol_Window(RolAdmin_Window rolWindow)
+        public NewRol_Window(RolAdmin_Window rolWindow, Cache cache)
         {
             InitializeComponent();
             this.rolWindow = rolWindow;
             this.Location = this.rolWindow.Location;
+            this.cache = cache;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -60,7 +62,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button5_Click(object sender, EventArgs e)
         {
-            RolSecurity rolSecurity = new RolSecurity(this);
+            RolSecurity rolSecurity = new RolSecurity(this, this.cache);
             this.Visible = false;
             rolSecurity.Visible = true;
         }

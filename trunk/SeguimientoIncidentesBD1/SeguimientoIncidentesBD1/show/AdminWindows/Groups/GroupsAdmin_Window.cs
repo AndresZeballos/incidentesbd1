@@ -27,7 +27,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void cargarGridGrupos()
         {
-            DataSet grupos = new View_Persist().View_GeneralGroups();
+            DataSet grupos = new View_Logic().View_GeneralGroups();
             this.dataGridView2.DataSource = grupos;
             this.dataGridView2.DataMember = "grupoUsuario";
             this.dataGridView2.Columns[0].HeaderText = "Codigo";
