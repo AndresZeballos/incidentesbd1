@@ -39,7 +39,7 @@ namespace SeguimientoIncidentesBD1.show
                 this.comboBox1.Items.Add(proy);
             }
 
-
+            this.button1.Enabled = false;
             
         }
 
@@ -71,7 +71,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            this.button1.Enabled = true;
         }
 
         private void button3_Click(object sender, EventArgs e)
