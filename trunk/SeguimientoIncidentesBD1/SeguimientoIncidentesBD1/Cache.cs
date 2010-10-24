@@ -25,6 +25,10 @@ namespace SeguimientoIncidentesBD1
 
         private DataSet usuariosGrupo;
         
+
+
+
+
         public Usuario_Logic Usuario { get; set; }
 
         public GrupoUsuario_Logic Grupo { get; set; }
