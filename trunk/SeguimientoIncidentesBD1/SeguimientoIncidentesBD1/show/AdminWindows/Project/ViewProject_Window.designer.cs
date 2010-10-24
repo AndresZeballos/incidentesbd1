@@ -151,6 +151,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Enabled = false;
             this.comboBox1.ForeColor = System.Drawing.Color.MidnightBlue;
             this.comboBox1.FormattingEnabled = true;
