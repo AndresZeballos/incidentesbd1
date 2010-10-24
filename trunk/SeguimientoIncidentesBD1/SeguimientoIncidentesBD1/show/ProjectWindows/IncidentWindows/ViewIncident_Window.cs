@@ -14,15 +14,30 @@ namespace SeguimientoIncidentesBD1.show
     {
 
         private Form projectWindow;
+        private Cache cache;
 
         public ViewIncident_Window(Form projectWindow, Cache cache)
         {
             InitializeComponent();
             this.projectWindow = projectWindow;
             this.Location = this.projectWindow.Location;
+            this.cache = cache;
 
-            //Incidente_Logic incidente = DataCurrentUser.VerIncidente();
+            CargarDetalle();
 
+
+        }
+
+        private void CargarDetalle()
+        {
+            //this.textBox3.Enabled = true;
+            this.textBox3.Text = this.cache.Incidente.IncCatCod;
+            this.textBox8.Text = this.cache.Incidente.IncEstCod;
+            this.textBox5.Text = this.cache.Incidente.IncPriCod;
+            this.textBox4.Text = this.cache.Incidente.IncSevCod;
+            this.textBox1.Text = this.cache.Incidente.IncRes;
+            this.textBox2.Text = this.cache.Incidente.IncDes;
+            this.comboBox4.Text = this.cache.Incidente.IncUsuAsi;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -78,5 +93,6 @@ namespace SeguimientoIncidentesBD1.show
             this.Visible = false;
             viewHistory.Visible = true;
         }
+
     }
 }
