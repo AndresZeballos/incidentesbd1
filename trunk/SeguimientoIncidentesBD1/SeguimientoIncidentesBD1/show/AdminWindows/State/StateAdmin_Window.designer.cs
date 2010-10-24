@@ -83,7 +83,6 @@
             this.dataGridView3.ReadOnly = true;
             this.dataGridView3.Size = new System.Drawing.Size(268, 324);
             this.dataGridView3.TabIndex = 47;
-            this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
             // 
             // dataGridViewTextBoxColumn3
             // 

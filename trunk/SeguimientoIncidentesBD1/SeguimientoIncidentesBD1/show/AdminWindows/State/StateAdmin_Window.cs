@@ -46,10 +46,5 @@ namespace SeguimientoIncidentesBD1.show
             this.adminWindow.Location = this.Location;
             this.adminWindow.Visible = true;
         }
-
-        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }
