@@ -55,11 +55,14 @@ namespace SeguimientoIncidentesBD1.persist
                 SQLExecute sqlIns = new SQLExecute();
                 DataSet ds = sqlIns.Execute(sql, "proyecto");
                 DataTable dt = ds.Tables["proyecto"];
-                this.proCod = dt.Rows[0].Field<int>("proCod");
-                //cargo los atributos del usuario
-                this.proNom = dt.Rows[0].Field<string>("proNom");
-                this.proDes = dt.Rows[0].Field<string>("proDes");
-                this.proEst = dt.Rows[0].Field<string>("proEst");
+                if (dt.Rows.Count != 0)
+                {
+                    this.proCod = dt.Rows[0].Field<int>("proCod");
+                    //cargo los atributos del usuario
+                    this.proNom = dt.Rows[0].Field<string>("proNom");
+                    this.proDes = dt.Rows[0].Field<string>("proDes");
+                    this.proEst = dt.Rows[0].Field<string>("proEst");
+                }
             }
             catch (SqlException sqlex)
             {
@@ -78,6 +81,11 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@proEst", this.proEst);
                 SQLExecute sqlIns = new SQLExecute();
                 sqlIns.Execute(sql, "proyecto");
+                sql.CommandText = "SELECT * FROM proyecto WHERE proNom = @proNom AND proDes = @proDes AND proEst = @proEst";
+                DataSet ds = sqlIns.Execute(sql, "proyecto");
+                DataTable dt = ds.Tables["proyecto"];
+                DataRow drow = dt.Rows[0];
+                this.proCod = drow.Field<int>("proCod");
             }
             catch (SqlException sqlex)
             {
@@ -111,6 +119,7 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "INSERT INTO proyectoGrupoUsuario (proCod, proGrpUsuCod) VALUES (@proCod, @proGrpUsuCod)";
+                
                 sql.Parameters.AddWithValue("@proCod", this.proCod);
                 sql.Parameters.AddWithValue("@proGrpUsuCod", grpUsuCod);
                 SQLExecute sqlInsSeg = new SQLExecute();

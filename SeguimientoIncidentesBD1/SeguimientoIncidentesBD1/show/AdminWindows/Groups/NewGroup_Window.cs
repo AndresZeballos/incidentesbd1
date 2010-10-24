@@ -98,7 +98,7 @@ namespace SeguimientoIncidentesBD1.show
             {
                 try
                 {
-                    if (this.cache.Grupo == null)
+                    if (!creado)
                     {
                         GrupoUsuario_Logic grupo = new GrupoUsuario_Logic(grpCod, grpDes);
                         grupo.GrupoUsuarioCreate();

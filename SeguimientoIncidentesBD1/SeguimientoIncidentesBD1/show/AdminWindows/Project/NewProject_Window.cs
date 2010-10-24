@@ -54,13 +54,20 @@ namespace SeguimientoIncidentesBD1.show
         {
             if (this.cache.Proyecto == null)
             {
-                Proyecto_Logic proyecto = new Proyecto_Logic(this.textBox1.Text, this.textBox5.Text, this.comboBox1.SelectedItem.ToString());
-                this.textBox1.Enabled = false;
-                this.textBox5.Enabled = false;
-                this.comboBox1.Enabled = false;
-                proyecto.ProyectoPersist();
-                this.creado = true;
-                this.cache.Proyecto = proyecto;
+                try
+                {
+                    Proyecto_Logic proyecto = new Proyecto_Logic(this.textBox1.Text, this.textBox5.Text, this.comboBox1.SelectedItem.ToString());
+                    proyecto.ProyectoPersist();
+                    this.cache.Proyecto = proyecto;
+                    this.textBox1.Enabled = false;
+                    this.textBox5.Enabled = false;
+                    this.comboBox1.Enabled = false;
+                    this.creado = true;
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("Error al crear proyecto" + ex.Message);
+                }
             }
            
             GroupsProject groupsProject = new GroupsProject(this, this.cache);
@@ -83,7 +90,7 @@ namespace SeguimientoIncidentesBD1.show
             {
                 try
                 {
-                    if (this.cache.Proyecto == null)
+                    if (!creado)
                     {
                         Proyecto_Logic proyecto = new Proyecto_Logic(proNom, proDes, proEst);
                         proyecto.ProyectoPersist();
@@ -94,6 +101,7 @@ namespace SeguimientoIncidentesBD1.show
                 {
                     MessageBox.Show("Error al crear el proyecto: " + sqlex.Message);
                 }
+                this.Close();
             }
         }
 
