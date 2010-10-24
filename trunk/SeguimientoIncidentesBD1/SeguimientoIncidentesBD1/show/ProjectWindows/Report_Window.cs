@@ -107,7 +107,7 @@ namespace SeguimientoIncidentesBD1.show
 
             try
             {
-                Incidente_Logic incidente = new Incidente_Logic(incProCod, incCat, incSev, incPri, incEstCodIni, 0, DateTime.Today,
+                Incidente_Logic incidente = new Incidente_Logic(incProCod, incCat, incSev, incPri, incEstCodIni, DateTime.Today,
                     DateTime.Today, incUsuCod, incUsuAsig, incDes, incRes);
                 incidente.IncidenteCreate();
                 MessageBox.Show("Incidente creado con exito");
