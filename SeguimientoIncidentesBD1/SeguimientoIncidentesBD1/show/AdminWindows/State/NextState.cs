@@ -23,6 +23,24 @@ namespace SeguimientoIncidentesBD1.show
             this.beforeStateWindow = beforeStateWindow;
             this.cache = cache;
             this.Location = this.beforeStateWindow.Location;
+            cargarGridSiguientesEstados();
+            cargarGridrestoEstados();
+        }
+
+        private void cargarGridSiguientesEstados()
+        {
+            DataSet estadosSiguientes = new View_Logic().View_NextStates(this.cache.Estado.EstCod);
+            this.dataGridView3.DataSource = estadosSiguientes;
+            this.dataGridView3.DataMember = "estadoSiguiente";
+            this.dataGridView3.Columns[0].HeaderText = "Estados siguientes";
+        }
+
+        private void cargarGridrestoEstados()
+        {
+            DataSet restoEstados = new View_Logic().View_Option_NextState(this.cache.Estado.EstCod);
+            this.dataGridView1.DataSource = restoEstados;
+            this.dataGridView1.DataMember = "estado";
+            this.dataGridView1.Columns[0].HeaderText = "Estados del Sistema";
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -34,6 +52,12 @@ namespace SeguimientoIncidentesBD1.show
         {
             this.beforeStateWindow.Location = this.Location;
             this.beforeStateWindow.Visible = true;
+        }
+
+        //Agregar
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

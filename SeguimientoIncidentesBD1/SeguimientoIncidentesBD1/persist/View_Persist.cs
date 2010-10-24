@@ -233,12 +233,12 @@ namespace SeguimientoIncidentesBD1.persist
             try
             {
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "SELECT estSigEstCod FROM estadoSiguiente " +
-                                  "WHERE estSigEstCod NOT IN (" +
+                sql.CommandText = "SELECT estCod FROM estado " +
+                                  "WHERE estCod NOT IN (" +
                                   "SELECT estSigEstCod FROM estadoSiguiente WHERE estCod = @estCod )";
                 sql.Parameters.AddWithValue("@estCod", estCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql, "estadoSiguiente");
+                DataSet ds = sqlIns.Execute(sql, "estado");
                 return ds;
             }
             catch (SqlException sqlex)
