@@ -115,7 +115,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void NewGroup_Window_VisibleChanged(object sender, EventArgs e)
         {
-            this.VerUsuarios();
+            VerUsuarios();
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
