@@ -222,6 +222,20 @@ namespace SeguimientoIncidentesBD1.logic
             }
         }
 
+        public DataSet Consult_GeneralState()
+        {
+            try
+            {
+                View_Persist vp = new View_Persist();
+
+                return vp.View_GeneralState();
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
         public IList<string> View_GeneralSeverity()
         {
             try
