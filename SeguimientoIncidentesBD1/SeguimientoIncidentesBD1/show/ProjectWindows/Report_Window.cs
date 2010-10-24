@@ -50,6 +50,17 @@ namespace SeguimientoIncidentesBD1.show
             }
 
             IList<string> usuarios = view.userByProject(this.cache.Proyecto.ProCod);
+            foreach (string usuario in usuarios)
+            {
+                this.comboBox4.Items.Add(usuario);
+            }
+
+            if (DataCurrentUser.ValidarSeguridad("Modificador", cache.Usuario))
+                this.comboBox4.Enabled = true;
+            else
+                this.comboBox4.Enabled = false;
+            
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
