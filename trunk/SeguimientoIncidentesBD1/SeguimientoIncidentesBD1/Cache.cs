@@ -23,8 +23,6 @@ namespace SeguimientoIncidentesBD1
 
         private Estado_Logic estadoFinal;
 
-        private DataSet usuariosGrupo;
-
         private Incidente_Logic incidente;
         
 
@@ -40,8 +38,6 @@ namespace SeguimientoIncidentesBD1
         public Estado_Logic EstadoInicial { get; set; }
 
         public Estado_Logic EstadoFinal { get; set; }
-
-        public DataSet UsuariosGrupo { get; set; }
 
         public Incidente_Logic Incidente { get; set; }
 
