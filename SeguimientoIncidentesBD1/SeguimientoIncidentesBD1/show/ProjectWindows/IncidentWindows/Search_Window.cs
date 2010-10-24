@@ -84,6 +84,11 @@ namespace SeguimientoIncidentesBD1.show
         // INICIA LA BUSQUEDA AVANZADA
         private void button1_Click(object sender, EventArgs e)
         {
+            string estado = this.comboBox1.Text;
+            string usuario = this.comboBox4.Text;
+            string categoria = this.comboBox7.Text;
+            string severidad = this.comboBox8.Text;
+            string prioridad = this.comboBox9.Text;
 
         }
     }
