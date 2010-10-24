@@ -645,32 +645,32 @@ namespace SeguimientoIncidentesBD1.persist
 		
     		switch (by) {
 	    		case "Estado":
-    				command = "SELECT incCod, incRes, incUsuAsig, incEstCod, incEstCod FROM incidente " +
+    				command = "SELECT incCod, incRes, incUsuAsi, incEstCod FROM incidente " +
 							  "WHERE incidente.incProCod = @incProCod " + 
 							  "ORDER BY incidente.incEstCod";
 	    			break;
 		    	case "Prioridad":
-		    		command = "SELECT incCod, incRes, incUsuAsig, incEstCod, incPriCod FROM incidente " +
+		    		command = "SELECT incCod, incRes, incUsuAsi, incEstCod, incPriCod FROM incidente " +
 							  "WHERE incidente.incProCod = @incProCod " + 
 							  "ORDER BY incidente.incPriCod";
 		    		break;
 		    	case "Categoria":
-    				command = "SELECT incCod, incRes, incUsuAsig, incEstCod, incCatCod FROM incidente " +
+    				command = "SELECT incCod, incRes, incUsuAsi, incEstCod, incCatCod FROM incidente " +
 							  "WHERE incidente.incProCod = @incProCod " + 
 							  "ORDER BY incidente.incCatCod";
 	    			break;
 		    	case "Severidad":
-    				command = "SELECT incCod, incRes, incUsuAsig, incEstCod, incSevCod FROM incidente " +
+    				command = "SELECT incCod, incRes, incUsuAsi, incEstCod, incSevCod FROM incidente " +
 							  "WHERE incidente.incProCod = @incProCod " + 
 							  "ORDER BY incidente.incSevCod";
 	    			break;
 		    	case "Fecha de reporte":
-    				command = "SELECT incCod, incRes, incUsuAsig, incEstCod, incFecIng FROM incidente " +
-								  "WHERE incidente.incProCod = @incProCod" +
+    				command = "SELECT incCod, incRes, incUsuAsi, incEstCod, incFecIng FROM incidente " +
+								  "WHERE incidente.incProCod = @incProCod " +
 								  "ORDER BY incidente.incFecIng";
 				    break;
     			case "Ultima modificacion":
-	    			command = "SELECT incCod, incRes, incUsuAsig, incEstCod, incFecUltAct FROM incidente " +
+	    			command = "SELECT incCod, incRes, incUsuAsi, incEstCod, incFecUltAct FROM incidente " +
 							  "WHERE incidente.incProCod = @incProCod " +
 							  "ORDER BY incidente.incFecUltAct";
 		    		break;

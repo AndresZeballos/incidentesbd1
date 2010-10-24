@@ -51,7 +51,14 @@ namespace SeguimientoIncidentesBD1.show
             }
 
             cargarGridIncidentes();
-            
+
+            this.button3.Enabled = false;
+
+            this.comboBox1.Items.Add("Estado");
+            this.comboBox1.Items.Add("Categoria");
+            this.comboBox1.Items.Add("Prioridad");
+            this.comboBox1.Items.Add("Severidad");
+            this.comboBox1.Items.Add("Fecha de reporte");
         }
 
         private void cargarGridIncidentes()
@@ -59,14 +66,35 @@ namespace SeguimientoIncidentesBD1.show
             DataSet incidentes = new View_Logic().View_GeneralIncidents(this.cache.Proyecto.ProCod);
             this.dataGridView2.DataSource = incidentes;
             this.dataGridView2.DataMember = "incidente";
-            this.dataGridView2.Columns[0].HeaderText = "Codigo"; 
+            this.dataGridView2.Columns[0].HeaderText = "Codigo";
             this.dataGridView2.Columns[1].HeaderText = "Resumen";
-            
+
             this.dataGridView2.Columns[2].HeaderText = "Usuario asignado";
             this.dataGridView2.Columns[2].Width = 170;
             this.dataGridView2.Columns[3].HeaderText = "Estado del incidente";
             this.dataGridView2.Columns[3].Width = 170;
         }
+
+
+        private void cargarGridIncidentes(DataSet incidentes, string opcion)
+        {
+            this.dataGridView2.DataSource = incidentes;
+            this.dataGridView2.DataMember = "incidente";
+            this.dataGridView2.Columns[0].HeaderText = "Codigo";
+            this.dataGridView2.Columns[1].HeaderText = "Resumen";
+
+            this.dataGridView2.Columns[2].HeaderText = "Usuario asignado";
+            this.dataGridView2.Columns[2].Width = 170;
+            this.dataGridView2.Columns[3].HeaderText = "Estado del incidente";
+            this.dataGridView2.Columns[3].Width = 170;
+
+            if (opcion != "Estado")
+            {
+                this.dataGridView2.Columns[4].HeaderText = opcion;
+                this.dataGridView2.Columns[4].Width = 100;
+            }
+        }
+
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -123,6 +151,56 @@ namespace SeguimientoIncidentesBD1.show
         private void Project_Window_VisibleChanged(object sender, EventArgs e)
         {
             cargarGridIncidentes();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.comboBox1.Text != "")
+                this.button3.Enabled = true;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string opcion = this.comboBox1.Text;
+
+            DataSet incidentesOrdenados;
+
+            incidentesOrdenados = new View_Logic().View_IncidentOrderBy(this.cache.Proyecto.ProCod, opcion);
+            cargarGridIncidentes(incidentesOrdenados, opcion);
+            /*
+            switch (opcion)
+            {
+                case "Estado":
+                    {
+                        incidentesOrdenados = new View_Logic().View_IncidentOrderBy(this.cache.Proyecto.ProCod, opcion);
+                        cargarGridIncidentes(incidentesOrdenados, opcion);
+                        break;
+                    }
+                case "Categoria":
+                    {
+
+                        break;
+                    }
+                case "Prioridad":
+                    {
+
+                        break;
+                    }
+                case "Severidad":
+                    {
+
+                        break;
+                    }
+                case "Fecha de reporte":
+                    {
+
+                        break;
+                    }
+            }
+
+            */
+
+
         }
 
     }
