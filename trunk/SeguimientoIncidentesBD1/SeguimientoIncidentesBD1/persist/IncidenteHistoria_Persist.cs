@@ -33,7 +33,6 @@ namespace SeguimientoIncidentesBD1.persist
         public int IncHistTiempo { get; set; }
 
         public IncidenteHistoria_Persist(
-                                        int incHistCod,
                                         int incHistIncCod,
                                         string incHistEstIni,
                                         string incHistEstFin,
@@ -43,7 +42,6 @@ namespace SeguimientoIncidentesBD1.persist
                                         string incHistNota,
                                         int incHistTiempo)
         {
-            this.incHistCod = incHistCod;
             this.incHistIncCod = incHistIncCod;
             this.incHistEstIni = incHistEstIni;
             this.incHistEstFin = incHistEstFin;
@@ -68,7 +66,7 @@ namespace SeguimientoIncidentesBD1.persist
                 this.incHistCod = dt.Rows[0].Field<int>("histCod");
                 this.incHistIncCod = dt.Rows[0].Field<int>("histIncCod");
                 this.incHistEstIni = dt.Rows[0].Field<string>("histEstIni");
-                this.incHistEstFin = dt.Rows[0].Field<string>("histIncCod");
+                this.incHistEstFin = dt.Rows[0].Field<string>("histEstFin");
                 this.incHistFec = dt.Rows[0].Field<DateTime>("histFec");
                 this.incHistAcc = dt.Rows[0].Field<string>("histAcc");
                 this.incHistUsuCod = dt.Rows[0].Field<string>("histUsuCod");
@@ -83,7 +81,26 @@ namespace SeguimientoIncidentesBD1.persist
 
         public void IncidenteHistoriaCreate()
         {
-            throw new NotImplementedException();
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "INSERT INTO historia (histIncCod, histEstIni, histEstFin, histFec, histAcc, histUsuCod, histNota,"+
+                    " histTiempo) VALUES (@histIncCod, @histEstIni, @histEstFin, @histFec, @histAcc, @histUsuCod, @histNota)";
+                sql.Parameters.AddWithValue("@histIncCod", this.incHistCod);
+                sql.Parameters.AddWithValue("@histEstIni", this.incHistEstIni);
+                sql.Parameters.AddWithValue("@histEstFin", this.incHistEstFin);
+                sql.Parameters.AddWithValue("@histFec", this.incHistFec);
+                sql.Parameters.AddWithValue("@histAcc", this.incHistAcc);
+                sql.Parameters.AddWithValue("@histUsuCod", this.incHistUsuCod);
+                sql.Parameters.AddWithValue("@histNota", this.incHistNota);
+                sql.Parameters.AddWithValue("@histTiempo", this.incHistTiempo);
+                SQLExecute sqlIns = new SQLExecute();
+                sqlIns.Execute(sql, "historia");
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
         }
 
         public void IncidenteHistoriaDelete()
