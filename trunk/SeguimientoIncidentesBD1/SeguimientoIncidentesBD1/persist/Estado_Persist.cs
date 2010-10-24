@@ -12,9 +12,9 @@ namespace SeguimientoIncidentesBD1.persist
         private string estCod;
         //falta incluir los siguientes atributos en el código
         private IList<string> estSigEstCod = new List<string>();
-        private byte estIni;
-        private byte estFin;
-        private byte estEst;
+        private bool estIni;
+        private bool estFin;
+        private bool estEst;
 
         public string EstCod
         {
@@ -28,25 +28,25 @@ namespace SeguimientoIncidentesBD1.persist
             set { estSigEstCod = value; }
         }
 
-        public byte EstIni
+        public bool EstIni
         {
             get { return estIni; }
             set { estIni = value; }
         }
 
-        public byte EstFin
+        public bool EstFin
         {
             get { return estFin; }
             set { estFin = value; }
         }
 
-        public byte EstEst
+        public bool EstEst
         {
             get { return estEst; }
             set { estEst = value; }
         }
 
-        public Estado_Persist(string estCod, byte estIni, byte estFin, byte estEst)
+        public Estado_Persist(string estCod, bool estIni, bool estFin, bool estEst)
         {
             this.estCod = estCod;
             this.estIni = estIni;
@@ -67,9 +67,9 @@ namespace SeguimientoIncidentesBD1.persist
                 DataTable dt = ds.Tables["estado"];
                 this.estCod = dt.Rows[0].Field<string>("estCod");
                 //cargo la los atributos del estado
-                this.estIni = dt.Rows[0].Field<byte>("estIni");
-                this.estFin = dt.Rows[0].Field<byte>("estFin");
-                this.estEst = dt.Rows[0].Field<byte>("estEst");
+                this.estIni = dt.Rows[0].Field<bool>("estIni");
+                this.estFin = dt.Rows[0].Field<bool>("estFin");
+                this.estEst = dt.Rows[0].Field<bool>("estEst");
                 sql.Parameters.Clear();
                 //hago la consulta sobre la tabla estadoSeguridad
                 sql.CommandText = "SELECT * FROM estadoSiguiente WHERE estCod = @estCod";

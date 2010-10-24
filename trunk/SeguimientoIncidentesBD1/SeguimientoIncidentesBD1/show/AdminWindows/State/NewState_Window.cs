@@ -58,35 +58,35 @@ namespace SeguimientoIncidentesBD1.show
         private void button2_Click(object sender, EventArgs e)
         {
             string estCod = this.textBox1.Text;
-            byte estIni;
-            byte estFin;
-            byte estEst;
+            bool estIni;
+            bool estFin;
+            bool estEst;
 
             if (this.comboBox1.SelectedItem.ToString().Equals("Si"))
             {
-                estIni = 1;
+                estIni = true;
             }
             else
             {
-                estIni = 0;
-            }
-
-            if (this.comboBox1.SelectedItem.ToString().Equals("Si"))
-            {
-                estFin = 1;
-            }
-            else
-            {
-                estFin = 0;
+                estIni = false;
             }
 
             if (this.comboBox1.SelectedItem.ToString().Equals("Si"))
             {
-                estEst = 1;
+                estFin = true;
             }
             else
             {
-                estEst = 0;
+                estFin = false;
+            }
+
+            if (this.comboBox1.SelectedItem.ToString().Equals("Si"))
+            {
+                estEst = true;
+            }
+            else
+            {
+                estEst = false;
             }
 
             if (estCod.Equals(""))

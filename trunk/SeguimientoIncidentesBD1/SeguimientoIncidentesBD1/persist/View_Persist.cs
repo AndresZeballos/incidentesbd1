@@ -832,7 +832,7 @@ namespace SeguimientoIncidentesBD1.persist
             try
             {
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "SELECT estCod FROM estado WHERE estIni = '1'";
+                sql.CommandText = "SELECT estCod FROM estado WHERE estIni = 0x1";
 
                 SQLExecute sqlIns = new SQLExecute();
                 DataSet ds = sqlIns.Execute(sql, "estado");
@@ -850,7 +850,7 @@ namespace SeguimientoIncidentesBD1.persist
             try
             {
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "SELECT estCod FROM estado WHERE estFin = '1'";
+                sql.CommandText = "SELECT estCod FROM estado WHERE estFin = 0x1";
 
                 SQLExecute sqlIns = new SQLExecute();
                 DataSet ds = sqlIns.Execute(sql, "estado");
