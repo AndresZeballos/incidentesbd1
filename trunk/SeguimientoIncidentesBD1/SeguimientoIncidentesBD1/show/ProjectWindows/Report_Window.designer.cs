@@ -133,6 +133,7 @@
             // 
             // comboBox3
             // 
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox3.ForeColor = System.Drawing.Color.MidnightBlue;
             this.comboBox3.FormattingEnabled = true;
@@ -144,6 +145,7 @@
             // 
             // comboBox2
             // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox2.ForeColor = System.Drawing.Color.MidnightBlue;
             this.comboBox2.FormattingEnabled = true;
@@ -155,6 +157,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.ForeColor = System.Drawing.Color.MidnightBlue;
             this.comboBox1.FormattingEnabled = true;
@@ -177,6 +180,7 @@
             // 
             // comboBox4
             // 
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox4.ForeColor = System.Drawing.Color.MidnightBlue;
             this.comboBox4.FormattingEnabled = true;
@@ -229,7 +233,6 @@
             // 
             // button6
             // 
-            this.button6.Visible = false;
             this.button6.BackColor = System.Drawing.Color.SteelBlue;
             this.button6.ForeColor = System.Drawing.Color.LightCyan;
             this.button6.Location = new System.Drawing.Point(42, 354);
@@ -239,6 +242,7 @@
             this.button6.TabIndex = 41;
             this.button6.Text = "Estimar";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Visible = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // Report_Window
