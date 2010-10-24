@@ -17,15 +17,6 @@ namespace SeguimientoIncidentesBD1
         [STAThread]
         static void Main()
         {
-            DateTime dateTime = DateTime.Today;
-            String result = "";
-            result += dateTime.Year;
-            result += dateTime.Month;
-            result += dateTime.Day;
-            Console.WriteLine(result);
-
-            Console.WriteLine(dateTime.ToString("d"));
-
             Cache cache = new Cache();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

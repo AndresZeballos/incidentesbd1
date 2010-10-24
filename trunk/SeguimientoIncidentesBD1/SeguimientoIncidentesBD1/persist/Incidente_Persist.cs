@@ -74,6 +74,40 @@ namespace SeguimientoIncidentesBD1.persist
             this.incRes = incRes;
         }
 
+
+        // Constructor cuando no se asigna usuario
+        public Incidente_Persist(
+                                int incProCod,
+                                string incCatCod,
+                                string incSevCod,
+                                string incPriCod,
+                                string incEstCod,
+
+                                DateTime incFecIng,
+                                DateTime incFecUltAct,
+
+                                string incUsuCod,
+                                string incDes,
+                                string incRes
+                                )
+        {
+            this.incProCod = incProCod;
+            this.incCatCod = incCatCod;
+            this.incSevCod = incSevCod;
+            this.incPriCod = incPriCod;
+            this.incEstCod = incEstCod;
+
+            this.incFecIng = incFecIng;
+            this.incFecUltAct = incFecUltAct;
+
+            this.incUsuCod = incUsuCod;
+            this.incDes = incDes;
+            this.incRes = incRes;
+        }
+
+
+
+
         public Incidente_Persist(int incCod)
         {
             try
@@ -94,13 +128,12 @@ namespace SeguimientoIncidentesBD1.persist
 
                 this.incEstHrs = dt.Rows[0].Field<int>("incEstHrs");
                 
-                
-                
                 this.incFecIng = dt.Rows[0].Field<DateTime>("incFecIng");
                 this.incFecUltAct = dt.Rows[0].Field<DateTime>("incFecUltAct");
                 this.incFecFin = dt.Rows[0].Field<DateTime>("incFecFin");
                 this.incEstFecIni = dt.Rows[0].Field<DateTime>("incEstFecIni");
                 this.incEstFecFin = dt.Rows[0].Field<DateTime>("incEstFecFin");
+
                 this.incUsuCod = dt.Rows[0].Field<string>("incUsuCod");
                 this.incUsuAsi = dt.Rows[0].Field<string>("incUsuAsi");
                 this.incDes = dt.Rows[0].Field<string>("incDes");
@@ -118,17 +151,29 @@ namespace SeguimientoIncidentesBD1.persist
             try
             {
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "INSERT INTO incidente "+
-                "(incProCod, incCatCod, incSevCod, incPriCod, incEstCod, incEstHrs, incFecIng, incFecUltAct, "+
-                "incFecFin, incEstFecIni, incEstFecFin, incUsuCod, " + 
-                "incUsuAsi, " + 
-                "incDes, incRes) "+
-                "VALUES "+
-                "(@incProCod, @incCatCod, @incSevCod, @incPriCod, @incEstCod, @incEstHrs, @incFecIng, @incFecUltAct, " +
-                "@incFecFin, @incEstFecIni, @incEstFecFin, @incUsuCod," + 
-                "@incUsuAsi, " + 
-                "@incDes, @incRes)";
 
+                string text = "INSERT INTO incidente " +
+                        "(incProCod, incCatCod, incSevCod, incPriCod, incEstCod, incEstHrs, incFecIng, incFecUltAct, " +
+                        "incFecFin, incEstFecIni, incEstFecFin, incUsuCod, ";
+
+                if (this.incUsuAsi != null)
+                    text += "incUsuAsi, ";
+
+                text += "incDes, incRes) " +
+                        "VALUES " +
+                        "(@incProCod, @incCatCod, @incSevCod, @incPriCod, @incEstCod, @incEstHrs, @incFecIng, @incFecUltAct, " +
+                        "@incFecFin, @incEstFecIni, @incEstFecFin, @incUsuCod," +
+                        "incDes, incRes) " +
+                        "VALUES " +
+                        "(@incProCod, @incCatCod, @incSevCod, @incPriCod, @incEstCod, @incEstHrs, @incFecIng, @incFecUltAct, " +
+                        "@incFecFin, @incEstFecIni, @incEstFecFin, @incUsuCod,";
+
+                if (this.incUsuAsi != null)
+                    text += "@incUsuAsi, ";
+
+                text += "@incDes, @incRes)";
+
+                sql.CommandText = text;
           
 
                 sql.Parameters.AddWithValue("@incProCod", this.incProCod);
@@ -145,7 +190,10 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@incEstFecFin", DateTimeToDateSQL(this.incEstFecFin));
                 
                 sql.Parameters.AddWithValue("@incUsuCod", this.incUsuCod);
-                sql.Parameters.AddWithValue("@incUsuAsi", this.incUsuAsi);
+
+                if (this.incUsuAsi != null)
+                    sql.Parameters.AddWithValue("@incUsuAsi", this.incUsuAsi);
+
                 sql.Parameters.AddWithValue("@incDes", this.incDes);
                 sql.Parameters.AddWithValue("@incRes", this.incRes);
                 SQLExecute sqlIns = new SQLExecute();
@@ -185,11 +233,18 @@ namespace SeguimientoIncidentesBD1.persist
             try
             {
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "UPDATE INTO incidente SET " +
-                "incCatCod=@incCatCod, incSevCod=@incSevCod, incPriCod=@incPriCod, "+
+
+                string text = "UPDATE INTO incidente SET " +
+                "incCatCod=@incCatCod, incSevCod=@incSevCod, incPriCod=@incPriCod, " +
                 "incEstCod=@incEstCod, incEstHrs=@incEstHrs, incFecIng=@incFecIng, incFecUltAct=@incFecUltAct, " +
-                "incFecFin=@incFecFin, incEstFecIni=@incEstFecIni, incEstFecFin=@incEstFecFin, incUsuCod=@incUsuCod, "+
-                "incUsuAsi=@incUsuAsi, incDes=@incDes, incRes=@incRes) WHERE incCod=@incCod";
+                "incFecFin=@incFecFin, incEstFecIni=@incEstFecIni, incEstFecFin=@incEstFecFin, incUsuCod=@incUsuCod, ";
+
+                if (nuevaincUsuAsi != null)
+                    text += "incUsuAsi=@incUsuAsi, ";
+
+                text += "incDes=@incDes, incRes=@incRes) WHERE incCod=@incCod";
+
+                sql.CommandText = text;
                 sql.Parameters.AddWithValue("@incCod", this.incCod);
                 sql.Parameters.AddWithValue("@incCatCod", nuevaincCatCod);
                 sql.Parameters.AddWithValue("@incSevCod", nuevaincSevCod);
@@ -204,7 +259,10 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@incEstFecFin", DateTimeToDateSQL(nuevaincEstFecFin));
 
                 sql.Parameters.AddWithValue("@incUsuCod", nuevaincUsuCod);
-                sql.Parameters.AddWithValue("@incUsuAsi", nuevaincUsuAsi);
+
+                if (nuevaincUsuAsi != null)
+                    sql.Parameters.AddWithValue("@incUsuAsi", nuevaincUsuAsi);
+
                 sql.Parameters.AddWithValue("@incDes", nuevaincDes);
                 sql.Parameters.AddWithValue("@incRes", nuevaincRes);
                 SQLExecute sqlIns = new SQLExecute();
