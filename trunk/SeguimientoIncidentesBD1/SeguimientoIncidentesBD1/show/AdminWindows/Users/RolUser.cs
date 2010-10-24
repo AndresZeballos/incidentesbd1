@@ -21,6 +21,8 @@ namespace SeguimientoIncidentesBD1.show
             this.beforeUserWindow = beforeUserWindow;
             this.cache = cache;
             this.Location = this.beforeUserWindow.Location;
+            cargarGridRoles();
+            cargarGridrestoRoles();
         }
 
         private void cargarGridRoles()

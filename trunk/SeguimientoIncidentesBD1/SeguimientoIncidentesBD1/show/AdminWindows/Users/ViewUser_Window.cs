@@ -21,6 +21,11 @@ namespace SeguimientoIncidentesBD1.show
             this.userAdmin = userAdmin;
             this.cache = cache;
             this.Location = this.userAdmin.Location;
+            this.textBox1.Text = this.cache.UsuarioSelected.UsuCod;
+            this.textBox3.Text = this.cache.UsuarioSelected.UsuNom;
+            this.textBox4.Text = this.cache.UsuarioSelected.UsuPass;
+            this.textBox5.Text = this.cache.UsuarioSelected.UsuMail;
+            VerRoles();
         }
 
         public void VerRoles()
@@ -73,6 +78,11 @@ namespace SeguimientoIncidentesBD1.show
             Usuario_Logic usuarioModificado = new Usuario_Logic(this.cache.UsuarioSelected.UsuCod);
             usuarioModificado.UsuarioUpdate(this.textBox3.Text, this.textBox4.Text, this.textBox5.Text);
             this.Close();
+        }
+
+        private void ViewUser_Window_VisibleChanged(object sender, EventArgs e)
+        {
+            VerRoles();
         }
     }
 }
