@@ -28,15 +28,15 @@ namespace SeguimientoIncidentesBD1.show
             DataSet rolesUsuario = new View_Logic().View_UserRol(this.cache.UsuarioSelected.UsuCod);
             this.dataGridView3.DataSource = rolesUsuario;
             this.dataGridView3.DataMember = "usuarioGrupoUsuario";
-            this.dataGridView3.Columns[0].HeaderText = "Usuarios";
+            this.dataGridView3.Columns[0].HeaderText = "Roles del Usuario";
         }
 
         private void cargarGridrestoRoles()
         {///
-            DataSet restoUsuarios = new View_Logic().View_Option_UserRol(this.cache.UsuarioSelected.UsuCod);
-            this.dataGridView3.DataSource = restoUsuarios;
-            this.dataGridView3.DataMember = "usuario";
-            this.dataGridView3.Columns[0].HeaderText = "Usuarios del Sistema";
+            DataSet restoRoles = new View_Logic().View_Option_UserRol(this.cache.UsuarioSelected.UsuCod);
+            this.dataGridView3.DataSource = restoRoles;
+            this.dataGridView3.DataMember = "rol";
+            this.dataGridView3.Columns[0].HeaderText = "Roles del Sistema";
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -52,6 +52,23 @@ namespace SeguimientoIncidentesBD1.show
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string rolSelected = this.dataGridView3.CurrentRow.Cells[0].Value.ToString();
+                Usuario_Logic nuevoRol = new Usuario_Logic(this.cache.UsuarioSelected.UsuCod);
+                nuevoRol.UsuarioRolAdd(rolSelected);
+                //this.cache.UsuariosGrupo.Tables[0].Rows.Add(userSelected);
+                cargarGridRoles();
+                cargarGridrestoRoles();
+            }
+            catch (Exception exp)
+            {
+                System.Windows.Forms.MessageBox.Show("No hay roles disponibles");
+            }
         }
     }
 }
