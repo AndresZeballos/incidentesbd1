@@ -38,28 +38,24 @@ namespace SeguimientoIncidentesBD1.show
             {
                 this.comboBox2.Items.Add(severidad);
             }
-            this.comboBox2.Text = this.comboBox2.Items[0].ToString();
 
             IList<string> prioridades = view.View_GeneralPriority();
             foreach (string prioridad in prioridades)
             {
                 this.comboBox1.Items.Add(prioridad);
             }
-            this.comboBox1.Text = this.comboBox1.Items[0].ToString();
 
             IList<string> categorias = view.View_GeneralCategory();
             foreach (string categoria in categorias)
             {
                 this.comboBox3.Items.Add(categoria);
             }
-            this.comboBox3.Text = this.comboBox3.Items[0].ToString();
 
             IList<string> usuarios = view.userByProject(this.cache.Proyecto.ProCod);
             foreach (string usuario in usuarios)
             {
                 this.comboBox4.Items.Add(usuario);
             }
-            this.comboBox4.Text = this.comboBox4.Items[0].ToString();
 
             if (DataCurrentUser.ValidarSeguridad("Modificador", cache.Usuario))
                 this.comboBox4.Enabled = true;
