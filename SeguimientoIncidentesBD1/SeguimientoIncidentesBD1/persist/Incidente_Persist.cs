@@ -371,7 +371,7 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 this.incUsuAsi = nuevaincUsuAsi;
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "UPDATE INTO incidente SET incUsuAsi=@incUsuAsi WHERE incCod=@incCod";
+                sql.CommandText = "UPDATE incidente SET incUsuAsi=@incUsuAsi WHERE incCod=@incCod";
                 sql.Parameters.AddWithValue("@incCod", this.incCod);
                 sql.Parameters.AddWithValue("@incUsuAsi", nuevaincUsuAsi);
                 SQLExecute sqlIns = new SQLExecute();
@@ -412,7 +412,7 @@ namespace SeguimientoIncidentesBD1.persist
             try
             {
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "UPDATE INTO incidente SET incFecFin=@incFecFin WHERE incCod=@incCod";
+                sql.CommandText = "UPDATE incidente SET incFecFin=@incFecFin WHERE incCod=@incCod";
 
                 sql.Parameters.AddWithValue("@incFecFin", DateTimeToDateSQL(DateTime.Today));
                 
@@ -445,7 +445,7 @@ namespace SeguimientoIncidentesBD1.persist
                 this.incEstFecIni = incEstFecIni;
                 this.incEstFecFin = incEstFecFin;
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "UPDATE INTO incidente SET incEstHrs=@incEstHrs, incEstFecIni=@incEstFecIni, " +
+                sql.CommandText = "UPDATE incidente SET incEstHrs=@incEstHrs, incEstFecIni=@incEstFecIni, " +
                     "incEstFecFin=@incEstFecFin WHERE incCod=@incCod";
                 sql.Parameters.AddWithValue("@incCod", this.incCod);
                 sql.Parameters.AddWithValue("@incEstHrs", incEstHrs);
