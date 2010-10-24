@@ -265,6 +265,7 @@
             this.Name = "ViewUser_Window";
             this.Text = "Usuario";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ViewUser_FormClosed);
+            this.VisibleChanged += new System.EventHandler(this.ViewUser_Window_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
