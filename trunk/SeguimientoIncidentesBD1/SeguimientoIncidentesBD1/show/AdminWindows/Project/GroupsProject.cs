@@ -65,7 +65,7 @@ namespace SeguimientoIncidentesBD1.show
                 cargarGridGrupos();
                 cargarGridrestoGrupos();
             }
-            catch (Exception exc)
+            catch (Exception exp)
             {
                 System.Windows.Forms.MessageBox.Show("No hay grupos disponibles");
             }

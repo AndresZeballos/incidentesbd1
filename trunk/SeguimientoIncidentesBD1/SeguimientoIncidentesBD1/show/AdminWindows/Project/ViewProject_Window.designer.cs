@@ -228,6 +228,7 @@
             this.Name = "ViewProject_Window";
             this.Text = "Detalle de Proyecto";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ViewProject_FormClosed);
+            this.VisibleChanged += new System.EventHandler(this.ViewProject_Window_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

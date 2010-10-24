@@ -98,6 +98,11 @@ namespace SeguimientoIncidentesBD1.show
             {
                 try
                 {
+                    if (this.cache.Grupo == null)
+                    {
+                        GrupoUsuario_Logic grupo = new GrupoUsuario_Logic(grpCod, grpDes);
+                        grupo.GrupoUsuarioCreate();
+                    }
                     MessageBox.Show("Grupo creado con exito");
                 }
                 catch (SqlException sqlex)

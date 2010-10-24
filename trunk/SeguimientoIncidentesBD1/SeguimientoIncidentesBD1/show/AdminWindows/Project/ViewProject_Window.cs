@@ -75,5 +75,10 @@ namespace SeguimientoIncidentesBD1.show
             proyectoModificado.ProyectoUpdate(this.textBox1.Text, this.textBox5.Text, this.comboBox1.Text);
             this.Close();
         }
+
+        private void ViewProject_Window_VisibleChanged(object sender, EventArgs e)
+        {
+            VerGrupos();
+        }
     }
 }
