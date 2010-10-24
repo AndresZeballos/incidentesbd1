@@ -119,7 +119,7 @@ namespace SeguimientoIncidentesBD1.show
             {
                 MessageBox.Show("Error al crear el incidente: " + sqlex.Message);
             }
-
+            this.Close();
         }
 
         private void button6_Click(object sender, EventArgs e)

@@ -119,5 +119,10 @@ namespace SeguimientoIncidentesBD1.show
             //}
         }
 
+        private void Project_Window_VisibleChanged(object sender, EventArgs e)
+        {
+            cargarGridIncidentes();
+        }
+
     }
 }

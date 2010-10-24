@@ -348,6 +348,7 @@
             this.Name = "Project_Window";
             this.Text = "Incidentes del Proyecto";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Project_Window_FormClosed);
+            this.VisibleChanged += new System.EventHandler(this.Project_Window_VisibleChanged);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
