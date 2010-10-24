@@ -47,8 +47,8 @@ namespace SeguimientoIncidentesBD1
             usuario = null;
             grupo = null;
             proyecto = null;
-            //estadoInicial = ;
-            //estadoFinal = ;
+            estadoInicial = vl.EstadoInicial();
+            estadoFinal = vl.EstadoInicial();
             incidente = null;
 
         }
