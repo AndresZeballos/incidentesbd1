@@ -162,10 +162,6 @@ namespace SeguimientoIncidentesBD1.persist
                 text += "incDes, incRes) " +
                         "VALUES " +
                         "(@incProCod, @incCatCod, @incSevCod, @incPriCod, @incEstCod, @incEstHrs, @incFecIng, @incFecUltAct, " +
-                        "@incFecFin, @incEstFecIni, @incEstFecFin, @incUsuCod," +
-                        "incDes, incRes) " +
-                        "VALUES " +
-                        "(@incProCod, @incCatCod, @incSevCod, @incPriCod, @incEstCod, @incEstHrs, @incFecIng, @incFecUltAct, " +
                         "@incFecFin, @incEstFecIni, @incEstFecFin, @incUsuCod,";
 
                 if (this.incUsuAsi != null)
