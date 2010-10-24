@@ -71,7 +71,7 @@ namespace SeguimientoIncidentesBD1.persist
                 this.incHistAcc = dt.Rows[0].Field<string>("histAcc");
                 this.incHistUsuCod = dt.Rows[0].Field<string>("histUsuCod");
                 this.incHistNota = dt.Rows[0].Field<string>("histNota");
-                this.incHistTiempo = dt.Rows[0].Field<int>("histTiempo");
+                this.incHistTiempo = dt.Rows[0].Field<int>("histHrs");
             }
             catch (SqlException sqlex)
             {
@@ -85,7 +85,7 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "INSERT INTO historia (histIncCod, histEstIni, histEstFin, histFec, histAcc, histUsuCod, histNota,"+
-                    " histTiempo) VALUES (@histIncCod, @histEstIni, @histEstFin, @histFec, @histAcc, @histUsuCod, @histNota)";
+                    " histHrs) VALUES (@histIncCod, @histEstIni, @histEstFin, @histFec, @histAcc, @histUsuCod, @histNota, @histHrs)";
                 sql.Parameters.AddWithValue("@histIncCod", this.incHistCod);
                 sql.Parameters.AddWithValue("@histEstIni", this.incHistEstIni);
                 sql.Parameters.AddWithValue("@histEstFin", this.incHistEstFin);
@@ -93,7 +93,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@histAcc", this.incHistAcc);
                 sql.Parameters.AddWithValue("@histUsuCod", this.incHistUsuCod);
                 sql.Parameters.AddWithValue("@histNota", this.incHistNota);
-                sql.Parameters.AddWithValue("@histTiempo", this.incHistTiempo);
+                sql.Parameters.AddWithValue("@histHrs", this.incHistTiempo);
                 SQLExecute sqlIns = new SQLExecute();
                 sqlIns.Execute(sql, "historia");
             }
