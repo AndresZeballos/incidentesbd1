@@ -23,6 +23,7 @@ namespace SeguimientoIncidentesBD1.show
             this.groupsAdmin = groupsAdmin;
             this.Location = this.groupsAdmin.Location;
             this.cache = cache;
+            this.cache.Grupo = null;
         }
 
         private void button3_Click(object sender, EventArgs e)

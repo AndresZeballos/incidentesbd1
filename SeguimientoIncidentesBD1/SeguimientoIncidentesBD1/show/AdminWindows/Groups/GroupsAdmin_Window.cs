@@ -22,11 +22,15 @@ namespace SeguimientoIncidentesBD1.show
             this.cache = cache;
             this.adminWindow = adminWindow;
             this.Location = this.adminWindow.Location;
+            cargarGridGrupos();
+        }
+
+        private void cargarGridGrupos()
+        {
             DataSet grupos = new View_Persist().View_GeneralGroups();
             this.dataGridView2.DataSource = grupos;
             this.dataGridView2.DataMember = "grupoUsuario";
             this.dataGridView2.Columns[0].HeaderText = "Codigo";
-            
         }
 
         private void button3_Click(object sender, EventArgs e)

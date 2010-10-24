@@ -134,9 +134,9 @@ namespace SeguimientoIncidentesBD1.persist
             try
             {
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "INSERT INTO usuarioGrupoUsuario (grpUsuCod, usuGrpUsuCod) VALUES (@grpUsuCod, @usuCod)";
+                sql.CommandText = "INSERT INTO usuarioGrupoUsuario (usuGrpCod, usuGrpUsuCod) VALUES (@usuGrpCod, @usuCod)";
                 //la base de datos debería controlar que el id exista en la tabla de seguridades
-                sql.Parameters.AddWithValue("@grpUsuCod", this.grpUsuCod);
+                sql.Parameters.AddWithValue("@usuGrpCod", this.grpUsuCod);
                 sql.Parameters.AddWithValue("@usuCod", usuCod);
                 SQLExecute sqlInsSeg = new SQLExecute();
                 sqlInsSeg.Execute(sql, "usuarioGrupoUsuario");
