@@ -73,7 +73,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.Clear();
                 //hago la consulta sobre la tabla estadoSeguridad
                 sql.CommandText = "SELECT * FROM estadoSiguiente WHERE estCod = @estCod";
-                sql.Parameters.AddWithValue("@estCod", this.estCod);
+                sql.Parameters.AddWithValue("@estCod", estCod);
                 SQLExecute sqlInsestadoSeg = new SQLExecute();
                 DataSet dsestadoSig = sqlIns.Execute(sql, "estadoSiguiente");
                 DataTable dtestadoSig = dsestadoSig.Tables["estadoSiguiente"];

@@ -27,7 +27,7 @@ namespace SeguimientoIncidentesBD1.show
 
             //Controla que tenga el permiso para visualizar la opción de reportar
 
-            Boolean puedeReportar = DataCurrentUser.ValidarSeguridad("Reportador", cache.Usuario);
+            Boolean puedeReportar = DataCurrentUser.ValidarSeguridad("Reportador", this.cache.Usuario);
 
             if (!puedeReportar)
             {
@@ -37,7 +37,7 @@ namespace SeguimientoIncidentesBD1.show
 
             //Controla que tenga permiso a ver los incidentes?????????????????????????????????????
 
-            Boolean verIncidentes = DataCurrentUser.ValidarSeguridad("Espectador", cache.Usuario);
+            Boolean verIncidentes = DataCurrentUser.ValidarSeguridad("Espectador", this.cache.Usuario);
 
             if (verIncidentes)
             {
@@ -70,7 +70,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Report_Window reporter = new Report_Window(this, cache);
+            Report_Window reporter = new Report_Window(this, this.cache);
             this.Visible = false;
             reporter.Visible = true;
         }
@@ -80,14 +80,14 @@ namespace SeguimientoIncidentesBD1.show
             int incCod = Int32.Parse(this.dataGridView2.CurrentRow.Cells[0].Value.ToString());
             cache.Incidente = new Incidente_Logic(incCod);
 
-            ViewIncident_Window viewIncident = new ViewIncident_Window(this, cache);
+            ViewIncident_Window viewIncident = new ViewIncident_Window(this, this.cache);
             this.Visible = false;
             viewIncident.Visible = true;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Search_Window searchWindow = new Search_Window(this, cache);
+            Search_Window searchWindow = new Search_Window(this, this.cache);
             this.Visible = false;
             searchWindow.Visible = true;
         }

@@ -59,6 +59,7 @@ namespace SeguimientoIncidentesBD1.logic
         public Estado_Logic(string estCod)
         {
             Estado_Persist est = new Estado_Persist(estCod);
+            this.estCod = est.EstCod;
             this.estSigEstCod = est.EstSigEstCod;
             this.estIni = est.EstIni;
             this.estFin = est.EstFin;
