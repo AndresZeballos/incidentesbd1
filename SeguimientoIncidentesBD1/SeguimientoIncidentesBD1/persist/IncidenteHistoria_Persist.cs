@@ -86,7 +86,7 @@ namespace SeguimientoIncidentesBD1.persist
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "INSERT INTO historia (histIncCod, histEstIni, histEstFin, histFec, histAcc, histUsuCod, histNota,"+
                     " histHrs) VALUES (@histIncCod, @histEstIni, @histEstFin, @histFec, @histAcc, @histUsuCod, @histNota, @histHrs)";
-                sql.Parameters.AddWithValue("@histIncCod", this.incHistCod);
+                sql.Parameters.AddWithValue("@histIncCod", this.incHistIncCod);
                 sql.Parameters.AddWithValue("@histEstIni", this.incHistEstIni);
                 sql.Parameters.AddWithValue("@histEstFin", this.incHistEstFin);
                 sql.Parameters.AddWithValue("@histFec", DateTimeToDateSQL(this.incHistFec));
