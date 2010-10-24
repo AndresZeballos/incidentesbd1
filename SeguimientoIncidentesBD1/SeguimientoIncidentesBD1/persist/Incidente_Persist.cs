@@ -62,8 +62,10 @@ namespace SeguimientoIncidentesBD1.persist
             this.incSevCod = incSevCod;
             this.incPriCod = incPriCod;
             this.incEstCod = incEstCod;
+
             this.incFecIng = incFecIng;
             this.incFecUltAct = incFecUltAct;
+
             this.incUsuCod = incUsuCod;
             this.incUsuAsi = incUsuAsi;
             this.incDes = incDes;
@@ -122,12 +124,12 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@incPriCod", this.incPriCod);
                 sql.Parameters.AddWithValue("@incEstCod", this.incEstCod);
                 sql.Parameters.AddWithValue("@incEstHrs", this.incEstHrs);
-                sql.Parameters.AddWithValue("@incFecIng", this.incFecIng.ToShortDateString());
-                sql.Parameters.AddWithValue("@incFecUltAct", this.incFecUltAct.ToShortDateString());
 
-                sql.Parameters.AddWithValue("@incFecFin", this.incFecFin);
-                sql.Parameters.AddWithValue("@incEstFecIni", this.incEstFecIni);
-                sql.Parameters.AddWithValue("@incEstFecFin", this.incEstFecFin);
+                sql.Parameters.AddWithValue("@incFecIng", DateTimeToDateSQL(this.incFecIng));
+                sql.Parameters.AddWithValue("@incFecUltAct", DateTimeToDateSQL(this.incFecUltAct));
+                sql.Parameters.AddWithValue("@incFecFin", DateTimeToDateSQL(this.incFecFin));
+                sql.Parameters.AddWithValue("@incEstFecIni", DateTimeToDateSQL(this.incEstFecIni));
+                sql.Parameters.AddWithValue("@incEstFecFin", DateTimeToDateSQL(this.incEstFecFin));
                 
                 sql.Parameters.AddWithValue("@incUsuCod", this.incUsuCod);
                 sql.Parameters.AddWithValue("@incUsuAsi", this.incUsuAsi);
@@ -181,11 +183,11 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@incPriCod", nuevaincPriCod);
                 sql.Parameters.AddWithValue("@incEstCod", nuevaincEstCod);
                 sql.Parameters.AddWithValue("@incEstHrs", nuevaincEstHrs);
-                sql.Parameters.AddWithValue("@incFecIng", nuevaincFecIng);
-                sql.Parameters.AddWithValue("@incFecUltAct", nuevaincFecUltAct);
-                sql.Parameters.AddWithValue("@incFecFin", nuevaincFecFin);
-                sql.Parameters.AddWithValue("@incEstFecIni", nuevaincEstFecIni);
-                sql.Parameters.AddWithValue("@incEstFecFin", nuevaincEstFecFin);
+                sql.Parameters.AddWithValue("@incFecIng", DateTimeToDateSQL(nuevaincFecIng));
+                sql.Parameters.AddWithValue("@incFecUltAct", DateTimeToDateSQL(nuevaincFecUltAct));
+                sql.Parameters.AddWithValue("@incFecFin", DateTimeToDateSQL(nuevaincFecFin));
+                sql.Parameters.AddWithValue("@incEstFecIni", DateTimeToDateSQL(nuevaincEstFecIni));
+                sql.Parameters.AddWithValue("@incEstFecFin", DateTimeToDateSQL(nuevaincEstFecFin));
                 sql.Parameters.AddWithValue("@incUsuCod", nuevaincUsuCod);
                 sql.Parameters.AddWithValue("@incUsuAsi", nuevaincUsuAsi);
                 sql.Parameters.AddWithValue("@incDes", nuevaincDes);
@@ -246,7 +248,7 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "UPDATE INTO incidente SET incFecFin=@incFecFin WHERE incCod=@incCod";
-                sql.Parameters.AddWithValue("@incFecFin", DateTime.Today);
+                sql.Parameters.AddWithValue("@incFecFin", DateTimeToDateSQL(DateTime.Today));
                 SQLExecute sqlIns = new SQLExecute();
                 sqlIns.Execute(sql, "incidente");
             }
@@ -255,6 +257,15 @@ namespace SeguimientoIncidentesBD1.persist
                 throw sqlex;
             }
 
+        }
+
+        private string DateTimeToDateSQL(DateTime dateTime)
+        {
+            string result = "";
+            result += dateTime.Year;
+            result += dateTime.Month;
+            result += dateTime.Day;
+            return result;
         }
     }
 }
