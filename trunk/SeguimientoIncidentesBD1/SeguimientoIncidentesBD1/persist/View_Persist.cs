@@ -213,8 +213,8 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "SELECT rolCod FROM rol " +
-                                  "WHERE rolCod NOT IN (" + 
-                                  "SELECT usuRolCod FROM usuarioRol WHERE usuCod = @usuCod )";
+                                  "WHERE rolCod NOT IN (" +
+                                  "SELECT usuRolCod FROM usuarioRol WHERE usuarioRol.usuCod = @usuCod )";
                 sql.Parameters.AddWithValue("@usuCod", usuCod);
                 SQLExecute sqlIns = new SQLExecute();
                 DataSet ds = sqlIns.Execute(sql, "rol");

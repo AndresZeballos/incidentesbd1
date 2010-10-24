@@ -24,6 +24,7 @@ namespace SeguimientoIncidentesBD1.show
             this.userAdmin = userAdmin;
             this.cache = cache;
             this.Location = this.userAdmin.Location;
+            this.cache.UsuarioSelected = null;
             this.creado = false;
         }
 
@@ -38,33 +39,33 @@ namespace SeguimientoIncidentesBD1.show
             }
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-            if (this.textBox3.Text.Equals("") || this.textBox4.Text.Equals("") || this.textBox1.Text.Equals(""))
-            {
-                this.button2.Enabled = false;
-                this.button5.Enabled = false;
-            }
-            else
-            {
-                this.button2.Enabled = true;
-                this.button5.Enabled = true;
-            }
-        }
+        //private void textBox3_TextChanged(object sender, EventArgs e)
+        //{
+        //    if (this.textBox3.Text.Equals("") || this.textBox4.Text.Equals("") || this.textBox1.Text.Equals(""))
+        //    {
+        //        this.button2.Enabled = false;
+        //        this.button5.Enabled = false;
+        //    }
+        //    else
+        //    {
+        //        this.button2.Enabled = true;
+        //        this.button5.Enabled = true;
+        //    }
+        //}
 
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-            if (this.textBox3.Text.Equals("") || this.textBox4.Text.Equals("") || this.textBox1.Text.Equals(""))
-            {
-                this.button2.Enabled = false;
-                this.button5.Enabled = false;
-            }
-            else
-            {
-                this.button2.Enabled = true;
-                this.button5.Enabled = true;
-            }
-        }
+        //private void textBox4_TextChanged(object sender, EventArgs e)
+        //{
+        //    if (this.textBox3.Text.Equals("") || this.textBox4.Text.Equals("") || this.textBox1.Text.Equals(""))
+        //    {
+        //        this.button2.Enabled = false;
+        //        this.button5.Enabled = false;
+        //    }
+        //    else
+        //    {
+        //        this.button2.Enabled = true;
+        //        this.button5.Enabled = true;
+        //    }
+        //}
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -155,6 +156,34 @@ namespace SeguimientoIncidentesBD1.show
         private void NewUser_Window_VisibleChanged(object sender, EventArgs e)
         {
             VerRoles();
+        }
+
+        private void textBox3_TextChanged_1(object sender, EventArgs e)
+        {
+            if (this.textBox3.Text.Equals("") || this.textBox4.Text.Equals("") || this.textBox1.Text.Equals(""))
+            {
+                this.button2.Enabled = false;
+                this.button5.Enabled = false;
+            }
+            else
+            {
+                this.button2.Enabled = true;
+                this.button5.Enabled = true;
+            }
+        }
+
+        private void textBox4_TextChanged_1(object sender, EventArgs e)
+        {
+            if (this.textBox3.Text.Equals("") || this.textBox4.Text.Equals("") || this.textBox1.Text.Equals(""))
+            {
+                this.button2.Enabled = false;
+                this.button5.Enabled = false;
+            }
+            else
+            {
+                this.button2.Enabled = true;
+                this.button5.Enabled = true;
+            }
         }
     }
 }
