@@ -294,13 +294,6 @@ namespace SeguimientoIncidentesBD1.persist
                                     string nuevaincSevCod, 
                                     string nuevaincPriCod, 
                                     string nuevaincEstCod, 
-                                    int nuevaincEstHrs, 
-                                    DateTime nuevaincFecIng, 
-                                    DateTime nuevaincFecUltAct, 
-                                    DateTime nuevaincFecFin, 
-                                    DateTime nuevaincEstFecIni, 
-                                    DateTime nuevaincEstFecFin, 
-                                    string nuevaincUsuCod, 
                                     string nuevaincUsuAsi, 
                                     string nuevaincDes, 
                                     string nuevaincRes
@@ -313,13 +306,6 @@ namespace SeguimientoIncidentesBD1.persist
                 this.incSevCod = nuevaincSevCod;
                 this.incPriCod = nuevaincPriCod;
                 this.incEstCod = nuevaincEstCod;
-                this.incEstHrs = nuevaincEstHrs;
-                this.incFecIng = nuevaincFecIng;
-                this.incFecUltAct = nuevaincFecUltAct;
-                this.incFecFin = nuevaincFecFin;
-                this.incEstFecIni = nuevaincEstFecIni;
-                this.incEstFecFin = nuevaincEstFecFin;
-                this.incUsuCod = nuevaincUsuCod;
                 this.incUsuAsi = nuevaincUsuAsi;
                 this.incDes = nuevaincDes;
                 this.incRes = nuevaincRes;
@@ -327,8 +313,7 @@ namespace SeguimientoIncidentesBD1.persist
 
                 string text = "UPDATE INTO incidente SET " +
                 "incCatCod=@incCatCod, incSevCod=@incSevCod, incPriCod=@incPriCod, " +
-                "incEstCod=@incEstCod, incEstHrs=@incEstHrs, incFecIng=@incFecIng, incFecUltAct=@incFecUltAct, " +
-                "incFecFin=@incFecFin, incEstFecIni=@incEstFecIni, incEstFecFin=@incEstFecFin, incUsuCod=@incUsuCod, ";
+                "incEstCod=@incEstCod, ";
 
                 if (nuevaincUsuAsi != null)
                     text += "incUsuAsi=@incUsuAsi, ";
@@ -341,15 +326,6 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@incSevCod", nuevaincSevCod);
                 sql.Parameters.AddWithValue("@incPriCod", nuevaincPriCod);
                 sql.Parameters.AddWithValue("@incEstCod", nuevaincEstCod);
-                sql.Parameters.AddWithValue("@incEstHrs", nuevaincEstHrs);
-
-                sql.Parameters.AddWithValue("@incFecIng", DateTimeToDateSQL(nuevaincFecIng));
-                sql.Parameters.AddWithValue("@incFecUltAct", DateTimeToDateSQL(nuevaincFecUltAct));
-                sql.Parameters.AddWithValue("@incFecFin", DateTimeToDateSQL(nuevaincFecFin));
-                sql.Parameters.AddWithValue("@incEstFecIni", DateTimeToDateSQL(nuevaincEstFecIni));
-                sql.Parameters.AddWithValue("@incEstFecFin", DateTimeToDateSQL(nuevaincEstFecFin));
-
-                sql.Parameters.AddWithValue("@incUsuCod", nuevaincUsuCod);
 
                 if (nuevaincUsuAsi != null)
                     sql.Parameters.AddWithValue("@incUsuAsi", nuevaincUsuAsi);
@@ -436,6 +412,17 @@ namespace SeguimientoIncidentesBD1.persist
 
             return result;
         }
+
+        //private String DateSQLToDateTime(DateTime dateTime)
+        //{
+        //    String result = "";
+
+        //    result += dateTime.Month + "/";
+        //    result += dateTime.Day + "/";
+        //    result += dateTime.Year;
+
+        //    return result;
+        //}
 
         public void EstimarIncidente(int incEstHrs, DateTime incEstFecIni, DateTime incEstFecFin)
         {
