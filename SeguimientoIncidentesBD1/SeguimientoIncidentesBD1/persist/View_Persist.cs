@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -775,12 +776,70 @@ namespace SeguimientoIncidentesBD1.persist
             }
         }
 
+        public IList<string> View_GeneralCategory()
+        {
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "SELECT * FROM categoria";
+                SQLExecute sqlIns = new SQLExecute();
+                DataSet ds = sqlIns.Execute(sql, "categoria");
+                DataTable dt = ds.Tables["categoria"];
+                IList<string> lista = new List<string>();
+                foreach(DataRow drow in dt.Rows)
+                {
+                    lista.Add(drow.Field<string>("catCod"));
+                }
+                return lista;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
 
+        public IList<string> View_GeneralPriority()
+        {
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "SELECT * FROM prioridad";
+                SQLExecute sqlIns = new SQLExecute();
+                DataSet ds = sqlIns.Execute(sql, "prioridad");
+                DataTable dt = ds.Tables["prioridad"];
+                IList<string> lista = new List<string>();
+                foreach(DataRow drow in dt.Rows)
+                {
+                    lista.Add(drow.Field<string>("priCod"));
+                }
+                return lista;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
 
-
-
-
-
-
+        public IList<string> View_GeneralSeverity()
+        {
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "SELECT * FROM severidad";
+                SQLExecute sqlIns = new SQLExecute();
+                DataSet ds = sqlIns.Execute(sql, "severidad");
+                DataTable dt = ds.Tables["severidad"];
+                IList<string> lista = new List<string>();
+                foreach(DataRow drow in dt.Rows)
+                {
+                    lista.Add(drow.Field<string>("sevCod"));
+                }
+                return lista;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
     }
 }
