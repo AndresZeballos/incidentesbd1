@@ -32,8 +32,8 @@ namespace SeguimientoIncidentesBD1.show
         {
             DataSet rolesUsuario = new View_Logic().View_UserRol(this.cache.UsuarioSelected.UsuCod);
             this.dataGridView3.DataSource = rolesUsuario;
-            this.dataGridView3.DataMember = "usuarioGrupoUsuario";
-            this.dataGridView3.Columns[0].HeaderText = "Usuarios";
+            this.dataGridView3.DataMember = "usuarioRol";
+            this.dataGridView3.Columns[0].HeaderText = "Roles";
 
         }
 

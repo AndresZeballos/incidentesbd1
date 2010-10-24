@@ -16,6 +16,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private UserAdmin_Window userAdmin;
         private Cache cache;
+        private Boolean creado;
 
         public NewUser_Window(UserAdmin_Window userAdmin, Cache cache)
         {
@@ -23,31 +24,47 @@ namespace SeguimientoIncidentesBD1.show
             this.userAdmin = userAdmin;
             this.cache = cache;
             this.Location = this.userAdmin.Location;
+            this.creado = false;
         }
 
-        //private void textBox3_TextChanged(object sender, EventArgs e)
-        //{
-        //    if (this.textBox3.Text.Equals("") || this.textBox4.Text.Equals(""))
-        //    {
-        //        this.button2.Enabled = false;
-        //    }
-        //    else
-        //    {
-        //        this.button2.Enabled = true;
-        //    }
-        //}
+        public void VerRoles()
+        {
+            if (this.cache.UsuarioSelected != null)
+            {
+                DataSet rolesUsuario = new View_Logic().View_UserRol(this.cache.UsuarioSelected.UsuCod);
+                this.dataGridView3.DataSource = rolesUsuario;
+                this.dataGridView3.DataMember = "usuarioRol";
+                this.dataGridView3.Columns[0].HeaderText = "Roles";
+            }
+        }
 
-        //private void textBox4_TextChanged(object sender, EventArgs e)
-        //{
-        //    if (this.textBox4.Text.Equals("") || this.textBox3.Text.Equals(""))
-        //    {
-        //        this.button2.Enabled = false;
-        //    }
-        //    else
-        //    {
-        //        this.button2.Enabled = true;
-        //    }
-        //}
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            if (this.textBox3.Text.Equals("") || this.textBox4.Text.Equals("") || this.textBox1.Text.Equals(""))
+            {
+                this.button2.Enabled = false;
+                this.button5.Enabled = false;
+            }
+            else
+            {
+                this.button2.Enabled = true;
+                this.button5.Enabled = true;
+            }
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            if (this.textBox3.Text.Equals("") || this.textBox4.Text.Equals("") || this.textBox1.Text.Equals(""))
+            {
+                this.button2.Enabled = false;
+                this.button5.Enabled = false;
+            }
+            else
+            {
+                this.button2.Enabled = true;
+                this.button5.Enabled = true;
+            }
+        }
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -74,7 +91,7 @@ namespace SeguimientoIncidentesBD1.show
             string usuPass = this.textBox4.Text;
             string usuMail = this.textBox5.Text;
 
-            if (usuCod.Equals("") || usuNom.Equals(""))
+            if (usuCod.Equals("") || usuNom.Equals("") || usuPass.Equals(""))
             {
                 MessageBox.Show("Faltan ingresar campos");
             }
@@ -82,20 +99,62 @@ namespace SeguimientoIncidentesBD1.show
             {
                 try
                 {
-                    Usuario_Logic usuario = new Usuario_Logic(usuCod, usuNom, usuPass, usuMail);
-                    usuario.UsuarioPersist();
+                    if (this.cache.UsuarioSelected == null)
+                    {
+                        Usuario_Logic usuario = new Usuario_Logic(usuCod, usuNom, usuPass, usuMail);
+                        usuario.UsuarioPersist();
+                    }
                     MessageBox.Show("Usuario creado con exito");
                 }
                 catch (SqlException sqlex)
                 {
                     MessageBox.Show("Error al crear el usuario: " + sqlex.Message);
                 }
+                this.Close();
             }
+            
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            if (this.cache.UsuarioSelected == null)
+            {
+                Usuario_Logic usuario = new Usuario_Logic(this.textBox1.Text,this.textBox3.Text,this.textBox4.Text, this.textBox5.Text);
+                this.textBox1.Enabled = false;
+                this.textBox3.Enabled = false;
+                this.textBox4.Enabled = false;
+                this.textBox5.Enabled = false;
+                usuario.UsuarioPersist();
+                this.creado = true;
+                this.cache.UsuarioSelected = usuario;
+            }
+            RolUser rolUser = new RolUser(this, this.cache);
+            this.Visible = false;
+            rolUser.Visible = true;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (this.textBox3.Text.Equals("") || this.textBox4.Text.Equals("") || this.textBox1.Text.Equals(""))
+            {
+                this.button2.Enabled = false;
+                this.button5.Enabled = false;
+            }
+            else
+            {
+                this.button2.Enabled = true;
+                this.button5.Enabled = true;
+            }
+        }
+
+        private void NewUser_Window_VisibleChanged(object sender, EventArgs e)
+        {
+            VerRoles();
         }
     }
 }
