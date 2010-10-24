@@ -203,6 +203,20 @@ namespace SeguimientoIncidentesBD1.logic
             {
                 Incidente_Persist incPersist = new Incidente_Persist(this.incCod);
                 //actualizo con los nuevos datos
+                this.incCatCod = nuevaincCatCod;
+                this.incSevCod = nuevaincSevCod;
+                this.incPriCod = nuevaincPriCod;
+                this.incEstCod = nuevaincEstCod;
+                this.incEstHrs = nuevaincEstHrs;
+                this.incFecIng = nuevaincFecIng;
+                this.incFecUltAct = nuevaincFecUltAct;
+                this.incFecFin = nuevaincFecFin;
+                this.incEstFecIni = nuevaincEstFecIni;
+                this.incEstFecFin = nuevaincEstFecFin;
+                this.incUsuCod = nuevaincUsuCod;
+                this.incUsuAsi = nuevaincUsuAsig;
+                this.incDes = nuevaincDes;
+                this.incRes = nuevaincRes;
                 incPersist.IncidenteUpdate(
                                             nuevaincCatCod,
                                             nuevaincSevCod,
@@ -230,6 +244,7 @@ namespace SeguimientoIncidentesBD1.logic
         {
             try
             {
+                this.incUsuAsi = nuevaincUsuAsig;
                 Incidente_Persist incPersist = new Incidente_Persist(this.incCod);
                 incPersist.IncidenteAsign(nuevaincUsuAsig);
             }
@@ -273,5 +288,22 @@ namespace SeguimientoIncidentesBD1.logic
                 throw sqlex;
             }
         }
+
+        public void EstimarIncidente(int incEstHrs, DateTime incEstFecIni, DateTime incEstFecFin)
+        {
+            try
+            {
+                this.incEstHrs = incEstHrs;
+                this.incEstFecIni = incEstFecIni;
+                this.incEstFecFin = incEstFecFin;
+                Incidente_Persist incPersist = new Incidente_Persist(this.incCod);
+                incPersist.EstimarIncidente(this.incEstHrs, this.incEstFecIni, this.incEstFecFin);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
     }
 }

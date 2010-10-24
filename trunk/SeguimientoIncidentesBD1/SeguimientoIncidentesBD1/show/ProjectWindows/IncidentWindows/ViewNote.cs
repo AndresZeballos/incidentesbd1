@@ -11,14 +11,16 @@ namespace SeguimientoIncidentesBD1.show
 {
     public partial class ViewNote : Form
     {
-
+        private Cache cache;
         private ViewHistory_Window viewHistory;
 
-        public ViewNote(ViewHistory_Window viewHistory)
+        public ViewNote(ViewHistory_Window viewHistory, Cache cache)
         {
             InitializeComponent();
+            this.cache = cache;
             this.viewHistory = viewHistory;
             this.Location = this.viewHistory.Location;
+            this.textbox
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -28,6 +30,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void ViewNote_FormClosed(object sender, FormClosedEventArgs e)
         {
+            this.viewHistory.Location = this.Location;
             this.viewHistory.Visible = true;
         }
     }
