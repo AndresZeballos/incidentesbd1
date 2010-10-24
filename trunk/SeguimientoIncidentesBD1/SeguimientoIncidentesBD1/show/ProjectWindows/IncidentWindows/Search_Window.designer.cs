@@ -90,6 +90,7 @@
             // 
             // comboBox7
             // 
+            this.comboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox7.ForeColor = System.Drawing.Color.MidnightBlue;
             this.comboBox7.FormattingEnabled = true;
             this.comboBox7.Location = new System.Drawing.Point(106, 155);
@@ -97,10 +98,10 @@
             this.comboBox7.Name = "comboBox7";
             this.comboBox7.Size = new System.Drawing.Size(210, 23);
             this.comboBox7.TabIndex = 23;
-            this.comboBox7.Text = "Sin especificar";
             // 
             // comboBox8
             // 
+            this.comboBox8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox8.ForeColor = System.Drawing.Color.MidnightBlue;
             this.comboBox8.FormattingEnabled = true;
             this.comboBox8.Location = new System.Drawing.Point(106, 255);
@@ -108,10 +109,10 @@
             this.comboBox8.Name = "comboBox8";
             this.comboBox8.Size = new System.Drawing.Size(210, 23);
             this.comboBox8.TabIndex = 22;
-            this.comboBox8.Text = "Sin especificar";
             // 
             // comboBox9
             // 
+            this.comboBox9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox9.ForeColor = System.Drawing.Color.MidnightBlue;
             this.comboBox9.FormattingEnabled = true;
             this.comboBox9.Location = new System.Drawing.Point(106, 204);
@@ -119,7 +120,6 @@
             this.comboBox9.Name = "comboBox9";
             this.comboBox9.Size = new System.Drawing.Size(210, 23);
             this.comboBox9.TabIndex = 21;
-            this.comboBox9.Text = "Sin especificar";
             // 
             // label6
             // 
@@ -134,6 +134,7 @@
             // 
             // comboBox4
             // 
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox4.ForeColor = System.Drawing.Color.MidnightBlue;
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Location = new System.Drawing.Point(106, 108);
@@ -141,7 +142,6 @@
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(210, 23);
             this.comboBox4.TabIndex = 27;
-            this.comboBox4.Text = "Sin especificar";
             // 
             // splitContainer1
             // 
@@ -179,6 +179,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.ForeColor = System.Drawing.Color.MidnightBlue;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(106, 61);
@@ -186,7 +187,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(210, 23);
             this.comboBox1.TabIndex = 33;
-            this.comboBox1.Text = "Sin especificar";
             // 
             // label2
             // 
@@ -251,6 +251,7 @@
             this.button1.TabIndex = 29;
             this.button1.Text = "Buscar";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataGridView2
             // 

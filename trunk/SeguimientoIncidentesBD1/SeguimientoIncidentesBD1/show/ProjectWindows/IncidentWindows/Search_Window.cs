@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SeguimientoIncidentesBD1.logic;
 
 namespace SeguimientoIncidentesBD1.show
 {
@@ -23,6 +24,43 @@ namespace SeguimientoIncidentesBD1.show
 
             this.projectWindow = projectWindow;
             this.Location = this.projectWindow.Location;
+
+            CarcarOpciones();
+        }
+
+        private void CarcarOpciones()
+        {
+            View_Logic view = new View_Logic();
+
+            IList<string> severidades = view.View_GeneralSeverity();
+            foreach (string severidad in severidades)
+            {
+                this.comboBox8.Items.Add(severidad);
+            }
+
+            IList<string> prioridades = view.View_GeneralPriority();
+            foreach (string prioridad in prioridades)
+            {
+                this.comboBox9.Items.Add(prioridad);
+            }
+
+            IList<string> categorias = view.View_GeneralCategory();
+            foreach (string categoria in categorias)
+            {
+                this.comboBox7.Items.Add(categoria);
+            }
+
+            IList<string> usuarios = view.userByProject(this.cache.Proyecto.ProCod);
+            foreach (string usuario in usuarios)
+            {
+                this.comboBox4.Items.Add(usuario);
+            }
+
+            IList<string> estados = view.View_GeneralState();
+            foreach (string estado in estados)
+            {
+                this.comboBox1.Items.Add(estado);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -41,6 +79,12 @@ namespace SeguimientoIncidentesBD1.show
             ViewIncident_Window viewIncident = new ViewIncident_Window(this, cache);
             this.Visible = false;
             viewIncident.Visible = true;
+        }
+
+        // INICIA LA BUSQUEDA AVANZADA
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
