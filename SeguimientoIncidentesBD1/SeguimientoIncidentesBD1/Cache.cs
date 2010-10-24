@@ -31,6 +31,8 @@ namespace SeguimientoIncidentesBD1
 
         private IncidenteHistoria_Logic historia;
 
+        private Estado_Logic estado;
+
         public IncidenteHistoria_Logic Historia { get; set; }
 
         public Usuario_Logic Usuario { get; set; }
@@ -48,6 +50,9 @@ namespace SeguimientoIncidentesBD1
         public Usuario_Logic UsuarioSelected { get; set; }
 
         public Rol_Logic Rol { get; set; }
+
+        public Estado_Logic Estado { get; set; }
+
 
         public Cache()
         {
