@@ -159,6 +159,7 @@
             this.Name = "GroupsAdmin_Window";
             this.Text = "Grupos";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GruposAdmin_Window_FormClosed);
+            this.VisibleChanged += new System.EventHandler(this.GroupsAdmin_Window_VisibleChanged);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
