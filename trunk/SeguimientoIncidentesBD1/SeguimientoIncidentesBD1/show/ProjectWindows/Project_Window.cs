@@ -78,7 +78,7 @@ namespace SeguimientoIncidentesBD1.show
         private void button7_Click(object sender, EventArgs e)
         {
             int incCod = Int32.Parse(this.dataGridView2.CurrentRow.Cells[0].Value.ToString());
-            cache.Incidente = new Incidente_Logic(incCod);
+            this.cache.Incidente = new Incidente_Logic(incCod);
 
             ViewIncident_Window viewIncident = new ViewIncident_Window(this, this.cache);
             this.Visible = false;
