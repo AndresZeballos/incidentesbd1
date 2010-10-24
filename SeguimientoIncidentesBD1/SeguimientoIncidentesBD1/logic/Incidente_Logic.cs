@@ -256,13 +256,6 @@ namespace SeguimientoIncidentesBD1.logic
                                     string nuevaincSevCod,
                                     string nuevaincPriCod,
                                     string nuevaincEstCod,
-                                    int nuevaincEstHrs,
-                                    DateTime nuevaincFecIng,
-                                    DateTime nuevaincFecUltAct,
-                                    DateTime nuevaincFecFin,
-                                    DateTime nuevaincEstFecIni,
-                                    DateTime nuevaincEstFecFin,
-                                    string nuevaincUsuCod,
                                     string nuevaincUsuAsig,
                                     string nuevaincDes,
                                     string nuevaincRes)
@@ -275,13 +268,6 @@ namespace SeguimientoIncidentesBD1.logic
                 this.incSevCod = nuevaincSevCod;
                 this.incPriCod = nuevaincPriCod;
                 this.incEstCod = nuevaincEstCod;
-                this.incEstHrs = nuevaincEstHrs;
-                this.incFecIng = nuevaincFecIng;
-                this.incFecUltAct = nuevaincFecUltAct;
-                this.incFecFin = nuevaincFecFin;
-                this.incEstFecIni = nuevaincEstFecIni;
-                this.incEstFecFin = nuevaincEstFecFin;
-                this.incUsuCod = nuevaincUsuCod;
                 this.incUsuAsi = nuevaincUsuAsig;
                 this.incDes = nuevaincDes;
                 this.incRes = nuevaincRes;
@@ -290,13 +276,6 @@ namespace SeguimientoIncidentesBD1.logic
                                             nuevaincSevCod,
                                             nuevaincPriCod,
                                             nuevaincEstCod,
-                                            nuevaincEstHrs,
-                                            nuevaincFecIng,
-                                            nuevaincFecUltAct,
-                                            nuevaincFecFin,
-                                            nuevaincEstFecIni,
-                                            nuevaincEstFecFin,
-                                            nuevaincUsuCod,
                                             nuevaincUsuAsig,
                                             nuevaincDes,
                                             nuevaincRes);
