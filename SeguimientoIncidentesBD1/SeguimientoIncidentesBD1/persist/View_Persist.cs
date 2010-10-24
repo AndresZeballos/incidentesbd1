@@ -212,12 +212,33 @@ namespace SeguimientoIncidentesBD1.persist
             try
             {
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "SELECT rolCod FROM rol_usuario " +
-                                  "MINUS " +
-                                  "SELECT rolCod FROM rol_usuario WHERE rol_usuario.usuCod = @usuCOd";
+                sql.CommandText = "SELECT rolCod FROM usuarioRol " +
+                                  "WHERE rolCod NOT IN (" + 
+                                  "SELECT rolCod FROM usuarioRol WHERE usuCod = @usuCod )";
                 sql.Parameters.AddWithValue("@usuCod", usuCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql, "rol_usuario");
+                DataSet ds = sqlIns.Execute(sql, "usuarioRol");
+                return ds;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+        public DataSet View_Option_NextState(string estCod)
+        {
+            //Tabla:
+            //Código (todos los roles del sistema excepto los que tiene ese usuario)
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "SELECT estSigEstCod FROM estadoSiguiente " +
+                                  "WHERE estSigEstCod NOT IN (" +
+                                  "SELECT estSigEstCod FROM estadoSiguiente WHERE estCod = @estCod )";
+                sql.Parameters.AddWithValue("@estCod", estCod);
+                SQLExecute sqlIns = new SQLExecute();
+                DataSet ds = sqlIns.Execute(sql, "estadoSiguiente");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -257,7 +278,7 @@ namespace SeguimientoIncidentesBD1.persist
                                   "SELECT rolSegCod FROM rolSeguridad WHERE rolSeguridad.rolCod = @rolCod)";
                 sql.Parameters.AddWithValue("@rolCod", rolCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql, "rolSeguridad");
+                DataSet ds = sqlIns.Execute(sql, "seguridad");
                 return ds;
             }
             catch (SqlException sqlex)
