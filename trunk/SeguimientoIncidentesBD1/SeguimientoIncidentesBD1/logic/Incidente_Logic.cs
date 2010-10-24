@@ -27,22 +27,86 @@ namespace SeguimientoIncidentesBD1.logic
         private string incDes;
         private string incRes;
 
-        public int IncCod { get; set; }
-        public int IncProCod { get; set; }
-        public string IncCatCod { get; set; }
-        public string IncSevCod { get; set; }
-        public string IncPriCod { get; set; }
-        public string IncEstCod { get; set; }
-        public int IncEstHrs { get; set; }
-        public DateTime IncFecIng { get; set; }
-        public DateTime IncFecUltAct { get; set; }
-        public DateTime IncFecFin { get; set; }
-        public DateTime IncEstFecIni { get; set; }
-        public DateTime IncEstFecFin { get; set; }
-        public string IncUsuCod { get; set; }
-        public string IncUsuAsi { get; set; }
-        public string IncDes { get; set; }
-        public string IncRes { get; set; }
+        public int IncCod
+        {
+            get { return incCod; }
+            set { incCod = value; }
+        }
+        public int IncProCod
+        {
+            get { return incProCod; }
+            set { incProCod = value; }
+        }
+        public string IncCatCod
+        {
+            get { return incCatCod; }
+            set { incCatCod = value; }
+        }
+        public string IncSevCod
+        {
+            get { return incSevCod; }
+            set { incSevCod = value; }
+        }
+        public string IncPriCod
+        {
+            get { return incPriCod; }
+            set { incPriCod = value; }
+        }
+        public string IncEstCod
+        {
+            get { return incEstCod; }
+            set { incEstCod = value; }
+        }
+        public int IncEstHrs
+        {
+            get { return incEstHrs; }
+            set { incEstHrs = value; }
+        }
+        public DateTime IncFecIng
+        {
+            get { return incFecIng; }
+            set { incFecIng = value; }
+        }
+        public DateTime IncFecUltAct
+        {
+            get { return incFecUltAct; }
+            set { incFecUltAct = value; }
+        }
+        public DateTime IncFecFin
+        {
+            get { return incFecFin; }
+            set { incFecFin = value; }
+        }
+        public DateTime IncEstFecIni
+        {
+            get { return incEstFecIni; }
+            set { incEstFecIni = value; }
+        }
+        public DateTime IncEstFecFin
+        {
+            get { return incEstFecFin; }
+            set { incEstFecFin = value; }
+        }
+        public string IncUsuCod
+        {
+            get { return incUsuCod; }
+            set { incUsuCod = value; }
+        }
+        public string IncUsuAsi
+        {
+            get { return incUsuAsi; }
+            set { incUsuAsi = value; }
+        }
+        public string IncDes
+        {
+            get { return incDes; }
+            set { incDes = value; }
+        }
+        public string IncRes
+        {
+            get { return incRes; }
+            set { incRes = value; }
+        }
 
         public Incidente_Logic(
                                 int incProCod,
