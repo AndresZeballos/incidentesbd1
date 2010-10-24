@@ -224,10 +224,40 @@ namespace SeguimientoIncidentesBD1.persist
             }
         }
 
-        public void IncidenteUpdate(string nuevaincCatCod, string nuevaincSevCod, string nuevaincPriCod, string nuevaincEstCod, int nuevaincEstHrs, DateTime nuevaincFecIng, DateTime nuevaincFecUltAct, DateTime nuevaincFecFin, DateTime nuevaincEstFecIni, DateTime nuevaincEstFecFin, string nuevaincUsuCod, string nuevaincUsuAsi, string nuevaincDes, string nuevaincRes)
+        public void IncidenteUpdate(
+                                    string nuevaincCatCod, 
+                                    string nuevaincSevCod, 
+                                    string nuevaincPriCod, 
+                                    string nuevaincEstCod, 
+                                    int nuevaincEstHrs, 
+                                    DateTime nuevaincFecIng, 
+                                    DateTime nuevaincFecUltAct, 
+                                    DateTime nuevaincFecFin, 
+                                    DateTime nuevaincEstFecIni, 
+                                    DateTime nuevaincEstFecFin, 
+                                    string nuevaincUsuCod, 
+                                    string nuevaincUsuAsi, 
+                                    string nuevaincDes, 
+                                    string nuevaincRes
+                                    )
         {
             try
             {
+                //actualizo con los nuevos datos
+                this.incCatCod = nuevaincCatCod;
+                this.incSevCod = nuevaincSevCod;
+                this.incPriCod = nuevaincPriCod;
+                this.incEstCod = nuevaincEstCod;
+                this.incEstHrs = nuevaincEstHrs;
+                this.incFecIng = nuevaincFecIng;
+                this.incFecUltAct = nuevaincFecUltAct;
+                this.incFecFin = nuevaincFecFin;
+                this.incEstFecIni = nuevaincEstFecIni;
+                this.incEstFecFin = nuevaincEstFecFin;
+                this.incUsuCod = nuevaincUsuCod;
+                this.incUsuAsi = nuevaincUsuAsi;
+                this.incDes = nuevaincDes;
+                this.incRes = nuevaincRes;
                 SqlCommand sql = new SqlCommand();
 
                 string text = "UPDATE INTO incidente SET " +
@@ -274,6 +304,7 @@ namespace SeguimientoIncidentesBD1.persist
         {
             try
             {
+                this.incUsuAsi = nuevaincUsuAsi;
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "UPDATE INTO incidente SET incUsuAsi=@incUsuAsi WHERE incCod=@incCod";
                 sql.Parameters.AddWithValue("@incCod", this.incCod);
@@ -339,6 +370,29 @@ namespace SeguimientoIncidentesBD1.persist
             result += dateTime.Year;
 
             return result;
+        }
+
+        public void EstimarIncidente(int incEstHrs, DateTime incEstFecIni, DateTime incEstFecFin)
+        {
+            try
+            {
+                this.incEstHrs = incEstHrs;
+                this.incEstFecIni = incEstFecIni;
+                this.incEstFecFin = incEstFecFin;
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "UPDATE INTO incidente SET incEstHrs=@incEstHrs, incEstFecIni=@incEstFecIni, " +
+                    "incEstFecFin=@incEstFecFin WHERE incCod=@incCod";
+                sql.Parameters.AddWithValue("@incCod", this.incCod);
+                sql.Parameters.AddWithValue("@incEstHrs", incEstHrs);
+                sql.Parameters.AddWithValue("@incEstFecIni", DateTimeToDateSQL(incEstFecIni));
+                sql.Parameters.AddWithValue("@incEstFecFin", DateTimeToDateSQL(incEstFecFin));
+                SQLExecute sqlIns = new SQLExecute();
+                sqlIns.Execute(sql, "incidente");
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
         }
     }
 }

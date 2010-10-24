@@ -89,7 +89,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@histIncCod", this.incHistCod);
                 sql.Parameters.AddWithValue("@histEstIni", this.incHistEstIni);
                 sql.Parameters.AddWithValue("@histEstFin", this.incHistEstFin);
-                sql.Parameters.AddWithValue("@histFec", this.incHistFec);
+                sql.Parameters.AddWithValue("@histFec", DateTimeToDateSQL(this.incHistFec));
                 sql.Parameters.AddWithValue("@histAcc", this.incHistAcc);
                 sql.Parameters.AddWithValue("@histUsuCod", this.incHistUsuCod);
                 sql.Parameters.AddWithValue("@histNota", this.incHistNota);
@@ -117,6 +117,17 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 throw sqlex;
             }
+        }
+
+        private String DateTimeToDateSQL(DateTime dateTime)
+        {
+            String result = "";
+
+            result += dateTime.Month + "/";
+            result += dateTime.Day + "/";
+            result += dateTime.Year;
+
+            return result;
         }
     }
 }

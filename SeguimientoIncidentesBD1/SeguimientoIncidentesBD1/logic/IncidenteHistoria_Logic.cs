@@ -22,7 +22,6 @@ namespace SeguimientoIncidentesBD1.logic
         private string incHistUsuCod;
         private string incHistNota;
         private int incHistTiempo;
-        private int hist;
 
         public int IncHistCod {get; set;}
         public int IncHistIncCod { get; set; }
@@ -33,10 +32,8 @@ namespace SeguimientoIncidentesBD1.logic
         public string IncHistUsuCod { get; set; }
         public string IncHistNota { get; set; }
         public int IncHistTiempo { get; set; }
-        public int Hist { get; set; }
 
         public IncidenteHistoria_Logic(
-                                        int incHistCod,
                                         int incHistIncCod,
                                         string incHistEstIni,
                                         string incHistEstFin,
@@ -44,10 +41,8 @@ namespace SeguimientoIncidentesBD1.logic
                                         string incHistAcc,
                                         string incHistUsuCod,
                                         string incHistNota,
-                                        int incHistTiempo,
-                                        int hist)
+                                        int incHistTiempo)
         {
-            this.incHistCod = incHistCod;
             this.incHistIncCod = incHistIncCod;
             this.incHistEstIni = incHistEstIni;
             this.incHistEstFin = incHistEstFin;
@@ -56,7 +51,6 @@ namespace SeguimientoIncidentesBD1.logic
             this.incHistUsuCod = incHistUsuCod;
             this.incHistNota = incHistNota;
             this.incHistTiempo = incHistTiempo;
-            this.hist = hist;
         }
 
         public IncidenteHistoria_Logic(int incHistCod)
