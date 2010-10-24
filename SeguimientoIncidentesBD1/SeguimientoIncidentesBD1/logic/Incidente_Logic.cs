@@ -50,7 +50,6 @@ namespace SeguimientoIncidentesBD1.logic
                                 string incSevCod,
                                 string incPriCod,
                                 string incEstCod,
-                                int incEstHrs,
                                 DateTime incFecIng,
                                 DateTime incFecUltAct,
                                 string incUsuCod,
@@ -64,7 +63,6 @@ namespace SeguimientoIncidentesBD1.logic
             this.incSevCod = incSevCod;
             this.incPriCod = incPriCod;
             this.incEstCod = incEstCod;
-            this.incEstHrs = incEstHrs;
             this.incFecIng = incFecIng;
             this.incFecUltAct = incFecUltAct;
             this.incUsuCod = incUsuCod;
@@ -112,7 +110,6 @@ namespace SeguimientoIncidentesBD1.logic
                                                                     this.incSevCod,
                                                                     this.incPriCod,
                                                                     this.incEstCod,
-                                                                    this.incEstHrs,
                                                                     this.incFecIng,
                                                                     this.incFecUltAct,
                                                                     this.incUsuCod,

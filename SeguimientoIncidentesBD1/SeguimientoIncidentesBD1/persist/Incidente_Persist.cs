@@ -49,7 +49,6 @@ namespace SeguimientoIncidentesBD1.persist
                                 string incSevCod,
                                 string incPriCod,
                                 string incEstCod,
-                                int incEstHrs,
                                 DateTime incFecIng,
                                 DateTime incFecUltAct,
                                 string incUsuCod,
@@ -63,12 +62,8 @@ namespace SeguimientoIncidentesBD1.persist
             this.incSevCod = incSevCod;
             this.incPriCod = incPriCod;
             this.incEstCod = incEstCod;
-            this.incEstHrs = incEstHrs;
             this.incFecIng = incFecIng;
             this.incFecUltAct = incFecUltAct;
-            this.incFecFin = incFecFin;
-            this.incEstFecIni = incEstFecIni;
-            this.incEstFecFin = incEstFecFin;
             this.incUsuCod = incUsuCod;
             this.incUsuAsig = incUsuAsig;
             this.incDes = incDes;
@@ -119,8 +114,8 @@ namespace SeguimientoIncidentesBD1.persist
                 "(incProCod,incCatCod,incSevCod,incPriCod,incEstCod,incEstHrs,incFecIng,incFecUltAct,"+
                 "incFecFin,incEstFecIni,incEstFecFin,incUsuCod,incUsuAsig,incDes,incRes) "+
                 "VALUES "+
-                "(@incCod,@incProCod,@incCatCod,@incSevCod,@incPriCod,@incEstCod,@incEstHrs,@incFecIng,@incFecUltAct,"+
-                "@incUsuCod,@incUsuAsig,@incDes,@incRes)";
+                "(@incProCod,@incCatCod,@incSevCod,@incPriCod,@incEstCod,@incEstHrs,@incFecIng,@incFecUltAct," +
+                "@incFecFin,@incEstFecIni,@incEstFecFin,@incUsuCod,@incUsuAsig,@incDes,@incRes)";
                 sql.Parameters.AddWithValue("@incProCod", this.incProCod);
                 sql.Parameters.AddWithValue("@incCatCod", this.incCatCod);
                 sql.Parameters.AddWithValue("@incSevCod", this.incSevCod);
@@ -129,6 +124,11 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@incEstHrs", this.incEstHrs);
                 sql.Parameters.AddWithValue("@incFecIng", this.incFecIng);
                 sql.Parameters.AddWithValue("@incFecUltAct", this.incFecUltAct);
+
+                sql.Parameters.AddWithValue("@incFecFin", this.incFecFin);
+                sql.Parameters.AddWithValue("@incEstFecIni", this.incEstFecIni);
+                sql.Parameters.AddWithValue("@incEstFecFin", this.incEstFecFin);
+                
                 sql.Parameters.AddWithValue("@incUsuCod", this.incUsuCod);
                 sql.Parameters.AddWithValue("@incUsuAsig", this.incUsuAsig);
                 sql.Parameters.AddWithValue("@incDes", this.incDes);
