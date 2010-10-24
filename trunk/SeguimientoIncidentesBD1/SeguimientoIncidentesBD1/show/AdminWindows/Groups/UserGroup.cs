@@ -30,7 +30,8 @@ namespace SeguimientoIncidentesBD1.show
 
         private void cargarGridUsuarios()
         {
-            this.dataGridView2.DataSource = this.cache.UsuariosGrupo;
+            DataSet usuariosGrupo = new View_Logic().View_GroupUsers(this.cache.Grupo.GrpUsuCod);
+            this.dataGridView2.DataSource = usuariosGrupo;
             this.dataGridView2.DataMember = "usuarioGrupoUsuario";
             this.dataGridView2.Columns[0].HeaderText = "Usuarios del grupo";
         }
@@ -62,6 +63,7 @@ namespace SeguimientoIncidentesBD1.show
             nuevoUser.GrpUsuAdd(userSelected);
             this.cache.UsuariosGrupo.Tables[0].Rows.Add(userSelected);
             cargarGridUsuarios();
+            cargarGridrestoUsuarios();
         }
     }
 }
