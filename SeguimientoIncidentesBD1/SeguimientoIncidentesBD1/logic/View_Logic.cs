@@ -306,7 +306,8 @@ namespace SeguimientoIncidentesBD1.logic
             View_Persist vp = new View_Persist();
             DataSet ds = vp.EstadoInicial();
             DataTable dt = ds.Tables["estado"];
-            Estado_Logic el = new Estado_Logic(dt.Rows[0].Field<string>("estCod"));
+            string estCod = dt.Rows[0].Field<string>("estCod");
+            Estado_Logic el = new Estado_Logic(estCod);
             return el;
         }
 

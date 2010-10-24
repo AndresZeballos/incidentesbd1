@@ -13,9 +13,9 @@ namespace SeguimientoIncidentesBD1.logic
         private string estCod;
         //falta incluir los siguientes atributos en el código
         private IList<string> estSigEstCod = new List<string>();
-        private byte estIni;
-        private byte estFin;
-        private byte estEst;
+        private bool estIni;
+        private bool estFin;
+        private bool estEst;
 
         public string EstCod
         {
@@ -29,26 +29,26 @@ namespace SeguimientoIncidentesBD1.logic
             set { estSigEstCod = value; }
         }
 
-        public byte EstIni
+        public bool EstIni
         {
             get { return estIni; }
             set { estIni = value; }
         }
 
-        public byte EstFin
+        public bool EstFin
         {
             get { return estFin; }
             set { estFin = value; }
         }
 
-        public byte EstEst
+        public bool EstEst
         {
             get { return estEst; }
             set { estEst = value; }
         }
 
 
-        public Estado_Logic(string estCod, byte estIni, byte estFin, byte estEst)
+        public Estado_Logic(string estCod, bool estIni, bool estFin, bool estEst)
         {
             this.estCod = estCod;
             this.estIni = estIni;
@@ -58,7 +58,7 @@ namespace SeguimientoIncidentesBD1.logic
 
         public Estado_Logic(string estCod)
         {
-            Estado_Persist est = new Estado_Persist(this.estCod);
+            Estado_Persist est = new Estado_Persist(estCod);
             this.estSigEstCod = est.EstSigEstCod;
             this.estIni = est.EstIni;
             this.estFin = est.EstFin;
