@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SeguimientoIncidentesBD1.logic;
 
 namespace SeguimientoIncidentesBD1.show
 {
@@ -20,6 +21,22 @@ namespace SeguimientoIncidentesBD1.show
             this.beforeUserWindow = beforeUserWindow;
             this.cache = cache;
             this.Location = this.beforeUserWindow.Location;
+        }
+
+        private void cargarGridRoles()
+        {
+            DataSet rolesUsuario = new View_Logic().View_UserRol(this.cache.UsuarioSelected.UsuCod);
+            this.dataGridView3.DataSource = rolesUsuario;
+            this.dataGridView3.DataMember = "usuarioGrupoUsuario";
+            this.dataGridView3.Columns[0].HeaderText = "Usuarios";
+        }
+
+        private void cargarGridrestoRoles()
+        {///
+            DataSet restoUsuarios = new View_Logic().View_Option_UserRol(this.cache.UsuarioSelected.UsuCod);
+            this.dataGridView3.DataSource = restoUsuarios;
+            this.dataGridView3.DataMember = "usuario";
+            this.dataGridView3.Columns[0].HeaderText = "Usuarios del Sistema";
         }
 
         private void button3_Click(object sender, EventArgs e)

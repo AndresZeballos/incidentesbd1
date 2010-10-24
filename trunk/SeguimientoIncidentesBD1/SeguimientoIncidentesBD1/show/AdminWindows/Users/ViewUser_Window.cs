@@ -71,7 +71,7 @@ namespace SeguimientoIncidentesBD1.show
         private void button2_Click(object sender, EventArgs e)
         {
             Usuario_Logic usuarioModificado = new Usuario_Logic(this.cache.UsuarioSelected.UsuCod);
-            usuarioModificado.UsuarioUpdate(this.textBox3.Text, this.textBox4.Text,this.textBox5.Text);
+            usuarioModificado.UsuarioUpdate(this.textBox3.Text, this.textBox4.Text, this.textBox5.Text);
             this.Close();
         }
     }

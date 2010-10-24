@@ -205,7 +205,7 @@ namespace SeguimientoIncidentesBD1.persist
             }
         }
 
-        public DataSet View_Option_UserRol(int usuCod)
+        public DataSet View_Option_UserRol(string usuCod)
         {
             //Tabla:
             //Código (todos los roles del sistema excepto los que tiene ese usuario)
