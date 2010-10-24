@@ -25,10 +25,21 @@ namespace SeguimientoIncidentesBD1.show
             this.cache = cache;
             this.cache.Grupo = null;
         }
-
+      
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        public void VerUsuarios()
+        {
+            if (this.cache.Grupo != null)
+            {
+                DataSet usuariosGrupo = new View_Logic().View_GroupUsers(this.cache.Grupo.GrpUsuCod);
+                this.dataGridView2.DataSource = usuariosGrupo;
+                this.dataGridView2.DataMember = "usuarioGrupoUsuario";
+                this.dataGridView2.Columns[0].HeaderText = "Usuarios";
+            }
         }
 
         private void NewGroup_Window_FormClosed(object sender, FormClosedEventArgs e)
@@ -39,6 +50,12 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button5_Click(object sender, EventArgs e)
         {
+            if (this.cache.Grupo == null)
+            {
+                GrupoUsuario_Logic grupo = new GrupoUsuario_Logic(this.textBox1.Text, this.textBox5.Text);
+                grupo.GrupoUsuarioCreate();
+                this.cache.Grupo = grupo;
+            }
             UserGroup userGroup = new UserGroup(this, this.cache);
             this.Visible = false;
             userGroup.Visible = true;
@@ -49,10 +66,12 @@ namespace SeguimientoIncidentesBD1.show
             if (this.textBox1.Text.Equals(""))
             {
                 this.button2.Enabled = false;
+                this.button5.Enabled = false;
             }
             else
             {
                 this.button2.Enabled = true;
+                this.button5.Enabled = true;
             }
         }
 
@@ -83,6 +102,11 @@ namespace SeguimientoIncidentesBD1.show
                     MessageBox.Show("Error al crear el grupo: " + sqlex.Message);
                 }
             }
+        }
+
+        private void NewGroup_Window_VisibleChanged(object sender, EventArgs e)
+        {
+            this.VerUsuarios();
         }
     }
 }

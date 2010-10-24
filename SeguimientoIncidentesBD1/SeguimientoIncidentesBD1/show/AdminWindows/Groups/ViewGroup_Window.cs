@@ -25,11 +25,16 @@ namespace SeguimientoIncidentesBD1.show
             this.cache = cache;
             this.textBox1.Text = cache.Grupo.GrpUsuCod;
             this.textBox5.Text = cache.Grupo.GrpUsuDes;
+            VerUsuarios();
+        }
+
+        public void VerUsuarios()
+        {
             DataSet usuariosGrupo = new View_Logic().View_GroupUsers(this.cache.Grupo.GrpUsuCod);
-            this.cache.UsuariosGrupo = usuariosGrupo;
             this.dataGridView1.DataSource = usuariosGrupo;
             this.dataGridView1.DataMember = "usuarioGrupoUsuario";
             this.dataGridView1.Columns[0].HeaderText = "Usuarios";
+            
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -64,6 +69,11 @@ namespace SeguimientoIncidentesBD1.show
         {
             this.groupAdmin.Location = this.Location;
             this.groupAdmin.Visible = true;
+        }
+
+        private void ViewGroup_Window_VisibleChanged(object sender, EventArgs e)
+        {
+            this.VerUsuarios();
         }
     }
 }
