@@ -137,6 +137,20 @@ namespace SeguimientoIncidentesBD1.logic
             }
         }
 
+        public DataSet View_GeneralCategory()
+        {
+            try
+            {
+                View_Persist vp = new View_Persist();
+
+                return vp.View_GeneralCategory();
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
         public IList<string> View_GeneralCategory()
         {
             try
@@ -159,6 +173,19 @@ namespace SeguimientoIncidentesBD1.logic
             }
         }
 
+        public DataSet View_GeneralPriority()
+        {
+            try
+            {
+                View_Persist vp = new View_Persist();
+                return vp.View_GeneralPriority();
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
         public IList<string> View_GeneralPriority()
         {
             try
@@ -174,6 +201,20 @@ namespace SeguimientoIncidentesBD1.logic
                 }
 
                 return lista;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+        public DataSet View_GeneralSeverity()
+        {
+            try
+            {
+                View_Persist vp = new View_Persist();
+
+                return vp.View_GeneralSeverity();
             }
             catch (SqlException sqlex)
             {
