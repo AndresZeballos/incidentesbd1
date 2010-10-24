@@ -193,10 +193,10 @@ namespace SeguimientoIncidentesBD1.persist
             try
             {
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "SELECT rolCod FROM rolUsuario WHERE rol_usuario.usuCod = @usuCOd";
+                sql.CommandText = "SELECT usuRolCod FROM usuarioRol WHERE usuarioRol.usuCod = @usuCod";
                 sql.Parameters.AddWithValue("@usuCod", usuCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql, "rolUsuario");
+                DataSet ds = sqlIns.Execute(sql, "usuarioRol");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -212,12 +212,12 @@ namespace SeguimientoIncidentesBD1.persist
             try
             {
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "SELECT rolCod FROM usuarioRol " +
+                sql.CommandText = "SELECT rolCod FROM rol " +
                                   "WHERE rolCod NOT IN (" + 
-                                  "SELECT rolCod FROM usuarioRol WHERE usuCod = @usuCod )";
+                                  "SELECT usuRolCod FROM usuarioRol WHERE usuCod = @usuCod )";
                 sql.Parameters.AddWithValue("@usuCod", usuCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql, "usuarioRol");
+                DataSet ds = sqlIns.Execute(sql, "rol");
                 return ds;
             }
             catch (SqlException sqlex)
