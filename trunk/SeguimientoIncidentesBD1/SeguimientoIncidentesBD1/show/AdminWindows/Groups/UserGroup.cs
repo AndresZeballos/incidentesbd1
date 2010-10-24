@@ -61,7 +61,7 @@ namespace SeguimientoIncidentesBD1.show
             string userSelected = this.dataGridView3.CurrentRow.Cells[0].Value.ToString();
             GrupoUsuario_Logic nuevoUser = new GrupoUsuario_Logic(this.cache.Grupo.GrpUsuCod);
             nuevoUser.GrpUsuAdd(userSelected);
-            this.cache.UsuariosGrupo.Tables[0].Rows.Add(userSelected);
+            //this.cache.UsuariosGrupo.Tables[0].Rows.Add(userSelected);
             cargarGridUsuarios();
             cargarGridrestoUsuarios();
         }

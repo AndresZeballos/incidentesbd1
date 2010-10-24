@@ -44,6 +44,7 @@
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.SteelBlue;
+            this.button5.Enabled = false;
             this.button5.ForeColor = System.Drawing.Color.White;
             this.button5.Location = new System.Drawing.Point(96, 351);
             this.button5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -188,6 +189,7 @@
             this.Name = "NewGroup_Window";
             this.Text = "Crear Grupo";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NewGroup_Window_FormClosed);
+            this.VisibleChanged += new System.EventHandler(this.NewGroup_Window_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

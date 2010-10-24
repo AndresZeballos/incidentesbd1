@@ -218,6 +218,7 @@
             this.Name = "ViewGroup_Window";
             this.Text = "Detalle de Grupo";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ViewGrupos_Window_FormClosed);
+            this.VisibleChanged += new System.EventHandler(this.ViewGroup_Window_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
