@@ -101,9 +101,9 @@ namespace SeguimientoIncidentesBD1.show
             string incSev = this.comboBox2.SelectedItem.ToString();
             string incCat = this.comboBox3.SelectedItem.ToString();
             string incUsuCod = this.cache.Usuario.UsuCod;
-            string incUsuAsig = null;
+            string incUsuAsi = null;
             if (this.comboBox4.SelectedItem != null)
-                 incUsuAsig = this.comboBox4.SelectedItem.ToString();
+                 incUsuAsi = this.comboBox4.SelectedItem.ToString();
             this.cache.EstadoInicial = new View_Logic().EstadoInicial();
             int incProCod = this.cache.Proyecto.ProCod;
             string incEstCodIni = this.cache.EstadoInicial.EstCod;
@@ -111,7 +111,7 @@ namespace SeguimientoIncidentesBD1.show
             try
             {
                 Incidente_Logic incidente = new Incidente_Logic(incProCod, incCat, incSev, incPri, incEstCodIni, DateTime.Today,
-                    DateTime.Today, incUsuCod, incUsuAsig, incDes, incRes);
+                    DateTime.Today, incUsuCod, incUsuAsi, incDes, incRes);
                 incidente.IncidenteCreate();
                 MessageBox.Show("Incidente creado con exito");
             }
