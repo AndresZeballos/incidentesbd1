@@ -37,9 +37,9 @@ namespace SeguimientoIncidentesBD1.show
         private void cargarGridrestoGrupos()
         {
             DataSet restoGrupos = new View_Logic().View_Option_ProjectGroup(this.cache.Proyecto.ProCod);
-            this.dataGridView3.DataSource = restoGrupos;
-            this.dataGridView3.DataMember = "grupoUsuario";
-            this.dataGridView3.Columns[0].HeaderText = "Grupos del Sistema";
+            this.dataGridView4.DataSource = restoGrupos;
+            this.dataGridView4.DataMember = "grupoUsuario";
+            this.dataGridView4.Columns[0].HeaderText = "Grupos del Sistema";
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -51,6 +51,24 @@ namespace SeguimientoIncidentesBD1.show
         {
             this.beforeProjectWindow.Location = this.Location;
             this.beforeProjectWindow.Visible = true;
+        }
+
+        //Agregar
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string grupoSelected = this.dataGridView4.CurrentRow.Cells[0].Value.ToString();
+                Proyecto_Logic nuevoGrupo = new Proyecto_Logic(this.cache.Proyecto.ProCod);
+                nuevoGrupo.ProGrpAdd(grupoSelected);
+                //this.cache.UsuariosGrupo.Tables[0].Rows.Add(userSelected);
+                cargarGridGrupos();
+                cargarGridrestoGrupos();
+            }
+            catch (Exception exc)
+            {
+                System.Windows.Forms.MessageBox.Show("No hay grupos disponibles");
+            }
         }
     }
 }
