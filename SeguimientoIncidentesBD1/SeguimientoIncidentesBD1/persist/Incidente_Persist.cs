@@ -26,8 +26,14 @@ namespace SeguimientoIncidentesBD1.persist
         private string incDes;
         private string incRes;
 
-        public int IncCod { get; set; }
-        public int IncProCod { get; set; }
+        public int IncCod {
+            get { return incCod; }
+            set { incCod = value; }
+        }
+        public int IncProCod {
+            get { return incProCod; }
+            set { incProCod = value; }
+        }
         public string IncCatCod { get; set; }
         public string IncSevCod { get; set; }
         public string IncPriCod { get; set; }
@@ -104,9 +110,6 @@ namespace SeguimientoIncidentesBD1.persist
             this.incDes = incDes;
             this.incRes = incRes;
         }
-
-
-
 
         public Incidente_Persist(int incCod)
         {

@@ -124,7 +124,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button6_Click(object sender, EventArgs e)
         {
-            EstimateIncident_Window estimateIncident = new EstimateIncident_Window(this);
+            EstimateIncident_Window estimateIncident = new EstimateIncident_Window(this, this.cache);
             this.Visible = false;
             estimateIncident.Visible = true;
         }

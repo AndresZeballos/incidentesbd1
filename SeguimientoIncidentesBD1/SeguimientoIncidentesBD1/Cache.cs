@@ -27,7 +27,10 @@ namespace SeguimientoIncidentesBD1
 
         private Rol_Logic rol;
 
+        private IncidenteHistoria_Logic historia;
 
+
+        public IncidenteHistoria_Logic Historia { get; set; }
 
         public Usuario_Logic Usuario { get; set; }
 
