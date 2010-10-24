@@ -9,7 +9,6 @@ namespace SeguimientoIncidentesBD1.persist
 {
     public class Incidente_Persist
     {
-
         private int incCod;
         private int incProCod;
         private string incCatCod;
@@ -45,7 +44,6 @@ namespace SeguimientoIncidentesBD1.persist
         public string IncRes { get; set; }
 
         public Incidente_Persist(
-                                int incCod,
                                 int incProCod,
                                 string incCatCod,
                                 string incSevCod,
@@ -54,16 +52,12 @@ namespace SeguimientoIncidentesBD1.persist
                                 int incEstHrs,
                                 DateTime incFecIng,
                                 DateTime incFecUltAct,
-                                DateTime incFecFin,
-                                DateTime incEstFecIni,
-                                DateTime incEstFecFin,
                                 string incUsuCod,
                                 string incUsuAsig,
                                 string incDes,
                                 string incRes
                                 )
         {
-            this.incCod = incCod;
             this.incProCod = incProCod;
             this.incCatCod = incCatCod;
             this.incSevCod = incSevCod;
@@ -122,12 +116,11 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "INSERT INTO incidente "+
-                "(incCod,incProCod,incCatCod,incSevCod,incPriCod,incEstCod,incEstHrs,incFecIng,incFecUltAct,"+
+                "(incProCod,incCatCod,incSevCod,incPriCod,incEstCod,incEstHrs,incFecIng,incFecUltAct,"+
                 "incFecFin,incEstFecIni,incEstFecFin,incUsuCod,incUsuAsig,incDes,incRes) "+
                 "VALUES "+
                 "(@incCod,@incProCod,@incCatCod,@incSevCod,@incPriCod,@incEstCod,@incEstHrs,@incFecIng,@incFecUltAct,"+
-                "@incFecFin,@incEstFecIni,@incEstFecFin,@incUsuCod,@incUsuAsig,@incDes,@incRes)";
-                sql.Parameters.AddWithValue("@incCod", this.incCod);
+                "@incUsuCod,@incUsuAsig,@incDes,@incRes)";
                 sql.Parameters.AddWithValue("@incProCod", this.incProCod);
                 sql.Parameters.AddWithValue("@incCatCod", this.incCatCod);
                 sql.Parameters.AddWithValue("@incSevCod", this.incSevCod);
@@ -136,9 +129,6 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@incEstHrs", this.incEstHrs);
                 sql.Parameters.AddWithValue("@incFecIng", this.incFecIng);
                 sql.Parameters.AddWithValue("@incFecUltAct", this.incFecUltAct);
-                sql.Parameters.AddWithValue("@incFecFin", this.incFecFin);
-                sql.Parameters.AddWithValue("@incEstFecIni", this.incEstFecIni);
-                sql.Parameters.AddWithValue("@incEstFecFin", this.incEstFecFin);
                 sql.Parameters.AddWithValue("@incUsuCod", this.incUsuCod);
                 sql.Parameters.AddWithValue("@incUsuAsig", this.incUsuAsig);
                 sql.Parameters.AddWithValue("@incDes", this.incDes);
