@@ -273,10 +273,10 @@ namespace SeguimientoIncidentesBD1.persist
             try
             {
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "SELECT grpCod FROM grupo_proyecto WHERE grupo_proyecto.proCod = @proCod";
+                sql.CommandText = "SELECT proGrpUsuCod FROM proyectoGrupoUsuario WHERE proyectoGrupoUsuario.proCod = @proCod";
                 sql.Parameters.AddWithValue("@proCod", proCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql, "grupo_proyecto");
+                DataSet ds = sqlIns.Execute(sql, "proyectoGrupoUsuario");
                 return ds;
             }
             catch (SqlException sqlex)
@@ -292,12 +292,12 @@ namespace SeguimientoIncidentesBD1.persist
             try
             {
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "SELECT grpCod FROM grupo_proyecto " +
-                                  "MINUS " +
-                                  "SELECT grpCod FROM grupo_proyecto WHERE grupo_proyecto.proCod = @proCod";
+                sql.CommandText = "SELECT grpUsuCod FROM grupoUsuario " +
+                                  "WHERE grpUsuCod NOT IN (" +
+                                  "SELECT proGrpUsuCod FROM proyectoGrupoUsuario WHERE proyectoGrupoUsuario.proCod = @proCod)";
                 sql.Parameters.AddWithValue("@proCod", proCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql, "grupo_proyecto");
+                DataSet ds = sqlIns.Execute(sql, "proyectoGrupoUsuario");
                 return ds;
             }
             catch (SqlException sqlex)

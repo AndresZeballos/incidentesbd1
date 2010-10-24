@@ -54,10 +54,18 @@ namespace SeguimientoIncidentesBD1.logic
             return vp.View_GeneralRol();
         }
 
-        public DataSet View_GeneralState()
+        public IList<string> View_GeneralState()
         {
             View_Persist vp = new View_Persist();
-            return vp.View_GeneralState();
+            DataSet ds = vp.View_GeneralState();
+
+            DataTable dt = ds.Tables["estado"];
+            IList<string> lista = new List<string>();
+            foreach (DataRow drow in dt.Rows)
+            {
+                lista.Add(drow.Field<string>("estCod"));
+            }
+            return lista;
         }
 
         public DataSet View_GeneralSecurity()
