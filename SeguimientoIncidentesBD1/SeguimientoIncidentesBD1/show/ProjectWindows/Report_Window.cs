@@ -101,7 +101,7 @@ namespace SeguimientoIncidentesBD1.show
             string incSev = this.comboBox2.SelectedItem.ToString();
             string incCat = this.comboBox3.SelectedItem.ToString();
             string incUsuCod = this.cache.Usuario.UsuCod;
-            string incUsuAsi = null;
+            string incUsuAsi = "";
             if (this.comboBox4.SelectedItem != null)
                  incUsuAsi = this.comboBox4.SelectedItem.ToString();
             this.cache.EstadoInicial = new View_Logic().EstadoInicial();

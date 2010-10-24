@@ -71,6 +71,33 @@ namespace SeguimientoIncidentesBD1.logic
             this.incRes = incRes;
         }
 
+        // Constructor cuando no se asigna un usuario
+        public Incidente_Logic(
+                                int incProCod,
+                                string incCatCod,
+                                string incSevCod,
+                                string incPriCod,
+                                string incEstCod,
+                                DateTime incFecIng,
+                                DateTime incFecUltAct,
+                                string incUsuCod,
+                                string incDes,
+                                string incRes
+                                )
+        {
+            this.incProCod = incProCod;
+            this.incCatCod = incCatCod;
+            this.incSevCod = incSevCod;
+            this.incPriCod = incPriCod;
+            this.incEstCod = incEstCod;
+            this.incFecIng = incFecIng;
+            this.incFecUltAct = incFecUltAct;
+            this.incUsuCod = incUsuCod;
+            this.incDes = incDes;
+            this.incRes = incRes;
+        }
+
+
         //constructor que dado un código de incidente carga sus atributos
         public Incidente_Logic(int incCod)
         {
@@ -104,18 +131,36 @@ namespace SeguimientoIncidentesBD1.logic
         {
             try
             {
-                Incidente_Persist incPersist = new Incidente_Persist(
-                                                                    this.incProCod,
-                                                                    this.incCatCod,
-                                                                    this.incSevCod,
-                                                                    this.incPriCod,
-                                                                    this.incEstCod,
-                                                                    this.incFecIng,
-                                                                    this.incFecUltAct,
-                                                                    this.incUsuCod,
-                                                                    this.incUsuAsi,
-                                                                    this.incDes,
-                                                                    this.incRes);
+                Incidente_Persist incPersist;
+                if (this.incUsuAsi != null)
+                {
+                     incPersist= new Incidente_Persist(
+                                                                        this.incProCod,
+                                                                        this.incCatCod,
+                                                                        this.incSevCod,
+                                                                        this.incPriCod,
+                                                                        this.incEstCod,
+                                                                        this.incFecIng,
+                                                                        this.incFecUltAct,
+                                                                        this.incUsuCod,
+                                                                        this.incUsuAsi,
+                                                                        this.incDes,
+                                                                        this.incRes);
+                }
+                else
+                {
+                    incPersist = new Incidente_Persist(
+                                                                        this.incProCod,
+                                                                        this.incCatCod,
+                                                                        this.incSevCod,
+                                                                        this.incPriCod,
+                                                                        this.incEstCod,
+                                                                        this.incFecIng,
+                                                                        this.incFecUltAct,
+                                                                        this.incUsuCod,
+                                                                        this.incDes,
+                                                                        this.incRes);
+                }
                 incPersist.IncidenteCreate();
             }
             catch (SqlException sqlex)
