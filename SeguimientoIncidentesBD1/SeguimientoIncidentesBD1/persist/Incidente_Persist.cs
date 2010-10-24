@@ -49,8 +49,10 @@ namespace SeguimientoIncidentesBD1.persist
                                 string incSevCod,
                                 string incPriCod,
                                 string incEstCod,
+
                                 DateTime incFecIng,
                                 DateTime incFecUltAct,
+
                                 string incUsuCod,
                                 string incUsuAsi,
                                 string incDes,
@@ -89,7 +91,12 @@ namespace SeguimientoIncidentesBD1.persist
                 this.incSevCod = dt.Rows[0].Field<string>("incSevCod");
                 this.incPriCod = dt.Rows[0].Field<string>("incPriCod");
                 this.incEstCod = dt.Rows[0].Field<string>("incEstCod");
-                this.incEstHrs = dt.Rows[0].Field<int>("incSevCod"); ;
+
+
+                this.incEstHrs = dt.Rows[0].Field<int>("incEstHrs"); 
+                
+                
+                
                 this.incFecIng = dt.Rows[0].Field<DateTime>("incFecIng");
                 this.incFecUltAct = dt.Rows[0].Field<DateTime>("incFecUltAct");
                 this.incFecFin = dt.Rows[0].Field<DateTime>("incFecFin");
@@ -113,11 +120,18 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "INSERT INTO incidente "+
-                "(incProCod,incCatCod,incSevCod,incPriCod,incEstCod,incEstHrs,incFecIng,incFecUltAct,"+
-                "incFecFin,incEstFecIni,incEstFecFin,incUsuCod,incUsuAsig,incDes,incRes) "+
+                "(incCod, incProCod,incCatCod,incSevCod,incPriCod,incEstCod,incEstHrs,incFecIng,incFecUltAct,"+
+                "incFecFin,incEstFecIni,incEstFecFin,incUsuCod," + 
+   //             "incUsuAsi," + 
+                "incDes,incRes) "+
                 "VALUES "+
-                "(@incProCod,@incCatCod,@incSevCod,@incPriCod,@incEstCod,@incEstHrs,@incFecIng,@incFecUltAct," +
-                "@incFecFin,@incEstFecIni,@incEstFecFin,@incUsuCod,@incUsuAsig,@incDes,@incRes)";
+                "(@incCod, @incProCod,@incCatCod,@incSevCod,@incPriCod,@incEstCod,@incEstHrs,@incFecIng,@incFecUltAct," +
+                "@incFecFin,@incEstFecIni,@incEstFecFin,@incUsuCod," + 
+   //             "@incUsuAsi," + 
+                "@incDes,@incRes)";
+
+                sql.Parameters.AddWithValue("@incCod", 1234567);
+
                 sql.Parameters.AddWithValue("@incProCod", this.incProCod);
                 sql.Parameters.AddWithValue("@incCatCod", this.incCatCod);
                 sql.Parameters.AddWithValue("@incSevCod", this.incSevCod);
@@ -132,7 +146,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@incEstFecFin", DateTimeToDateSQL(this.incEstFecFin));
                 
                 sql.Parameters.AddWithValue("@incUsuCod", this.incUsuCod);
-                sql.Parameters.AddWithValue("@incUsuAsi", this.incUsuAsi);
+    //            sql.Parameters.AddWithValue("@incUsuAsi", this.incUsuAsi);
                 sql.Parameters.AddWithValue("@incDes", this.incDes);
                 sql.Parameters.AddWithValue("@incRes", this.incRes);
                 SQLExecute sqlIns = new SQLExecute();
@@ -183,11 +197,13 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@incPriCod", nuevaincPriCod);
                 sql.Parameters.AddWithValue("@incEstCod", nuevaincEstCod);
                 sql.Parameters.AddWithValue("@incEstHrs", nuevaincEstHrs);
+
                 sql.Parameters.AddWithValue("@incFecIng", DateTimeToDateSQL(nuevaincFecIng));
                 sql.Parameters.AddWithValue("@incFecUltAct", DateTimeToDateSQL(nuevaincFecUltAct));
                 sql.Parameters.AddWithValue("@incFecFin", DateTimeToDateSQL(nuevaincFecFin));
                 sql.Parameters.AddWithValue("@incEstFecIni", DateTimeToDateSQL(nuevaincEstFecIni));
                 sql.Parameters.AddWithValue("@incEstFecFin", DateTimeToDateSQL(nuevaincEstFecFin));
+
                 sql.Parameters.AddWithValue("@incUsuCod", nuevaincUsuCod);
                 sql.Parameters.AddWithValue("@incUsuAsi", nuevaincUsuAsi);
                 sql.Parameters.AddWithValue("@incDes", nuevaincDes);
@@ -248,7 +264,9 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "UPDATE INTO incidente SET incFecFin=@incFecFin WHERE incCod=@incCod";
+
                 sql.Parameters.AddWithValue("@incFecFin", DateTimeToDateSQL(DateTime.Today));
+                
                 SQLExecute sqlIns = new SQLExecute();
                 sqlIns.Execute(sql, "incidente");
             }
@@ -259,12 +277,14 @@ namespace SeguimientoIncidentesBD1.persist
 
         }
 
-        private string DateTimeToDateSQL(DateTime dateTime)
+        private String DateTimeToDateSQL(DateTime dateTime)
         {
-            string result = "";
+            String result = "";
+            
+            result += dateTime.Month + "/";
+            result += dateTime.Day + "/";
             result += dateTime.Year;
-            result += dateTime.Month;
-            result += dateTime.Day;
+
             return result;
         }
     }
