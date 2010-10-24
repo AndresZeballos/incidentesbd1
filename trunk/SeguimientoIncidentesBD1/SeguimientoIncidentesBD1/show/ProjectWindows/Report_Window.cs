@@ -24,11 +24,31 @@ namespace SeguimientoIncidentesBD1.show
             this.Location = this.project.Location;
             this.button1.Enabled = false;
 
+            CargarValores();
+        }
+
+        private void CargarValores()
+        {
             View_Logic view = new View_Logic();
 
             IList<string> severidades = view.View_GeneralSeverity();
+            foreach (string severidad in severidades)
+            {
+                this.comboBox2.Items.Add(severidad);
+            }
+
             IList<string> prioridades = view.View_GeneralPriority();
-            IList<string> categorias = view.View_GeneralSeverity();
+            foreach (string prioridad in prioridades)
+            {
+                this.comboBox1.Items.Add(prioridad);
+            }
+
+            IList<string> categorias = view.View_GeneralCategory();
+            foreach (string categoria in categorias)
+            {
+                this.comboBox3.Items.Add(categoria);
+            }
+
             IList<string> usuarios = view.userByProject(this.cache.Proyecto.ProCod);
         }
 
@@ -72,24 +92,16 @@ namespace SeguimientoIncidentesBD1.show
             int incProCod = this.cache.Proyecto.ProCod;
             string incEstCodIni = this.cache.EstadoInicial.EstCod;
 
-            // VALIDARLOS
-            if (incRes.Equals("") || incDes.Equals(""))
+            try
             {
-                MessageBox.Show("Faltan ingresar campos");
+                Incidente_Logic incidente = new Incidente_Logic(incProCod, incCat, incSev, incPri, incEstCodIni, 0, DateTime.Today,
+                    DateTime.Today, incUsuCod, incUsuAsig, incDes, incRes);
+                incidente.IncidenteCreate();
+                MessageBox.Show("Incidente creado con exito");
             }
-            else
+            catch (SqlException sqlex)
             {
-                try
-                {
-                    Incidente_Logic incidente = new Incidente_Logic(incProCod, incCat, incSev, incPri, incEstCodIni, 0, DateTime.Today,
-                        DateTime.Today, incUsuCod, incUsuAsig, incDes, incRes);
-                    incidente.IncidenteCreate();
-                    MessageBox.Show("Incidente creado con exito");
-                }
-                catch (SqlException sqlex)
-                {
-                    MessageBox.Show("Error al crear el incidente: " + sqlex.Message);
-                }
+                MessageBox.Show("Error al crear el incidente: " + sqlex.Message);
             }
 
         }
