@@ -178,9 +178,9 @@
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.MintCream;
             this.splitContainer1.Panel1.Controls.Add(this.textBox7);
             this.splitContainer1.Panel1.Controls.Add(this.textBox6);
+            this.splitContainer1.Panel1.Controls.Add(this.textBox4);
             this.splitContainer1.Panel1.Controls.Add(this.textBox3);
             this.splitContainer1.Panel1.Controls.Add(this.button1);
-            this.splitContainer1.Panel1.Controls.Add(this.textBox5);
             this.splitContainer1.Panel1.Controls.Add(this.button2);
             this.splitContainer1.Panel1.Controls.Add(this.button9);
             this.splitContainer1.Panel1.Controls.Add(this.textBox2);
@@ -194,10 +194,10 @@
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.MintCream;
             this.splitContainer1.Panel2.Controls.Add(this.button10);
             this.splitContainer1.Panel2.Controls.Add(this.button4);
-            this.splitContainer1.Panel2.Controls.Add(this.textBox4);
             this.splitContainer1.Panel2.Controls.Add(this.button6);
             this.splitContainer1.Panel2.Controls.Add(this.button7);
             this.splitContainer1.Panel2.Controls.Add(this.button8);
+            this.splitContainer1.Panel2.Controls.Add(this.textBox5);
             this.splitContainer1.Panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.splitContainer1.Panel2.ForeColor = System.Drawing.Color.White;
             this.splitContainer1.Size = new System.Drawing.Size(494, 366);
@@ -254,10 +254,10 @@
             this.textBox5.Enabled = false;
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox5.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.textBox5.Location = new System.Drawing.Point(162, 240);
+            this.textBox5.Location = new System.Drawing.Point(3, 25);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(159, 32);
+            this.textBox5.Size = new System.Drawing.Size(159, 57);
             this.textBox5.TabIndex = 11;
             this.textBox5.Text = "Creación o eliminación de parámetros del sistema";
             // 
@@ -309,10 +309,10 @@
             this.textBox4.Enabled = false;
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.textBox4.Location = new System.Drawing.Point(22, 21);
+            this.textBox4.Location = new System.Drawing.Point(162, 240);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(116, 32);
+            this.textBox4.Size = new System.Drawing.Size(168, 47);
             this.textBox4.TabIndex = 10;
             this.textBox4.Text = "Ver, crear o modificar roles, y sus seguridades";
             // 

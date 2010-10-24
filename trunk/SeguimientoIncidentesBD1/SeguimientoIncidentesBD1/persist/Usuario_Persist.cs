@@ -162,6 +162,9 @@ namespace SeguimientoIncidentesBD1.persist
         {
             try
             {
+                this.usuNom = usuNom;
+                this.usuPass = usuPass;
+                this.usuMail = usuMail;
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "UPDATE usuario SET usuNom = @usuNom, usuPass = @usuPass, usuMail = @usuMail WHERE usuCod = @usuCod";
                 sql.Parameters.AddWithValue("@usuCod", this.usuCod);
