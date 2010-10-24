@@ -16,6 +16,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private GroupsAdmin_Window groupsAdmin;
         private Cache cache;
+        private Boolean creado;
 
         public NewGroup_Window(GroupsAdmin_Window groupsAdmin, Cache cache)
         {
@@ -24,6 +25,7 @@ namespace SeguimientoIncidentesBD1.show
             this.Location = this.groupsAdmin.Location;
             this.cache = cache;
             this.cache.Grupo = null;
+            this.creado = false;
         }
       
         private void button3_Click(object sender, EventArgs e)
@@ -53,7 +55,10 @@ namespace SeguimientoIncidentesBD1.show
             if (this.cache.Grupo == null)
             {
                 GrupoUsuario_Logic grupo = new GrupoUsuario_Logic(this.textBox1.Text, this.textBox5.Text);
+                this.textBox1.Enabled = false;
+                this.textBox5.Enabled = false;
                 grupo.GrupoUsuarioCreate();
+                this.creado = true;
                 this.cache.Grupo = grupo;
             }
             UserGroup userGroup = new UserGroup(this, this.cache);
@@ -63,7 +68,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (this.textBox1.Text.Equals(""))
+            if (this.textBox1.Text.Equals("") || this.textBox5.Text.Equals(""))
             {
                 this.button2.Enabled = false;
                 this.button5.Enabled = false;
@@ -93,8 +98,6 @@ namespace SeguimientoIncidentesBD1.show
             {
                 try
                 {
-                    GrupoUsuario_Logic grupo = new GrupoUsuario_Logic(grpCod, grpDes);
-                    grupo.GrupoUsuarioCreate();
                     MessageBox.Show("Grupo creado con exito");
                 }
                 catch (SqlException sqlex)
@@ -102,11 +105,26 @@ namespace SeguimientoIncidentesBD1.show
                     MessageBox.Show("Error al crear el grupo: " + sqlex.Message);
                 }
             }
+            this.Close();
         }
 
         private void NewGroup_Window_VisibleChanged(object sender, EventArgs e)
         {
             this.VerUsuarios();
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+            if (this.textBox1.Text.Equals("") || this.textBox5.Text.Equals(""))
+            {
+                this.button2.Enabled = false;
+                this.button5.Enabled = false;
+            }
+            else
+            {
+                this.button2.Enabled = true;
+                this.button5.Enabled = true;
+            }
         }
     }
 }

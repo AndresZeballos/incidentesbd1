@@ -59,5 +59,10 @@ namespace SeguimientoIncidentesBD1.show
             this.Visible = false;
             newGroup.Visible = true;
         }
+
+        private void GroupsAdmin_Window_VisibleChanged(object sender, EventArgs e)
+        {
+            cargarGridGrupos();
+        }
     }
 }

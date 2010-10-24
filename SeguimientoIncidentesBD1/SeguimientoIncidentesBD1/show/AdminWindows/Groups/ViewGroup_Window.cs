@@ -39,7 +39,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button4_Click(object sender, EventArgs e)
         {
-            this.textBox1.Enabled = true;
+            //this.textBox1.Enabled = true;
             this.textBox5.Enabled = true;
             this.button4.Enabled = false;
             this.button2.Enabled = true;
@@ -74,6 +74,13 @@ namespace SeguimientoIncidentesBD1.show
         private void ViewGroup_Window_VisibleChanged(object sender, EventArgs e)
         {
             this.VerUsuarios();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            GrupoUsuario_Logic grupoModificado = new GrupoUsuario_Logic(this.cache.Grupo.GrpUsuCod);
+            grupoModificado.GrupoUsuarioDesUpdate(this.textBox5.Text);
+            this.Close();
         }
     }
 }
