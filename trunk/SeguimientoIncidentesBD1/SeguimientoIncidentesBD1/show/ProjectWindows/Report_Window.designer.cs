@@ -229,6 +229,7 @@
             // 
             // button6
             // 
+            this.button6.Visible = false;
             this.button6.BackColor = System.Drawing.Color.SteelBlue;
             this.button6.ForeColor = System.Drawing.Color.LightCyan;
             this.button6.Location = new System.Drawing.Point(42, 354);

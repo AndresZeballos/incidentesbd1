@@ -6,20 +6,30 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SeguimientoIncidentesBD1.logic;
+using System.Data.SqlClient;
 
 namespace SeguimientoIncidentesBD1.show
 {
     public partial class Report_Window : Form
     {
         private Project_Window project;
+        private Cache cache;
 
-        public Report_Window(Project_Window project)
+        public Report_Window(Project_Window project, Cache cache)
         {
             InitializeComponent();
             this.project = project;
+            this.cache = cache;
             this.Location = this.project.Location;
-
             this.button1.Enabled = false;
+
+            View_Logic view = new View_Logic();
+
+            IList<string> severidades = view.View_GeneralSeverity();
+            IList<string> prioridades = view.View_GeneralPriority();
+            IList<string> categorias = view.View_GeneralSeverity();
+            IList<string> usuarios = view.userByProject(this.cache.Proyecto.ProCod);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -54,24 +64,35 @@ namespace SeguimientoIncidentesBD1.show
             // OBTENER TODOS LOS VALORES
             string incRes = this.textBox1.Text;
             string incDes = this.textBox2.Text;
-            string incPri = this.comboBox1.Text;
-            string incSev = this.comboBox2.Text;
-            string incCat = this.comboBox3.Text;
-            string incUsuAsig = this.comboBox4.Text;
+            string incPri = this.comboBox1.SelectedItem.ToString();
+            string incSev = this.comboBox2.SelectedItem.ToString();
+            string incCat = this.comboBox3.SelectedItem.ToString();
+            string incUsuCod = this.cache.Usuario.UsuCod;
+            string incUsuAsig = this.comboBox4.SelectedItem.ToString();
+            int incProCod = this.cache.Proyecto.ProCod;
+            string incEstCodIni = this.cache.EstadoInicial.EstCod;
 
             // VALIDARLOS
-            if (incRes != "" && incDes != "")
+            if (incRes.Equals("") || incDes.Equals(""))
             {
-                // GUARDAR EL INCIDENTE
+                MessageBox.Show("Faltan ingresar campos");
             }
             else
             {
-                // DATOS INCORRECTOS!!!!!!!!
+                try
+                {
+                    Incidente_Logic incidente = new Incidente_Logic(incProCod, incCat, incSev, incPri, incEstCodIni, 0, DateTime.Today,
+                        DateTime.Today, incUsuCod, incUsuAsig, incDes, incRes);
+                    incidente.IncidenteCreate();
+                    MessageBox.Show("Incidente creado con exito");
+                }
+                catch (SqlException sqlex)
+                {
+                    MessageBox.Show("Error al crear el incidente: " + sqlex.Message);
+                }
             }
 
         }
-
-
 
         private void button6_Click(object sender, EventArgs e)
         {
