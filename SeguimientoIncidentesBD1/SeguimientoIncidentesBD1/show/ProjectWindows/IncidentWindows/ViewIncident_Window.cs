@@ -23,6 +23,23 @@ namespace SeguimientoIncidentesBD1.show
             this.Location = this.projectWindow.Location;
             this.cache = cache;
 
+            //Controla que tenga el permiso para visualizar la opción de modificar incidente
+
+            Boolean puedeModificar = DataCurrentUser.ValidarSeguridad("Modificador", this.cache.Usuario);
+
+            if (!puedeModificar)
+            {
+                this.button2.Visible = false;
+            }
+
+            //Controla que tenga el permiso para visualizar la opción de estimar incidente y que el estado del incidente lo permite
+            Estado_Logic estado = new Estado_Logic(this.cache.Incidente.IncEstCod);
+
+            if ((!puedeModificar) && (estado.EstEst))
+            {
+                this.button6.Visible = false;
+            }
+
             this.textBox3.Text = this.cache.Incidente.IncCatCod;
             this.textBox8.Text = this.cache.Incidente.IncEstCod;
             this.textBox5.Text = this.cache.Incidente.IncPriCod;
@@ -30,6 +47,11 @@ namespace SeguimientoIncidentesBD1.show
             this.textBox1.Text = this.cache.Incidente.IncRes;
             this.textBox2.Text = this.cache.Incidente.IncDes;
             this.textBox9.Text = this.cache.Incidente.IncUsuAsi;
+            this.dateTimePicker1.Value = this.cache.Incidente.IncFecIng;
+            this.dateTimePicker2.Value = this.cache.Incidente.IncEstFecIni;
+            this.dateTimePicker3.Value = this.cache.Incidente.IncFecFin;
+            this.dateTimePicker4.Value = this.cache.Incidente.IncEstFecIni;
+            this.textBox10.Text = this.cache.Incidente.IncEstHrs.ToString();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -60,7 +82,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ChangeIncident_Window changeIncident = new ChangeIncident_Window(this);
+            ChangeIncident_Window changeIncident = new ChangeIncident_Window(this, this.cache);
             this.Visible = true;
             changeIncident.Visible = true;
         }
@@ -84,6 +106,16 @@ namespace SeguimientoIncidentesBD1.show
             ViewHistory_Window viewHistory = new ViewHistory_Window(this, this.cache);
             this.Visible = false;
             viewHistory.Visible = true;
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox10_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
     }

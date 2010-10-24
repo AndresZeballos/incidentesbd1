@@ -77,7 +77,7 @@
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.SteelBlue;
-            this.button4.Enabled = false;
+            this.button4.Enabled = true;
             this.button4.ForeColor = System.Drawing.Color.LightCyan;
             this.button4.Location = new System.Drawing.Point(44, 154);
             this.button4.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);

@@ -60,6 +60,7 @@ namespace SeguimientoIncidentesBD1.show
             this.comboBox1.Items.Add("Prioridad");
             this.comboBox1.Items.Add("Severidad");
             this.comboBox1.Items.Add("Fecha de reporte");
+
         }
 
         private void cargarGridIncidentes()
