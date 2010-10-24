@@ -883,5 +883,33 @@ namespace SeguimientoIncidentesBD1.persist
                 throw sqlex;
             }
         }
+
+
+        public DataSet EstadosSiguientes(string estCod)
+        {
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "SELECT estSigEstCod FROM estadoSiguiente WHERE estCod = @estCod";
+
+                sql.Parameters.AddWithValue("@estCod", estCod);
+
+                SQLExecute sqlIns = new SQLExecute();
+                DataSet ds = sqlIns.Execute(sql, "estadoSiguiente");
+
+                return ds;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+
+        }
+
+
+
+
+
+
     }
 }

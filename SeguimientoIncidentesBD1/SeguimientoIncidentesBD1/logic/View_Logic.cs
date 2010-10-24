@@ -626,5 +626,28 @@ namespace SeguimientoIncidentesBD1.logic
                 throw sqlex;
             }
         }
+
+        public List<string> EstadosSiguientes(string estCod)
+        {
+            try
+            {
+                List<string> estSig = new List<string>();
+                View_Persist vp = new View_Persist();
+                DataSet ds = vp.EstadosSiguientes(estCod);
+                DataTable dt = ds.Tables["estadoSiguiente"];
+                string estSigEstCod;
+                foreach (DataRow drow in dt.Rows)
+                {
+                    estSigEstCod = drow.Field<string>("estSigEstCod");
+                    estSig.Add(estSigEstCod);
+                }
+                return estSig;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+
+        }
     }
 }
