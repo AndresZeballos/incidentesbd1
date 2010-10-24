@@ -15,7 +15,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private Form projectWindow;
 
-        public ViewIncident_Window(Form projectWindow)
+        public ViewIncident_Window(Form projectWindow, Cache cache)
         {
             InitializeComponent();
             this.projectWindow = projectWindow;

@@ -776,7 +776,7 @@ namespace SeguimientoIncidentesBD1.persist
             }
         }
 
-        public IList<string> View_GeneralCategory()
+        public DataSet View_GeneralCategory()
         {
             try
             {
@@ -784,13 +784,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "SELECT * FROM categoria";
                 SQLExecute sqlIns = new SQLExecute();
                 DataSet ds = sqlIns.Execute(sql, "categoria");
-                DataTable dt = ds.Tables["categoria"];
-                IList<string> lista = new List<string>();
-                foreach(DataRow drow in dt.Rows)
-                {
-                    lista.Add(drow.Field<string>("catCod"));
-                }
-                return lista;
+                return ds;
             }
             catch (SqlException sqlex)
             {
@@ -798,7 +792,7 @@ namespace SeguimientoIncidentesBD1.persist
             }
         }
 
-        public IList<string> View_GeneralPriority()
+        public DataSet View_GeneralPriority()
         {
             try
             {
@@ -806,13 +800,8 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "SELECT * FROM prioridad";
                 SQLExecute sqlIns = new SQLExecute();
                 DataSet ds = sqlIns.Execute(sql, "prioridad");
-                DataTable dt = ds.Tables["prioridad"];
-                IList<string> lista = new List<string>();
-                foreach(DataRow drow in dt.Rows)
-                {
-                    lista.Add(drow.Field<string>("priCod"));
-                }
-                return lista;
+                
+                return ds;
             }
             catch (SqlException sqlex)
             {
@@ -820,7 +809,7 @@ namespace SeguimientoIncidentesBD1.persist
             }
         }
 
-        public IList<string> View_GeneralSeverity()
+        public DataSet View_GeneralSeverity()
         {
             try
             {
@@ -828,13 +817,8 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.CommandText = "SELECT * FROM severidad";
                 SQLExecute sqlIns = new SQLExecute();
                 DataSet ds = sqlIns.Execute(sql, "severidad");
-                DataTable dt = ds.Tables["severidad"];
-                IList<string> lista = new List<string>();
-                foreach(DataRow drow in dt.Rows)
-                {
-                    lista.Add(drow.Field<string>("sevCod"));
-                }
-                return lista;
+                
+                return ds;
             }
             catch (SqlException sqlex)
             {

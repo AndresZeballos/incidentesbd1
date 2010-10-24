@@ -59,29 +59,35 @@ namespace SeguimientoIncidentesBD1.show
             DataSet incidentes = new View_Logic().View_GeneralIncidents(this.cache.Proyecto.ProCod);
             this.dataGridView2.DataSource = incidentes;
             this.dataGridView2.DataMember = "incidente";
-            this.dataGridView2.Columns[0].HeaderText = "Codigo"; //incCod, incRes, incUsuAsi, incEstCod
+            this.dataGridView2.Columns[0].HeaderText = "Codigo"; 
             this.dataGridView2.Columns[1].HeaderText = "Resumen";
+            
             this.dataGridView2.Columns[2].HeaderText = "Usuario asignado";
+            this.dataGridView2.Columns[2].Width = 170;
             this.dataGridView2.Columns[3].HeaderText = "Estado del incidente";
+            this.dataGridView2.Columns[3].Width = 170;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Report_Window reporter = new Report_Window(this);
+            Report_Window reporter = new Report_Window(this, cache);
             this.Visible = false;
             reporter.Visible = true;
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            ViewIncident_Window viewIncident = new ViewIncident_Window(this);
+            int incCod = Int32.Parse(this.dataGridView2.CurrentRow.Cells[0].Value.ToString());
+            cache.Incidente = new Incidente_Logic(incCod);
+
+            ViewIncident_Window viewIncident = new ViewIncident_Window(this, cache);
             this.Visible = false;
             viewIncident.Visible = true;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Search_Window searchWindow = new Search_Window(this);
+            Search_Window searchWindow = new Search_Window(this, cache);
             this.Visible = false;
             searchWindow.Visible = true;
         }
