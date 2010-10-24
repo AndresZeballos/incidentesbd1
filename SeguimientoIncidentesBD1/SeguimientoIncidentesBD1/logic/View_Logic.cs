@@ -257,7 +257,7 @@ namespace SeguimientoIncidentesBD1.logic
             }
         }
 
-        public DataSet View_Option_UserRol(int usuCod)
+        public DataSet View_Option_UserRol(string usuCod)
         {
             try
             {
