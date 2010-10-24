@@ -30,10 +30,10 @@ namespace SeguimientoIncidentesBD1.logic
             return vp.View_GeneralUsers();
         }
 
-        public DataSet View_GeneralIncidents(string incProCod)
+        public DataSet View_GeneralIncidents(int proCod)
         {
             View_Persist vp = new View_Persist();
-            return vp.View_GeneralIncidents(incProCod);
+            return vp.View_GeneralIncidents(proCod);
         }
 
         public DataSet View_GroupUsers(string grpUsuCod)

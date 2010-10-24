@@ -49,7 +49,20 @@ namespace SeguimientoIncidentesBD1.show
             {
                 this.button7.Visible = false;
             }
+
+            cargarGridIncidentes();
             
+        }
+
+        private void cargarGridIncidentes()
+        {
+            DataSet incidentes = new View_Logic().View_GeneralIncidents(this.cache.Proyecto.ProCod);
+            this.dataGridView2.DataSource = incidentes;
+            this.dataGridView2.DataMember = "incidente";
+            this.dataGridView2.Columns[0].HeaderText = "Codigo"; //incCod, incRes, incUsuAsi, incEstCod
+            this.dataGridView2.Columns[1].HeaderText = "Resumen";
+            this.dataGridView2.Columns[2].HeaderText = "Usuario asignado";
+            this.dataGridView2.Columns[3].HeaderText = "Estado del incidente";
         }
 
         private void button4_Click(object sender, EventArgs e)
