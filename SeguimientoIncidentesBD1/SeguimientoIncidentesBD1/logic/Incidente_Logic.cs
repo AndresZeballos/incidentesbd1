@@ -45,7 +45,6 @@ namespace SeguimientoIncidentesBD1.logic
         public string IncRes { get; set; }
 
         public Incidente_Logic(
-                                int incCod,
                                 int incProCod,
                                 string incCatCod,
                                 string incSevCod,
@@ -54,16 +53,12 @@ namespace SeguimientoIncidentesBD1.logic
                                 int incEstHrs,
                                 DateTime incFecIng,
                                 DateTime incFecUltAct,
-                                DateTime incFecFin,
-                                DateTime incEstFecIni,
-                                DateTime incEstFecFin,
                                 string incUsuCod,
                                 string incUsuAsig,
                                 string incDes,
                                 string incRes
                                 )
         {
-            this.incCod = incCod;
             this.incProCod = incProCod;
             this.incCatCod = incCatCod;
             this.incSevCod = incSevCod;
@@ -72,9 +67,6 @@ namespace SeguimientoIncidentesBD1.logic
             this.incEstHrs = incEstHrs;
             this.incFecIng = incFecIng;
             this.incFecUltAct = incFecUltAct;
-            this.incFecFin = incFecFin;
-            this.incEstFecIni = incEstFecIni;
-            this.incEstFecFin = incEstFecFin;
             this.incUsuCod = incUsuCod;
             this.incUsuAsig = incUsuAsig;
             this.incDes = incDes;
@@ -115,7 +107,6 @@ namespace SeguimientoIncidentesBD1.logic
             try
             {
                 Incidente_Persist incPersist = new Incidente_Persist(
-                                                                    this.incCod,
                                                                     this.incProCod,
                                                                     this.incCatCod,
                                                                     this.incSevCod,
@@ -124,9 +115,6 @@ namespace SeguimientoIncidentesBD1.logic
                                                                     this.incEstHrs,
                                                                     this.incFecIng,
                                                                     this.incFecUltAct,
-                                                                    this.incFecFin,
-                                                                    this.incEstFecIni,
-                                                                    this.incEstFecFin,
                                                                     this.incUsuCod,
                                                                     this.incUsuAsig,
                                                                     this.incDes,
