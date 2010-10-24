@@ -23,21 +23,13 @@ namespace SeguimientoIncidentesBD1.show
             this.Location = this.projectWindow.Location;
             this.cache = cache;
 
-            CargarDetalle();
-
-
-        }
-
-        private void CargarDetalle()
-        {
-            //this.textBox3.Enabled = true;
             this.textBox3.Text = this.cache.Incidente.IncCatCod;
             this.textBox8.Text = this.cache.Incidente.IncEstCod;
             this.textBox5.Text = this.cache.Incidente.IncPriCod;
             this.textBox4.Text = this.cache.Incidente.IncSevCod;
             this.textBox1.Text = this.cache.Incidente.IncRes;
             this.textBox2.Text = this.cache.Incidente.IncDes;
-            this.comboBox4.Text = this.cache.Incidente.IncUsuAsi;
+            this.textBox9.Text = this.cache.Incidente.IncUsuAsi;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -75,21 +67,21 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button4_Click(object sender, EventArgs e)
         {
-            AddNote_Window addNote = new AddNote_Window(this);
+            AddNote_Window addNote = new AddNote_Window(this, this.cache);
             this.Visible = false;
             addNote.Visible = true;
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            EstimateIncident_Window estimateIncident = new EstimateIncident_Window(this);
+            EstimateIncident_Window estimateIncident = new EstimateIncident_Window(this, this.cache);
             this.Visible = false;
             estimateIncident.Visible = true;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ViewHistory_Window viewHistory = new ViewHistory_Window(this);
+            ViewHistory_Window viewHistory = new ViewHistory_Window(this, this.cache);
             this.Visible = false;
             viewHistory.Visible = true;
         }

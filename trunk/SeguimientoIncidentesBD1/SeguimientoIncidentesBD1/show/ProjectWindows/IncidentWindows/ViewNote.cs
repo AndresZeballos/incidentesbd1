@@ -20,7 +20,8 @@ namespace SeguimientoIncidentesBD1.show
             this.cache = cache;
             this.viewHistory = viewHistory;
             this.Location = this.viewHistory.Location;
-            this.textbox
+            this.textBox2.Text = this.cache.Historia.IncHistNota;
+            this.textBox1.Text = this.cache.Historia.IncHistTiempo.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SeguimientoIncidentesBD1.logic;
+using System.Data.SqlClient;
 
 namespace SeguimientoIncidentesBD1.show
 {
@@ -65,9 +66,9 @@ namespace SeguimientoIncidentesBD1.show
                 cargarGridGrupos();
                 cargarGridrestoGrupos();
             }
-            catch (Exception exp)
+            catch (SqlException sqlex)
             {
-                System.Windows.Forms.MessageBox.Show("No hay grupos disponibles");
+                System.Windows.Forms.MessageBox.Show("No hay grupos disponibles: " + sqlex.Message);
             }
         }
     }

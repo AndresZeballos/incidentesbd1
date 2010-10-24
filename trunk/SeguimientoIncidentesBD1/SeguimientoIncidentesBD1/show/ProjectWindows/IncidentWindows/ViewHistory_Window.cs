@@ -11,12 +11,13 @@ namespace SeguimientoIncidentesBD1.show
 {
     public partial class ViewHistory_Window : Form
     {
-
+        private Cache cache;
         private ViewIncident_Window viewIncident;
 
-        public ViewHistory_Window(ViewIncident_Window viewIncident)
+        public ViewHistory_Window(ViewIncident_Window viewIncident, Cache cache)
         {
             InitializeComponent();
+            this.cache = cache;
             this.viewIncident = viewIncident;
             this.Location = this.viewIncident.Location;
         }
@@ -34,7 +35,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ViewNote viewNote = new ViewNote(this);
+            ViewNote viewNote = new ViewNote(this, this.cache);
             this.Visible = false;
             viewNote.Visible = true;
         }
