@@ -825,5 +825,42 @@ namespace SeguimientoIncidentesBD1.persist
                 throw sqlex;
             }
         }
+
+
+        public DataSet EstadoInicial()
+        {
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "SELECT estCod FROM estado WHERE estIni = '1'";
+
+                SQLExecute sqlIns = new SQLExecute();
+                DataSet ds = sqlIns.Execute(sql, "estado");
+
+                return ds;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+        public DataSet EstadoFinal()
+        {
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "SELECT estCod FROM estado WHERE estFin = '1'";
+
+                SQLExecute sqlIns = new SQLExecute();
+                DataSet ds = sqlIns.Execute(sql, "estado");
+
+                return ds;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
     }
 }
