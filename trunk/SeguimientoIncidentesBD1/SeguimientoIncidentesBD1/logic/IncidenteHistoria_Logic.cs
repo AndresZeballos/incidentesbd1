@@ -85,7 +85,6 @@ namespace SeguimientoIncidentesBD1.logic
             try
             {
                 IncidenteHistoria_Persist histPersist = new IncidenteHistoria_Persist(
-                                                                                    this.incHistCod,
                                                                                     this.incHistIncCod,
                                                                                     this.incHistEstIni,
                                                                                     this.incHistEstFin,
