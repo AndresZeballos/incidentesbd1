@@ -67,22 +67,10 @@ namespace SeguimientoIncidentesBD1.persist
                 DataTable dt = ds.Tables["estado"];
                 this.estCod = dt.Rows[0].Field<string>("estCod");
                 //cargo la los atributos del estado
-                
-                byte estIniByte = dt.Rows[0].Field<byte>("estIni");
-                if (estIniByte == 0)
-                    this.estIni = false;
-                else
-                    this.estIni = true;
-                byte estFinByte = dt.Rows[0].Field<byte>("estFin");
-                if (estFinByte == 0)
-                    this.estFin = false;
-                else
-                    this.estFin = true;
-                byte estEstByte = dt.Rows[0].Field<byte>("estEst");
-                if (estEstByte == 0)
-                    this.estEst = false;
-                else
-                    this.estEst = true;
+
+                this.estIni = dt.Rows[0].Field<bool>("estIni");
+                this.estFin = dt.Rows[0].Field<bool>("estFin");
+                this.estEst = dt.Rows[0].Field<bool>("estEst");
 
                 sql.Parameters.Clear();
                 //hago la consulta sobre la tabla estadoSeguridad
