@@ -122,8 +122,8 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@incPriCod", this.incPriCod);
                 sql.Parameters.AddWithValue("@incEstCod", this.incEstCod);
                 sql.Parameters.AddWithValue("@incEstHrs", this.incEstHrs);
-                sql.Parameters.AddWithValue("@incFecIng", this.incFecIng);
-                sql.Parameters.AddWithValue("@incFecUltAct", this.incFecUltAct);
+                sql.Parameters.AddWithValue("@incFecIng", this.incFecIng.ToShortDateString());
+                sql.Parameters.AddWithValue("@incFecUltAct", this.incFecUltAct.ToShortDateString());
 
                 sql.Parameters.AddWithValue("@incFecFin", this.incFecFin);
                 sql.Parameters.AddWithValue("@incEstFecIni", this.incEstFecIni);
@@ -165,7 +165,7 @@ namespace SeguimientoIncidentesBD1.persist
             }
         }
 
-        public void IncidenteUpdate(string nuevaincCatCod, string nuevaincSevCod, string nuevaincPriCod, string nuevaincEstCod, int nuevaincEstHrs, DateTime nuevaincFecIng, DateTime nuevaincFecUltAct, DateTime nuevaincFecFin, DateTime nuevaincEstFecIni, DateTime nuevaincEstFecFin, string nuevaincUsuCod, string nuevaincUsuAsig, string nuevaincDes, string nuevaincRes)
+        public void IncidenteUpdate(string nuevaincCatCod, string nuevaincSevCod, string nuevaincPriCod, string nuevaincEstCod, int nuevaincEstHrs, DateTime nuevaincFecIng, DateTime nuevaincFecUltAct, DateTime nuevaincFecFin, DateTime nuevaincEstFecIni, DateTime nuevaincEstFecFin, string nuevaincUsuCod, string nuevaincUsuAsi, string nuevaincDes, string nuevaincRes)
         {
             try
             {
@@ -176,20 +176,20 @@ namespace SeguimientoIncidentesBD1.persist
                 "incFecFin=@incFecFin,incEstFecIni=@incEstFecIni,incEstFecFin=@incEstFecFin,incUsuCod=@incUsuCod,"+
                 "incUsuAsi=@incUsuAsi,incDes=@incDes,incRes=@incRes) WHERE incCod=@incCod";
                 sql.Parameters.AddWithValue("@incCod", this.incCod);
-                sql.Parameters.AddWithValue("@incCatCod", this.incCatCod);
-                sql.Parameters.AddWithValue("@incSevCod", this.incSevCod);
-                sql.Parameters.AddWithValue("@incPriCod", this.incPriCod);
-                sql.Parameters.AddWithValue("@incEstCod", this.incEstCod);
-                sql.Parameters.AddWithValue("@incEstHrs", this.incEstHrs);
-                sql.Parameters.AddWithValue("@incFecIng", this.incFecIng);
-                sql.Parameters.AddWithValue("@incFecUltAct", this.incFecUltAct);
-                sql.Parameters.AddWithValue("@incFecFin", this.incFecFin);
-                sql.Parameters.AddWithValue("@incEstFecIni", this.incEstFecIni);
-                sql.Parameters.AddWithValue("@incEstFecFin", this.incEstFecFin);
-                sql.Parameters.AddWithValue("@incUsuCod", this.incUsuCod);
-                sql.Parameters.AddWithValue("@incUsuAsi", this.incUsuAsi);
-                sql.Parameters.AddWithValue("@incDes", this.incDes);
-                sql.Parameters.AddWithValue("@incRes", this.incRes);
+                sql.Parameters.AddWithValue("@incCatCod", nuevaincCatCod);
+                sql.Parameters.AddWithValue("@incSevCod", nuevaincSevCod);
+                sql.Parameters.AddWithValue("@incPriCod", nuevaincPriCod);
+                sql.Parameters.AddWithValue("@incEstCod", nuevaincEstCod);
+                sql.Parameters.AddWithValue("@incEstHrs", nuevaincEstHrs);
+                sql.Parameters.AddWithValue("@incFecIng", nuevaincFecIng);
+                sql.Parameters.AddWithValue("@incFecUltAct", nuevaincFecUltAct);
+                sql.Parameters.AddWithValue("@incFecFin", nuevaincFecFin);
+                sql.Parameters.AddWithValue("@incEstFecIni", nuevaincEstFecIni);
+                sql.Parameters.AddWithValue("@incEstFecFin", nuevaincEstFecFin);
+                sql.Parameters.AddWithValue("@incUsuCod", nuevaincUsuCod);
+                sql.Parameters.AddWithValue("@incUsuAsi", nuevaincUsuAsi);
+                sql.Parameters.AddWithValue("@incDes", nuevaincDes);
+                sql.Parameters.AddWithValue("@incRes", nuevaincRes);
                 SQLExecute sqlIns = new SQLExecute();
                 sqlIns.Execute(sql, "incidente");
             }
@@ -199,14 +199,14 @@ namespace SeguimientoIncidentesBD1.persist
             }
         }
 
-        public void IncidenteAsign(string nuevaincUsuAsig)
+        public void IncidenteAsign(string nuevaincUsuAsi)
         {
             try
             {
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "UPDATE INTO incidente SET incUsuAsi=@incUsuAsi WHERE incCod=@incCod";
                 sql.Parameters.AddWithValue("@incCod", this.incCod);
-                sql.Parameters.AddWithValue("@incUsuAsi", this.incUsuAsi);
+                sql.Parameters.AddWithValue("@incUsuAsi", nuevaincUsuAsi);
                 SQLExecute sqlIns = new SQLExecute();
                 sqlIns.Execute(sql, "incidente");
             }
