@@ -95,5 +95,20 @@ namespace SeguimientoIncidentesBD1.logic
                 throw sqlex;
             }
         }
+
+        public void ProGrpAdd(string grpUsuCod)
+        {
+            try
+            {
+                //actualizo la lista de seguridades
+                //this.usuGrpCod.Add(grpUsuCod);
+                Proyecto_Persist proPersist = new Proyecto_Persist(this.proCod);
+                proPersist.ProGrpAdd(grpUsuCod);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
     }
 }

@@ -103,5 +103,23 @@ namespace SeguimientoIncidentesBD1.persist
                 throw sqlex;
             }
         }
+
+        //
+        public void ProGrpAdd(string grpUsuCod)
+        {
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "INSERT INTO proyectoGrupoUsuario (proCod, proGrpUsuCod) VALUES (@proCod, @proGrpUsuCod)";
+                sql.Parameters.AddWithValue("@proCod", this.proCod);
+                sql.Parameters.AddWithValue("@proGrpUsuCod", grpUsuCod);
+                SQLExecute sqlInsSeg = new SQLExecute();
+                sqlInsSeg.Execute(sql, "proyectoGrupoUsuario");
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
     }
 }

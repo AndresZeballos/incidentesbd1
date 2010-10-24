@@ -297,7 +297,7 @@ namespace SeguimientoIncidentesBD1.persist
                                   "SELECT proGrpUsuCod FROM proyectoGrupoUsuario WHERE proyectoGrupoUsuario.proCod = @proCod)";
                 sql.Parameters.AddWithValue("@proCod", proCod);
                 SQLExecute sqlIns = new SQLExecute();
-                DataSet ds = sqlIns.Execute(sql, "proyectoGrupoUsuario");
+                DataSet ds = sqlIns.Execute(sql, "grupoUsuario");
                 return ds;
             }
             catch (SqlException sqlex)
