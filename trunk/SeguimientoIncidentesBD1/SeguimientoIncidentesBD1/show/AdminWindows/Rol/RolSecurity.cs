@@ -21,6 +21,8 @@ namespace SeguimientoIncidentesBD1.show
             this.beforeRolWindow = beforeRolWindow;
             this.Location = this.beforeRolWindow.Location;
             this.cache = cache;
+            cargarGridSeguridades();
+            cargarGridrestoSeguridades();
         }
 
         private void cargarGridSeguridades()
@@ -59,6 +61,23 @@ namespace SeguimientoIncidentesBD1.show
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        //Agregar seguridad
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string seguridadSelected = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                Rol_Logic nuevaSeguridad = new Rol_Logic(this.cache.Rol.RolCod);
+                nuevaSeguridad.RolSegAdd(seguridadSelected);
+                cargarGridSeguridades();
+                cargarGridrestoSeguridades();
+            }
+            catch (Exception exp)
+            {
+                System.Windows.Forms.MessageBox.Show("No hay seguridades disponibles");
+            }
         }
 
     }

@@ -58,12 +58,20 @@ namespace SeguimientoIncidentesBD1.show
         //Agregar
         private void button1_Click(object sender, EventArgs e)
         {
-            string userSelected = this.dataGridView3.CurrentRow.Cells[0].Value.ToString();
-            GrupoUsuario_Logic nuevoUser = new GrupoUsuario_Logic(this.cache.Grupo.GrpUsuCod);
-            nuevoUser.GrpUsuAdd(userSelected);
-            //this.cache.UsuariosGrupo.Tables[0].Rows.Add(userSelected);
-            cargarGridUsuarios();
-            cargarGridrestoUsuarios();
+            try
+            {
+                string userSelected = this.dataGridView3.CurrentRow.Cells[0].Value.ToString();
+                GrupoUsuario_Logic nuevoUser = new GrupoUsuario_Logic(this.cache.Grupo.GrpUsuCod);
+                nuevoUser.GrpUsuAdd(userSelected);
+                //this.cache.UsuariosGrupo.Tables[0].Rows.Add(userSelected);
+                cargarGridUsuarios();
+                cargarGridrestoUsuarios();
+            }
+            catch (Exception exp)
+            {
+                System.Windows.Forms.MessageBox.Show("No hay usuarios disponibles");
+            }
+           
         }
     }
 }

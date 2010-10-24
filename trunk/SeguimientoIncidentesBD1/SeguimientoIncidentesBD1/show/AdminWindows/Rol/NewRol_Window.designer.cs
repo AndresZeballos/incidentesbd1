@@ -66,6 +66,7 @@
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.SteelBlue;
+            this.button5.Enabled = false;
             this.button5.ForeColor = System.Drawing.Color.White;
             this.button5.Location = new System.Drawing.Point(88, 282);
             this.button5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -92,6 +93,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.SteelBlue;
+            this.button2.Enabled = false;
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(35, 328);
             this.button2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -110,6 +112,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(200, 50);
             this.textBox2.TabIndex = 11;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // textBox1
             // 
@@ -118,6 +121,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(200, 21);
             this.textBox1.TabIndex = 10;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label3
             // 
@@ -195,6 +199,7 @@
             this.Name = "NewRol_Window";
             this.Text = "Crear Rol";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NewRol_Window_FormClosed);
+            this.VisibleChanged += new System.EventHandler(this.NewRol_Window_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
