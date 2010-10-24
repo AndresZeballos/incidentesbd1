@@ -43,6 +43,14 @@ namespace SeguimientoIncidentesBD1
 
         public Cache()
         {
+            View_Logic vl = new View_Logic();
+            usuario = null;
+            grupo = null;
+            proyecto = null;
+            //estadoInicial = ;
+            //estadoFinal = ;
+            incidente = null;
+
         }
     }
 }

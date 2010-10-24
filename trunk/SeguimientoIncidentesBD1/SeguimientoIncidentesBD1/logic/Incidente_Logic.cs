@@ -23,7 +23,7 @@ namespace SeguimientoIncidentesBD1.logic
         private DateTime incEstFecIni;
         private DateTime incEstFecFin;
         private string incUsuCod;
-        private string incUsuAsig;
+        private string incUsuAsi;
         private string incDes;
         private string incRes;
 
@@ -40,7 +40,7 @@ namespace SeguimientoIncidentesBD1.logic
         public DateTime IncEstFecIni { get; set; }
         public DateTime IncEstFecFin { get; set; }
         public string IncUsuCod { get; set; }
-        public string IncUsuAsig { get; set; }
+        public string IncUsuAsi { get; set; }
         public string IncDes { get; set; }
         public string IncRes { get; set; }
 
@@ -53,7 +53,7 @@ namespace SeguimientoIncidentesBD1.logic
                                 DateTime incFecIng,
                                 DateTime incFecUltAct,
                                 string incUsuCod,
-                                string incUsuAsig,
+                                string incUsuAsi,
                                 string incDes,
                                 string incRes
                                 )
@@ -66,7 +66,7 @@ namespace SeguimientoIncidentesBD1.logic
             this.incFecIng = incFecIng;
             this.incFecUltAct = incFecUltAct;
             this.incUsuCod = incUsuCod;
-            this.incUsuAsig = incUsuAsig;
+            this.incUsuAsi = incUsuAsi;
             this.incDes = incDes;
             this.incRes = incRes;
         }
@@ -90,7 +90,7 @@ namespace SeguimientoIncidentesBD1.logic
                 this.incEstFecIni = incPersist.IncEstFecIni;
                 this.incEstFecFin = incPersist.IncEstFecFin;
                 this.incUsuCod = incPersist.IncUsuCod;
-                this.incUsuAsig = incPersist.IncUsuAsig;
+                this.incUsuAsi = incPersist.IncUsuAsi;
                 this.incDes = incPersist.IncDes;
                 this.incRes = incPersist.IncRes;
             }
@@ -113,7 +113,7 @@ namespace SeguimientoIncidentesBD1.logic
                                                                     this.incFecIng,
                                                                     this.incFecUltAct,
                                                                     this.incUsuCod,
-                                                                    this.incUsuAsig,
+                                                                    this.incUsuAsi,
                                                                     this.incDes,
                                                                     this.incRes);
                 incPersist.IncidenteCreate();
@@ -209,6 +209,19 @@ namespace SeguimientoIncidentesBD1.logic
                     lHistRes.Add(incHist);
                 }
                 return lHistRes;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+        public void FinalizarIncidente()
+        {
+            try
+            {
+                Incidente_Persist incPersist = new Incidente_Persist(this.incCod);
+                //incPersist.IncidenteUpdate(
             }
             catch (SqlException sqlex)
             {
