@@ -108,18 +108,25 @@ namespace SeguimientoIncidentesBD1.show
             int incProCod = this.cache.Proyecto.ProCod;
             string incEstCodIni = this.cache.EstadoInicial.EstCod;
 
-            try
+            if (incRes.Equals("") || incDes.Equals(""))
             {
-                Incidente_Logic incidente = new Incidente_Logic(incProCod, incCat, incSev, incPri, incEstCodIni, DateTime.Today,
-                    DateTime.Today, incUsuCod, incUsuAsi, incDes, incRes);
-                incidente.IncidenteCreate();
-                MessageBox.Show("Incidente creado con exito");
+                MessageBox.Show("Faltan ingresar campos");
             }
-            catch (SqlException sqlex)
+            else
             {
-                MessageBox.Show("Error al crear el incidente: " + sqlex.Message);
+                try
+                {
+                    Incidente_Logic incidente = new Incidente_Logic(incProCod, incCat, incSev, incPri, incEstCodIni, DateTime.Today,
+                        DateTime.Today, incUsuCod, incUsuAsi, incDes, incRes);
+                    incidente.IncidenteCreate();
+                    MessageBox.Show("Incidente creado con exito");
+                    this.Close();
+                }
+                catch (SqlException sqlex)
+                {
+                    MessageBox.Show("Error al crear el incidente: " + sqlex.Message);
+                }                
             }
-            this.Close();
         }
 
         private void button6_Click(object sender, EventArgs e)

@@ -48,6 +48,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button4_Click(object sender, EventArgs e)
         {
+            //ATRIBUTOS DE LA ESTIMACION
             int incCod = this.cache.Incidente.IncCod;
             int estHrs = decimal.ToInt32(this.numericUpDown1.Value);
             DateTime fecEstIni = this.dateTimePicker1.Value;
@@ -65,10 +66,19 @@ namespace SeguimientoIncidentesBD1.show
             DateTime fecEstFin = fecEstIni;
             fecEstFin = fecEstFin.Add(duration);
 
+            //ATRIBUTOS PARA LA NOTA
+            string usuCod = this.cache.Usuario.UsuCod;
+            DateTime histFec = DateTime.Today;
+            string histAcc = this.seguridad;
+            string incEstado = this.cache.Incidente.IncEstCod;
+
             try
             {
                 Incidente_Logic incidente = new Incidente_Logic(incCod);
                 incidente.EstimarIncidente(estHrs, fecEstIni, fecEstFin);
+                IncidenteHistoria_Logic historia = new IncidenteHistoria_Logic(incCod, incEstado, incEstado, histFec,
+                        histAcc, usuCod, "", 0);
+                historia.IncidenteHistoriaCreate();
                 MessageBox.Show("Incidente estimado con exito");
                 this.Close();
             }
