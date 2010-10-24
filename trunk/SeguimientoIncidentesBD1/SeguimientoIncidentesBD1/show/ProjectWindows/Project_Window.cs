@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using SeguimientoIncidentesBD1.persist;
 using SeguimientoIncidentesBD1.logic;
+using System.Data.SqlClient;
 
 namespace SeguimientoIncidentesBD1.show
 {
@@ -139,13 +140,36 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string incCod = this.textBox1.Text;
-            //DataCurrentUser.CargarIncidente(incCod);
-            //Incidente_Logic incidente = DataCurrentUser.VerIncidente();
-            //if (incidente != null)
-            //{
+            try
+            {
+                int incCod = Int32.Parse(this.textBox1.Text);
 
-            //}
+                try
+                {
+                    Incidente_Logic il = new Incidente_Logic(incCod);
+                    if (il.IncProCod == this.cache.Proyecto.ProCod)
+                    {
+                        this.cache.Incidente = il;
+                        ViewIncident_Window viewIncident = new ViewIncident_Window(this, this.cache);
+                        this.Visible = false;
+                        viewIncident.Visible = true;
+                        
+                    }
+                }
+                catch (SqlException sqlex)
+                {
+                    MessageBox.Show("No existe ningun incidente con este codigo: \n" + sqlex.ToString());
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("No existe ningun incidente con este codigo: \n" + ex.ToString());
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Ingrese el codigo numerico de un incidente: \n" + exc.ToString());
+            }
+            this.textBox1.Text = "";
         }
 
         private void Project_Window_VisibleChanged(object sender, EventArgs e)
@@ -167,40 +191,7 @@ namespace SeguimientoIncidentesBD1.show
 
             incidentesOrdenados = new View_Logic().View_IncidentOrderBy(this.cache.Proyecto.ProCod, opcion);
             cargarGridIncidentes(incidentesOrdenados, opcion);
-            /*
-            switch (opcion)
-            {
-                case "Estado":
-                    {
-                        incidentesOrdenados = new View_Logic().View_IncidentOrderBy(this.cache.Proyecto.ProCod, opcion);
-                        cargarGridIncidentes(incidentesOrdenados, opcion);
-                        break;
-                    }
-                case "Categoria":
-                    {
-
-                        break;
-                    }
-                case "Prioridad":
-                    {
-
-                        break;
-                    }
-                case "Severidad":
-                    {
-
-                        break;
-                    }
-                case "Fecha de reporte":
-                    {
-
-                        break;
-                    }
-            }
-
-            */
-
-
+            
         }
 
     }

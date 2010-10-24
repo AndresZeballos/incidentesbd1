@@ -178,6 +178,7 @@ namespace SeguimientoIncidentesBD1.persist
                 DataSet ds = sqlIns.Execute(sql, "incidente");
                 DataTable dt = ds.Tables["incidente"];
                 //cargo los atributos del incidente
+
                 this.incCod = dt.Rows[0].Field<int>("incCod");
                 this.incProCod = dt.Rows[0].Field<int>("incProCod");
                 this.incCatCod = dt.Rows[0].Field<string>("incCatCod");
@@ -186,7 +187,7 @@ namespace SeguimientoIncidentesBD1.persist
                 this.incEstCod = dt.Rows[0].Field<string>("incEstCod");
 
                 this.incEstHrs = dt.Rows[0].Field<int>("incEstHrs");
-                
+
                 this.incFecIng = dt.Rows[0].Field<DateTime>("incFecIng");
                 this.incFecUltAct = dt.Rows[0].Field<DateTime>("incFecUltAct");
                 this.incFecFin = dt.Rows[0].Field<DateTime>("incFecFin");
@@ -197,11 +198,16 @@ namespace SeguimientoIncidentesBD1.persist
                 this.incUsuAsi = dt.Rows[0].Field<string>("incUsuAsi");
                 this.incDes = dt.Rows[0].Field<string>("incDes");
                 this.incRes = dt.Rows[0].Field<string>("incRes");
-                
+
+
             }
             catch (SqlException sqlex)
             {
                 throw sqlex;
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 

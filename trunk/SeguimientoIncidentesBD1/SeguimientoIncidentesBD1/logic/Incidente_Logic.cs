@@ -185,9 +185,13 @@ namespace SeguimientoIncidentesBD1.logic
                 this.incDes = incPersist.IncDes;
                 this.incRes = incPersist.IncRes;
             }
-            catch(SqlException sqlex)
+            catch (SqlException sqlex)
             {
                 throw sqlex;
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
