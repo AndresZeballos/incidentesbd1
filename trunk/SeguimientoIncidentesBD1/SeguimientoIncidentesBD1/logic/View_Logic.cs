@@ -641,6 +641,20 @@ namespace SeguimientoIncidentesBD1.logic
             }
         }
 
+        public DataSet View_NextStates(string estCod)
+        {
+            try
+            {
+                View_Persist vp = new View_Persist();
+                return vp.EstadosSiguientes(estCod);
+               
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
         public List<string> EstadosSiguientes(string estCod)
         {
             try

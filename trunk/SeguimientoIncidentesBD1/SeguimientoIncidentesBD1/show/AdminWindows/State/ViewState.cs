@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SeguimientoIncidentesBD1.logic;
 
 namespace SeguimientoIncidentesBD1.show
 {
@@ -20,20 +21,35 @@ namespace SeguimientoIncidentesBD1.show
             this.stateAdmin = stateAdmin;
             this.Location = this.stateAdmin.Location;
             this.cache = cache;
+            VerSiguientesEstados();
+            this.textBox1.Text = this.cache.Estado.EstCod;
+            
+            if (this.cache.Estado.EstIni)
+                this.comboBox6.Text = "Si";
+            else
+                this.comboBox6.Text = "No";
+            if (this.cache.Estado.EstFin)
+                this.comboBox5.Text = "Si";
+            else
+                this.comboBox5.Text = "No";
+            if (this.cache.Estado.EstEst)
+                this.comboBox4.Text = "Si";
+            else
+                this.comboBox4.Text = "No";
+
+        }
+
+        public void VerSiguientesEstados()
+        {
+            DataSet estadosSiguientes = new View_Logic().View_NextStates(this.cache.Estado.EstCod);
+            this.dataGridView3.DataSource = estadosSiguientes;
+            this.dataGridView3.DataMember = "estadoSiguiente";
+            this.dataGridView3.Columns[0].HeaderText = "Estados siguientes";
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            this.button4.Enabled = false;
-            this.comboBox4.Enabled = true;
-            this.comboBox5.Enabled = true;
-            this.comboBox6.Enabled = true;
-            this.textBox1.Enabled = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -55,6 +71,11 @@ namespace SeguimientoIncidentesBD1.show
         {
             this.stateAdmin.Location = this.Location;
             this.stateAdmin.Visible = true;
+        }
+
+        private void ViewState_Window_VisibleChanged(object sender, EventArgs e)
+        {
+            VerSiguientesEstados();
         }
     }
 }
