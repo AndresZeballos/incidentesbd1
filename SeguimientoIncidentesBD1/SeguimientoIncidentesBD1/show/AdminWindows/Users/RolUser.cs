@@ -29,16 +29,16 @@ namespace SeguimientoIncidentesBD1.show
         {
             DataSet rolesUsuario = new View_Logic().View_UserRol(this.cache.UsuarioSelected.UsuCod);
             this.dataGridView3.DataSource = rolesUsuario;
-            this.dataGridView3.DataMember = "usuarioGrupoUsuario";
+            this.dataGridView3.DataMember = "usuarioRol";
             this.dataGridView3.Columns[0].HeaderText = "Roles del Usuario";
         }
 
         private void cargarGridrestoRoles()
-        {///
+        {
             DataSet restoRoles = new View_Logic().View_Option_UserRol(this.cache.UsuarioSelected.UsuCod);
-            this.dataGridView3.DataSource = restoRoles;
-            this.dataGridView3.DataMember = "rol";
-            this.dataGridView3.Columns[0].HeaderText = "Roles del Sistema";
+            this.dataGridView1.DataSource = restoRoles;
+            this.dataGridView1.DataMember = "rol";
+            this.dataGridView1.Columns[0].HeaderText = "Roles del Sistema";
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -60,7 +60,7 @@ namespace SeguimientoIncidentesBD1.show
         {
             try
             {
-                string rolSelected = this.dataGridView3.CurrentRow.Cells[0].Value.ToString();
+                string rolSelected = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
                 Usuario_Logic nuevoRol = new Usuario_Logic(this.cache.UsuarioSelected.UsuCod);
                 nuevoRol.UsuarioRolAdd(rolSelected);
                 //this.cache.UsuariosGrupo.Tables[0].Rows.Add(userSelected);

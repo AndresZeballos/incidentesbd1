@@ -182,5 +182,7 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+
+        public System.Windows.Forms.DataGridViewCellEventHandler dataGridView3_CellContentClick { get; set; }
     }
 }
