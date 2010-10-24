@@ -67,9 +67,23 @@ namespace SeguimientoIncidentesBD1.persist
                 DataTable dt = ds.Tables["estado"];
                 this.estCod = dt.Rows[0].Field<string>("estCod");
                 //cargo la los atributos del estado
-                this.estIni = dt.Rows[0].Field<bool>("estIni");
-                this.estFin = dt.Rows[0].Field<bool>("estFin");
-                this.estEst = dt.Rows[0].Field<bool>("estEst");
+                
+                byte estIniByte = dt.Rows[0].Field<byte>("estIni");
+                if (estIniByte == 0)
+                    this.estIni = false;
+                else
+                    this.estIni = true;
+                byte estFinByte = dt.Rows[0].Field<byte>("estFin");
+                if (estFinByte == 0)
+                    this.estFin = false;
+                else
+                    this.estFin = true;
+                byte estEstByte = dt.Rows[0].Field<byte>("estEst");
+                if (estEstByte == 0)
+                    this.estEst = false;
+                else
+                    this.estEst = true;
+
                 sql.Parameters.Clear();
                 //hago la consulta sobre la tabla estadoSeguridad
                 sql.CommandText = "SELECT * FROM estadoSiguiente WHERE estCod = @estCod";
@@ -94,10 +108,22 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "INSERT INTO estado (estCod, estIni, estFin, estEst) VALUES (@estCod, @estIni, @estFin, @estEst)";
+                
                 sql.Parameters.AddWithValue("@estCod", this.estCod);
-                sql.Parameters.AddWithValue("@estIni", this.estIni);
-                sql.Parameters.AddWithValue("@estFin", this.estFin);
-                sql.Parameters.AddWithValue("@estEst", this.estEst);
+
+                if (this.estIni)
+                    sql.Parameters.AddWithValue("@estIni", "0x1");
+                else
+                    sql.Parameters.AddWithValue("@estIni", "0x0");
+                if (this.estFin)
+                    sql.Parameters.AddWithValue("@estFin", "0x1");
+                else
+                    sql.Parameters.AddWithValue("@estFin", "0x0");
+                if (this.estEst)
+                    sql.Parameters.AddWithValue("@estEst", "0x1");
+                else
+                    sql.Parameters.AddWithValue("@estEst", "0x0");
+ 
                 SQLExecute sqlIns = new SQLExecute();
                 sqlIns.Execute(sql, "estado");                
             }
