@@ -92,8 +92,7 @@ namespace SeguimientoIncidentesBD1.persist
                 this.incPriCod = dt.Rows[0].Field<string>("incPriCod");
                 this.incEstCod = dt.Rows[0].Field<string>("incEstCod");
 
-
-                this.incEstHrs = dt.Rows[0].Field<int>("incEstHrs"); 
+                this.incEstHrs = dt.Rows[0].Field<int>("incEstHrs");
                 
                 
                 
