@@ -17,6 +17,7 @@ namespace SeguimientoIncidentesBD1
         [STAThread]
         static void Main()
         {
+
             Cache cache = new Cache();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
