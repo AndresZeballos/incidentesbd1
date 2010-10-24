@@ -119,15 +119,15 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "INSERT INTO incidente "+
-                "(incCod, incProCod,incCatCod,incSevCod,incPriCod,incEstCod,incEstHrs,incFecIng,incFecUltAct,"+
-                "incFecFin,incEstFecIni,incEstFecFin,incUsuCod," + 
-   //             "incUsuAsi," + 
-                "incDes,incRes) "+
+                "(incCod, incProCod, incCatCod, incSevCod, incPriCod, incEstCod, incEstHrs, incFecIng, incFecUltAct, "+
+                "incFecFin, incEstFecIni, incEstFecFin, incUsuCod, " + 
+                "incUsuAsi, " + 
+                "incDes, incRes) "+
                 "VALUES "+
-                "(@incCod, @incProCod,@incCatCod,@incSevCod,@incPriCod,@incEstCod,@incEstHrs,@incFecIng,@incFecUltAct," +
-                "@incFecFin,@incEstFecIni,@incEstFecFin,@incUsuCod," + 
-   //             "@incUsuAsi," + 
-                "@incDes,@incRes)";
+                "(@incCod, @incProCod, @incCatCod, @incSevCod, @incPriCod, @incEstCod, @incEstHrs, @incFecIng, @incFecUltAct, " +
+                "@incFecFin, @incEstFecIni, @incEstFecFin, @incUsuCod," + 
+                "@incUsuAsi, " + 
+                "@incDes, @incRes)";
 
                 sql.Parameters.AddWithValue("@incCod", 1234567);
 
@@ -145,7 +145,7 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@incEstFecFin", DateTimeToDateSQL(this.incEstFecFin));
                 
                 sql.Parameters.AddWithValue("@incUsuCod", this.incUsuCod);
-    //            sql.Parameters.AddWithValue("@incUsuAsi", this.incUsuAsi);
+                sql.Parameters.AddWithValue("@incUsuAsi", this.incUsuAsi);
                 sql.Parameters.AddWithValue("@incDes", this.incDes);
                 sql.Parameters.AddWithValue("@incRes", this.incRes);
                 SQLExecute sqlIns = new SQLExecute();
@@ -186,10 +186,10 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "UPDATE INTO incidente SET " +
-                "incCatCod=@incCatCod,incSevCod=@incSevCod,incPriCod=@incPriCod,"+
-                "incEstCod=@incEstCod,incEstHrs=@incEstHrs,incFecIng=@incFecIng,incFecUltAct=@incFecUltAct," +
-                "incFecFin=@incFecFin,incEstFecIni=@incEstFecIni,incEstFecFin=@incEstFecFin,incUsuCod=@incUsuCod,"+
-                "incUsuAsi=@incUsuAsi,incDes=@incDes,incRes=@incRes) WHERE incCod=@incCod";
+                "incCatCod=@incCatCod, incSevCod=@incSevCod, incPriCod=@incPriCod, "+
+                "incEstCod=@incEstCod, incEstHrs=@incEstHrs, incFecIng=@incFecIng, incFecUltAct=@incFecUltAct, " +
+                "incFecFin=@incFecFin, incEstFecIni=@incEstFecIni, incEstFecFin=@incEstFecFin, incUsuCod=@incUsuCod, "+
+                "incUsuAsi=@incUsuAsi, incDes=@incDes, incRes=@incRes) WHERE incCod=@incCod";
                 sql.Parameters.AddWithValue("@incCod", this.incCod);
                 sql.Parameters.AddWithValue("@incCatCod", nuevaincCatCod);
                 sql.Parameters.AddWithValue("@incSevCod", nuevaincSevCod);
