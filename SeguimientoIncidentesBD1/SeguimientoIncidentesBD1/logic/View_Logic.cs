@@ -393,9 +393,17 @@ namespace SeguimientoIncidentesBD1.logic
         //LA TABLA CONEL RESULTADO DE LA CONSULTA SEGÚN LOS PARAMETROS ? 
         //(tenes q chequear sin son null y eso, nose como es)
 
-        public DataSet View_AdvancedSearch()
+        public DataSet View_AdvancedSearch(int incProCod, string incEstCod, string incPriCod, string incCatCod, int incUsuAsig, string incSevCod, DateTime fecInicial, DateTime fecFinal)
         {
-            return null;
+            try
+            {
+                View_Persist vp = new View_Persist();
+                return vp.View_AdvancedSearch(incProCod, incEstCod, incPriCod, incCatCod, incUsuAsig, incSevCod, fecInicial, fecFinal);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
         }
 
 
@@ -677,5 +685,20 @@ namespace SeguimientoIncidentesBD1.logic
             }
 
         }
+
+
+        public DataSet HistoriaIncidente(int incCod)
+        {
+            try
+            {
+                View_Persist vp = new View_Persist();
+                return vp.HistoriaIncidente(incCod);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
     }
 }
