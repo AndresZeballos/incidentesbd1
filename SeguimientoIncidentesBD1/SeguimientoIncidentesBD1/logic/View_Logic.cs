@@ -64,6 +64,19 @@ namespace SeguimientoIncidentesBD1.logic
             }
         }
 
+        public DataSet View_GeneralIncidentsStat(int proCod)
+        {
+            try
+            {
+                View_Persist vp = new View_Persist();
+                return vp.View_GeneralIncidentsStat(proCod);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
         public DataSet View_GroupUsers(string grpUsuCod)
         {
             try
@@ -516,12 +529,6 @@ namespace SeguimientoIncidentesBD1.logic
             }
         }
 
-
-
-
-
-        
-
         public List<string> consult_projectOfUser(string usuCod)
         {
             try
@@ -614,7 +621,6 @@ namespace SeguimientoIncidentesBD1.logic
             }
         }
 
-
         public Estado_Logic EstadoInicial()
         {
             try
@@ -705,5 +711,43 @@ namespace SeguimientoIncidentesBD1.logic
             }
         }
 
+        public int TotalProjectIncidents(int proCod)
+        {
+            try
+            {
+                View_Persist vp = new View_Persist();
+                return vp.TotalProjectIncidents(proCod);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+        public int TotalIncidentHours(int proCod)
+        {
+            try
+            {
+                View_Persist vp = new View_Persist();
+                return vp.TotalIncidentHours(proCod);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+        public int TotalStateIncidents(string estCod)
+        {
+            try
+            {
+                View_Persist vp = new View_Persist();
+                return vp.TotalStateIncidents(estCod);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
     }
 }
