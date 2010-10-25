@@ -25,6 +25,7 @@ namespace SeguimientoIncidentesBD1.show
             this.cache = cache;
             this.Location = this.stateAdmin.Location;
             this.creado = false;
+            this.cache.Estado = null;
         }
 
         public void VerSiguientesEstados()
@@ -82,7 +83,7 @@ namespace SeguimientoIncidentesBD1.show
                     estIni = false;
                 }
 
-                if (this.comboBox1.SelectedItem.ToString().Equals("Si"))
+                if (this.comboBox2.SelectedItem.ToString().Equals("Si"))
                 {
                     estFin = true;
                 }
@@ -91,7 +92,7 @@ namespace SeguimientoIncidentesBD1.show
                     estFin = false;
                 }
 
-                if (this.comboBox1.SelectedItem.ToString().Equals("Si"))
+                if (this.comboBox3.SelectedItem.ToString().Equals("Si"))
                 {
                     estEst = true;
                 }
@@ -135,7 +136,7 @@ namespace SeguimientoIncidentesBD1.show
                 estIni = false;
             }
 
-            if (this.comboBox1.SelectedItem.ToString().Equals("Si"))
+            if (this.comboBox2.SelectedItem.ToString().Equals("Si"))
             {
                 estFin = true;
             }
@@ -144,7 +145,7 @@ namespace SeguimientoIncidentesBD1.show
                 estFin = false;
             }
 
-            if (this.comboBox1.SelectedItem.ToString().Equals("Si"))
+            if (this.comboBox3.SelectedItem.ToString().Equals("Si"))
             {
                 estEst = true;
             }
@@ -172,6 +173,7 @@ namespace SeguimientoIncidentesBD1.show
                 {
                     MessageBox.Show("Error al crear el estado: " + sqlex.Message);
                 }
+                this.Close();
             }
         }
 

@@ -78,7 +78,7 @@
             this.comboBox3.Items.AddRange(new object[] {
             "Si",
             "No"});
-            this.comboBox3.Location = new System.Drawing.Point(102, 109);
+            this.comboBox3.Location = new System.Drawing.Point(102, 140);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(46, 23);
@@ -93,7 +93,7 @@
             this.comboBox2.Items.AddRange(new object[] {
             "Si",
             "No"});
-            this.comboBox2.Location = new System.Drawing.Point(102, 140);
+            this.comboBox2.Location = new System.Drawing.Point(102, 106);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(46, 23);
