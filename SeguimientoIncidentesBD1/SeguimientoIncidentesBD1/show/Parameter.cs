@@ -127,5 +127,56 @@ namespace SeguimientoIncidentesBD1
                 MessageBox.Show("Falta el nombre del parametro");
             }
         }
+
+        //Eliminar
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Estas seguro que deseas eliminar?", "AVISO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Eliminar_Parameter();
+            }
+            
+        }
+
+        private void Eliminar_Parameter()
+        {
+            string nombre = this.dataGridView2.CurrentRow.Cells[0].Value.ToString();
+            if (!nombre.Equals(""))
+            {
+                try
+                {
+                    switch (this.typeParameter)
+                    {
+                        case "seguridad":
+                            Seguridad_Logic nuevaSeguridad = new Seguridad_Logic(nombre);
+                            nuevaSeguridad.SeguridadDelete(nombre);
+                            break;
+                        case "prioridad":
+                            Prioridad_Logic nuevaPrioridad = new Prioridad_Logic(nombre);
+                            nuevaPrioridad.PrioridadDelete();
+                            break;
+                        case "categoria":
+                            Categoria_Logic nuevaCategoria = new Categoria_Logic(nombre);
+                            nuevaCategoria.CategoriaDelete();
+                            break;
+                        case "severidad":
+                            Severidad_Logic nuevaSeveridad = new Severidad_Logic(nombre);
+                            nuevaSeveridad.SeveridadDelete();
+                            break;
+                    }
+
+                    CargarParametro();
+                }
+                catch (SqlException sqlex)
+                {
+                    MessageBox.Show("Error al eliminar parámetro" + sqlex.Message);
+                    //throw sqlex;
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay parametros");
+            }
+        }
     }
 }
