@@ -40,12 +40,12 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button10 = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -68,7 +68,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.SteelBlue;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(11, 110);
             this.button2.Name = "button2";
@@ -237,6 +237,20 @@
             this.textBox6.TabIndex = 12;
             this.textBox6.Text = "Gestión de los estados disponibles";
             // 
+            // textBox4
+            // 
+            this.textBox4.BackColor = System.Drawing.Color.MintCream;
+            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox4.Enabled = false;
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.textBox4.Location = new System.Drawing.Point(162, 240);
+            this.textBox4.Multiline = true;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(168, 47);
+            this.textBox4.TabIndex = 10;
+            this.textBox4.Text = "Ver, crear o modificar roles, y sus seguridades";
+            // 
             // textBox3
             // 
             this.textBox3.BackColor = System.Drawing.Color.MintCream;
@@ -250,20 +264,6 @@
             this.textBox3.Size = new System.Drawing.Size(159, 30);
             this.textBox3.TabIndex = 11;
             this.textBox3.Text = "Creación y administarción de proyectos";
-            // 
-            // textBox5
-            // 
-            this.textBox5.BackColor = System.Drawing.Color.MintCream;
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Enabled = false;
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.textBox5.Location = new System.Drawing.Point(3, 25);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(159, 57);
-            this.textBox5.TabIndex = 11;
-            this.textBox5.Text = "Creación o eliminación de parámetros del sistema";
             // 
             // textBox2
             // 
@@ -306,19 +306,19 @@
             this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
-            // textBox4
+            // textBox5
             // 
-            this.textBox4.BackColor = System.Drawing.Color.MintCream;
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Enabled = false;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.textBox4.Location = new System.Drawing.Point(162, 240);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(168, 47);
-            this.textBox4.TabIndex = 10;
-            this.textBox4.Text = "Ver, crear o modificar roles, y sus seguridades";
+            this.textBox5.BackColor = System.Drawing.Color.MintCream;
+            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox5.Enabled = false;
+            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox5.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.textBox5.Location = new System.Drawing.Point(3, 25);
+            this.textBox5.Multiline = true;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(159, 57);
+            this.textBox5.TabIndex = 11;
+            this.textBox5.Text = "Creación o eliminación de parámetros del sistema";
             // 
             // Admin_Window
             // 

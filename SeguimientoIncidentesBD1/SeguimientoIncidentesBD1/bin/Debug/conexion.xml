@@ -1,6 +1,6 @@
 ﻿<Conexion>
   <Parametros>
-    <DataSource valor ="192.168.52.128\SQLEXPRESS"/>
+    <DataSource valor ="192.168.200.221\SQLEXPRESS"/>
     <InitialCatalog valor ="bugsys"/>
     <UserID valor ="bugsys"/>
     <Password valor="bugsys" />
