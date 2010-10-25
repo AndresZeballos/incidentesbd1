@@ -83,7 +83,8 @@ namespace SeguimientoIncidentesBD1.show
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (this.textBox1.Text.Equals(""))
+            if (this.textBox1.Text.Equals("") || this.comboBox2.Text.Equals("") || 
+                this.comboBox3.Text.Equals("") || this.comboBox1.Text.Equals(""))
             {
                 this.button1.Enabled = false;
             }
@@ -133,6 +134,45 @@ namespace SeguimientoIncidentesBD1.show
             EstimateIncident_Window estimateIncident = new EstimateIncident_Window(this, this.cache);
             this.Visible = false;
             estimateIncident.Visible = true;
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.textBox1.Text.Equals("") || this.comboBox2.Text.Equals("") ||
+                this.comboBox3.Text.Equals("") || this.comboBox1.Text.Equals(""))
+            {
+                this.button1.Enabled = false;
+            }
+            else
+            {
+                this.button1.Enabled = true;
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.textBox1.Text.Equals("") || this.comboBox2.Text.Equals("") ||
+                this.comboBox3.Text.Equals("") || this.comboBox1.Text.Equals(""))
+            {
+                this.button1.Enabled = false;
+            }
+            else
+            {
+                this.button1.Enabled = true;
+            }
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.textBox1.Text.Equals("") || this.comboBox2.Text.Equals("") ||
+                this.comboBox3.Text.Equals("") || this.comboBox1.Text.Equals(""))
+            {
+                this.button1.Enabled = false;
+            }
+            else
+            {
+                this.button1.Enabled = true;
+            }
         }
     }
 }
