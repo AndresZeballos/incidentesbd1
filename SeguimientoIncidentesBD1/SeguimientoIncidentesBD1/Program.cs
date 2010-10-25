@@ -18,6 +18,9 @@ namespace SeguimientoIncidentesBD1
         static void Main()
         {
             Cache cache = new Cache();
+            //cargo el estado incial y final del sistema
+            cache.EstadoInicial = new View_Logic().EstadoInicial();
+            cache.EstadoFinal = new View_Logic().EstadoFinal();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login_Window(cache));
