@@ -387,10 +387,11 @@ namespace SeguimientoIncidentesBD1.persist
         {
             try
             {
+                this.incFecFin = DateTime.Today;
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "UPDATE incidente SET incFecFin=@incFecFin WHERE incCod=@incCod";
-
-                sql.Parameters.AddWithValue("@incFecFin", DateTimeToDateSQL(DateTime.Today));
+                sql.Parameters.AddWithValue("@incCod", this.incCod);
+                sql.Parameters.AddWithValue("@incFecFin", DateTimeToDateSQL(this.incFecFin));
                 
                 SQLExecute sqlIns = new SQLExecute();
                 sqlIns.Execute(sql, "incidente");
