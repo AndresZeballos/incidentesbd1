@@ -94,7 +94,6 @@
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.SteelBlue;
-            this.button4.Enabled = false;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
             this.button4.Location = new System.Drawing.Point(22, 74);
@@ -103,6 +102,7 @@
             this.button4.TabIndex = 3;
             this.button4.Text = "Seguridad";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -128,6 +128,7 @@
             this.button6.TabIndex = 5;
             this.button6.Text = "Severidades";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
@@ -140,6 +141,7 @@
             this.button7.TabIndex = 6;
             this.button7.Text = "Prioridades";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
@@ -152,6 +154,7 @@
             this.button8.TabIndex = 7;
             this.button8.Text = "Categorías";
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button9
             // 
