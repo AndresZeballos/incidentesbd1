@@ -288,6 +288,12 @@
     <Compile Include="show\ProjectWindows\IncidentWindows\ViewNote.designer.cs">
       <DependentUpon>ViewNote.cs</DependentUpon>
     </Compile>
+    <Compile Include="show\ProjectWindows\ProjectStatics_Window.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="show\ProjectWindows\ProjectStatics_Window.designer.cs">
+      <DependentUpon>ProjectStatics_Window.cs</DependentUpon>
+    </Compile>
     <Compile Include="show\ProjectWindows\Project_Window.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -410,6 +416,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="show\ProjectWindows\IncidentWindows\ViewNote.resx">
       <DependentUpon>ViewNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\ProjectWindows\ProjectStatics_Window.resx">
+      <DependentUpon>ProjectStatics_Window.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="show\ProjectWindows\Project_Window.resx">
       <DependentUpon>Project_Window.cs</DependentUpon>
