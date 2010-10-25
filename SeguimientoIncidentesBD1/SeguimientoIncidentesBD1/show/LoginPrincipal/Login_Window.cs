@@ -75,7 +75,7 @@ namespace SeguimientoIncidentesBD1.show
         {
             this.textBox1.Text = "";
             this.textBox2.Text = "";
-            this.cache = new Cache();
+            //this.cache = new Cache();
         }
     }
 }
