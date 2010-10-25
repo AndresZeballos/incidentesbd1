@@ -270,7 +270,6 @@
     <Compile Include="show\ProjectWindows\IncidentWindows\Search_Window.designer.cs">
       <DependentUpon>Search_Window.cs</DependentUpon>
     </Compile>
-    <Compile Include="show\ProjectWindows\IncidentWindows\SQLException.cs" />
     <Compile Include="show\ProjectWindows\IncidentWindows\ViewHistory_Window.cs">
       <SubType>Form</SubType>
     </Compile>
