@@ -27,6 +27,9 @@ namespace SeguimientoIncidentesBD1.show
             this.projectWindow = projectWindow;
             this.Location = this.projectWindow.Location;
 
+            this.dateTimePicker1.Value = DateTime.Today;
+            this.dateTimePicker2.Value = DateTime.Today;
+
             CarcarOpciones();
         }
 
@@ -35,30 +38,35 @@ namespace SeguimientoIncidentesBD1.show
             View_Logic view = new View_Logic();
 
             IList<string> severidades = view.View_GeneralSeverity();
+            this.comboBox8.Items.Add("");
             foreach (string severidad in severidades)
             {
                 this.comboBox8.Items.Add(severidad);
             }
 
             IList<string> prioridades = view.View_GeneralPriority();
+            this.comboBox9.Items.Add("");
             foreach (string prioridad in prioridades)
             {
                 this.comboBox9.Items.Add(prioridad);
             }
 
             IList<string> categorias = view.View_GeneralCategory();
+            this.comboBox7.Items.Add("");
             foreach (string categoria in categorias)
             {
                 this.comboBox7.Items.Add(categoria);
             }
 
             IList<string> usuarios = view.userByProject(this.cache.Proyecto.ProCod);
+            this.comboBox4.Items.Add("");
             foreach (string usuario in usuarios)
             {
                 this.comboBox4.Items.Add(usuario);
             }
 
             IList<string> estados = view.View_GeneralState();
+            this.comboBox1.Items.Add("");
             foreach (string estado in estados)
             {
                 this.comboBox1.Items.Add(estado);
@@ -108,17 +116,28 @@ namespace SeguimientoIncidentesBD1.show
                 this.dataGridView2.DataMember = "incidente";
 
                 this.dataGridView2.Columns[0].HeaderText = "Codigo";
+                this.dataGridView2.Columns[0].Width = 80;
                 this.dataGridView2.Columns[1].HeaderText = "Resumen";
-
+                this.dataGridView2.Columns[1].Width = 100;
                 this.dataGridView2.Columns[2].HeaderText = "Usuario asignado";
-                this.dataGridView2.Columns[2].Width = 170;
+                this.dataGridView2.Columns[2].Width = 100;
                 this.dataGridView2.Columns[3].HeaderText = "Estado del incidente";
-                this.dataGridView2.Columns[3].Width = 170;
+                this.dataGridView2.Columns[3].Width = 100;
+                this.dataGridView2.Columns[4].HeaderText = "Prioridad";
+                this.dataGridView2.Columns[4].Width = 90;
+                this.dataGridView2.Columns[5].HeaderText = "Severidad";
+                this.dataGridView2.Columns[5].Width = 90;
+                this.dataGridView2.Columns[6].HeaderText = "Categoria";
+                this.dataGridView2.Columns[6].Width = 100;
+                this.dataGridView2.Columns[7].HeaderText = "Fecha de ingreso";
+                this.dataGridView2.Columns[7].Width = 100;
+
             }
             catch (SqlException sqlex)
             {
                 MessageBox.Show(sqlex.ToString());
             }
+            // incCod, incRes, incUsuAsi, incEstCod, incPri, incSev, incCat, incFecIng
         }
     }
 }
