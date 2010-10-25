@@ -86,13 +86,16 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button7_Click(object sender, EventArgs e)
         {
-            int incCod = Int32.Parse(this.dataGridView2.CurrentRow.Cells[0].Value.ToString());
-            Incidente_Logic incidente = new Incidente_Logic(incCod);
-            this.cache.Incidente = incidente;
+            if (this.dataGridView2.CurrentRow != null)
+            {
+                int incCod = Int32.Parse(this.dataGridView2.CurrentRow.Cells[0].Value.ToString());
+                Incidente_Logic incidente = new Incidente_Logic(incCod);
+                this.cache.Incidente = incidente;
 
-            ViewIncident_Window viewIncident = new ViewIncident_Window(this, cache);
-            this.Visible = false;
-            viewIncident.Visible = true;
+                ViewIncident_Window viewIncident = new ViewIncident_Window(this, cache);
+                this.Visible = false;
+                viewIncident.Visible = true;
+            }
         }
 
         // INICIA LA BUSQUEDA AVANZADA
