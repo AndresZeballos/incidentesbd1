@@ -686,6 +686,11 @@ namespace SeguimientoIncidentesBD1.logic
 
         }
 
+        public DataSet View_Parameter(string parameter)
+        {
+            View_Persist vp = new View_Persist();
+            return vp.View_Parameter(parameter);
+        }
 
         public DataSet HistoriaIncidente(int incCod)
         {

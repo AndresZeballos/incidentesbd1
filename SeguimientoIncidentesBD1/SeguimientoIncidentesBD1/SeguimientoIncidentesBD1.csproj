@@ -301,6 +301,7 @@
       <DependentUpon>Report_Window.cs</DependentUpon>
     </Compile>
     <Compile Include="show\DataCurrentUser.cs" />
+    <Compile Include="show\SqlEx.cs" />
     <Compile Include="show\UserWindows\User_Window.cs">
       <SubType>Form</SubType>
     </Compile>

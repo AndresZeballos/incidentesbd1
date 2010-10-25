@@ -67,5 +67,33 @@ namespace SeguimientoIncidentesBD1.show
             this.Visible = false;
             stateAdmin.Visible = true;
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Parameter parameterWindow = new Parameter(this, "seguridad");
+            this.Visible = false;
+            parameterWindow.Visible = true;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Parameter parameterWindow = new Parameter(this, "prioridad");
+            this.Visible = false;
+            parameterWindow.Visible = true;
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Parameter parameterWindow = new Parameter(this, "categoria");
+            this.Visible = false;
+            parameterWindow.Visible = true;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Parameter parameterWindow = new Parameter(this, "severidad");
+            this.Visible = false;
+            parameterWindow.Visible = true;
+        }
     }
 }

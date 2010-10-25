@@ -36,7 +36,7 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 SqlCommand sql = new SqlCommand();
                 sql.CommandText = "SELECT * FROM seguridad WHERE segCod = @segCod";
-                sql.Parameters.AddWithValue("@segCod", this.segCod);
+                sql.Parameters.AddWithValue("@segCod", segCod);
                 SQLExecute sqlIns = new SQLExecute();
                 DataSet ds = sqlIns.Execute(sql, "seguridad");
                 DataTable dt = ds.Tables["seguridad"];

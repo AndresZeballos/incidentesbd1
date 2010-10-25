@@ -50,7 +50,7 @@ namespace SeguimientoIncidentesBD1.logic
         public void SeguridadPersist(){
             try
             {
-                Seguridad_Persist segPersist = new Seguridad_Persist(this.segDes);
+                Seguridad_Persist segPersist = new Seguridad_Persist(this.segCod, this.segDes);
                 segPersist.SeguridadCreate();
             }
             catch (SqlException sqlex)

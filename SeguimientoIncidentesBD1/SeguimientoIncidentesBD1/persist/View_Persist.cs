@@ -175,7 +175,7 @@ namespace SeguimientoIncidentesBD1.persist
             try
             {
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "SELECT secCod FROM seguridad";
+                sql.CommandText = "SELECT segCod FROM seguridad";
                 SQLExecute sqlIns = new SQLExecute();
                 DataSet ds = sqlIns.Execute(sql, "seguridad");
                 return ds;
@@ -690,10 +690,33 @@ namespace SeguimientoIncidentesBD1.persist
            	}
 	    }
 
-
-
-
-
+        public DataSet View_Parameter(string parameter)
+        {
+            DataSet command = null;
+            try
+            {
+                switch (parameter)
+                {
+                    case "seguridad":
+                        command = View_GeneralSecurity();
+                        break;
+                    case "prioridad":
+                        command = View_GeneralPriority();
+                        break;
+                    case "categoria":
+                        command = View_GeneralCategory();
+                        break;
+                    case "severidad":
+                        command = View_GeneralSeverity();
+                        break;
+                }
+                return command;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
 
 
         public DataSet consult_projectOfUser(string usuCod)
