@@ -41,9 +41,17 @@ namespace SeguimientoIncidentesBD1
 
         public Proyecto_Logic Proyecto { get; set; }
 
-        public Estado_Logic EstadoInicial { get; set; }
+        public Estado_Logic EstadoInicial { 
+            get { return estadoInicial; }
+            set { estadoInicial = value; }
 
-        public Estado_Logic EstadoFinal { get; set; }
+        }
+
+        public Estado_Logic EstadoFinal
+        {
+            get { return estadoFinal; }
+            set { estadoFinal = value; }
+        }
 
         public Incidente_Logic Incidente { get; set; }
 
