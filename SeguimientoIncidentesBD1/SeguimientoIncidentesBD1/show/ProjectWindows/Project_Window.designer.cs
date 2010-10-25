@@ -48,6 +48,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.button6 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -80,7 +81,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.label4);
             this.splitContainer1.Panel2.Controls.Add(this.comboBox2);
             this.splitContainer1.Panel2.Controls.Add(this.button6);
-            this.splitContainer1.Size = new System.Drawing.Size(944, 376);
+            this.splitContainer1.Size = new System.Drawing.Size(944, 422);
             this.splitContainer1.SplitterDistance = 600;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 0;
@@ -101,7 +102,7 @@
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView2.Size = new System.Drawing.Size(600, 376);
+            this.dataGridView2.Size = new System.Drawing.Size(600, 422);
             this.dataGridView2.TabIndex = 1;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -129,11 +130,12 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.splitContainer2.Panel2.Controls.Add(this.button9);
             this.splitContainer2.Panel2.Controls.Add(this.textBox3);
             this.splitContainer2.Panel2.Controls.Add(this.button5);
             this.splitContainer2.Panel2.Controls.Add(this.button4);
-            this.splitContainer2.Size = new System.Drawing.Size(339, 376);
-            this.splitContainer2.SplitterDistance = 263;
+            this.splitContainer2.Size = new System.Drawing.Size(339, 422);
+            this.splitContainer2.SplitterDistance = 252;
             this.splitContainer2.SplitterWidth = 5;
             this.splitContainer2.TabIndex = 12;
             // 
@@ -338,10 +340,24 @@
             this.button6.Text = "Ordenar";
             this.button6.UseVisualStyleBackColor = true;
             // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.Color.SteelBlue;
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.ForeColor = System.Drawing.Color.LightCyan;
+            this.button9.Location = new System.Drawing.Point(183, 104);
+            this.button9.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(130, 48);
+            this.button9.TabIndex = 13;
+            this.button9.Text = "Estadisticas";
+            this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
             // Project_Window
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(944, 376);
+            this.ClientSize = new System.Drawing.Size(944, 422);
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -389,5 +405,6 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
     }
 }
