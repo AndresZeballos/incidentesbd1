@@ -100,17 +100,17 @@ namespace SeguimientoIncidentesBD1.persist
                 sql.Parameters.AddWithValue("@estCod", this.estCod);
 
                 if (this.estIni)
-                    sql.Parameters.AddWithValue("@estIni", "0x1");
+                    sql.Parameters.AddWithValue("@estIni", 1);
                 else
-                    sql.Parameters.AddWithValue("@estIni", "0x0");
+                    sql.Parameters.AddWithValue("@estIni", 0);
                 if (this.estFin)
-                    sql.Parameters.AddWithValue("@estFin", "0x1");
+                    sql.Parameters.AddWithValue("@estFin", 1);
                 else
-                    sql.Parameters.AddWithValue("@estFin", "0x0");
+                    sql.Parameters.AddWithValue("@estFin", 0);
                 if (this.estEst)
-                    sql.Parameters.AddWithValue("@estEst", "0x1");
+                    sql.Parameters.AddWithValue("@estEst", 1);
                 else
-                    sql.Parameters.AddWithValue("@estEst", "0x0");
+                    sql.Parameters.AddWithValue("@estEst", 0);
  
                 SQLExecute sqlIns = new SQLExecute();
                 sqlIns.Execute(sql, "estado");                

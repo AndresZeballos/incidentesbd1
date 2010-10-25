@@ -240,6 +240,12 @@
     <Compile Include="show\LoginPrincipal\Principal_Window.designer.cs">
       <DependentUpon>Principal_Window.cs</DependentUpon>
     </Compile>
+    <Compile Include="show\Parameter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="show\Parameter.Designer.cs">
+      <DependentUpon>Parameter.cs</DependentUpon>
+    </Compile>
     <Compile Include="show\ProjectWindows\IncidentWindows\AddNote_Window.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -379,6 +385,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="show\LoginPrincipal\Principal_Window.resx">
       <DependentUpon>Principal_Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show\Parameter.resx">
+      <DependentUpon>Parameter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="show\ProjectWindows\IncidentWindows\AddNote_Window.resx">
       <DependentUpon>AddNote_Window.cs</DependentUpon>
