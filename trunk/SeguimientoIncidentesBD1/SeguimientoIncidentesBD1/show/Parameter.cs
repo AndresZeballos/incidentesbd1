@@ -33,7 +33,10 @@ namespace SeguimientoIncidentesBD1
             this.dataGridView2.DataMember = this.typeParameter;
             this.dataGridView2.Columns[0].HeaderText = this.typeParameter.ToUpperInvariant();
             if (this.typeParameter.Equals("seguridad"))
+            {
                 this.dataGridView2.Columns[1].HeaderText = "DESCRIPCION";
+                this.dataGridView2.Columns[1].Width = 500;
+            }
 
         }
 
