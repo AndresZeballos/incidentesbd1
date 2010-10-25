@@ -23,6 +23,11 @@ namespace SeguimientoIncidentesBD1.show
             this.Location = this.projectWindow.Location;
             this.cache = cache;
 
+            CargarDatos();
+        }
+
+        private void CargarDatos()
+        {
             //Controla que tenga el permiso para visualizar la opción de modificar incidente
 
             Boolean puedeModificar = DataCurrentUser.ValidarSeguridad("Modificador", this.cache.Usuario);
@@ -116,6 +121,11 @@ namespace SeguimientoIncidentesBD1.show
         private void textBox10_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void ViewIncident_Window_VisibleChanged(object sender, EventArgs e)
+        {
+            CargarDatos();
         }
 
     }
