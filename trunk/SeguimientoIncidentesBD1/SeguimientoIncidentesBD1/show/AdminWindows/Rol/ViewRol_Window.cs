@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SeguimientoIncidentesBD1.logic;
+using System.Data.SqlClient;
 
 namespace SeguimientoIncidentesBD1.show
 {
@@ -45,7 +46,21 @@ namespace SeguimientoIncidentesBD1.show
         {
             if (MessageBox.Show("Estas seguro que desas eliminar", "AVISO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                //Eliminar rol
+                Eliminar_Rol();
+            }
+        }
+
+        private void Eliminar_Rol()
+        {
+            try
+            {
+                this.cache.Rol.RolDelete();
+                this.Close();
+            }
+            catch (SqlException sqlex)
+            {
+                MessageBox.Show("Error al eliminar rol " + sqlex.Message);
+                //throw sqlex;
             }
         }
 

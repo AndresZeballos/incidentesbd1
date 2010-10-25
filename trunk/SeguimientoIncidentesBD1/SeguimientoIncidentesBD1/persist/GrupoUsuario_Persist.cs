@@ -94,17 +94,41 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 SqlCommand sql = new SqlCommand();
                 //elimino primero las asociaciones de los usuarios con el grupo de usuarios
-                sql.CommandText = "DELETE FROM usuarioGrupoUsuario WHERE grpUsuCod=@grpUsuCod";
-                sql.Parameters.AddWithValue("@grpUsuCod", this.grpUsuCod);
+                sql.CommandText = "DELETE FROM usuarioGrupoUsuario WHERE usuarioGrupoUsuario.usuGrpCod = @usuGrpCod";
+                sql.Parameters.AddWithValue("@usuGrpCod", this.grpUsuCod);
                 SQLExecute sqlIns = new SQLExecute();
                 sqlIns.Execute(sql, "usuarioGrupoUsuario");
                 sql.Parameters.Clear();
+                //elimino primero las asociaciones de los proyectos con el grupo de usuarios
+                sql.CommandText = "DELETE FROM proyectoGrupoUsuario WHERE proyectoGrupoUsuario.proGrpUsuCod = @proGrpUsuCod";
+                sql.Parameters.AddWithValue("@proGrpUsuCod", this.grpUsuCod);
+                SQLExecute sqlIns2 = new SQLExecute();
+                sqlIns2.Execute(sql, "proyectoGrupoUsuario");
                 //elimino el grupo de usuarios propiamente dicho
                 sql.Parameters.Clear();
-                sql.CommandText = "DELETE FROM	grupoUsuario WHERE grpUsuCod=@grpUsuCod";
-                sql.Parameters.AddWithValue("@grpUsuCod", this.grpUsuCod);
-                SQLExecute sqlIns2 = new SQLExecute();
-                sqlIns2.Execute(sql, "grupoUsuario");
+                sql.CommandText = "DELETE FROM grupoUsuario WHERE grupoUsuario.grpUsuCod = @usuGrpCod";
+                sql.Parameters.AddWithValue("@usuGrpCod", this.grpUsuCod);
+                SQLExecute sqlIns3 = new SQLExecute();
+                sqlIns3.Execute(sql, "grupoUsuario");
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+        public void GrpUsuDeleteUser(string user)
+        {
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                //elimino primero las asociaciones de los usuarios con el grupo de usuarios
+                sql.CommandText = "DELETE FROM usuarioGrupoUsuario WHERE usuarioGrupoUsuario.usuGrpCod = @usuGrpCod " + 
+                                    "AND usuarioGrupoUsuario.usuGrpUsuCod = @user";
+                sql.Parameters.AddWithValue("@usuGrpCod", this.grpUsuCod);
+                sql.Parameters.AddWithValue("@user", user);
+                SQLExecute sqlIns = new SQLExecute();
+                sqlIns.Execute(sql, "usuarioGrupoUsuario");
             }
             catch (SqlException sqlex)
             {

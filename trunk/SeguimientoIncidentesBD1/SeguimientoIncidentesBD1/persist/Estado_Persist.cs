@@ -144,6 +144,25 @@ namespace SeguimientoIncidentesBD1.persist
             }
         }
 
+        public void EstadoSigDelete(string estSiguiente)
+        {
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "DELETE FROM estadoSiguiente WHERE estadoSiguiente.estCod = @estCod " + 
+                                    "AND estadoSiguiente.estSigEstCod = @estSig";
+                sql.Parameters.AddWithValue("@estCod", this.estCod);
+                sql.Parameters.AddWithValue("@estSig", estSiguiente);
+                SQLExecute sqlIns = new SQLExecute();
+                sqlIns.Execute(sql, "estadoSiguiente");
+                sql.Parameters.Clear();
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
         public void EstadoSigAdd(string estCod)
         {
             try

@@ -130,5 +130,24 @@ namespace SeguimientoIncidentesBD1.persist
                 throw sqlex;
             }
         }
+
+        public void ProGrpDelete(string grpUsuCod)
+        {
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "DELETE FROM proyectoGrupoUsuario WHERE proyectoGrupoUsuario.proCod = @proCod " +
+                                    "AND usuarioGrupoUsuario.proGrpUsuCod = @proGrpUsuCod";
+                sql.Parameters.AddWithValue("@proCod", this.proCod);
+                sql.Parameters.AddWithValue("@proGrpUsuCod", grpUsuCod);
+                SQLExecute sqlIns = new SQLExecute();
+                sqlIns.Execute(sql, "proyectoGrupoUsuario");
+
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
     }
 }

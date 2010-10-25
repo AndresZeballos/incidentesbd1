@@ -79,6 +79,20 @@ namespace SeguimientoIncidentesBD1.logic
             }
         }
 
+        public void GrpUsuDeleteUser(string user)
+        {
+            try
+            {
+                GrupoUsuario_Persist grupo = new GrupoUsuario_Persist(this.grpUsuCod);
+                grupo.GrpUsuDeleteUser(user);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+
         //actualiza la descripción de un grupo de usuarios
         public void GrupoUsuarioDesUpdate(string nuevaDesc)
         {
@@ -86,7 +100,7 @@ namespace SeguimientoIncidentesBD1.logic
             {
                 GrupoUsuario_Persist grpPersist = new GrupoUsuario_Persist(this.grpUsuCod);
                 //actualizo la nueva descripción
-                grpPersist.GrpUsuDesUpdate(nuevaDesc);
+                grpPersist.GrpUsuDeleteUser(nuevaDesc);
             }
             catch (SqlException sqlex)
             {

@@ -56,6 +56,7 @@ namespace SeguimientoIncidentesBD1.show
         {
         }
 
+        //Agregar
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -63,7 +64,23 @@ namespace SeguimientoIncidentesBD1.show
                 string rolSelected = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
                 Usuario_Logic nuevoRol = new Usuario_Logic(this.cache.UsuarioSelected.UsuCod);
                 nuevoRol.UsuarioRolAdd(rolSelected);
-                //this.cache.UsuariosGrupo.Tables[0].Rows.Add(userSelected);
+                cargarGridRoles();
+                cargarGridrestoRoles();
+            }
+            catch (Exception exp)
+            {
+                System.Windows.Forms.MessageBox.Show("No hay roles disponibles");
+            }
+        }
+
+        //Quitar
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string rolSelected = this.dataGridView3.CurrentRow.Cells[0].Value.ToString();
+                Usuario_Logic nuevoRol = new Usuario_Logic(this.cache.UsuarioSelected.UsuCod);
+                nuevoRol.UsuarioRolDelete(rolSelected);
                 cargarGridRoles();
                 cargarGridrestoRoles();
             }

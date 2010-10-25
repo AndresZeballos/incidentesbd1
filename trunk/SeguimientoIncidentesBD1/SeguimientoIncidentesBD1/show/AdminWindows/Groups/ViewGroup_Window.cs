@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using SeguimientoIncidentesBD1.persist;
 using SeguimientoIncidentesBD1.logic;
+using System.Data.SqlClient;
 
 namespace SeguimientoIncidentesBD1.show
 {
@@ -54,7 +55,21 @@ namespace SeguimientoIncidentesBD1.show
         {
             if (MessageBox.Show("Estas seguro que desas eliminar", "AVISO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                //Eliminar grupo
+                Eliminar_Grupo();
+            }
+        }
+
+        private void Eliminar_Grupo()
+        {
+            try
+            {
+                this.cache.Grupo.GrupoUsuarioDelete();
+                this.Close();
+            }
+            catch (SqlException sqlex)
+            {
+                MessageBox.Show("Error al eliminar grupo " + sqlex.Message);
+                //throw sqlex;
             }
         }
 

@@ -73,5 +73,22 @@ namespace SeguimientoIncidentesBD1.show
             }
            
         }
+
+        //Quitar
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string userSelected = this.dataGridView2.CurrentRow.Cells[0].Value.ToString();
+                GrupoUsuario_Logic nuevoUser = new GrupoUsuario_Logic(this.cache.Grupo.GrpUsuCod);
+                nuevoUser.GrpUsuDeleteUser(userSelected);
+                cargarGridUsuarios();
+                cargarGridrestoUsuarios();
+            }
+            catch (Exception exp)
+            {
+                System.Windows.Forms.MessageBox.Show("No hay usuarios disponibles");
+            }
+        }
     }
 }

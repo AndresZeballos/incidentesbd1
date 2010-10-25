@@ -111,5 +111,18 @@ namespace SeguimientoIncidentesBD1.logic
                 throw sqlex;
             }
         }
+
+        public void ProGrpDelete(string grpUsuCod)
+        {
+            try
+            {
+                Proyecto_Persist proPersist = new Proyecto_Persist(this.proCod);
+                proPersist.ProGrpDelete(grpUsuCod);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
     }
 }

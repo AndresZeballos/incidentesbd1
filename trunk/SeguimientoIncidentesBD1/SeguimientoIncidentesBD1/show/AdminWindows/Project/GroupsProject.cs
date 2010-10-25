@@ -71,5 +71,22 @@ namespace SeguimientoIncidentesBD1.show
                 System.Windows.Forms.MessageBox.Show("No hay grupos disponibles: " + sqlex.Message);
             }
         }
+
+        //Quitar
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string grupoSelected = this.dataGridView2.CurrentRow.Cells[0].Value.ToString();
+                Proyecto_Logic nuevoGrupo = new Proyecto_Logic(this.cache.Proyecto.ProCod);
+                nuevoGrupo.ProGrpDelete(grupoSelected);
+                cargarGridGrupos();
+                cargarGridrestoGrupos();
+            }
+            catch (SqlException sqlex)
+            {
+                System.Windows.Forms.MessageBox.Show("No hay grupos disponibles: " + sqlex.Message);
+            }
+        }
     }
 }
