@@ -124,6 +124,7 @@
             this.MaximizeBox = false;
             this.Name = "Login_Window";
             this.Text = "Sistema de Gestión de Incidentes";
+            this.VisibleChanged += new System.EventHandler(this.Login_Window_VisibleChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 
