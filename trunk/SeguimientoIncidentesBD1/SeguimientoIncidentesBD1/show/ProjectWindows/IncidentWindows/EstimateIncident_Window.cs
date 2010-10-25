@@ -55,7 +55,7 @@ namespace SeguimientoIncidentesBD1.show
             int dias = estHrs/8;
             System.TimeSpan duration;
             //si el tiempo es menos de un dia, entonces queda para manana
-            if (dias == 0)
+            if (dias < 1)
             {
                 duration = new System.TimeSpan(1, 0, 0, 0);
             }

@@ -94,9 +94,9 @@
             this.textBox6.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(84, 43);
+            this.textBox6.Size = new System.Drawing.Size(103, 43);
             this.textBox6.TabIndex = 43;
-            this.textBox6.Text = "Roles del Usuario";
+            this.textBox6.Text = "Usuario del Sistema";
             // 
             // button3
             // 
@@ -148,7 +148,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.Name = "UserAdmin_Window";
-            this.Text = "Roles del Usuario";
+            this.Text = "Usuarios del Sistema";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UserAdmin_Window_FormClosed);
             this.VisibleChanged += new System.EventHandler(this.UserAdmin_Window_VisibleChanged);
             this.splitContainer1.Panel1.ResumeLayout(false);

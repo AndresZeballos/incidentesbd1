@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SeguimientoIncidentesBD1.logic;
+using System.Data.SqlClient;
 
 namespace SeguimientoIncidentesBD1.show
 {
     public partial class ViewIncident_Window : Form
     {
-
+        private string seguridad = "AsignarIncidente";
         private Form projectWindow;
         private Cache cache;
 
@@ -54,7 +55,7 @@ namespace SeguimientoIncidentesBD1.show
             this.dateTimePicker1.Value = this.cache.Incidente.IncFecIng;
             this.dateTimePicker2.Value = this.cache.Incidente.IncEstFecIni;
             this.dateTimePicker3.Value = this.cache.Incidente.IncFecFin;
-            this.dateTimePicker4.Value = this.cache.Incidente.IncEstFecIni;
+            this.dateTimePicker4.Value = this.cache.Incidente.IncEstFecFin;
             this.textBox10.Text = this.cache.Incidente.IncEstHrs.ToString();
 
             View_Logic view = new View_Logic();
@@ -140,7 +141,27 @@ namespace SeguimientoIncidentesBD1.show
         private void button7_Click(object sender, EventArgs e)
         {
             string nuevoUsuAsig = this.comboBox4.SelectedItem.ToString();
-            this.cache.Incidente.IncidenteAsign(nuevoUsuAsig);
+           
+            //ATRIBUTOS PARA LA NOTA
+            string usuCod = this.cache.Usuario.UsuCod;
+            DateTime histFec = DateTime.Today;
+            int incCod = this.cache.Incidente.IncCod;
+            string histAcc = this.seguridad;
+            string incEstado = this.cache.Incidente.IncEstCod;
+
+            try
+            {
+                this.cache.Incidente.IncidenteAsign(nuevoUsuAsig);
+                IncidenteHistoria_Logic historia = new IncidenteHistoria_Logic(incCod, incEstado, incEstado, histFec,
+                        histAcc, usuCod, "", 0);
+                historia.IncidenteHistoriaCreate();
+                MessageBox.Show("Incidente asignado con exito");
+                this.Close();
+            }
+            catch (SqlException sqlex)
+            {
+                MessageBox.Show("Error al asignar el incidente: " + sqlex.Message);
+            }
             this.button7.Visible = false;
             this.comboBox4.Enabled = false;
         }
