@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SeguimientoIncidentesBD1.logic;
+//using SeguimientoIncidentesBD1.show.ProjectWindows.IncidentWindows;
+using System.Data.SqlClient;
 
 namespace SeguimientoIncidentesBD1.show
 {
@@ -76,6 +78,10 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button7_Click(object sender, EventArgs e)
         {
+            int incCod = Int32.Parse(this.dataGridView2.CurrentRow.Cells[0].Value.ToString());
+            Incidente_Logic incidente = new Incidente_Logic(incCod);
+            this.cache.Incidente = incidente;
+
             ViewIncident_Window viewIncident = new ViewIncident_Window(this, cache);
             this.Visible = false;
             viewIncident.Visible = true;
@@ -89,7 +95,30 @@ namespace SeguimientoIncidentesBD1.show
             string categoria = this.comboBox7.Text;
             string severidad = this.comboBox8.Text;
             string prioridad = this.comboBox9.Text;
+            DateTime fecInicio = this.dateTimePicker1.Value;
+            DateTime fecFinal = this.dateTimePicker2.Value;  // = this.dateTimePicker2.Value;
 
+            View_Logic vl = new View_Logic();
+            DataSet ds;
+            try
+            {
+                ds = vl.View_AdvancedSearch(this.cache.Proyecto.ProCod, estado, prioridad, categoria, usuario, severidad, fecInicio, fecFinal);
+                
+                this.dataGridView2.DataSource = ds;
+                this.dataGridView2.DataMember = "incidente";
+
+                this.dataGridView2.Columns[0].HeaderText = "Codigo";
+                this.dataGridView2.Columns[1].HeaderText = "Resumen";
+
+                this.dataGridView2.Columns[2].HeaderText = "Usuario asignado";
+                this.dataGridView2.Columns[2].Width = 170;
+                this.dataGridView2.Columns[3].HeaderText = "Estado del incidente";
+                this.dataGridView2.Columns[3].Width = 170;
+            }
+            catch (SqlException sqlex)
+            {
+                MessageBox.Show(sqlex.ToString());
+            }
         }
     }
 }

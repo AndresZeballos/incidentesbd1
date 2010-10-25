@@ -912,21 +912,51 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
-        public DataSet View_AdvancedSearch(int incProCod, string incEstCod, string incPriCod, string incCatCod, int incUsuAsig, string incSevCod, DateTime fecInicial, DateTime fecFinal)
+        public DataSet View_AdvancedSearch(int incProCod, string incEstCod, string incPriCod, string incCatCod, string incUsuAsi, string incSevCod, DateTime fecInicial, DateTime fecFinal)
         {
             try
             {
+                SqlCommand sql = new SqlCommand();
                 string consult = "SELECT incCod, incRes, incUsuAsi, incEstCod " +
                                   "FROM incidente " +
-                                  "WHERE incProCod = @incProCod";
+                                  "WHERE incProCod = @incProCod ";
 
+                if (incEstCod != "")
+                {
+                    consult += " AND incEstCod = @incEstCod ";
+                    sql.Parameters.AddWithValue("@incEstCod", incEstCod);
+                }
+                if (incPriCod != "")
+                {
+                    consult += " AND incPriCod = @incPriCod ";
+                    sql.Parameters.AddWithValue("@incPriCod", incPriCod);
+                }
+                if (incCatCod != "")
+                {
+                    consult += " AND incCatCod = @incCatCod ";
+                    sql.Parameters.AddWithValue("@incCatCod", incCatCod);
+                }
+                if (incUsuAsi != "")
+                {
+                    consult += " AND incUsuAsi = @incUsuAsi ";
+                    sql.Parameters.AddWithValue("@incUsuAsi", incUsuAsi);
+                }
+                if (incSevCod != "")
+                {
+                    consult += " AND incSevCod = @incSevCod ";
+                    sql.Parameters.AddWithValue("@incSevCod", incSevCod);
+                }
+                if (fecInicial != null)
+                {
+                    consult += " AND fecInicial >= @fecInicial ";
+                    sql.Parameters.AddWithValue("@fecInicial", DateTimeToDateSQL(fecInicial));
+                }
+                if (fecFinal != null)
+                {
+                    consult += " AND fecFinal <= @fecFinal ";
+                    sql.Parameters.AddWithValue("@fecFinal", DateTimeToDateSQL(fecFinal));
+                }
 
-
-
-
-
-
-                SqlCommand sql = new SqlCommand();
 
 
 
@@ -946,6 +976,17 @@ namespace SeguimientoIncidentesBD1.persist
 
         }
 
+
+        private String DateTimeToDateSQL(DateTime dateTime)
+        {
+            String result = "";
+
+            result += dateTime.Month + "/";
+            result += dateTime.Day + "/";
+            result += dateTime.Year;
+
+            return result;
+        }
 
         public DataSet HistoriaIncidente(int incCod)
         {
