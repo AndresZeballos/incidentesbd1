@@ -32,15 +32,20 @@ namespace SeguimientoIncidentesBD1.show
                 this.textBox3.Visible = false;
             }
 
+            //CargarDatos();
+        }
+
+        private void CargarDatos()
+        {
             View_Logic vl = new View_Logic();
             List<string> listaProyectos = vl.consult_projectOfUser(cache.Usuario.UsuCod);
+            this.comboBox1.Items.Clear();
             foreach (string proy in listaProyectos)
             {
                 this.comboBox1.Items.Add(proy);
             }
 
             this.button1.Enabled = false;
-            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -90,6 +95,11 @@ namespace SeguimientoIncidentesBD1.show
         {
             this.loginWindow.Location = this.Location;
             this.loginWindow.Visible = true;
+        }
+
+        private void Principal_Window_VisibleChanged(object sender, EventArgs e)
+        {
+            CargarDatos();
         }
     }
 }
