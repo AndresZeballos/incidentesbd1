@@ -463,7 +463,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Debug\conexion.xml" />
-    <Content Include="bin\Release\conexion.xml" />
+    <Content Include="bin\Release\conexion.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="show\LoginPrincipal\fondoblue.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
