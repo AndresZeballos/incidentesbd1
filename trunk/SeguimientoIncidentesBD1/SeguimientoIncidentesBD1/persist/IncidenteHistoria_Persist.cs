@@ -22,15 +22,51 @@ namespace SeguimientoIncidentesBD1.persist
         private string incHistNota;
         private int incHistTiempo;
 
-        public int IncHistCod {get; set;}
-        public int IncHistIncCod { get; set; }
-        public string IncHistEstIni { get; set; }
-        public string IncHistEstFin { get; set; }
-        public DateTime IncHistFec { get; set; }
-        public string IncHistAcc { get; set; }
-        public string IncHistUsuCod { get; set; }
-        public string IncHistNota { get; set; }
-        public int IncHistTiempo { get; set; }
+        public int IncHistCod
+        {
+            get { return incHistCod; }
+            set { incHistCod = value; }
+        }
+        public int IncHistIncCod
+        {
+            get { return incHistIncCod; }
+            set { incHistIncCod = value; }
+        }
+        public string IncHistEstIni
+        {
+            get { return incHistEstIni; }
+            set { incHistEstIni = value; }
+        }
+        public string IncHistEstFin
+        {
+            get { return incHistEstFin; }
+            set { incHistEstFin = value; }
+        }
+        public DateTime IncHistFec
+        {
+            get { return incHistFec; }
+            set { incHistFec = value; }
+        }
+        public string IncHistAcc
+        {
+            get { return incHistAcc; }
+            set { incHistAcc = value; }
+        }
+        public string IncHistUsuCod
+        {
+            get { return incHistUsuCod; }
+            set { incHistUsuCod = value; }
+        }
+        public string IncHistNota
+        {
+            get { return incHistNota; }
+            set { incHistNota = value; }
+        }
+        public int IncHistTiempo
+        {
+            get { return incHistTiempo; }
+            set { incHistTiempo = value; }
+        }
 
         public IncidenteHistoria_Persist(
                                         int incHistIncCod,

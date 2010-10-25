@@ -108,6 +108,31 @@ namespace SeguimientoIncidentesBD1.persist
             }
         }
 
+        public DataSet View_GeneralIncidentsStat(int incProCod)
+        {
+            //Tabla:
+            //Código
+            //Resumen
+            //Tiempo estimado
+            //Fecha Fin
+            //Fecha Fin Estimada
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "SELECT incCod, incRes, incEstHrs, incFecFin, incEstFecFin " +
+                                  "FROM incidente " +
+                                  "WHERE incidente.incProCod = @incProCod";
+                sql.Parameters.AddWithValue("@incProCod", incProCod);
+                SQLExecute sqlIns = new SQLExecute();
+                DataSet ds = sqlIns.Execute(sql, "incidente");
+                return ds;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
         public DataSet View_History(int ProCod)
         {
             //Tabla:
@@ -1042,6 +1067,66 @@ namespace SeguimientoIncidentesBD1.persist
                 DataSet ds = sqlIns.Execute(sql, "historia");
 
                 return ds;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+        public int TotalProjectIncidents(int proCod)
+        {
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "SELECT COUNT(*) FROM incidente WHERE incProCod = @proCod";
+
+                sql.Parameters.AddWithValue("@proCod", proCod);
+
+                SQLExecute sqlIns = new SQLExecute();
+                DataSet ds = sqlIns.Execute(sql, "incidente");
+                DataTable dt = ds.Tables["incidente"];
+                return dt.Rows[0].Field<int>(0);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+        public int TotalIncidentHours(int histIncCod)
+        {
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "SELECT SUM(histHrs) FROM historia WHERE histIncCod = @histIncCod";
+
+                sql.Parameters.AddWithValue("@histIncCod", histIncCod);
+
+                SQLExecute sqlIns = new SQLExecute();
+                DataSet ds = sqlIns.Execute(sql, "historia");
+                DataTable dt = ds.Tables["historia"];
+                return dt.Rows[0].Field<int>(0);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+        public int TotalStateIncidents(string estCod)
+        {
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "SELECT COUNT(*) FROM incidente WHERE incEstCod = @incEstCod";
+
+                sql.Parameters.AddWithValue("@incEstCod", estCod);
+
+                SQLExecute sqlIns = new SQLExecute();
+                DataSet ds = sqlIns.Execute(sql, "incidente");
+                DataTable dt = ds.Tables["incidente"];
+                return dt.Rows[0].Field<int>(0);
             }
             catch (SqlException sqlex)
             {
