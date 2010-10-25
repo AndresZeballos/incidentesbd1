@@ -186,6 +186,24 @@ namespace SeguimientoIncidentesBD1.persist
             }
         }
 
+        public DataSet View_GeneralSecurityComplete()
+        {
+            //Tabla:
+            //codigo
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "SELECT * FROM seguridad";
+                SQLExecute sqlIns = new SQLExecute();
+                DataSet ds = sqlIns.Execute(sql, "seguridad");
+                return ds;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
         public DataSet View_UserRol(string usuCod)
         {
             //Tabla:
@@ -698,7 +716,7 @@ namespace SeguimientoIncidentesBD1.persist
                 switch (parameter)
                 {
                     case "seguridad":
-                        command = View_GeneralSecurity();
+                        command = View_GeneralSecurityComplete();
                         break;
                     case "prioridad":
                         command = View_GeneralPriority();
