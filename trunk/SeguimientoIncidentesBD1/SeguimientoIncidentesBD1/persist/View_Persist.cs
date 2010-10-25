@@ -911,5 +911,60 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
+
+        internal DataSet View_AdvancedSearch(int incProCod, string incEstCod, string incPriCod, string incCatCod, int incUsuAsig, string incSevCod, DateTime fecInicial, DateTime fecFinal)
+        {
+            try
+            {
+                string consult = "SELECT incCod, incRes, incUsuAsi, incEstCod " +
+                                  "FROM incidente " +
+                                  "WHERE incProCod = @incProCod";
+
+
+
+
+
+
+
+                SqlCommand sql = new SqlCommand();
+
+
+
+                sql.CommandText = consult;
+
+                sql.Parameters.AddWithValue("@incProCod", incProCod);
+
+                SQLExecute sqlIns = new SQLExecute();
+                DataSet ds = sqlIns.Execute(sql, "incidente");
+
+                return ds;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+
+        }
+
+
+        public DataSet HistoriaIncidente(int incCod)
+        {
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = "SELECT histAcc, histFec, histEstIni, histEstFin, histHrs, histUsuCod, histCod FROM historia WHERE histIncCod = @incCod";
+
+                sql.Parameters.AddWithValue("@incCod", incCod);
+
+                SQLExecute sqlIns = new SQLExecute();
+                DataSet ds = sqlIns.Execute(sql, "historia");
+
+                return ds;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
     }
 }
