@@ -30,6 +30,8 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.button7 = new System.Windows.Forms.Button();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
@@ -40,7 +42,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -115,6 +116,8 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.splitContainer2.Panel1.Controls.Add(this.button7);
+            this.splitContainer2.Panel1.Controls.Add(this.comboBox4);
             this.splitContainer2.Panel1.Controls.Add(this.dateTimePicker4);
             this.splitContainer2.Panel1.Controls.Add(this.dateTimePicker3);
             this.splitContainer2.Panel1.Controls.Add(this.dateTimePicker2);
@@ -125,7 +128,6 @@
             this.splitContainer2.Panel1.Controls.Add(this.label10);
             this.splitContainer2.Panel1.Controls.Add(this.textBox10);
             this.splitContainer2.Panel1.Controls.Add(this.label8);
-            this.splitContainer2.Panel1.Controls.Add(this.textBox9);
             this.splitContainer2.Panel1.Controls.Add(this.textBox8);
             this.splitContainer2.Panel1.Controls.Add(this.label7);
             this.splitContainer2.Panel1.Controls.Add(this.textBox6);
@@ -151,6 +153,32 @@
             this.splitContainer2.SplitterDistance = 440;
             this.splitContainer2.SplitterWidth = 5;
             this.splitContainer2.TabIndex = 0;
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.SteelBlue;
+            this.button7.ForeColor = System.Drawing.Color.LightCyan;
+            this.button7.Location = new System.Drawing.Point(336, 368);
+            this.button7.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(130, 30);
+            this.button7.TabIndex = 53;
+            this.button7.Text = "Asignar";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Visible = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox4.Enabled = false;
+            this.comboBox4.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(113, 368);
+            this.comboBox4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(210, 23);
+            this.comboBox4.TabIndex = 52;
             // 
             // dateTimePicker4
             // 
@@ -262,15 +290,6 @@
             this.label8.Text = "Tiempo estimado";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
-            // textBox9
-            // 
-            this.textBox9.Enabled = false;
-            this.textBox9.Location = new System.Drawing.Point(110, 368);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(165, 21);
-            this.textBox9.TabIndex = 41;
-            // 
             // textBox8
             // 
             this.textBox8.Enabled = false;
@@ -337,7 +356,7 @@
             // 
             this.button5.BackColor = System.Drawing.Color.SteelBlue;
             this.button5.ForeColor = System.Drawing.Color.LightCyan;
-            this.button5.Location = new System.Drawing.Point(230, 397);
+            this.button5.Location = new System.Drawing.Point(231, 405);
             this.button5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(130, 30);
@@ -568,7 +587,6 @@
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label11;
@@ -579,5 +597,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker3;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.Button button7;
     }
 }

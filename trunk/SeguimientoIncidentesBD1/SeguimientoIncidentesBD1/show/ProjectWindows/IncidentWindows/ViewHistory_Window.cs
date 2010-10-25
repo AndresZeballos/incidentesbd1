@@ -24,6 +24,9 @@ namespace SeguimientoIncidentesBD1.show
             this.viewIncident = viewIncident;
             this.Location = this.viewIncident.Location;
 
+            this.dataGridView2.DataSource = view.HistoriaIncidente(this.cache.Incidente.IncCod);
+            this.dataGridView2.DataMember = "historia";
+
             this.dataGridView2.Columns[0].HeaderText = "Accion";
             this.dataGridView2.Columns[1].HeaderText = "Fecha";
             this.dataGridView2.Columns[2].HeaderText = "Estado Inicial";
@@ -39,9 +42,6 @@ namespace SeguimientoIncidentesBD1.show
             this.dataGridView2.Columns[3].Width = 100;
             this.dataGridView2.Columns[4].Width = 100;
             this.dataGridView2.Columns[5].Width = 100;
-
-            this.dataGridView2.DataSource = view.HistoriaIncidente(this.cache.Incidente.IncCod);
-            this.dataGridView2.DataMember = "historia";
         }
 
         private void button1_Click(object sender, EventArgs e)

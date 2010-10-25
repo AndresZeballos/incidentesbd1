@@ -40,7 +40,7 @@ namespace SeguimientoIncidentesBD1.show
             //Controla que tenga el permiso para visualizar la opción de estimar incidente y que el estado del incidente lo permite
             Estado_Logic estado = new Estado_Logic(this.cache.Incidente.IncEstCod);
 
-            if ((!puedeModificar) && (estado.EstEst))
+            if ((!puedeModificar) || (!estado.EstEst))
             {
                 this.button6.Visible = false;
             }
@@ -51,12 +51,20 @@ namespace SeguimientoIncidentesBD1.show
             this.textBox4.Text = this.cache.Incidente.IncSevCod;
             this.textBox1.Text = this.cache.Incidente.IncRes;
             this.textBox2.Text = this.cache.Incidente.IncDes;
-            this.textBox9.Text = this.cache.Incidente.IncUsuAsi;
             this.dateTimePicker1.Value = this.cache.Incidente.IncFecIng;
             this.dateTimePicker2.Value = this.cache.Incidente.IncEstFecIni;
             this.dateTimePicker3.Value = this.cache.Incidente.IncFecFin;
             this.dateTimePicker4.Value = this.cache.Incidente.IncEstFecIni;
             this.textBox10.Text = this.cache.Incidente.IncEstHrs.ToString();
+
+            View_Logic view = new View_Logic();
+
+            IList<string> usuarios = view.userByProject(this.cache.Proyecto.ProCod);
+            foreach (string usuario in usuarios)
+            {
+                this.comboBox4.Items.Add(usuario);
+            }
+            this.comboBox4.SelectedItem = this.cache.Incidente.IncUsuAsi;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -82,13 +90,14 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            this.comboBox4.Enabled = true;
+            this.button7.Visible = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             ChangeIncident_Window changeIncident = new ChangeIncident_Window(this, this.cache);
-            this.Visible = true;
+            this.Visible = false;
             changeIncident.Visible = true;
         }
 
@@ -126,6 +135,14 @@ namespace SeguimientoIncidentesBD1.show
         private void ViewIncident_Window_VisibleChanged(object sender, EventArgs e)
         {
             CargarDatos();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            string nuevoUsuAsig = this.comboBox4.SelectedItem.ToString();
+            this.cache.Incidente.IncidenteAsign(nuevoUsuAsig);
+            this.button7.Visible = false;
+            this.comboBox4.Enabled = false;
         }
 
     }

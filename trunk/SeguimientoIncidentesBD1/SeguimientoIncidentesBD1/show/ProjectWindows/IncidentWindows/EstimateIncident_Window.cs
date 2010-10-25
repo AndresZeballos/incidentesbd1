@@ -74,8 +74,7 @@ namespace SeguimientoIncidentesBD1.show
 
             try
             {
-                Incidente_Logic incidente = new Incidente_Logic(incCod);
-                incidente.EstimarIncidente(estHrs, fecEstIni, fecEstFin);
+                this.cache.Incidente.EstimarIncidente(estHrs, fecEstIni, fecEstFin);
                 IncidenteHistoria_Logic historia = new IncidenteHistoria_Logic(incCod, incEstado, incEstado, histFec,
                         histAcc, usuCod, "", 0);
                 historia.IncidenteHistoriaCreate();
