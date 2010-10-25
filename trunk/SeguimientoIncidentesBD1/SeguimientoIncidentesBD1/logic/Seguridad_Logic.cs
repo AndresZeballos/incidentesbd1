@@ -68,7 +68,7 @@ namespace SeguimientoIncidentesBD1.logic
             try
             {
                 Seguridad_Persist segPersist = new Seguridad_Persist(segCod);
-                segPersist.SeguridadDelete("");
+                segPersist.SeguridadDelete(segCod);
             }
             catch (SqlException sqlex)
             {
