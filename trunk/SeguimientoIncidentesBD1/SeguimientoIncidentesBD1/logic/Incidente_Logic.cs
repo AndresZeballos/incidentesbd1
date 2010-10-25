@@ -323,12 +323,15 @@ namespace SeguimientoIncidentesBD1.logic
             }
         }
 
+
+        //Este metodo cierra el incidente grabado la fecha de fin
         public void FinalizarIncidente()
         {
             try
             {
                 Incidente_Persist incPersist = new Incidente_Persist(this.incCod);
-                //incPersist.IncidenteUpdate(
+                incPersist.FinalizarIncidente();
+                this.incFecFin = incPersist.IncFecFin;
             }
             catch (SqlException sqlex)
             {
