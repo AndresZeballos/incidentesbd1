@@ -70,5 +70,12 @@ namespace SeguimientoIncidentesBD1.show
                 this.textBox2.Text = "";
             }            
         }
+
+        private void Login_Window_VisibleChanged(object sender, EventArgs e)
+        {
+            this.textBox1.Text = "";
+            this.textBox2.Text = "";
+            this.cache = new Cache();
+        }
     }
 }
