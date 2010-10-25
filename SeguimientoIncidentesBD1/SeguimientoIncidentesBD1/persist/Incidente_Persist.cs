@@ -311,14 +311,14 @@ namespace SeguimientoIncidentesBD1.persist
                 this.incRes = nuevaincRes;
                 SqlCommand sql = new SqlCommand();
 
-                string text = "UPDATE INTO incidente SET " +
+                string text = "UPDATE incidente SET " +
                 "incCatCod=@incCatCod, incSevCod=@incSevCod, incPriCod=@incPriCod, " +
                 "incEstCod=@incEstCod, ";
 
                 if (nuevaincUsuAsi != null)
                     text += "incUsuAsi=@incUsuAsi, ";
 
-                text += "incDes=@incDes, incRes=@incRes) WHERE incCod=@incCod";
+                text += "incDes=@incDes, incRes=@incRes WHERE incCod=@incCod";
 
                 sql.CommandText = text;
                 sql.Parameters.AddWithValue("@incCod", this.incCod);
