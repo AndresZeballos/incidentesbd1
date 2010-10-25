@@ -195,5 +195,12 @@ namespace SeguimientoIncidentesBD1.show
             
         }
 
+        private void button9_Click(object sender, EventArgs e)
+        {
+            ProjectStatics_Window statics = new ProjectStatics_Window(this, this.cache);
+            this.Visible = false;
+            statics.Visible = true;
+        }
+
     }
 }
