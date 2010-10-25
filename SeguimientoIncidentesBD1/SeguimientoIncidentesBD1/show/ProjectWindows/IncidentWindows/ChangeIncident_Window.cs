@@ -168,13 +168,19 @@ namespace SeguimientoIncidentesBD1.show
             else
             {
                 try
-                {
+                {                 
+
                     this.cache.Incidente.IncidenteUpdate(incCat, incSev, incPri, incEstado, incUsuAsi, incDes, incRes);
                     IncidenteHistoria_Logic historia = new IncidenteHistoria_Logic(incCod, incEstadoAnterior, incEstado, histFec, 
                         histAcc, usuCod, nota, tiempoInvertido);
                     historia.IncidenteHistoriaCreate();
+                    //si es un estado de fin de incidencia entonces cierro el incidente
+                    if (this.cache.EstadoFinal.EstCod.Equals(incEstado))
+                    {
+                        this.cache.Incidente.FinalizarIncidente();
+                    }
+
                     MessageBox.Show("Incidente actualizado con exito");
-                    
                     this.Close();
                 }
                 catch (SqlException sqlex)
