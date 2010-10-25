@@ -32,12 +32,15 @@ namespace SeguimientoIncidentesBD1
             this.dataGridView2.DataSource = parametro;
             this.dataGridView2.DataMember = this.typeParameter;
             this.dataGridView2.Columns[0].HeaderText = this.typeParameter.ToUpperInvariant();
+            if (this.typeParameter.Equals("seguridad"))
+                this.dataGridView2.Columns[1].HeaderText = "DESCRIPCION";
 
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            this.textBox1.Enabled = true;
+            if(this.typeParameter.Equals("seguridad"))
+                this.textBox1.Enabled = true;
             this.textBox2.Enabled = true;
             this.button3.Visible = true;
             this.button4.Visible = false;
