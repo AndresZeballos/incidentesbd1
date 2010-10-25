@@ -912,7 +912,7 @@ namespace SeguimientoIncidentesBD1.persist
 
 
 
-        internal DataSet View_AdvancedSearch(int incProCod, string incEstCod, string incPriCod, string incCatCod, int incUsuAsig, string incSevCod, DateTime fecInicial, DateTime fecFinal)
+        public DataSet View_AdvancedSearch(int incProCod, string incEstCod, string incPriCod, string incCatCod, int incUsuAsig, string incSevCod, DateTime fecInicial, DateTime fecFinal)
         {
             try
             {
