@@ -16,6 +16,7 @@ namespace SeguimientoIncidentesBD1.show
 
         private StateAdmin_Window stateAdmin;
         private Cache cache;
+        private Boolean creado;
 
         public NewState_Window(StateAdmin_Window stateAdmin, Cache cache)
         {
@@ -23,17 +24,32 @@ namespace SeguimientoIncidentesBD1.show
             this.stateAdmin = stateAdmin;
             this.cache = cache;
             this.Location = this.stateAdmin.Location;
+            this.creado = false;
+        }
+
+        public void VerSiguientesEstados()
+        {
+            if (this.cache.Estado != null)
+            {
+                DataSet estadosSiguientes = new View_Logic().View_NextStates(this.cache.Estado.EstCod);
+                this.dataGridView3.DataSource = estadosSiguientes;
+                this.dataGridView3.DataMember = "estadoSiguiente";
+                this.dataGridView3.Columns[0].HeaderText = "Estados siguientes";
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (this.textBox1.Text.Equals(""))
+            if (this.textBox1.Text.Equals("")||this.comboBox1.Text.Equals("")||this.comboBox2.Text.Equals("")||
+                this.comboBox3.Text.Equals(""))
             {
                 this.button2.Enabled = false;
+                this.button5.Enabled = false;
             }
             else
             {
                 this.button2.Enabled = true;
+                this.button5.Enabled = true;
             }
         }
 
@@ -50,6 +66,54 @@ namespace SeguimientoIncidentesBD1.show
 
         private void button5_Click(object sender, EventArgs e)
         {
+            if (this.cache.Estado == null)
+            {
+                string estCod = this.textBox1.Text;
+                bool estIni;
+                bool estFin;
+                bool estEst;
+
+                if (this.comboBox1.SelectedItem.ToString().Equals("Si"))
+                {
+                    estIni = true;
+                }
+                else
+                {
+                    estIni = false;
+                }
+
+                if (this.comboBox1.SelectedItem.ToString().Equals("Si"))
+                {
+                    estFin = true;
+                }
+                else
+                {
+                    estFin = false;
+                }
+
+                if (this.comboBox1.SelectedItem.ToString().Equals("Si"))
+                {
+                    estEst = true;
+                }
+                else
+                {
+                    estEst = false;
+                }
+
+                if (estCod.Equals(""))
+                {
+                    MessageBox.Show("Falta ingresar un campo");
+                }
+                Estado_Logic estado = new Estado_Logic(estCod, estIni,estFin,estEst);
+                this.textBox1.Enabled = false;
+                this.comboBox1.Enabled = false;
+                this.comboBox2.Enabled = false;
+                this.comboBox3.Enabled = false;
+                estado.EstadoPersist();
+                this.creado = true;
+                this.cache.Estado = estado;
+            }
+
             NextState nextState = new NextState(this, this.cache);
             this.Visible = false;
             nextState.Visible = true;
@@ -97,8 +161,11 @@ namespace SeguimientoIncidentesBD1.show
             {
                 try
                 {
-                    Estado_Logic estado = new Estado_Logic(estCod, estIni, estFin, estEst);
-                    estado.EstadoPersist();
+                    if (!this.creado)
+                    {
+                        Estado_Logic estado = new Estado_Logic(estCod, estIni, estFin, estEst);
+                        estado.EstadoPersist();
+                    }
                     MessageBox.Show("Estado creado con exito");
                 }
                 catch (SqlException sqlex)
@@ -106,6 +173,56 @@ namespace SeguimientoIncidentesBD1.show
                     MessageBox.Show("Error al crear el estado: " + sqlex.Message);
                 }
             }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.textBox1.Text.Equals("") || this.comboBox1.Text.Equals("") || this.comboBox2.Text.Equals("") ||
+                 this.comboBox3.Text.Equals(""))
+            {
+                this.button2.Enabled = false;
+                this.button5.Enabled = false;
+            }
+            else
+            {
+                this.button2.Enabled = true;
+                this.button5.Enabled = true;
+            }
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.textBox1.Text.Equals("") || this.comboBox1.Text.Equals("") || this.comboBox2.Text.Equals("") ||
+                 this.comboBox3.Text.Equals(""))
+            {
+                this.button2.Enabled = false;
+                this.button5.Enabled = false;
+            }
+            else
+            {
+                this.button2.Enabled = true;
+                this.button5.Enabled = true;
+            }
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.textBox1.Text.Equals("") || this.comboBox1.Text.Equals("") || this.comboBox2.Text.Equals("") ||
+              this.comboBox3.Text.Equals(""))
+            {
+                this.button2.Enabled = false;
+                this.button5.Enabled = false;
+            }
+            else
+            {
+                this.button2.Enabled = true;
+                this.button5.Enabled = true;
+            }
+        }
+
+        private void NewState_Window_VisibleChanged(object sender, EventArgs e)
+        {
+            VerSiguientesEstados();
         }
     }
 }

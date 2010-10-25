@@ -57,7 +57,19 @@ namespace SeguimientoIncidentesBD1.show
         //Agregar
         private void button1_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                string stateSelected = this.dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                Estado_Logic nuevoEstadoSiguiente = new Estado_Logic(this.cache.Estado.EstCod);
+                nuevoEstadoSiguiente.EstadoSigAdd(stateSelected);
+                //this.cache.UsuariosGrupo.Tables[0].Rows.Add(userSelected);
+                cargarGridSiguientesEstados();
+                cargarGridrestoEstados();
+            }
+            catch (Exception exp)
+            {
+                System.Windows.Forms.MessageBox.Show("No hay estados disponibles");
+            }
         }
     }
 }
