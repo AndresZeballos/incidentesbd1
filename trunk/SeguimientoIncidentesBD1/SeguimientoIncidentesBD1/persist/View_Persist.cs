@@ -940,7 +940,7 @@ namespace SeguimientoIncidentesBD1.persist
             try
             {
                 SqlCommand sql = new SqlCommand();
-                string consult = "SELECT incCod, incRes, incUsuAsi, incEstCod " +
+                string consult = "SELECT incCod, incRes, incUsuAsi, incEstCod, incPriCod, incSevCod, incCatCod, incFecIng " +
                                   "FROM incidente " +
                                   "WHERE incProCod = @incProCod ";
 
@@ -971,12 +971,12 @@ namespace SeguimientoIncidentesBD1.persist
                 }
                 if (fecInicial != null)
                 {
-                    consult += " AND fecInicial >= @fecInicial ";
+                    consult += " AND incFecIng >= @fecInicial ";
                     sql.Parameters.AddWithValue("@fecInicial", DateTimeToDateSQL(fecInicial));
                 }
                 if (fecFinal != null)
                 {
-                    consult += " AND fecFinal <= @fecFinal ";
+                    consult += " AND incFecIng <= @fecFinal ";
                     sql.Parameters.AddWithValue("@fecFinal", DateTimeToDateSQL(fecFinal));
                 }
 
