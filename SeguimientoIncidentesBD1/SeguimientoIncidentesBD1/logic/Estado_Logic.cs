@@ -92,6 +92,19 @@ namespace SeguimientoIncidentesBD1.logic
             }
         }
 
+        public void EstadoSigDelete(string estSiguiente)
+        {
+            try
+            {
+                Estado_Persist est = new Estado_Persist(this.estCod);
+                est.EstadoSigDelete(estSiguiente);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
         public void EstadoSigAdd(string estCod)
         {
             try

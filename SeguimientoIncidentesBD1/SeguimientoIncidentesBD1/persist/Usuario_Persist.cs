@@ -140,17 +140,44 @@ namespace SeguimientoIncidentesBD1.persist
             {
                 SqlCommand sql = new SqlCommand();
                 //elimino primero las asociaciones del usuario con roles
-                sql.CommandText = "DELETE FROM usuarioRol WHERE usuCod=@usuCod";
+                sql.CommandText = "DELETE FROM usuarioRol WHERE usuCod = @usuCod";
                 sql.Parameters.AddWithValue("@usuCod", this.usuCod);
                 SQLExecute sqlIns = new SQLExecute();
                 sqlIns.Execute(sql, "usuario");
                 sql.Parameters.Clear();
-                //elimino el usuario propiamente dicho
-                sql.Parameters.Clear();
-                sql.CommandText = "DELETE FROM usuario WHERE usuCod=@usuCod";
+
+                //elimino primero las asociaciones de los grupos con el usuario
+                sql.CommandText = "DELETE FROM usuarioGrupoUsuario WHERE usuarioGrupoUsuario.usuGrpUsuCod = @usuCod";
                 sql.Parameters.AddWithValue("@usuCod", this.usuCod);
                 SQLExecute sqlIns2 = new SQLExecute();
-                sqlIns2.Execute(sql, "usuarioRol");
+                sqlIns2.Execute(sql, "usuarioGrupoUsuario");
+
+                //elimino el usuario propiamente dicho
+                sql.Parameters.Clear();
+                sql.CommandText = "DELETE FROM usuario WHERE usuCod = @usuCod";
+                sql.Parameters.AddWithValue("@usuCod", this.usuCod);
+                SQLExecute sqlIns3 = new SQLExecute();
+                sqlIns3.Execute(sql, "usuarioRol");
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
+        public void UsuarioRolDelete(string rolCod)
+        {
+            try
+            {
+                SqlCommand sql = new SqlCommand();
+                //elimino primero las asociaciones del usuario con roles
+                sql.CommandText = "DELETE FROM usuarioRol WHERE usuarioRol.usuCod = @usuCod " + 
+                                    "AND usuarioRol.usuRolCod = @rolCod";
+                sql.Parameters.AddWithValue("@usuCod", this.usuCod);
+                sql.Parameters.AddWithValue("@rolCod", rolCod);
+                SQLExecute sqlIns = new SQLExecute();
+                sqlIns.Execute(sql, "usuarioRol");
+                sql.Parameters.Clear();
             }
             catch (SqlException sqlex)
             {

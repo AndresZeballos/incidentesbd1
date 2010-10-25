@@ -130,6 +130,21 @@ namespace SeguimientoIncidentesBD1.logic
             }
         }
 
+        public void UsuarioRolDelete(string rolCod)
+        {
+            try
+            {
+                //actualizo la lista de roles
+                this.usuRol.Add(rolCod);
+                Usuario_Persist usuPersist = new Usuario_Persist(this.usuCod);
+                usuPersist.UsuarioRolDelete(rolCod);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
         //agrega un nuevo rol al usuario
         public void UsuarioRolAdd(string rolCod)
         {

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SeguimientoIncidentesBD1.logic;
+using System.Data.SqlClient;
 
 namespace SeguimientoIncidentesBD1.show
 {
@@ -56,7 +57,21 @@ namespace SeguimientoIncidentesBD1.show
         {
             if (MessageBox.Show("Estas seguro que desas eliminar", "AVISO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                //Eliminar estado
+                Eliminar_Estado();
+            }
+        }
+
+        private void Eliminar_Estado()
+        {
+            try
+            {
+                this.cache.Estado.EstadoDelete();
+                this.Close();
+            }
+            catch (SqlException sqlex)
+            {
+                MessageBox.Show("Error al eliminar estado " + sqlex.Message);
+                //throw sqlex;
             }
         }
 

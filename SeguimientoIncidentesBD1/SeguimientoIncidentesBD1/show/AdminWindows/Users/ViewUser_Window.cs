@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SeguimientoIncidentesBD1.logic;
+using System.Data.SqlClient;
 
 namespace SeguimientoIncidentesBD1.show
 {
@@ -50,7 +51,21 @@ namespace SeguimientoIncidentesBD1.show
         {
             if (MessageBox.Show("Estas seguro que desa eliminar usuario", "AVISO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                //Eliminar usuario
+                Eliminar_Usuario();
+            }
+        }
+
+        private void Eliminar_Usuario()
+        {
+            try
+            {
+                this.cache.UsuarioSelected.UsuarioDelete();
+                this.Close();
+            }
+            catch (SqlException sqlex)
+            {
+                MessageBox.Show("Error al eliminar usuario " + sqlex.Message);
+                //throw sqlex;
             }
         }
 

@@ -80,5 +80,22 @@ namespace SeguimientoIncidentesBD1.show
             }
         }
 
+        //Quitar
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string seguridadSelected = this.dataGridView3.CurrentRow.Cells[0].Value.ToString();
+                Rol_Logic nuevaSeguridad = new Rol_Logic(this.cache.Rol.RolCod);
+                nuevaSeguridad.RolSegDelete(seguridadSelected);
+                cargarGridSeguridades();
+                cargarGridrestoSeguridades();
+            }
+            catch (Exception exp)
+            {
+                System.Windows.Forms.MessageBox.Show("No hay seguridades disponibles");
+            }
+        }
+
     }
 }

@@ -88,6 +88,19 @@ namespace SeguimientoIncidentesBD1.logic
             }
         }
 
+        public void RolSegDelete(string segCod)
+        {
+            try
+            {
+                Rol_Persist rolPersist = new Rol_Persist(this.rolCod);
+                rolPersist.RolSegDelete(segCod);
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+        }
+
         //actualiza la descripción de un rol
         public void RolDesUpdate(string nuevaDesc)
         {
