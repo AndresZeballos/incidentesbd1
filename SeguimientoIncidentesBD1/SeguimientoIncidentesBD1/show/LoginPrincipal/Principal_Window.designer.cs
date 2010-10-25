@@ -191,6 +191,7 @@
             this.Text = "Sistema de Gestión de Incidentes";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Principal_Window_FormClosed);
             this.Load += new System.EventHandler(this.Principal_Window_Load);
+            this.VisibleChanged += new System.EventHandler(this.Principal_Window_VisibleChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 

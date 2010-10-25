@@ -767,7 +767,7 @@ namespace SeguimientoIncidentesBD1.persist
             try
             {
                 SqlCommand sql = new SqlCommand();
-                sql.CommandText = "SELECT proCod, proNom FROM ProjectByUser WHERE usuCod = @usuCod";
+                sql.CommandText = "SELECT DISTINCT(proCod), proNom FROM ProjectByUser WHERE usuCod = @usuCod";
 
                 sql.Parameters.AddWithValue("@usuCod", usuCod);
 
